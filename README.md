@@ -1,7 +1,7 @@
 # Siderkit Site
 
 The public Siderkit brand site and documentation portal. It is a static Astro
-site deployed to Cloudflare Pages.
+site.
 
 Siderkit Break is the first public app. The homepage is brand-first; Break
 lives under `/apps/siderkit-break` and its documentation lives under
@@ -12,7 +12,7 @@ lives under `/apps/siderkit-break` and its documentation lives under
 - Astro 7 with static output
 - Starlight for the documentation portal
 - TypeScript
-- No backend, database, Pages Functions, cookies, or third-party scripts
+- No backend, database, cookies, or third-party scripts
 
 The site reserves the same-origin `/api/*` path for a future login layer. No
 static file may be generated under `/api/`.
@@ -34,8 +34,8 @@ artifact checks. `pnpm check` runs `astro check` and both gates against the
 source. `check-boundaries.mjs` owns the brand/app/ui/site/page import matrix,
 product docs and asset placement, CSS owners, route registration, and the
 Starlight sidebar. `check-site.mjs` verifies required routes, the app-scoped
-docs namespace, internal links, the reserved `/api/*` boundary, and the Pages
-metadata files.
+docs namespace, internal links, the reserved `/api/*` boundary, and the
+`_headers`/`_redirects` metadata files.
 
 ## Routes
 
@@ -101,13 +101,7 @@ The script accepts a local manifest for testing and never overwrites a published
 release with a draft. Pass `--published` only after the GitHub release is public
 and the R2 manifest has been promoted.
 
-## Deployment
-
-Cloudflare Pages:
-
-- Build command: `pnpm build`
-- Output directory: `dist`
-- Node.js: 22 or newer
+## Response headers and redirects
 
 `public/_headers` sets security and cache headers. `public/_redirects` keeps the
 pre-app-scoped documentation URLs working. Both are copied to the site root.
