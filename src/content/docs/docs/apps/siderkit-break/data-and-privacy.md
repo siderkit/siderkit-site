@@ -29,7 +29,7 @@ There is no account, no sync, and no server for session data.
 
 ## Update checks
 
-On Windows, Break checks `https://dl.siderkit.com/latest.json` in the background. The request includes:
+On Windows, Break checks `https://dl.siderkit.com/siderkit-break/latest.json` in the background. The request includes:
 
 - the app version;
 - the target platform and architecture;

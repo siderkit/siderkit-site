@@ -94,7 +94,7 @@ Rules that follow from the split:
 download URL, size, and checksum on the site. Update it with:
 
 ```bash
-pnpm sync-release --manifest https://dl.siderkit.com/latest.json --download
+pnpm sync-release --manifest https://dl.siderkit.com/siderkit-break/latest.json --download
 ```
 
 The script accepts a local manifest for testing and never overwrites a published

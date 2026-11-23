@@ -160,7 +160,7 @@ export const zhTW = {
     sourceBody:
       'Apache-2.0。原始碼、安裝檔和第三方聲明都公開。應用程式不綁定分析 SDK，也不載入第三方字型。',
     sourceCta: '查看原始碼',
-    checksumNote: '完整校驗和列在版本紀錄中。',
+    checksumNote: '請將上方 SHA-256 與下載的檔案核對一致。',
   },
   changelog: {
     eyebrow: 'Siderkit Break',

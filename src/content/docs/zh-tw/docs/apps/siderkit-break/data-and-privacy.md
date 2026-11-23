@@ -29,7 +29,7 @@ Linux 上如果設定了 `$XDG_DATA_HOME`，資料路徑會跟隨它。WebView �
 
 ## 更新檢查
 
-在 Windows 上，Break 會在背景請求 `https://dl.siderkit.com/latest.json`。請求包含：
+在 Windows 上，Break 會在背景請求 `https://dl.siderkit.com/siderkit-break/latest.json`。請求包含：
 
 - 應用程式版本；
 - 目標平台與架構；

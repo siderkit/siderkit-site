@@ -38,7 +38,3 @@ export function formatDate(date: string, locale: Locale): string {
     timeZone: 'UTC',
   }).format(new Date(`${date}T00:00:00Z`));
 }
-
-export function shortHash(hash: string): string {
-  return hash.slice(0, 12);
-}

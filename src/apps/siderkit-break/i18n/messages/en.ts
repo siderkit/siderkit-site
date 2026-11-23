@@ -140,7 +140,7 @@ export const en = {
     sourceBody:
       'Apache-2.0. The source, installer, and third-party notices are public. The app bundles no analytics SDK and no third-party fonts.',
     sourceCta: 'View source',
-    checksumNote: 'Full checksums are listed in the release notes.',
+    checksumNote: 'Compare the SHA-256 above with the file you downloaded.',
   },
   changelog: {
     eyebrow: 'Siderkit Break',

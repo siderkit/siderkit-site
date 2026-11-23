@@ -160,7 +160,7 @@ export const zhCN = {
     sourceBody:
       'Apache-2.0。源码、安装包和第三方声明都公开。应用不捆绑分析 SDK，也不加载第三方字体。',
     sourceCta: '查看源码',
-    checksumNote: '完整校验和列在版本记录中。',
+    checksumNote: '请将上方 SHA-256 与下载的文件核对一致。',
   },
   changelog: {
     eyebrow: 'Siderkit Break',

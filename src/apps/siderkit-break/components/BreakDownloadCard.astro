@@ -1,6 +1,6 @@
 ---
 import Icon from '../../../ui/Icon.astro';
-import { formatDate, formatSize, release, shortHash } from '../data/releases';
+import { formatDate, formatSize, release } from '../data/releases';
 import { useBreakMessages } from '../i18n/ui';
 import type { Locale } from '../../../i18n/config';
 
@@ -68,10 +68,10 @@ const linuxUrl = release.linux?.url ?? release.github;
             <dt>{t.product.sizeLabel}</dt>
             <dd>{formatSize(release.windows.size, locale)}</dd>
           </div>
-          <div>
+          <div class="l-break-download-hash">
             <dt>{t.product.checksumLabel}</dt>
             <dd>
-              <code title={release.windows.sha256}>{shortHash(release.windows.sha256)}…</code>
+              <code>{release.windows.sha256}</code>
             </dd>
           </div>
         </>
@@ -192,6 +192,17 @@ const linuxUrl = release.linux?.url ?? release.github;
   .l-break-download-facts code {
     font-family: var(--sk-font-mono);
     font-size: var(--sk-text-xs);
+  }
+
+  .l-break-download-hash {
+    grid-column: 1 / -1;
+  }
+
+  .l-break-download-hash code {
+    display: block;
+    line-height: var(--sk-leading-normal);
+    overflow-wrap: anywhere;
+    user-select: all;
   }
 
   .l-break-download-alternatives {

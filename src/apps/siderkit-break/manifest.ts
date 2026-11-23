@@ -6,7 +6,6 @@ export type AppManifest = {
   route: string;
   changelogRoute: string;
   docsRoute: string;
-  ctaLabel: Record<Locale, string>;
 };
 
 export const breakApp: AppManifest = {
@@ -19,9 +18,4 @@ export const breakApp: AppManifest = {
   route: '/apps/siderkit-break/',
   changelogRoute: '/apps/siderkit-break/changelog/',
   docsRoute: '/docs/apps/siderkit-break/',
-  ctaLabel: {
-    en: 'Get Break',
-    'zh-cn': '获取 Break',
-    'zh-tw': '取得 Break',
-  },
 };

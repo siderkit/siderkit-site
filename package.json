@@ -10,9 +10,9 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/check-boundaries.mjs && node scripts/check-site.mjs",
+    "build": "astro build && node scripts/check-boundaries.mjs && node scripts/check-download-urls.mjs && node scripts/check-site.mjs",
     "preview": "astro preview",
-    "check": "astro check && node scripts/check-boundaries.mjs && node scripts/check-site.mjs --source",
+    "check": "astro check && node scripts/check-boundaries.mjs && node scripts/check-download-urls.mjs && node scripts/check-site.mjs --source",
     "check:boundaries": "node scripts/check-boundaries.mjs",
     "og": "node scripts/generate-og.mjs",
     "sync-release": "node scripts/sync-release.mjs"

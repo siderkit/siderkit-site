@@ -3,7 +3,7 @@
 //
 // Usage:
 //   node scripts/sync-release.mjs --manifest latest.json --published
-//   node scripts/sync-release.mjs --manifest https://dl.siderkit.com/latest.json --dry-run
+//   node scripts/sync-release.mjs --manifest https://dl.siderkit.com/siderkit-break/latest.json --dry-run
 //
 // The updater manifest carries the version, publication date, and a signed
 // installer URL. Size and SHA-256 are not part of that document, so the script
@@ -18,7 +18,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const outFile = path.join(root, 'src/apps/siderkit-break/data/releases.json');
-const defaultManifest = 'https://dl.siderkit.com/latest.json';
+const defaultManifest = 'https://dl.siderkit.com/siderkit-break/latest.json';
 
 const options = {
   manifest: defaultManifest,

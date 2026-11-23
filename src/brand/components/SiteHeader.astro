@@ -1,11 +1,9 @@
 ---
-import Icon from '../../ui/Icon.astro';
 import LanguagePicker from './LanguagePicker.astro';
 import Wordmark from './Wordmark.astro';
 import { localizedPath, type Locale } from '../../i18n/config';
 import { routes } from '../../site/routes';
 import { siteLinks } from '../../site/links';
-import { featuredApp } from '../../site/apps';
 import { useBrandMessages } from '../i18n/ui';
 
 interface Props {
@@ -15,9 +13,6 @@ interface Props {
 
 const { locale, path } = Astro.props;
 const t = useBrandMessages(locale);
-const productHref = localizedPath(locale, featuredApp.route);
-const downloadHref = `${productHref}#download`;
-const onProduct = path.startsWith(featuredApp.route);
 const onDocs = path.startsWith(routes.docs);
 const onAbout = path.startsWith(routes.about);
 const languagePath = path.startsWith(routes.notFound) ? routes.home : path;
@@ -47,15 +42,6 @@ const languagePath = path.startsWith(routes.notFound) ? routes.home : path;
 
     <div class="l-site-header-actions">
       <LanguagePicker locale={locale} path={languagePath} />
-      <a
-        href={downloadHref}
-        class="sk-button sk-button--ghost sk-button--small l-site-download"
-        aria-label={featuredApp.ctaLabel[locale]}
-        aria-current={onProduct ? 'page' : undefined}
-      >
-        <Icon name="download" size="sm" />
-        <span>{featuredApp.ctaLabel[locale]}</span>
-      </a>
     </div>
   </div>
 </header>
@@ -113,10 +99,6 @@ const languagePath = path.startsWith(routes.notFound) ? routes.home : path;
     gap: var(--sk-space-xs);
   }
 
-  .l-site-download {
-    gap: var(--sk-space-xs);
-  }
-
   @media (max-width: 767px) {
     .l-site-nav-source {
       display: none;
@@ -134,15 +116,6 @@ const languagePath = path.startsWith(routes.notFound) ? routes.home : path;
 
     .l-site-nav-link {
       font-size: var(--sk-text-xs);
-    }
-
-    .l-site-download span {
-      display: none;
-    }
-
-    .l-site-download {
-      inline-size: var(--sk-control-height-sm);
-      padding-inline: 0;
     }
   }
 </style>
