@@ -98,8 +98,8 @@ pnpm sync-release --manifest https://dl.siderkit.com/latest.json --download
 ```
 
 The script accepts a local manifest for testing and never overwrites a published
-release with a draft. Pass `--published` only after the GitHub release is public
-and the R2 manifest has been promoted.
+release with a draft. Pass `--published` only after the GitHub release is public;
+the `dl.siderkit.com` Worker serves the new manifest on the next request.
 
 ## Response headers and redirects
 

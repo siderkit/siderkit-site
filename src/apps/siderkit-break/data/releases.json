@@ -2,12 +2,12 @@
   "channel": "release-candidate",
   "version": "1.0.0-rc.1",
   "pubDate": "2026-11-23",
-  "published": false,
+  "published": true,
   "github": "https://github.com/siderkit/siderkit-break/releases",
   "windows": {
-    "url": "https://dl.siderkit.com/releases/1.0.0-rc.1/Siderkit-Break_1.0.0-rc.1_x64-setup.exe",
+    "url": "https://dl.siderkit.com/releases/1.0.0-rc.1/Siderkit-Break_1.0.0-rc.1_windows_x64-setup.exe",
     "sha256": "08810660fe46c382264c8ba7577133390e3a0bf15f2c56343d1ef983df3dcc1c",
-    "size": 6742344,
+    "size": 6745898,
     "format": "NSIS"
   },
   "macos": null,

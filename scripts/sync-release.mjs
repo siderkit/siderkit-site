@@ -132,27 +132,26 @@ async function main() {
   }
 
   const current = fs.existsSync(outFile) ? readJson(outFile) : {};
+  // `--download` is the authoritative path: a rebuilt installer can change size
+  // without changing the version, so never reuse stale numbers when we can
+  // measure the real artifact.
+  const downloaded = options.download ? await downloadAsset(platform.url) : null;
   const sameVersion = current.version === manifest.version && current.windows;
-  let size = options.size ?? (Number.isInteger(platform.size) ? platform.size : null);
-  let sha256 = options.sha256 ?? (typeof platform.sha256 === 'string' ? platform.sha256 : null);
+  let size = options.size ?? downloaded?.size ?? (Number.isInteger(platform.size) ? platform.size : null);
+  let sha256 = options.sha256 ?? downloaded?.sha256 ?? (typeof platform.sha256 === 'string' ? platform.sha256 : null);
 
   if ((!size || !sha256) && sameVersion) {
     size ??= current.windows.size;
     sha256 ??= current.windows.sha256;
   }
 
-  if ((!size || !sha256) && options.download) {
-    const downloaded = await downloadAsset(platform.url);
-    size ??= downloaded.size;
-    sha256 ??= downloaded.sha256;
-  }
-
   if (options.published && (!size || !sha256)) {
     throw new Error('--published needs a size and SHA-256; pass --size/--sha256 or --download');
   }
 
+  const prerelease = manifest.version.includes('-');
   const release = {
-    channel: options.published ? 'stable' : (current.channel ?? 'release-candidate'),
+    channel: options.published ? (prerelease ? 'release-candidate' : 'stable') : (current.channel ?? 'release-candidate'),
     version: manifest.version,
     pubDate: (manifest.pub_date ?? new Date().toISOString()).slice(0, 10),
     published: options.published || Boolean(current.published),

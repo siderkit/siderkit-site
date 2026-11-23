@@ -53,6 +53,8 @@ export const en = {
     releaseCandidateNote:
       'Release candidate. Public 1.0 is being prepared; the GitHub release page is the source of truth until the signed build is published.',
     publishedNote: 'Signed Windows installer. macOS and Linux builds are published on GitHub.',
+    publishedCandidateNote:
+      'Windows release candidate, hosted on dl.siderkit.com. macOS and Linux builds are not published yet.',
     versionLabel: 'Version',
     releasedLabel: 'Released',
     sizeLabel: 'Size',

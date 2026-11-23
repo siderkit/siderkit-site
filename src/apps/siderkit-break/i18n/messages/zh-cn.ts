@@ -54,6 +54,7 @@ export const zhCN = {
     releaseCandidateNote:
       '候选版本。公开的 1.0 正在准备中；在签名构建发布之前，以 GitHub Releases 页面为准。',
     publishedNote: '已签名的 Windows 安装包。macOS 与 Linux 版本发布在 GitHub。',
+    publishedCandidateNote: 'Windows 候选版本，由 dl.siderkit.com 提供。macOS 与 Linux 构建尚未发布。',
     versionLabel: '版本',
     releasedLabel: '发布',
     sizeLabel: '大小',

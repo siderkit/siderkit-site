@@ -11,6 +11,17 @@ interface Props {
 const { locale } = Astro.props;
 const t = useBreakMessages(locale);
 const isPublished = release.published && release.windows !== null;
+const isPrerelease = release.version.includes('-');
+const badgeLabel = isPrerelease
+  ? t.labels.releaseCandidate
+  : isPublished
+    ? t.labels.signedBuild
+    : t.labels.releaseCandidate;
+const note = isPublished
+  ? isPrerelease
+    ? t.product.publishedCandidateNote
+    : t.product.publishedNote
+  : t.product.releaseCandidateNote;
 const windowsUrl = isPublished && release.windows ? release.windows.url : release.github;
 const windowsLabel = isPublished ? t.product.downloadWindows : t.product.downloadGithub;
 const macUrl = release.macos?.url ?? release.github;
@@ -24,7 +35,7 @@ const linuxUrl = release.linux?.url ?? release.github;
       <h2 class="l-break-download-title" id="download-title">{t.product.downloadTitle}</h2>
     </div>
     <span class:list={['l-break-download-status', isPublished ? 'is-published' : 'is-candidate']}>
-      {isPublished ? t.labels.signedBuild : t.labels.releaseCandidate}
+      {badgeLabel}
     </span>
   </div>
 
@@ -84,7 +95,7 @@ const linuxUrl = release.linux?.url ?? release.github;
   </div>
 
   <p class="l-break-download-note">
-    {isPublished ? t.product.publishedNote : t.product.releaseCandidateNote}
+    {note}
   </p>
   <p class="l-break-download-checksum">{t.product.checksumNote}</p>
 </section>
