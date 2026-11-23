@@ -1,0 +1,119 @@
+---
+import Icon from '../../ui/Icon.astro';
+import { localeInfo, locales, localizedPath, type Locale } from '../../i18n/config';
+import { useBrandMessages } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+  path: string;
+}
+
+const { locale, path } = Astro.props;
+const t = useBrandMessages(locale);
+---
+
+<details class="l-site-lang">
+  <summary aria-label={t.common.language}>
+    <Icon name="globe" size="sm" />
+    <span class="l-site-lang-current">{localeInfo[locale].shortLabel}</span>
+    <Icon name="chevron-down" size="sm" class="l-site-lang-chevron" />
+  </summary>
+  <ul class="l-site-lang-menu">
+    {
+      locales.map((item) => (
+        <li>
+          <a
+            href={localizedPath(item, path)}
+            lang={localeInfo[item].htmlLang}
+            hreflang={localeInfo[item].htmlLang}
+            aria-current={item === locale ? 'true' : undefined}
+          >
+            <span>{localeInfo[item].label}</span>
+            {item === locale && <Icon name="check" size="sm" />}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</details>
+
+<style>
+  .l-site-lang {
+    position: relative;
+  }
+
+  .l-site-lang summary {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sk-space-2xs);
+    min-block-size: var(--sk-control-height-sm);
+    padding-inline: var(--sk-space-sm);
+    border: var(--sk-edge) solid hsl(var(--sk-color-line));
+    border-radius: var(--sk-radius-full);
+    color: hsl(var(--sk-color-ink-soft));
+    font-size: var(--sk-text-xs);
+    font-weight: var(--sk-weight-semibold);
+    letter-spacing: var(--sk-tracking-wide);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+
+  .l-site-lang summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .l-site-lang[open] summary {
+    border-color: hsl(var(--sk-color-brand) / 0.5);
+    background: hsl(var(--sk-color-paper-raised));
+  }
+
+  .l-site-lang-chevron {
+    transition: transform var(--sk-duration-fast) var(--sk-ease);
+  }
+
+  .l-site-lang[open] .l-site-lang-chevron {
+    transform: rotate(180deg);
+  }
+
+  .l-site-lang-menu {
+    position: absolute;
+    inset-block-start: calc(100% + var(--sk-space-xs));
+    inset-inline-end: 0;
+    z-index: var(--sk-z-popover);
+    min-inline-size: 10rem;
+    padding: var(--sk-space-2xs);
+    border: var(--sk-edge) solid hsl(var(--sk-color-line));
+    border-radius: var(--sk-radius-md);
+    background: hsl(var(--sk-color-paper-raised));
+    box-shadow: var(--sk-shadow-card);
+  }
+
+  .l-site-lang-menu a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sk-space-sm);
+    padding: var(--sk-space-xs) var(--sk-space-sm);
+    border-radius: var(--sk-radius-sm);
+    color: hsl(var(--sk-color-ink-soft));
+    font-size: var(--sk-text-sm);
+    text-decoration: none;
+  }
+
+  .l-site-lang-menu a:hover {
+    background: hsl(var(--sk-color-paper-sunk));
+    color: hsl(var(--sk-color-ink));
+  }
+
+  .l-site-lang-menu a[aria-current='true'] {
+    color: hsl(var(--sk-color-brand));
+    font-weight: var(--sk-weight-semibold);
+  }
+
+  @media (max-width: 639px) {
+    .l-site-lang summary {
+      padding-inline: var(--sk-space-xs);
+    }
+  }
+</style>

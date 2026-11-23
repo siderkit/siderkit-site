@@ -1,0 +1,180 @@
+import type { BreakMessages } from './types';
+
+export const zhCN = {
+  meta: {
+    productTitle: 'Siderkit Break — 安静的专注计时器',
+    productDescription:
+      '本地优先的专注计时器：悬浮倒计时、克制的休息提醒，历史记录只留在你的电脑上。',
+    changelogTitle: 'Siderkit Break 版本记录',
+    changelogDescription: 'Siderkit Break 的公开版本记录。',
+    ogAlt: 'Siderkit Break mark',
+  },
+  labels: {
+    brand: 'Siderkit',
+    download: '下载',
+    getBreak: '获取 Siderkit Break',
+    readDocs: '阅读文档',
+    releaseCandidate: '候选版本',
+    signedBuild: '已签名构建',
+    windows: 'Windows',
+    macos: 'macOS',
+    linux: 'Linux',
+    version: '版本',
+    released: '发布',
+    size: '大小',
+    checksum: 'SHA-256',
+    requirements: '系统要求',
+    source: '源码',
+    license: '许可证',
+    docs: '文档',
+    changelog: '版本记录',
+    backHome: '返回首页',
+    lastUpdated: '最后更新',
+    opensInNewTab: '在新标签页打开',
+  },
+  homeCard: {
+    eyebrow: '第一款应用',
+    title: '给屏幕前的自己，留一点休息。',
+    lead: 'Siderkit Break 用轻缓的提醒，帮你按时休息、起身、看向远处。专注记录只留在你自己的电脑上。',
+    note: '免费、开源。数据只留在你的电脑。',
+    primaryCta: '获取 Break',
+    secondaryCta: '阅读文档',
+  },
+  product: {
+    eyebrow: 'Siderkit Break',
+    title: '一款知道何时该停下的专注计时器。',
+    lead:
+      '为 Windows、macOS 与 Linux 打造的安静、本地优先专注计时器。它维持轻缓的节奏，不挡你的路，提醒你起身看看远处。',
+    tags: ['专注计时', '本地优先', '开源'],
+    downloadTitle: '下载 Siderkit Break',
+    downloadWindows: '下载 Windows 版',
+    downloadMac: 'macOS 版（未签名）',
+    downloadLinux: 'Linux 安装包',
+    downloadGithub: '查看 GitHub Releases',
+    releaseCandidateNote:
+      '候选版本。公开的 1.0 正在准备中；在签名构建发布之前，以 GitHub Releases 页面为准。',
+    publishedNote: '已签名的 Windows 安装包。macOS 与 Linux 版本发布在 GitHub。',
+    versionLabel: '版本',
+    releasedLabel: '发布',
+    sizeLabel: '大小',
+    checksumLabel: 'SHA-256',
+    windowsMeta: 'Windows 10 1809 或更高 · x64 · NSIS 安装包',
+    macMeta: 'macOS 10.15.7 或更高 · Universal DMG · 未签名',
+    linuxMeta: 'Ubuntu 22.04 或更高 · X11 · deb、rpm、AppImage',
+    installTitle: '安静的安装。',
+    installBody:
+      'Windows 安装包按当前用户安装，不需要管理员权限，卸载时会保留你的数据。因为构建尚未代码签名，SmartScreen 可能会提示。',
+    updateTitle: '更新不必操心。',
+    updateBody:
+      '在 Windows 上，Break 会在后台检查签名更新。只有你确认后才下载，重启时安装。macOS 与 Linux 版本需要手动下载。',
+    privacyTitle: '你的数据只属于你。',
+    privacyBody:
+      '专注记录保存在本地 SQLite 数据库。没有账号，也没有同步。更新检查可能携带匿名安装 ID；你可以在设置里关闭或重置。',
+    featuresTitle: '它能做什么',
+    featuresLead: '功能不多，但都围绕真实的一天来设计。',
+    features: [
+      {
+        title: '专注、短休、长休',
+        body: '默认 25/5/15。每个时长和长休间隔都可以修改。',
+      },
+      {
+        title: '悬浮倒计时',
+        body: '始终置顶，鼠标不靠近时点击穿透，并按阶段显示标签。',
+      },
+      {
+        title: '应用内提醒',
+        body: '每个阶段结束出现一张小卡片，可推迟、跳过，并带有内置提示音。',
+      },
+      {
+        title: '本地历史',
+        body: '按天查看完成、跳过和中断的专注记录。',
+      },
+      {
+        title: '表格导出',
+        body: '导出带排版的 .xlsx，包含汇总、每日和明细工作表。',
+      },
+      {
+        title: '30 种语言',
+        body: '自动跟随系统语言，支持从右到左布局，明暗主题齐全。',
+      },
+    ],
+    screensTitle: '再靠近一点',
+    screensLead: '截取自正在运行的应用。',
+    screens: [
+      {
+        alt: '第 2/4 轮的专注计时，剩余 18:42',
+        caption: '第 2/4 轮的专注计时，剩余 18:42。',
+      },
+      {
+        alt: '休息提醒卡片，提供隐藏提醒、推迟 5 分钟和跳过休息',
+        caption: '一张把选择权交给你的休息卡片。',
+      },
+      {
+        alt: '专注、短休、长休与长休间隔的设置',
+        caption: '每个阶段时长都可以改，恢复默认只需一次点击。',
+      },
+      {
+        alt: '语言选择器，包含英文、简体中文和繁体中文',
+        caption: '30 种语言，包括从右到左的布局。',
+      },
+    ],
+    requirementsTitle: '系统要求',
+    requirementsLead: 'Windows 是主要目标；macOS 与 Linux 受支持，但请留意下面的说明。',
+    tablePlatform: '平台',
+    tableMinimum: '最低要求',
+    tableArtifacts: '安装包',
+    tableStatus: '状态',
+    requirements: [
+      {
+        platform: 'Windows 10 / 11 x64',
+        minimum: 'Windows 10 1809（build 17763）',
+        artifacts: 'NSIS 安装包',
+        status: '主要平台',
+      },
+      {
+        platform: 'macOS Intel',
+        minimum: 'macOS 10.15.7，Safari 15.4+',
+        artifacts: 'Universal DMG',
+        status: '未签名',
+      },
+      {
+        platform: 'macOS Apple Silicon',
+        minimum: 'macOS 11.0',
+        artifacts: 'Universal DMG',
+        status: '未签名',
+      },
+      {
+        platform: 'Ubuntu 22.04+',
+        minimum: 'webkit2gtk 4.1，X11',
+        artifacts: 'deb、rpm、AppImage',
+        status: '建议 X11',
+      },
+    ],
+    requirementsNote:
+      'Wayland 无法可靠地定位顶层窗口；想要完整的悬浮倒计时，请使用 X11 会话。',
+    changelogTitle: '最近的变化',
+    changelogLead: '最新的公开版本记录。',
+    changelogCta: '完整版本记录',
+    sourceTitle: '源码与许可证',
+    sourceBody:
+      'Apache-2.0。源码、安装包和第三方声明都公开。应用不捆绑分析 SDK，也不加载第三方字体。',
+    sourceCta: '查看源码',
+    checksumNote: '完整校验和列在版本记录中。',
+  },
+  changelog: {
+    eyebrow: 'Siderkit Break',
+    title: '版本记录',
+    lead: '公开的版本记录。内部工作留在仓库里。',
+    versionLabel: '版本',
+    releasedLabel: '发布',
+    sections: {
+      added: '新增',
+      changed: '变更',
+      fixed: '修复',
+      security: '安全',
+      known: '已知限制',
+    },
+    note: '完整的工程变更记录保留在源码仓库。',
+    empty: '还没有公开版本。',
+  },
+} satisfies BreakMessages;

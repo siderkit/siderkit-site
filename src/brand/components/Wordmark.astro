@@ -1,0 +1,42 @@
+---
+import BrandMark from './BrandMark.astro';
+import { localizedPath, type Locale } from '../../i18n/config';
+import { routes } from '../../site/routes';
+
+interface Props {
+  locale: Locale;
+  class?: string;
+}
+
+const { locale, class: className } = Astro.props;
+const href = localizedPath(locale, routes.home);
+---
+
+<a class:list={['l-site-wordmark', className]} href={href} aria-label="Siderkit">
+  <BrandMark size="sm" class="l-site-wordmark-mark" />
+  <span class="l-site-wordmark-text">siderkit</span>
+</a>
+
+<style>
+  .l-site-wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sk-space-sm);
+    color: hsl(var(--sk-color-brand));
+    text-decoration: none;
+  }
+
+  .l-site-wordmark-text {
+    font-family: var(--sk-font-display);
+    font-size: var(--sk-text-xl);
+    font-weight: var(--sk-weight-semibold);
+    letter-spacing: var(--sk-tracking-tight);
+    line-height: var(--sk-leading-none);
+  }
+
+  @media (max-width: 639px) {
+    .l-site-wordmark-text {
+      display: none;
+    }
+  }
+</style>

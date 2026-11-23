@@ -1,0 +1,61 @@
+---
+interface Props {
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+}
+
+const { size = 'md', class: className } = Astro.props;
+---
+
+<svg
+  class:list={['l-break-mark', `is-${size}`, className]}
+  viewBox="0 0 64 64"
+  aria-hidden="true"
+  focusable="false"
+>
+  <defs>
+    <linearGradient
+      id="l-break-mark-fill"
+      x1="18"
+      y1="8"
+      x2="46"
+      y2="60"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#5cb8ff" />
+      <stop offset="0.5" stop-color="#2f7bf6" />
+      <stop offset="1" stop-color="#1746b8" />
+    </linearGradient>
+  </defs>
+  <path
+    d="M32 4.5C32 4.5 11.5 26.8 11.5 40.3C11.5 51.9 20.7 60.5 32 60.5C43.3 60.5 52.5 51.9 52.5 40.3C52.5 26.8 32 4.5 32 4.5Z"
+    fill="url(#l-break-mark-fill)"
+  />
+  <ellipse
+    cx="24.5"
+    cy="30"
+    rx="4.5"
+    ry="7.5"
+    transform="rotate(-28 24.5 30)"
+    fill="#ffffff"
+    opacity="0.28"
+  />
+  <circle cx="23.5" cy="27.5" r="2" fill="#ffffff" opacity="0.7" />
+</svg>
+
+<style>
+  .l-break-mark {
+    inline-size: var(--sk-space-xl);
+    block-size: auto;
+    flex: none;
+    filter: drop-shadow(0 var(--sk-space-3xs) var(--sk-space-2xs) hsl(218 80% 40% / 0.28));
+  }
+
+  .l-break-mark.is-sm {
+    inline-size: var(--sk-icon-md);
+  }
+
+  .l-break-mark.is-lg {
+    inline-size: var(--sk-space-2xl);
+  }
+</style>

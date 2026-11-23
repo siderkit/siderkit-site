@@ -1,0 +1,16 @@
+---
+import CompanyView from '../../brand/views/CompanyView.astro';
+
+type CompanyPage = 'about' | 'contact';
+
+export function getStaticPaths() {
+  return (['about', 'contact'] as const).map((page) => ({
+    params: { slug: page },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props as { page: CompanyPage };
+---
+
+<CompanyView locale="en" page={page} />

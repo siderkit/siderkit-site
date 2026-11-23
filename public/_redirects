@@ -1,0 +1,23 @@
+# Redirect the pre-app-scoped documentation URLs to the app namespace.
+# Keep these rules until the old paths have been unshared for a full release cycle.
+
+/docs/install /docs/apps/siderkit-break/install/ 301
+/docs/using-break /docs/apps/siderkit-break/using-break/ 301
+/docs/settings /docs/apps/siderkit-break/settings/ 301
+/docs/data-and-privacy /docs/apps/siderkit-break/data-and-privacy/ 301
+/docs/updates /docs/apps/siderkit-break/updates/ 301
+/docs/troubleshooting /docs/apps/siderkit-break/troubleshooting/ 301
+
+/zh-cn/docs/install /zh-cn/docs/apps/siderkit-break/install/ 301
+/zh-cn/docs/using-break /zh-cn/docs/apps/siderkit-break/using-break/ 301
+/zh-cn/docs/settings /zh-cn/docs/apps/siderkit-break/settings/ 301
+/zh-cn/docs/data-and-privacy /zh-cn/docs/apps/siderkit-break/data-and-privacy/ 301
+/zh-cn/docs/updates /zh-cn/docs/apps/siderkit-break/updates/ 301
+/zh-cn/docs/troubleshooting /zh-cn/docs/apps/siderkit-break/troubleshooting/ 301
+
+/zh-tw/docs/install /zh-tw/docs/apps/siderkit-break/install/ 301
+/zh-tw/docs/using-break /zh-tw/docs/apps/siderkit-break/using-break/ 301
+/zh-tw/docs/settings /zh-tw/docs/apps/siderkit-break/settings/ 301
+/zh-tw/docs/data-and-privacy /zh-tw/docs/apps/siderkit-break/data-and-privacy/ 301
+/zh-tw/docs/updates /zh-tw/docs/apps/siderkit-break/updates/ 301
+/zh-tw/docs/troubleshooting /zh-tw/docs/apps/siderkit-break/troubleshooting/ 301

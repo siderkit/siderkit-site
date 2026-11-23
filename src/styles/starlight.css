@@ -1,0 +1,50 @@
+@import './tokens.css';
+
+/* Starlight theme bridge: map the docs' palette to the site tokens. */
+:root {
+  --sl-color-accent-low: hsl(var(--sk-color-brand-soft));
+  --sl-color-accent: hsl(var(--sk-color-brand));
+  --sl-color-accent-high: hsl(var(--sk-color-brand-strong));
+  --sl-color-white: hsl(var(--sk-color-ink));
+  --sl-color-gray-1: hsl(var(--sk-color-ink));
+  --sl-color-gray-2: hsl(var(--sk-color-ink));
+  --sl-color-gray-3: hsl(var(--sk-color-muted));
+  --sl-color-gray-4: hsl(var(--sk-color-muted));
+  --sl-color-gray-5: hsl(var(--sk-color-line));
+  --sl-color-gray-6: hsl(var(--sk-color-line-soft));
+  --sl-color-black: hsl(var(--sk-color-paper));
+  --sl-color-bg: hsl(var(--sk-color-paper));
+  --sl-color-bg-nav: hsl(var(--sk-color-paper) / 0.92);
+  --sl-color-bg-sidebar: hsl(var(--sk-color-paper));
+  --sl-color-text: hsl(var(--sk-color-ink));
+  --sl-color-text-accent: hsl(var(--sk-color-brand));
+  --sl-color-hairline: hsl(var(--sk-color-line));
+  --sl-color-hairline-light: hsl(var(--sk-color-line-soft));
+  --sl-font: var(--sk-font-body);
+  --sl-font-mono: var(--sk-font-mono);
+}
+
+:root[data-theme='dark'] {
+  --sl-color-accent-low: hsl(var(--sk-color-brand-soft));
+  --sl-color-accent: hsl(var(--sk-color-brand));
+  --sl-color-accent-high: hsl(var(--sk-color-brand-strong));
+  --sl-color-white: hsl(var(--sk-color-paper));
+  --sl-color-gray-1: hsl(var(--sk-color-paper));
+  --sl-color-gray-2: hsl(var(--sk-color-paper));
+  --sl-color-gray-3: hsl(var(--sk-color-muted-dark));
+  --sl-color-gray-4: hsl(var(--sk-color-muted-dark));
+  --sl-color-gray-5: hsl(var(--sk-color-line-dark));
+  --sl-color-gray-6: hsl(var(--sk-color-line-dark));
+  --sl-color-black: hsl(var(--sk-color-night));
+  --sl-color-bg: hsl(var(--sk-color-night));
+  --sl-color-bg-nav: hsl(var(--sk-color-night) / 0.92);
+  --sl-color-bg-sidebar: hsl(var(--sk-color-night));
+  --sl-color-text: hsl(var(--sk-color-paper));
+  --sl-color-text-accent: hsl(var(--sk-color-brand-pale));
+  --sl-color-hairline: hsl(var(--sk-color-line-dark));
+  --sl-color-hairline-light: hsl(var(--sk-color-line-dark));
+}
+
+starlight-theme-select select {
+  border-radius: var(--sk-radius-full);
+}

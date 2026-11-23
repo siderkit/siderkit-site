@@ -1,0 +1,208 @@
+/* ════════════════════════════════════════════════════════════════
+   Siderkit site design tokens — the only file with raw values.
+   Brand follows ADR-0024: one near-black brand, one semantic accent.
+   Break's forest green belongs to the app, not to this site shell.
+   Components use var(--sk-*); media-query breakpoints stay in the
+   component files (639 / 767 / 1023 / 1279).
+   ════════════════════════════════════════════════════════════════ */
+
+:root {
+  color-scheme: light;
+
+  /* ── Color ──────────────────────────────────────────────────── */
+  --sk-color-paper: 40 24% 96%;
+  --sk-color-paper-raised: 40 30% 99%;
+  --sk-color-paper-sunk: 40 16% 92%;
+  --sk-color-ink: 0 0% 8%;
+  --sk-color-ink-soft: 0 0% 18%;
+  --sk-color-muted: 30 5% 40%;
+  --sk-color-line: 30 8% 82%;
+  --sk-color-line-soft: 30 8% 88%;
+  --sk-color-brand: 0 0% 8%;
+  --sk-color-brand-strong: 0 0% 16%;
+  --sk-color-brand-soft: 0 0% 93%;
+  --sk-color-brand-pale: 0 0% 96%;
+  --sk-color-on-brand: 0 0% 100%;
+  --sk-color-accent: 28 45% 38%;
+  --sk-color-accent-strong: 28 50% 30%;
+  --sk-color-accent-soft: 34 45% 91%;
+  --sk-color-focus: 28 65% 42%;
+  --sk-color-night: 0 0% 6%;
+  --sk-color-night-raised: 0 0% 10%;
+  --sk-color-paper-inverse: 40 24% 96%;
+  --sk-color-muted-dark: 30 5% 64%;
+  --sk-color-line-dark: 0 0% 24%;
+  --sk-color-brand-pale-dark: 0 0% 78%;
+  --sk-color-brand-soft-dark: 0 0% 18%;
+
+  --sk-gradient-page:
+    radial-gradient(ellipse at 12% -8%, hsl(var(--sk-color-brand-soft) / 0.7), transparent 42%),
+    radial-gradient(ellipse at 92% 4%, hsl(var(--sk-color-accent-soft) / 0.32), transparent 34%),
+    hsl(var(--sk-color-paper));
+  --sk-gradient-stage:
+    radial-gradient(circle at 48% 38%, hsl(var(--sk-color-brand-soft) / 0.85), transparent 62%),
+    linear-gradient(155deg, hsl(var(--sk-color-paper-raised)), hsl(var(--sk-color-paper-sunk)));
+  --sk-gradient-ink: linear-gradient(135deg, hsl(var(--sk-color-brand-strong)), hsl(var(--sk-color-brand)));
+  --sk-gradient-fade: linear-gradient(to bottom, transparent, hsl(var(--sk-color-paper)));
+
+  /* ── Type ───────────────────────────────────────────────────── */
+  --sk-font-body:
+    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', sans-serif;
+  --sk-font-display:
+    ui-serif, Georgia, Cambria, 'Times New Roman', 'Songti SC', 'Noto Serif CJK SC',
+    'Source Han Serif SC', serif;
+  --sk-font-mono: ui-monospace, 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  --sk-text-xs: 0.75rem;
+  --sk-text-sm: 0.875rem;
+  --sk-text-base: 1rem;
+  --sk-text-lg: 1.125rem;
+  --sk-text-xl: 1.375rem;
+  --sk-text-2xl: 1.75rem;
+  --sk-text-3xl: 2.25rem;
+  --sk-text-4xl: 3rem;
+  --sk-text-display: clamp(3rem, 7.4vw, 5.75rem);
+  --sk-text-section: clamp(2.25rem, 4.4vw, 3.5rem);
+  --sk-leading-none: 1;
+  --sk-leading-tight: 1.06;
+  --sk-leading-snug: 1.28;
+  --sk-leading-normal: 1.65;
+  --sk-weight-regular: 400;
+  --sk-weight-medium: 500;
+  --sk-weight-semibold: 600;
+  --sk-weight-bold: 700;
+  --sk-tracking-tight: -0.03em;
+  --sk-tracking-normal: 0;
+  --sk-tracking-wide: 0.12em;
+
+  /* ── Space ──────────────────────────────────────────────────── */
+  --sk-space-3xs: 0.125rem;
+  --sk-space-2xs: 0.25rem;
+  --sk-space-xs: 0.5rem;
+  --sk-space-sm: 0.75rem;
+  --sk-space-md: 1rem;
+  --sk-space-lg: 1.5rem;
+  --sk-space-xl: 2rem;
+  --sk-space-2xl: 3rem;
+  --sk-space-3xl: 4rem;
+  --sk-space-4xl: 6rem;
+  --sk-space-5xl: 8rem;
+  --sk-section-pad: clamp(4.5rem, 9vw, 8rem);
+  --sk-container: 72rem;
+  --sk-reading: 44rem;
+  --sk-narrow: 32rem;
+  --sk-header-height: 4.5rem;
+
+  /* ── Shape ──────────────────────────────────────────────────── */
+  --sk-edge: 1px;
+  --sk-edge-strong: 2px;
+  --sk-radius-xs: 0.25rem;
+  --sk-radius-sm: 0.5rem;
+  --sk-radius-md: 0.75rem;
+  --sk-radius-lg: 1.25rem;
+  --sk-radius-xl: 2rem;
+  --sk-radius-full: 999px;
+  --sk-shadow-soft: 0 1px 2px hsl(var(--sk-color-ink) / 0.06);
+  --sk-shadow-card: 0 24px 60px -34px hsl(var(--sk-color-ink) / 0.35);
+  --sk-shadow-stage: 0 42px 120px -48px hsl(var(--sk-color-ink) / 0.5);
+
+  /* ── Controls ───────────────────────────────────────────────── */
+  --sk-control-height: 2.75rem;
+  --sk-control-height-sm: 2.25rem;
+  --sk-icon-sm: 1rem;
+  --sk-icon-md: 1.25rem;
+  --sk-icon-lg: 1.5rem;
+  --sk-mark-size: 2rem;
+  --sk-focus-ring: 0 0 0 3px hsl(var(--sk-color-focus) / 0.32);
+
+  /* ── Motion ─────────────────────────────────────────────────── */
+  --sk-duration-fast: 0.16s;
+  --sk-duration-base: 0.24s;
+  --sk-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ── Layering ───────────────────────────────────────────────── */
+  --sk-z-header: 10;
+  --sk-z-popover: 20;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+
+    --sk-color-paper: 0 0% 6%;
+    --sk-color-paper-raised: 0 0% 9%;
+    --sk-color-paper-sunk: 0 0% 4%;
+    --sk-color-ink: 40 20% 94%;
+    --sk-color-ink-soft: 40 12% 86%;
+    --sk-color-muted: 30 5% 64%;
+    --sk-color-line: 0 0% 24%;
+    --sk-color-line-soft: 0 0% 18%;
+    --sk-color-brand: 0 0% 97%;
+    --sk-color-brand-strong: 0 0% 85%;
+    --sk-color-brand-soft: 0 0% 17%;
+    --sk-color-brand-pale: 0 0% 12%;
+    --sk-color-on-brand: 0 0% 6%;
+    --sk-color-accent: 30 55% 64%;
+    --sk-color-accent-strong: 30 60% 74%;
+    --sk-color-accent-soft: 28 20% 18%;
+    --sk-color-focus: 30 70% 66%;
+    --sk-color-night: 0 0% 3%;
+    --sk-color-night-raised: 0 0% 7%;
+    --sk-color-paper-inverse: 40 20% 94%;
+    --sk-color-muted-dark: 30 5% 64%;
+    --sk-color-line-dark: 0 0% 24%;
+    --sk-color-brand-pale-dark: 0 0% 78%;
+    --sk-color-brand-soft-dark: 0 0% 18%;
+
+    --sk-gradient-page:
+      radial-gradient(ellipse at 12% -8%, hsl(var(--sk-color-brand-soft) / 0.55), transparent 42%),
+      radial-gradient(ellipse at 92% 4%, hsl(var(--sk-color-accent-soft) / 0.3), transparent 34%),
+      hsl(var(--sk-color-paper));
+    --sk-gradient-stage:
+      radial-gradient(circle at 48% 38%, hsl(var(--sk-color-brand-soft) / 0.7), transparent 62%),
+      linear-gradient(155deg, hsl(var(--sk-color-paper-raised)), hsl(var(--sk-color-paper-sunk)));
+    --sk-gradient-fade: linear-gradient(to bottom, transparent, hsl(var(--sk-color-paper)));
+    --sk-shadow-card: 0 24px 60px -34px hsl(0 0% 0% / 0.6);
+    --sk-shadow-stage: 0 42px 120px -48px hsl(0 0% 0% / 0.7);
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --sk-color-paper: 0 0% 6%;
+  --sk-color-paper-raised: 0 0% 9%;
+  --sk-color-paper-sunk: 0 0% 4%;
+  --sk-color-ink: 40 20% 94%;
+  --sk-color-ink-soft: 40 12% 86%;
+  --sk-color-muted: 30 5% 64%;
+  --sk-color-line: 0 0% 24%;
+  --sk-color-line-soft: 0 0% 18%;
+  --sk-color-brand: 0 0% 97%;
+  --sk-color-brand-strong: 0 0% 85%;
+  --sk-color-brand-soft: 0 0% 17%;
+  --sk-color-brand-pale: 0 0% 12%;
+  --sk-color-on-brand: 0 0% 6%;
+  --sk-color-accent: 30 55% 64%;
+  --sk-color-accent-strong: 30 60% 74%;
+  --sk-color-accent-soft: 28 20% 18%;
+  --sk-color-focus: 30 70% 66%;
+  --sk-color-night: 0 0% 3%;
+  --sk-color-night-raised: 0 0% 7%;
+  --sk-color-paper-inverse: 40 20% 94%;
+  --sk-color-muted-dark: 30 5% 64%;
+  --sk-color-line-dark: 0 0% 24%;
+  --sk-color-brand-pale-dark: 0 0% 78%;
+  --sk-color-brand-soft-dark: 0 0% 18%;
+
+  --sk-gradient-page:
+    radial-gradient(ellipse at 12% -8%, hsl(var(--sk-color-brand-soft) / 0.55), transparent 42%),
+    radial-gradient(ellipse at 92% 4%, hsl(var(--sk-color-accent-soft) / 0.3), transparent 34%),
+    hsl(var(--sk-color-paper));
+  --sk-gradient-stage:
+    radial-gradient(circle at 48% 38%, hsl(var(--sk-color-brand-soft) / 0.7), transparent 62%),
+    linear-gradient(155deg, hsl(var(--sk-color-paper-raised)), hsl(var(--sk-color-paper-sunk)));
+  --sk-gradient-fade: linear-gradient(to bottom, transparent, hsl(var(--sk-color-paper)));
+  --sk-shadow-card: 0 24px 60px -34px hsl(0 0% 0% / 0.6);
+  --sk-shadow-stage: 0 42px 120px -48px hsl(0 0% 0% / 0.7);
+}

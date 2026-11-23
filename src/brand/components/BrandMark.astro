@@ -1,0 +1,37 @@
+---
+interface Props {
+  size?: 'sm' | 'xl';
+  class?: string;
+}
+
+const { size = 'sm', class: className } = Astro.props;
+---
+
+<span class:list={['l-logo-mark', `is-${size}`, className]} aria-hidden="true">S</span>
+
+<style>
+  /*
+   * The Siderkit monogram. Geometry mirrors the app's .l-logo-mark
+   * (siderkit/apps/web): a rounded square with a bold S — radius is
+   * 30% of the side, the glyph is 60% of the side, brand background,
+   * on-brand letter. No dot, no extra accents, at any size.
+   */
+  .l-logo-mark {
+    display: grid;
+    place-items: center;
+    inline-size: var(--sk-mark-size);
+    block-size: var(--sk-mark-size);
+    flex: none;
+    border-radius: calc(var(--sk-mark-size) * 0.3);
+    background: hsl(var(--sk-color-brand));
+    color: hsl(var(--sk-color-on-brand));
+    font-family: var(--sk-font-body);
+    font-size: calc(var(--sk-mark-size) * 0.6);
+    font-weight: var(--sk-weight-bold);
+    line-height: var(--sk-leading-none);
+  }
+
+  .l-logo-mark.is-xl {
+    --sk-mark-size: min(9rem, 38vw);
+  }
+</style>

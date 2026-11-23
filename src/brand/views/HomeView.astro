@@ -1,0 +1,480 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BrandMark from '../components/BrandMark.astro';
+import Icon from '../../ui/Icon.astro';
+import { localizedPath, type Locale } from '../../i18n/config';
+import { routes } from '../../site/routes';
+import { siteLinks } from '../../site/links';
+import { useBrandMessages } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useBrandMessages(locale);
+const docsHref = localizedPath(locale, routes.docs);
+const aboutHref = localizedPath(locale, routes.about);
+---
+
+<BaseLayout
+  locale={locale}
+  path={routes.home}
+  title={t.meta.homeTitle}
+  description={t.meta.homeDescription}
+>
+  <section class="l-home-hero">
+    <div class="sk-container l-home-hero-grid">
+      <div class="l-home-hero-copy">
+        <p class="sk-eyebrow">{t.home.eyebrow}</p>
+        <h1 class="l-home-hero-title">{t.home.title}</h1>
+        <p class="l-home-hero-lead">{t.home.lead}</p>
+        <div class="l-home-hero-actions">
+          <a class="sk-button sk-button--primary" href={docsHref}>
+            {t.home.primaryCta}
+            <Icon name="arrow-right" size="sm" />
+          </a>
+          <a class="sk-button sk-button--ghost" href={aboutHref}>{t.home.secondaryCta}</a>
+        </div>
+        <p class="l-home-hero-meta">{t.home.meta}</p>
+      </div>
+
+      <div class="l-home-brand-stage">
+        <div class="l-home-brand-orbit" aria-hidden="true"></div>
+        <BrandMark size="xl" class="l-home-brand-mark" />
+      </div>
+    </div>
+  </section>
+
+  <section class="l-home-trust" aria-label={t.home.trust.map((item) => item.value).join(' · ')}>
+    <div class="sk-container l-home-trust-grid">
+      {
+        t.home.trust.map((item) => (
+          <div class="l-home-trust-item">
+            <p class="l-home-trust-value">{item.value}</p>
+            <p class="l-home-trust-label">{item.label}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="sk-section l-home-principles">
+    <div class="sk-container">
+      <div class="l-home-section-head">
+        <div>
+          <p class="sk-eyebrow">{t.home.principlesEyebrow}</p>
+          <h2 class="sk-title">{t.home.principlesTitle}</h2>
+        </div>
+        <p class="sk-lead">{t.home.principlesLead}</p>
+      </div>
+
+      <ol class="l-home-principle-grid">
+        {
+          t.home.principles.map((principle, index) => (
+            <li class="l-home-principle">
+              <span class="l-home-principle-number" aria-hidden="true">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <h3>{principle.title}</h3>
+              <p>{principle.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="l-home-apps">
+    <div class="sk-container">
+      <div class="l-home-apps-head">
+        <div>
+          <p class="sk-eyebrow">{t.home.appsEyebrow}</p>
+          <h2 class="sk-title">{t.home.appsTitle}</h2>
+        </div>
+        <p class="sk-lead">{t.home.appsLead}</p>
+      </div>
+      <slot name="apps" />
+    </div>
+  </section>
+
+  <section class="l-home-open-wrap">
+    <div class="sk-container">
+      <div class="l-home-open">
+        <div class="l-home-open-copy">
+          <p class="l-home-open-eyebrow">{t.home.openEyebrow}</p>
+          <h2>{t.home.openTitle}</h2>
+          <p>{t.home.openLead}</p>
+        </div>
+        <div class="l-home-open-actions">
+          <a
+            class="sk-button l-home-open-primary"
+            href={siteLinks.github}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon name="github" size="sm" />
+            {t.home.openSourceCta}
+          </a>
+          <a class="sk-button l-home-open-secondary" href={docsHref}>{t.home.openDocsCta}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .l-home-hero {
+    position: relative;
+    padding-block: clamp(var(--sk-space-2xl), 7vw, var(--sk-space-5xl)) var(--sk-space-4xl);
+    overflow: clip;
+  }
+
+  .l-home-hero-grid {
+    display: grid;
+    align-items: center;
+    gap: var(--sk-space-2xl);
+    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+  }
+
+  .l-home-hero-copy {
+    position: relative;
+    z-index: 2;
+  }
+
+  .l-home-hero-title {
+    max-inline-size: 11ch;
+    margin-block-start: var(--sk-space-md);
+    font-family: var(--sk-font-display);
+    font-size: var(--sk-text-display);
+    font-weight: var(--sk-weight-regular);
+    letter-spacing: var(--sk-tracking-tight);
+    line-height: var(--sk-leading-tight);
+    text-wrap: balance;
+  }
+
+  .l-home-hero-lead {
+    max-inline-size: 34rem;
+    margin-block-start: var(--sk-space-lg);
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-lg);
+    line-height: var(--sk-leading-normal);
+    text-wrap: pretty;
+  }
+
+  .l-home-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--sk-space-sm);
+    margin-block-start: var(--sk-space-xl);
+  }
+
+  .l-home-hero-meta {
+    margin-block-start: var(--sk-space-lg);
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-xs);
+    letter-spacing: var(--sk-tracking-wide);
+    text-transform: uppercase;
+  }
+
+  .l-home-brand-stage {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-block-size: 30rem;
+    overflow: hidden;
+    border-radius: var(--sk-radius-xl);
+    background: var(--sk-gradient-ink);
+    color: hsl(var(--sk-color-on-brand));
+    box-shadow: var(--sk-shadow-stage);
+    isolation: isolate;
+  }
+
+  .l-home-brand-stage::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(hsl(var(--sk-color-on-brand) / 0.06) var(--sk-edge), transparent var(--sk-edge)),
+      linear-gradient(90deg, hsl(var(--sk-color-on-brand) / 0.06) var(--sk-edge), transparent var(--sk-edge));
+    background-size: var(--sk-space-2xl) var(--sk-space-2xl);
+    mask-image: radial-gradient(circle at 50% 42%, black, transparent 74%);
+  }
+
+  .l-home-brand-orbit {
+    position: absolute;
+    inline-size: min(76%, 20rem);
+    aspect-ratio: 1;
+    border: var(--sk-edge) solid hsl(var(--sk-color-on-brand) / 0.16);
+    border-radius: var(--sk-radius-full);
+  }
+
+  .l-home-brand-orbit::after {
+    content: '';
+    position: absolute;
+    inset: 14%;
+    border: var(--sk-edge) solid hsl(var(--sk-color-on-brand) / 0.1);
+    border-radius: var(--sk-radius-full);
+  }
+
+  .l-home-brand-mark {
+    position: relative;
+    z-index: 1;
+  }
+
+  .l-home-trust {
+    border-block: var(--sk-edge) solid hsl(var(--sk-color-line));
+    background: hsl(var(--sk-color-paper-raised) / 0.35);
+  }
+
+  .l-home-trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .l-home-trust-item {
+    padding-block: var(--sk-space-lg);
+    padding-inline: var(--sk-space-lg);
+    border-inline-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+  }
+
+  .l-home-trust-item:first-child {
+    border-inline-start: 0;
+    padding-inline-start: 0;
+  }
+
+  .l-home-trust-value {
+    color: hsl(var(--sk-color-brand));
+    font-family: var(--sk-font-display);
+    font-size: var(--sk-text-xl);
+    letter-spacing: var(--sk-tracking-tight);
+    line-height: var(--sk-leading-snug);
+  }
+
+  .l-home-trust-label {
+    margin-block-start: var(--sk-space-3xs);
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-xs);
+    line-height: var(--sk-leading-snug);
+  }
+
+  .l-home-principles {
+    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+  }
+
+  .l-home-section-head {
+    display: grid;
+    align-items: end;
+    gap: var(--sk-space-xl);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+  }
+
+  .l-home-section-head .sk-lead {
+    margin-block-start: 0;
+  }
+
+  .l-home-principle-grid {
+    display: grid;
+    gap: 0;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-block-start: var(--sk-space-2xl);
+    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+  }
+
+  .l-home-principle {
+    padding: var(--sk-space-lg) var(--sk-space-lg) var(--sk-space-lg) 0;
+    border-inline-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+    padding-inline-start: var(--sk-space-lg);
+  }
+
+  .l-home-principle:first-child {
+    border-inline-start: 0;
+    padding-inline-start: 0;
+  }
+
+  .l-home-principle-number {
+    color: hsl(var(--sk-color-accent));
+    font-family: var(--sk-font-mono);
+    font-size: var(--sk-text-xs);
+    letter-spacing: var(--sk-tracking-wide);
+  }
+
+  .l-home-principle h3 {
+    margin-block-start: var(--sk-space-md);
+    font-family: var(--sk-font-display);
+    font-size: var(--sk-text-xl);
+    font-weight: var(--sk-weight-regular);
+    letter-spacing: var(--sk-tracking-tight);
+    line-height: var(--sk-leading-snug);
+  }
+
+  .l-home-principle p {
+    margin-block-start: var(--sk-space-sm);
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-sm);
+    line-height: var(--sk-leading-normal);
+  }
+
+  .l-home-apps {
+    padding-block: var(--sk-space-4xl);
+    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+  }
+
+  .l-home-apps-head {
+    display: grid;
+    align-items: end;
+    gap: var(--sk-space-xl);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+    margin-block-end: var(--sk-space-2xl);
+  }
+
+  .l-home-apps-head .sk-lead {
+    margin-block-start: 0;
+  }
+
+  .l-home-open-wrap {
+    padding-block: 0 var(--sk-space-4xl);
+  }
+
+  .l-home-open {
+    display: grid;
+    align-items: end;
+    gap: var(--sk-space-2xl);
+    grid-template-columns: minmax(0, 1.2fr) auto;
+    padding: clamp(var(--sk-space-xl), 5vw, var(--sk-space-3xl));
+    border-radius: var(--sk-radius-xl);
+    background: var(--sk-gradient-ink);
+    color: hsl(var(--sk-color-on-brand));
+    box-shadow: var(--sk-shadow-stage);
+  }
+
+  .l-home-open-eyebrow {
+    color: hsl(var(--sk-color-brand-soft));
+    font-size: var(--sk-text-xs);
+    font-weight: var(--sk-weight-semibold);
+    letter-spacing: var(--sk-tracking-wide);
+    text-transform: uppercase;
+  }
+
+  .l-home-open h2 {
+    max-inline-size: 16ch;
+    margin-block-start: var(--sk-space-sm);
+    font-family: var(--sk-font-display);
+    font-size: var(--sk-text-section);
+    font-weight: var(--sk-weight-regular);
+    letter-spacing: var(--sk-tracking-tight);
+    line-height: var(--sk-leading-tight);
+  }
+
+  .l-home-open p {
+    max-inline-size: 34rem;
+    margin-block-start: var(--sk-space-md);
+    color: hsl(var(--sk-color-brand-soft));
+    font-size: var(--sk-text-sm);
+    line-height: var(--sk-leading-normal);
+  }
+
+  .l-home-open-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sk-space-sm);
+  }
+
+  .l-home-open-primary {
+    background: hsl(var(--sk-color-paper-raised));
+    color: hsl(var(--sk-color-brand-strong));
+  }
+
+  .l-home-open-primary:hover {
+    background: hsl(var(--sk-color-on-brand));
+  }
+
+  .l-home-open-secondary {
+    border-color: hsl(var(--sk-color-brand-soft) / 0.45);
+    color: hsl(var(--sk-color-on-brand));
+  }
+
+  .l-home-open-secondary:hover {
+    border-color: hsl(var(--sk-color-brand-soft));
+    background: hsl(var(--sk-color-brand-soft) / 0.12);
+  }
+
+  @media (max-width: 1023px) {
+    .l-home-hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .l-home-brand-stage {
+      min-block-size: 26rem;
+      max-inline-size: 36rem;
+      inline-size: 100%;
+      margin-inline: auto;
+    }
+
+    .l-home-principle-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .l-home-principle:nth-child(3) {
+      border-inline-start: 0;
+      padding-inline-start: 0;
+    }
+
+    .l-home-principle:nth-child(n + 3) {
+      border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+    }
+  }
+
+  @media (max-width: 767px) {
+    .l-home-hero {
+      padding-block-start: var(--sk-space-xl);
+    }
+
+    .l-home-hero-title {
+      max-inline-size: 12ch;
+    }
+
+    .l-home-brand-stage {
+      min-block-size: 22rem;
+    }
+
+    .l-home-trust-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .l-home-trust-item:nth-child(3) {
+      border-inline-start: 0;
+      padding-inline-start: 0;
+    }
+
+    .l-home-trust-item:nth-child(n + 3) {
+      border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+    }
+
+    .l-home-section-head,
+    .l-home-apps-head {
+      grid-template-columns: 1fr;
+    }
+
+    .l-home-open {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .l-home-principle-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .l-home-principle,
+    .l-home-principle:nth-child(3) {
+      padding-inline-start: 0;
+      border-inline-start: 0;
+    }
+
+    .l-home-principle:nth-child(n + 2) {
+      border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+    }
+  }
+</style>

@@ -1,0 +1,126 @@
+[
+  {
+    "version": "1.0.0-rc.1",
+    "date": "2026-11-23",
+    "sections": [
+      {
+        "kind": "added",
+        "items": {
+          "en": [
+            "Focus, short-break, and long-break cycles with pause, resume, skip, reset, and editable lengths.",
+            "A transparent floating countdown that stays on top and remains click-through until pointed at.",
+            "In-app reminder cards at every phase boundary, with postpone, skip, close, and a bundled chime.",
+            "Local session history with a styled spreadsheet (.xlsx) export.",
+            "Thirty UI languages with system-language detection and right-to-left layouts.",
+            "Signed Windows auto-updates with a manual download, restart-to-install, skip-this-version, and a 24-hour snooze.",
+            "Optional anonymous install and update counts with a local off switch and reset."
+          ],
+          "zh-cn": [
+            "专注、短休与长休循环，支持暂停、继续、跳过、重置和自定义时长。",
+            "透明的悬浮倒计时，始终置顶，鼠标不靠近时保持点击穿透。",
+            "每个阶段结束时的应用内提醒卡片，可推迟、跳过、关闭，并带有内置提示音。",
+            "本地专注历史，可导出带排版的 .xlsx 表格。",
+            "30 种界面语言，自动跟随系统，并支持从右到左布局。",
+            "Windows 签名自动更新：手动下载、重启安装、跳过此版本和 24 小时稍后提醒。",
+            "可选的匿名安装与更新计数，本地可关闭、可重置。"
+          ],
+          "zh-tw": [
+            "專注、短休與長休循環，支援暫停、繼續、跳過、重設和自訂時長。",
+            "透明的懸浮倒數，始終置頂，滑鼠不靠近時保持點擊穿透。",
+            "每個階段結束時的應用程式內提醒卡片，可延後、跳過、關閉，並附有內建提示音。",
+            "本地專注歷史，可匯出帶排版的 .xlsx 試算表。",
+            "30 種介面語言，自動跟隨系統，並支援由右至左版面。",
+            "Windows 簽署自動更新：手動下載、重新啟動安裝、跳過此版本和 24 小時延後提醒。",
+            "選用的匿名安裝與更新計數，本地可關閉、可重設。"
+          ]
+        }
+      },
+      {
+        "kind": "changed",
+        "items": {
+          "en": [
+            "Windows ships only the per-user NSIS installer; the all-users MSI was retired.",
+            "The NSIS installer carries 23 languages, preselects the OS language, and hides the selector during silent, passive, and update runs.",
+            "Phase boundaries now use in-app cards instead of operating-system notifications.",
+            "The right-click menu is native on every window instead of the WebView menu.",
+            "The project is licensed under Apache-2.0 only."
+          ],
+          "zh-cn": [
+            "Windows 只发布按用户安装的 NSIS 安装包；全用户 MSI 已退役。",
+            "NSIS 安装包包含 23 种语言，预选系统语言，并在静默、被动和更新运行时隐藏语言选择器。",
+            "阶段结束改用应用内卡片，不再使用操作系统通知。",
+            "右键菜单改为每个窗口的原生菜单，不再使用 WebView 菜单。",
+            "项目统一为单一 Apache-2.0 许可证。"
+          ],
+          "zh-tw": [
+            "Windows 只發布以目前使用者安裝的 NSIS 安裝檔；全使用者 MSI 已退役。",
+            "NSIS 安裝檔包含 23 種語言，預選系統語言，並在靜默、被動和更新執行時隱藏語言選擇器。",
+            "階段結束改用應用程式內卡片，不再使用作業系統通知。",
+            "右鍵選單改為每個視窗的原生選單，不再使用 WebView 選單。",
+            "專案統一為單一 Apache-2.0 授權。"
+          ]
+        }
+      },
+      {
+        "kind": "fixed",
+        "items": {
+          "en": [
+            "The timer keeps its deadline in the Rust core when the main window is hidden.",
+            "The overlay no longer steals focus or captures clicks outside its bounds.",
+            "Locale changes reload every open window instead of leaving stale text."
+          ],
+          "zh-cn": [
+            "主窗口隐藏时，计时截止时间仍由 Rust 核心保存。",
+            "悬浮窗不再抢焦点，也不会捕获窗口范围外的点击。",
+            "切换语言会刷新所有已打开窗口，不再残留旧文案。"
+          ],
+          "zh-tw": [
+            "主視窗隱藏時，計時截止時間仍由 Rust 核心保存。",
+            "懸浮視窗不再搶焦點，也不會擷取視窗範圍外的點擊。",
+            "切換語言會重新整理所有已開啟視窗，不再殘留舊文案。"
+          ]
+        }
+      },
+      {
+        "kind": "security",
+        "items": {
+          "en": [
+            "Local-first by default: no account, no sync, and no server for session data.",
+            "Windows updates are verified with a minisign signature before install."
+          ],
+          "zh-cn": [
+            "默认本地优先：没有账号、没有同步，也没有存放专注数据的服务器。",
+            "Windows 更新在安装前使用 minisign 签名校验。"
+          ],
+          "zh-tw": [
+            "預設本地優先：沒有帳號、沒有同步，也沒有存放專注資料的伺服器。",
+            "Windows 更新在安裝前使用 minisign 簽章驗證。"
+          ]
+        }
+      },
+      {
+        "kind": "known",
+        "items": {
+          "en": [
+            "macOS builds are unsigned until a Developer ID is configured.",
+            "Windows installers are unsigned until a code-signing certificate is configured.",
+            "Auto-update is Windows-only; macOS and Linux are manual downloads.",
+            "Wayland cannot position the top-level overlay reliably; use X11 for the full experience."
+          ],
+          "zh-cn": [
+            "在配置 Developer ID 之前，macOS 构建未签名。",
+            "在配置代码签名证书之前，Windows 安装包未签名。",
+            "自动更新仅支持 Windows；macOS 与 Linux 需要手动下载。",
+            "Wayland 无法可靠地定位顶层悬浮窗；完整体验请使用 X11。"
+          ],
+          "zh-tw": [
+            "在設定 Developer ID 之前，macOS 建置未簽署。",
+            "在設定程式碼簽署憑證之前，Windows 安裝檔未簽署。",
+            "自動更新僅支援 Windows；macOS 與 Linux 需要手動下載。",
+            "Wayland 無法可靠地定位頂層懸浮視窗；完整體驗請使用 X11。"
+          ]
+        }
+      }
+    ]
+  }
+]

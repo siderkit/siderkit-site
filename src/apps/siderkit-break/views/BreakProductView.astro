@@ -1,0 +1,686 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BreakDownloadCard from '../components/BreakDownloadCard.astro';
+import BreakMark from '../components/BreakMark.astro';
+import Icon from '../../../ui/Icon.astro';
+import breakRunning from '../assets/screens/break-running.png';
+import languages from '../assets/screens/languages.png';
+import mainFocus from '../assets/screens/main-focus.png';
+import settings from '../assets/screens/settings.png';
+import { changelog } from '../data/changelog';
+import { formatDate, primaryDownloadUrl, release } from '../data/releases';
+import { absoluteUrl, localizedPath, type Locale } from '../../../i18n/config';
+import { breakApp } from '../manifest';
+import { breakLinks } from '../links';
+import { useBreakMessages } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useBreakMessages(locale);
+const changelogHref = localizedPath(locale, breakApp.changelogRoute);
+const docsHref = localizedPath(locale, breakApp.docsRoute);
+const latest = changelog[0];
+
+const screens = [
+  { image: mainFocus, ...t.product.screens[0], class: 'is-tall' },
+  { image: breakRunning, ...t.product.screens[1], class: 'is-wide' },
+  { image: settings, ...t.product.screens[2], class: 'is-tall' },
+  { image: languages, ...t.product.screens[3], class: 'is-tall' },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Siderkit Break',
+  applicationCategory: 'ProductivityApplication',
+  operatingSystem: 'Windows 10, Windows 11, macOS, Linux',
+  softwareVersion: release.version,
+  description: t.meta.productDescription,
+  url: absoluteUrl(localizedPath(locale, breakApp.route)),
+  downloadUrl: primaryDownloadUrl,
+  license: 'https://www.apache.org/licenses/LICENSE-2.0',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+};
+---
+
+<BaseLayout
+  locale={locale}
+  path={breakApp.route}
+  title={t.meta.productTitle}
+  description={t.meta.productDescription}
+  image="/og/siderkit-break.png"
+  imageAlt={t.meta.ogAlt}
+  schema={schema}
+>
+  <section class="l-break-product-hero">
+    <div class="sk-container">
+      <nav class="l-break-product-breadcrumb" aria-label="Breadcrumb">
+        <a href={localizedPath(locale, '/')}>{t.labels.brand}</a>
+        <span aria-hidden="true">/</span>
+        <span>{t.product.eyebrow}</span>
+      </nav>
+
+      <div class="l-break-product-hero-grid">
+        <div class="l-break-product-hero-copy">
+          <div class="l-break-product-brand">
+            <BreakMark size="md" />
+            <p class="sk-eyebrow">{t.product.eyebrow}</p>
+          </div>
+          <h1 class="l-break-product-title">{t.product.title}</h1>
+          <p class="sk-lead">{t.product.lead}</p>
+          <ul class="l-break-product-tags" aria-label={t.product.tags.join(' · ')}>
+            {t.product.tags.map((tag) => <li>{tag}</li>)}
+          </ul>
+          <a class="sk-text-link l-break-product-inline-link" href={docsHref}>
+            {t.labels.readDocs}
+            <Icon name="arrow-right" size="sm" />
+          </a>
+        </div>
+        <div class="l-break-product-hero-download">
+          <BreakDownloadCard locale={locale} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="l-break-product-gallery-section" aria-labelledby="gallery-title">
+    <div class="sk-container">
+      <div class="l-break-product-section-head">
+        <div>
+          <p class="sk-eyebrow">{t.product.eyebrow}</p>
+          <h2 class="sk-title" id="gallery-title">{t.product.screensTitle}</h2>
+        </div>
+        <p class="sk-lead">{t.product.screensLead}</p>
+      </div>
+
+      <ul class="l-break-product-gallery">
+        {
+          screens.map((screen) => (
+            <li class:list={['l-break-product-screen', screen.class]}>
+              <figure>
+                <div class="l-break-product-screen-frame">
+                  <Image
+                    src={screen.image}
+                    alt={screen.alt}
+                    widths={[260, 400, 560]}
+                    sizes="(max-width: 639px) 88vw, (max-width: 1023px) 44vw, 16rem"
+                    loading="lazy"
+                    quality={82}
+                  />
+                </div>
+                <figcaption>{screen.caption}</figcaption>
+              </figure>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="sk-section l-break-product-features" aria-labelledby="features-title">
+    <div class="sk-container">
+      <div class="l-break-product-section-head">
+        <div>
+          <p class="sk-eyebrow">{t.product.eyebrow}</p>
+          <h2 class="sk-title" id="features-title">{t.product.featuresTitle}</h2>
+        </div>
+        <p class="sk-lead">{t.product.featuresLead}</p>
+      </div>
+
+      <ul class="l-break-product-feature-grid">
+        {
+          t.product.features.map((feature, index) => (
+            <li>
+              <span class="l-break-product-feature-index" aria-hidden="true">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <h3>{feature.title}</h3>
+              <p>{feature.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="l-break-product-details">
+    <div class="sk-container">
+      <div class="l-break-product-detail-grid">
+        <article class="l-break-product-detail">
+          <h2>{t.product.installTitle}</h2>
+          <p>{t.product.installBody}</p>
+        </article>
+        <article class="l-break-product-detail">
+          <h2>{t.product.updateTitle}</h2>
+          <p>{t.product.updateBody}</p>
+        </article>
+        <article class="l-break-product-detail">
+          <h2>{t.product.privacyTitle}</h2>
+          <p>{t.product.privacyBody}</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sk-section l-break-product-requirements" aria-labelledby="requirements-title">
+    <div class="sk-container">
+      <div class="l-break-product-section-head">
+        <div>
+          <p class="sk-eyebrow">{t.product.eyebrow}</p>
+          <h2 class="sk-title" id="requirements-title">{t.product.requirementsTitle}</h2>
+        </div>
+        <p class="sk-lead">{t.product.requirementsLead}</p>
+      </div>
+
+      <div class="l-break-product-table-wrap">
+        <table class="l-break-product-table">
+          <caption class="sk-visually-hidden">{t.product.requirementsTitle}</caption>
+          <thead>
+            <tr>
+              <th scope="col">{t.product.tablePlatform}</th>
+              <th scope="col">{t.product.tableMinimum}</th>
+              <th scope="col">{t.product.tableArtifacts}</th>
+              <th scope="col">{t.product.tableStatus}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              t.product.requirements.map((row) => (
+                <tr>
+                  <th scope="row">{row.platform}</th>
+                  <td>{row.minimum}</td>
+                  <td>{row.artifacts}</td>
+                  <td>{row.status}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="l-break-product-table-note">{t.product.requirementsNote}</p>
+    </div>
+  </section>
+
+  <section class="l-break-product-changelog">
+    <div class="sk-container l-break-product-changelog-grid">
+      <div>
+        <p class="sk-eyebrow">{t.product.eyebrow}</p>
+        <h2 class="sk-title">{t.product.changelogTitle}</h2>
+        <p class="sk-lead">{t.product.changelogLead}</p>
+        {
+          latest && (
+            <p class="l-break-product-release-line">
+              <span>{latest.version}</span>
+              <span aria-hidden="true">·</span>
+              <time datetime={latest.date}>{formatDate(latest.date, locale)}</time>
+            </p>
+          )
+        }
+        <a class="sk-text-link l-break-product-inline-link" href={changelogHref}>
+          {t.product.changelogCta}
+          <Icon name="arrow-right" size="sm" />
+        </a>
+      </div>
+
+      {
+        latest && (
+          <div class="l-break-product-release-notes">
+            {latest.sections
+              .filter((section) => section.kind === 'added' || section.kind === 'changed')
+              .map((section) => (
+                <div>
+                  <h3>{t.changelog.sections[section.kind]}</h3>
+                  <ul>
+                    {section.items[locale].slice(0, 3).map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="sk-section l-break-product-source">
+    <div class="sk-container l-break-product-source-inner">
+      <div>
+        <h2 class="sk-title">{t.product.sourceTitle}</h2>
+        <p class="sk-lead">{t.product.sourceBody}</p>
+      </div>
+      <a
+        class="sk-button sk-button--primary"
+        href={breakLinks.repo}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon name="github" size="sm" />
+        {t.product.sourceCta}
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .l-break-product-hero {
+    padding-block: var(--sk-space-xl) var(--sk-space-4xl);
+  }
+
+  .l-break-product-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: var(--sk-space-xs);
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-xs);
+  }
+
+  .l-break-product-breadcrumb a {
+    text-decoration: none;
+  }
+
+  .l-break-product-breadcrumb a:hover {
+    color: hsl(var(--sk-color-brand));
+  }
+
+  .l-break-product-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--sk-space-sm);
+  }
+
+  .l-break-product-brand .sk-eyebrow {
+    margin: 0;
+  }
+
+  .l-break-product-hero-grid {
+    display: grid;
+    align-items: start;
+    gap: var(--sk-space-2xl);
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    margin-block-start: var(--sk-space-xl);
+  }
+
+  .l-break-product-title {
+    max-inline-size: 14ch;
+    margin-block-start: var(--sk-space-md);
+    font-family: var(--sk-font-display);
+    font-size: var(--sk-text-section);
+    font-weight: var(--sk-weight-regular);
+    letter-spacing: var(--sk-tracking-tight);
+    line-height: var(--sk-leading-tight);
+    text-wrap: balance;
+  }
+
+  .l-break-product-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sk-space-xs);
+    margin-block-start: var(--sk-space-lg);
+  }
+
+  .l-break-product-tags li {
+    padding: var(--sk-space-2xs) var(--sk-space-sm);
+    border: var(--sk-edge) solid hsl(var(--sk-color-line));
+    border-radius: var(--sk-radius-full);
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-xs);
+    line-height: var(--sk-leading-snug);
+  }
+
+  .l-break-product-hero-download {
+    position: sticky;
+    inset-block-start: calc(var(--sk-header-height) + var(--sk-space-lg));
+  }
+
+  .l-break-product-gallery-section {
+    padding-block: var(--sk-space-4xl);
+    border-block: var(--sk-edge) solid hsl(var(--sk-color-line));
+    background: hsl(var(--sk-color-paper-sunk) / 0.35);
+  }
+
+  .l-break-product-section-head {
+    display: grid;
+    align-items: end;
+    gap: var(--sk-space-xl);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+  }
+
+  .l-break-product-section-head .sk-lead {
+    margin-block-start: 0;
+  }
+
+  .l-break-product-gallery {
+    display: grid;
+    gap: var(--sk-space-md);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-block-start: var(--sk-space-2xl);
+  }
+
+  .l-break-product-screen figure {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sk-space-sm);
+    block-size: 100%;
+  }
+
+  .l-break-product-screen-frame {
+    display: grid;
+    place-items: center;
+    block-size: 24rem;
+    padding: var(--sk-space-sm);
+    overflow: hidden;
+    border: var(--sk-edge) solid hsl(var(--sk-color-line));
+    border-radius: var(--sk-radius-md);
+    background: var(--sk-gradient-stage);
+  }
+
+  .l-break-product-screen-frame img {
+    max-block-size: 100%;
+    inline-size: auto;
+    max-inline-size: 100%;
+    border-radius: var(--sk-radius-sm);
+    box-shadow: var(--sk-shadow-soft);
+  }
+
+  .l-break-product-screen.is-wide .l-break-product-screen-frame img {
+    inline-size: 100%;
+  }
+
+  .l-break-product-screen figcaption {
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-xs);
+    line-height: var(--sk-leading-normal);
+  }
+
+  .l-break-product-features {
+    padding-block-start: var(--sk-space-4xl);
+  }
+
+  .l-break-product-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-block-start: var(--sk-space-2xl);
+    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+  }
+
+  .l-break-product-feature-grid li {
+    padding: var(--sk-space-lg);
+    border-block-end: var(--sk-edge) solid hsl(var(--sk-color-line));
+    border-inline-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+  }
+
+  .l-break-product-feature-grid li:nth-child(3n + 1) {
+    border-inline-start: 0;
+    padding-inline-start: 0;
+  }
+
+  .l-break-product-feature-index {
+    color: hsl(var(--sk-color-accent));
+    font-family: var(--sk-font-mono);
+    font-size: var(--sk-text-xs);
+    letter-spacing: var(--sk-tracking-wide);
+  }
+
+  .l-break-product-feature-grid h3 {
+    margin-block-start: var(--sk-space-sm);
+    font-size: var(--sk-text-lg);
+    font-weight: var(--sk-weight-semibold);
+    line-height: var(--sk-leading-snug);
+  }
+
+  .l-break-product-feature-grid p {
+    margin-block-start: var(--sk-space-xs);
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-sm);
+    line-height: var(--sk-leading-normal);
+  }
+
+  .l-break-product-details {
+    padding-block: var(--sk-space-4xl);
+    border-block: var(--sk-edge) solid hsl(var(--sk-color-line));
+    background: hsl(var(--sk-color-paper-sunk) / 0.35);
+  }
+
+  .l-break-product-detail-grid {
+    display: grid;
+    gap: var(--sk-space-xl);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .l-break-product-detail {
+    padding: var(--sk-space-lg);
+    border: var(--sk-edge) solid hsl(var(--sk-color-line));
+    border-radius: var(--sk-radius-lg);
+    background: hsl(var(--sk-color-paper-raised) / 0.6);
+  }
+
+  .l-break-product-detail h2 {
+    font-family: var(--sk-font-display);
+    font-size: var(--sk-text-xl);
+    font-weight: var(--sk-weight-regular);
+    letter-spacing: var(--sk-tracking-tight);
+    line-height: var(--sk-leading-snug);
+  }
+
+  .l-break-product-detail p {
+    margin-block-start: var(--sk-space-sm);
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-sm);
+    line-height: var(--sk-leading-normal);
+  }
+
+  .l-break-product-table-wrap {
+    margin-block-start: var(--sk-space-2xl);
+    overflow-x: auto;
+    border: var(--sk-edge) solid hsl(var(--sk-color-line));
+    border-radius: var(--sk-radius-md);
+  }
+
+  .l-break-product-table {
+    inline-size: 100%;
+    min-inline-size: 44rem;
+    border-collapse: collapse;
+    font-size: var(--sk-text-sm);
+    text-align: start;
+  }
+
+  .l-break-product-table th,
+  .l-break-product-table td {
+    padding: var(--sk-space-sm) var(--sk-space-md);
+    border-block-end: var(--sk-edge) solid hsl(var(--sk-color-line));
+    text-align: start;
+    vertical-align: top;
+  }
+
+  .l-break-product-table thead th {
+    background: hsl(var(--sk-color-paper-sunk) / 0.65);
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-xs);
+    font-weight: var(--sk-weight-semibold);
+    letter-spacing: var(--sk-tracking-wide);
+    text-transform: uppercase;
+  }
+
+  .l-break-product-table tbody th {
+    font-weight: var(--sk-weight-semibold);
+  }
+
+  .l-break-product-table tbody td {
+    color: hsl(var(--sk-color-muted));
+  }
+
+  .l-break-product-table tbody tr:last-child th,
+  .l-break-product-table tbody tr:last-child td {
+    border-block-end: 0;
+  }
+
+  .l-break-product-table-note {
+    margin-block-start: var(--sk-space-md);
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-xs);
+    line-height: var(--sk-leading-normal);
+  }
+
+  .l-break-product-changelog {
+    padding-block: var(--sk-space-4xl);
+    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+  }
+
+  .l-break-product-changelog-grid {
+    display: grid;
+    align-items: start;
+    gap: var(--sk-space-2xl);
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+
+  .l-break-product-release-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sk-space-xs);
+    margin-block-start: var(--sk-space-md);
+    color: hsl(var(--sk-color-muted));
+    font-family: var(--sk-font-mono);
+    font-size: var(--sk-text-xs);
+  }
+
+  .l-break-product-inline-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sk-space-xs);
+    margin-block-start: var(--sk-space-lg);
+    font-size: var(--sk-text-sm);
+    text-decoration: none;
+  }
+
+  .l-break-product-release-notes {
+    display: grid;
+    gap: var(--sk-space-lg);
+    padding: var(--sk-space-lg);
+    border: var(--sk-edge) solid hsl(var(--sk-color-line));
+    border-radius: var(--sk-radius-lg);
+    background: hsl(var(--sk-color-paper-raised) / 0.6);
+  }
+
+  .l-break-product-release-notes h3 {
+    color: hsl(var(--sk-color-accent-strong));
+    font-size: var(--sk-text-xs);
+    font-weight: var(--sk-weight-semibold);
+    letter-spacing: var(--sk-tracking-wide);
+    text-transform: uppercase;
+  }
+
+  .l-break-product-release-notes ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sk-space-xs);
+    margin-block-start: var(--sk-space-sm);
+  }
+
+  .l-break-product-release-notes li {
+    position: relative;
+    padding-inline-start: var(--sk-space-md);
+    color: hsl(var(--sk-color-ink-soft));
+    font-size: var(--sk-text-sm);
+    line-height: var(--sk-leading-normal);
+  }
+
+  .l-break-product-release-notes li::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 0.7em;
+    inset-inline-start: 0;
+    inline-size: var(--sk-space-2xs);
+    block-size: var(--sk-space-2xs);
+    border-radius: var(--sk-radius-full);
+    background: hsl(var(--sk-color-accent));
+  }
+
+  .l-break-product-source-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sk-space-2xl);
+  }
+
+  .l-break-product-source .sk-title {
+    max-inline-size: 16ch;
+  }
+
+  @media (max-width: 1023px) {
+    .l-break-product-hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .l-break-product-hero-download {
+      position: static;
+      max-inline-size: 32rem;
+    }
+
+    .l-break-product-gallery {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .l-break-product-feature-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .l-break-product-feature-grid li:nth-child(3n + 1) {
+      border-inline-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+      padding-inline-start: var(--sk-space-lg);
+    }
+
+    .l-break-product-feature-grid li:nth-child(2n + 1) {
+      border-inline-start: 0;
+      padding-inline-start: 0;
+    }
+
+    .l-break-product-detail-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .l-break-product-changelog-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .l-break-product-section-head {
+      grid-template-columns: 1fr;
+    }
+
+    .l-break-product-source-inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .l-break-product-gallery {
+      grid-template-columns: 1fr;
+    }
+
+    .l-break-product-screen-frame {
+      block-size: 28rem;
+    }
+
+    .l-break-product-feature-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .l-break-product-feature-grid li,
+    .l-break-product-feature-grid li:nth-child(3n + 1),
+    .l-break-product-feature-grid li:nth-child(2n + 1) {
+      padding-inline-start: 0;
+      border-inline-start: 0;
+    }
+  }
+</style>

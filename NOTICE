@@ -1,0 +1,16 @@
+Siderkit Site
+Copyright 2026 Siderkit contributors
+
+This product includes software developed by the Siderkit contributors.
+
+The site is built with the following open-source projects:
+
+- Astro (MIT)
+- Starlight (MIT)
+- @astrojs/sitemap (MIT)
+- TypeScript (Apache-2.0)
+- Sharp (Apache-2.0)
+
+System fonts are used; the site serves no font files. Product screenshots are
+original captures of Siderkit Break and are distributed under the same
+Apache-2.0 license as this repository.

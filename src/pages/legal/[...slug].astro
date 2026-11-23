@@ -1,0 +1,16 @@
+---
+import LegalView from '../../brand/views/LegalView.astro';
+
+type LegalPage = 'privacy' | 'terms' | 'licenses' | 'security';
+
+export function getStaticPaths() {
+  return (['privacy', 'terms', 'licenses', 'security'] as const).map((page) => ({
+    params: { slug: page },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props as { page: LegalPage };
+---
+
+<LegalView locale="en" page={page} />

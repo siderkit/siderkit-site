@@ -1,0 +1,29 @@
+---
+import BreakProductView from '../../../apps/siderkit-break/views/BreakProductView.astro';
+import BreakChangelogView from '../../../apps/siderkit-break/views/BreakChangelogView.astro';
+import { locales, type Locale } from '../../../i18n/config';
+
+type View = 'product' | 'changelog';
+
+export function getStaticPaths() {
+  return locales
+    .filter((locale) => locale !== 'en')
+    .flatMap((locale) => [
+      { params: { lang: locale, slug: 'siderkit-break' }, props: { view: 'product' } },
+      {
+        params: { lang: locale, slug: 'siderkit-break/changelog' },
+        props: { view: 'changelog' },
+      },
+    ]);
+}
+
+const { view } = Astro.props as { view: View };
+const locale = Astro.params.lang as Locale;
+const views = {
+  product: BreakProductView,
+  changelog: BreakChangelogView,
+};
+const View = views[view];
+---
+
+<View locale={locale} />

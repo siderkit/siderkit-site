@@ -1,0 +1,180 @@
+import type { BreakMessages } from './types';
+
+export const zhTW = {
+  meta: {
+    productTitle: 'Siderkit Break — 安靜的專注計時器',
+    productDescription:
+      '本地優先的專注計時器：懸浮倒數、克制的休息提醒，歷史紀錄只留在你的電腦上。',
+    changelogTitle: 'Siderkit Break 版本紀錄',
+    changelogDescription: 'Siderkit Break 的公開版本紀錄。',
+    ogAlt: 'Siderkit Break mark',
+  },
+  labels: {
+    brand: 'Siderkit',
+    download: '下載',
+    getBreak: '取得 Siderkit Break',
+    readDocs: '閱讀文件',
+    releaseCandidate: '候選版本',
+    signedBuild: '已簽署建置',
+    windows: 'Windows',
+    macos: 'macOS',
+    linux: 'Linux',
+    version: '版本',
+    released: '發布',
+    size: '大小',
+    checksum: 'SHA-256',
+    requirements: '系統需求',
+    source: '原始碼',
+    license: '授權',
+    docs: '文件',
+    changelog: '版本紀錄',
+    backHome: '回到首頁',
+    lastUpdated: '最後更新',
+    opensInNewTab: '在新分頁開啟',
+  },
+  homeCard: {
+    eyebrow: '第一款應用',
+    title: '給螢幕前的自己，留一點休息。',
+    lead: 'Siderkit Break 用輕緩的提醒，幫你按時休息、起身、看向遠處。專注紀錄只留在你自己的電腦上。',
+    note: '免費、開源。資料只留在你的電腦。',
+    primaryCta: '取得 Break',
+    secondaryCta: '閱讀文件',
+  },
+  product: {
+    eyebrow: 'Siderkit Break',
+    title: '一款知道何時該停下來的專注計時器。',
+    lead:
+      '為 Windows、macOS 與 Linux 打造的安靜、本地優先專注計時器。它維持輕緩的節奏，不擋你的路，提醒你起身看看遠方。',
+    tags: ['專注計時', '本地優先', '開源'],
+    downloadTitle: '下載 Siderkit Break',
+    downloadWindows: '下載 Windows 版',
+    downloadMac: 'macOS 版（未簽署）',
+    downloadLinux: 'Linux 安裝檔',
+    downloadGithub: '查看 GitHub Releases',
+    releaseCandidateNote:
+      '候選版本。公開的 1.0 正在準備中；在簽署建置發布之前，以 GitHub Releases 頁面為準。',
+    publishedNote: '已簽署的 Windows 安裝檔。macOS 與 Linux 版本發布在 GitHub。',
+    versionLabel: '版本',
+    releasedLabel: '發布',
+    sizeLabel: '大小',
+    checksumLabel: 'SHA-256',
+    windowsMeta: 'Windows 10 1809 或更新 · x64 · NSIS 安裝檔',
+    macMeta: 'macOS 10.15.7 或更新 · Universal DMG · 未簽署',
+    linuxMeta: 'Ubuntu 22.04 或更新 · X11 · deb、rpm、AppImage',
+    installTitle: '安靜的安裝。',
+    installBody:
+      'Windows 安裝檔以目前使用者安裝，不需要系統管理員權限，解除安裝時會保留你的資料。因為建置尚未程式碼簽署，SmartScreen 可能會提示。',
+    updateTitle: '更新不必操心。',
+    updateBody:
+      '在 Windows 上，Break 會在背景檢查已簽署的更新。只有你確認後才下載，重新啟動時安裝。macOS 與 Linux 版本需要手動下載。',
+    privacyTitle: '你的資料只屬於你。',
+    privacyBody:
+      '專注紀錄保存在本地 SQLite 資料庫。沒有帳號，也沒有同步。更新檢查可能附帶匿名安裝 ID；你可以在設定裡關閉或重設。',
+    featuresTitle: '它能做什麼',
+    featuresLead: '功能不多，但都圍繞真實的一天來設計。',
+    features: [
+      {
+        title: '專注、短休、長休',
+        body: '預設 25/5/15。每個時長和長休間隔都可以修改。',
+      },
+      {
+        title: '懸浮倒數',
+        body: '始終置頂，滑鼠不靠近時點擊穿透，並依階段顯示標籤。',
+      },
+      {
+        title: '應用程式內提醒',
+        body: '每個階段結束出現一張小卡片，可延後、跳過，並附有內建提示音。',
+      },
+      {
+        title: '本地歷史',
+        body: '依日期查看完成、跳過和中斷的專注紀錄。',
+      },
+      {
+        title: '試算表匯出',
+        body: '匯出帶排版的 .xlsx，包含摘要、每日和明細工作表。',
+      },
+      {
+        title: '30 種語言',
+        body: '自動跟隨系統語言，支援由右至左版面，明暗主題齊全。',
+      },
+    ],
+    screensTitle: '再靠近一點',
+    screensLead: '截取自執行中的應用程式。',
+    screens: [
+      {
+        alt: '第 2/4 輪的專注計時，剩餘 18:42',
+        caption: '第 2/4 輪的專注計時，剩餘 18:42。',
+      },
+      {
+        alt: '休息提醒卡片，提供隱藏提醒、延後 5 分鐘和跳過休息',
+        caption: '一張把選擇權交給你的休息卡片。',
+      },
+      {
+        alt: '專注、短休、長休與長休間隔的設定',
+        caption: '每個階段時長都可以改，恢復預設只需點一下。',
+      },
+      {
+        alt: '語言選擇器，包含英文、簡體中文和繁體中文',
+        caption: '30 種語言，包括由右至左的版面。',
+      },
+    ],
+    requirementsTitle: '系統需求',
+    requirementsLead: 'Windows 是主要目標；macOS 與 Linux 受到支援，但請留意下面的說明。',
+    tablePlatform: '平台',
+    tableMinimum: '最低需求',
+    tableArtifacts: '安裝檔',
+    tableStatus: '狀態',
+    requirements: [
+      {
+        platform: 'Windows 10 / 11 x64',
+        minimum: 'Windows 10 1809（build 17763）',
+        artifacts: 'NSIS 安裝檔',
+        status: '主要平台',
+      },
+      {
+        platform: 'macOS Intel',
+        minimum: 'macOS 10.15.7，Safari 15.4+',
+        artifacts: 'Universal DMG',
+        status: '未簽署',
+      },
+      {
+        platform: 'macOS Apple Silicon',
+        minimum: 'macOS 11.0',
+        artifacts: 'Universal DMG',
+        status: '未簽署',
+      },
+      {
+        platform: 'Ubuntu 22.04+',
+        minimum: 'webkit2gtk 4.1，X11',
+        artifacts: 'deb、rpm、AppImage',
+        status: '建議 X11',
+      },
+    ],
+    requirementsNote:
+      'Wayland 無法可靠地定位頂層視窗；想要完整的懸浮倒數，請使用 X11 工作階段。',
+    changelogTitle: '最近的變化',
+    changelogLead: '最新的公開版本紀錄。',
+    changelogCta: '完整版本紀錄',
+    sourceTitle: '原始碼與授權',
+    sourceBody:
+      'Apache-2.0。原始碼、安裝檔和第三方聲明都公開。應用程式不綁定分析 SDK，也不載入第三方字型。',
+    sourceCta: '查看原始碼',
+    checksumNote: '完整校驗和列在版本紀錄中。',
+  },
+  changelog: {
+    eyebrow: 'Siderkit Break',
+    title: '版本紀錄',
+    lead: '公開的版本紀錄。內部工作留在儲存庫裡。',
+    versionLabel: '版本',
+    releasedLabel: '發布',
+    sections: {
+      added: '新增',
+      changed: '變更',
+      fixed: '修正',
+      security: '安全性',
+      known: '已知限制',
+    },
+    note: '完整的工程變更紀錄保留在原始碼儲存庫。',
+    empty: '還沒有公開版本。',
+  },
+} satisfies BreakMessages;

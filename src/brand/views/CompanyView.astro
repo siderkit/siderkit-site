@@ -1,0 +1,245 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BrandMark from '../components/BrandMark.astro';
+import Icon from '../../ui/Icon.astro';
+import { localizedPath, type Locale } from '../../i18n/config';
+import { routes } from '../../site/routes';
+import { siteLinks } from '../../site/links';
+import { useBrandMessages } from '../i18n/ui';
+
+type CompanyPage = 'about' | 'contact';
+
+interface Props {
+  locale: Locale;
+  page: CompanyPage;
+}
+
+const { locale, page } = Astro.props;
+const t = useBrandMessages(locale);
+const meta = {
+  about: { title: t.meta.aboutTitle, description: t.meta.aboutDescription },
+  contact: { title: t.meta.contactTitle, description: t.meta.contactDescription },
+}[page];
+
+// Channel routes come from the registry seam; brand copy carries labels only.
+const channelLinks: Record<string, string> = {
+  appIssues: siteLinks.breakIssues,
+  siteDiscussions: siteLinks.siteDiscussions,
+  security: siteLinks.breakAdvisories,
+  translations: siteLinks.breakContributing,
+};
+---
+
+<BaseLayout
+  locale={locale}
+  path={routes[page]}
+  title={meta.title}
+  description={meta.description}
+>
+  {
+    page === 'about' ? (
+      <section class="l-company-hero">
+        <div class="sk-container l-company-grid">
+          <div>
+            <p class="sk-eyebrow">{t.company.eyebrow}</p>
+            <h1 class="l-company-title">{t.company.about.title}</h1>
+            <p class="sk-lead">{t.company.about.lead}</p>
+            <div class="l-company-copy">
+              {t.company.about.paragraphs.map((paragraph) => (
+                <p>{paragraph}</p>
+              ))}
+            </div>
+            <a
+              class="sk-button sk-button--primary"
+              href={siteLinks.org}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icon name="github" size="sm" />
+              {t.company.about.cta}
+            </a>
+          </div>
+
+          <aside class="l-company-mark" aria-hidden="true">
+            <div class="l-company-mark-orbit"></div>
+            <BrandMark size="xl" class="l-company-mark-brand" />
+            <p>{t.home.title}</p>
+          </aside>
+        </div>
+      </section>
+    ) : (
+      <section class="l-company-hero">
+        <div class="sk-container">
+          <p class="sk-eyebrow">{t.company.eyebrow}</p>
+          <h1 class="l-company-title">{t.company.contact.title}</h1>
+          <p class="sk-lead">{t.company.contact.lead}</p>
+
+          <ul class="l-company-channels">
+            {t.company.contact.channels.map((channel) => (
+              <li class="l-company-channel">
+                <h2>{channel.title}</h2>
+                <p>{channel.body}</p>
+                <a href={channelLinks[channel.key]} target="_blank" rel="noopener noreferrer">
+                  {channel.linkLabel}
+                  <Icon name="arrow-right" size="sm" />
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <p class="l-company-back">
+            <a href={localizedPath(locale, routes.about)}>{t.footer.about}</a>
+          </p>
+        </div>
+      </section>
+    )
+  }
+</BaseLayout>
+
+<style>
+  .l-company-hero {
+    padding-block: var(--sk-space-2xl) var(--sk-space-4xl);
+  }
+
+  .l-company-grid {
+    display: grid;
+    align-items: center;
+    gap: var(--sk-space-3xl);
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  }
+
+  .l-company-title {
+    max-inline-size: 14ch;
+    margin-block-start: var(--sk-space-md);
+    font-family: var(--sk-font-display);
+    font-size: var(--sk-text-section);
+    font-weight: var(--sk-weight-regular);
+    letter-spacing: var(--sk-tracking-tight);
+    line-height: var(--sk-leading-tight);
+    text-wrap: balance;
+  }
+
+  .l-company-copy {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sk-space-md);
+    max-inline-size: var(--sk-reading);
+    margin-block: var(--sk-space-lg) var(--sk-space-xl);
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-base);
+    line-height: var(--sk-leading-normal);
+  }
+
+  .l-company-mark {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-block-size: 28rem;
+    overflow: hidden;
+    border-radius: var(--sk-radius-xl);
+    background: var(--sk-gradient-ink);
+    color: hsl(var(--sk-color-brand-soft));
+    box-shadow: var(--sk-shadow-stage);
+  }
+
+  .l-company-mark-orbit {
+    position: absolute;
+    inline-size: 22rem;
+    block-size: 22rem;
+    border: var(--sk-edge) solid hsl(var(--sk-color-brand-soft) / 0.35);
+    border-radius: var(--sk-radius-full);
+  }
+
+  .l-company-mark-orbit::after {
+    content: '';
+    position: absolute;
+    inset: 12%;
+    border: var(--sk-edge) solid hsl(var(--sk-color-brand-soft) / 0.25);
+    border-radius: var(--sk-radius-full);
+  }
+
+  .l-company-mark-brand {
+    position: relative;
+    z-index: 1;
+  }
+
+  .l-company-mark p {
+    position: absolute;
+    inset-block-end: var(--sk-space-xl);
+    inset-inline: var(--sk-space-xl);
+    color: hsl(var(--sk-color-brand-soft));
+    font-family: var(--sk-font-display);
+    font-size: var(--sk-text-xl);
+    letter-spacing: var(--sk-tracking-tight);
+    text-align: center;
+  }
+
+  .l-company-channels {
+    display: grid;
+    gap: var(--sk-space-md);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-block-start: var(--sk-space-2xl);
+  }
+
+  .l-company-channel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--sk-space-lg);
+    border: var(--sk-edge) solid hsl(var(--sk-color-line));
+    border-radius: var(--sk-radius-lg);
+    background: hsl(var(--sk-color-paper-raised) / 0.6);
+  }
+
+  .l-company-channel h2 {
+    font-family: var(--sk-font-display);
+    font-size: var(--sk-text-xl);
+    font-weight: var(--sk-weight-regular);
+    letter-spacing: var(--sk-tracking-tight);
+    line-height: var(--sk-leading-snug);
+  }
+
+  .l-company-channel p {
+    flex: 1;
+    margin-block: var(--sk-space-sm) var(--sk-space-lg);
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-sm);
+    line-height: var(--sk-leading-normal);
+  }
+
+  .l-company-channel a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sk-space-xs);
+    color: hsl(var(--sk-color-brand));
+    font-size: var(--sk-text-sm);
+    font-weight: var(--sk-weight-semibold);
+    text-decoration: none;
+  }
+
+  .l-company-channel a:hover {
+    gap: var(--sk-space-sm);
+  }
+
+  .l-company-back {
+    margin-block-start: var(--sk-space-xl);
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-sm);
+  }
+
+  @media (max-width: 1023px) {
+    .l-company-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .l-company-mark {
+      min-block-size: 22rem;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .l-company-channels {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

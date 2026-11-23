@@ -1,0 +1,22 @@
+---
+import BreakProductView from '../../apps/siderkit-break/views/BreakProductView.astro';
+import BreakChangelogView from '../../apps/siderkit-break/views/BreakChangelogView.astro';
+
+type View = 'product' | 'changelog';
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: 'siderkit-break' }, props: { view: 'product' } },
+    { params: { slug: 'siderkit-break/changelog' }, props: { view: 'changelog' } },
+  ];
+}
+
+const { view } = Astro.props as { view: View };
+const views = {
+  product: BreakProductView,
+  changelog: BreakChangelogView,
+};
+const View = views[view];
+---
+
+<View locale="en" />

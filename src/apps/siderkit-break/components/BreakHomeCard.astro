@@ -1,0 +1,139 @@
+---
+import BreakMark from './BreakMark.astro';
+import Icon from '../../../ui/Icon.astro';
+import { localizedPath, type Locale } from '../../../i18n/config';
+import { breakApp } from '../manifest';
+import { useBreakMessages } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useBreakMessages(locale);
+const productHref = localizedPath(locale, breakApp.route);
+const downloadHref = `${productHref}#download`;
+const docsHref = localizedPath(locale, breakApp.docsRoute);
+---
+
+<article class="l-break-home-card">
+  <div class="l-break-home-card-mark">
+    <BreakMark size="lg" />
+  </div>
+
+  <div class="l-break-home-card-copy">
+    <p class="l-break-home-card-eyebrow">{t.homeCard.eyebrow}</p>
+    <h3>{t.homeCard.title}</h3>
+    <p class="l-break-home-card-lead">{t.homeCard.lead}</p>
+    <p class="l-break-home-card-note">{t.homeCard.note}</p>
+  </div>
+
+  <div class="l-break-home-card-actions">
+    <a class="sk-button sk-button--primary sk-button--small" href={downloadHref}>
+      <Icon name="download" size="sm" />
+      {t.homeCard.primaryCta}
+    </a>
+    <a class="sk-text-link l-break-home-card-link" href={docsHref}>
+      {t.homeCard.secondaryCta}
+      <Icon name="arrow-right" size="sm" />
+    </a>
+  </div>
+</article>
+
+<style>
+  .l-break-home-card {
+    display: grid;
+    align-items: center;
+    gap: var(--sk-space-lg);
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    padding: clamp(var(--sk-space-lg), 3vw, var(--sk-space-xl));
+    border: var(--sk-edge) solid hsl(var(--sk-color-line));
+    border-radius: var(--sk-radius-xl);
+    background: hsl(var(--sk-color-paper-raised) / 0.72);
+    box-shadow: var(--sk-shadow-card);
+  }
+
+  .l-break-home-card-mark {
+    display: grid;
+    place-items: center;
+    inline-size: var(--sk-space-3xl);
+    block-size: var(--sk-space-3xl);
+    border-radius: var(--sk-radius-lg);
+    background: hsl(var(--sk-color-paper-sunk) / 0.55);
+  }
+
+  .l-break-home-card-eyebrow {
+    color: hsl(var(--sk-color-accent-strong));
+    font-size: var(--sk-text-xs);
+    font-weight: var(--sk-weight-semibold);
+    letter-spacing: var(--sk-tracking-wide);
+    text-transform: uppercase;
+  }
+
+  .l-break-home-card h3 {
+    margin-block-start: var(--sk-space-xs);
+    font-family: var(--sk-font-display);
+    font-size: var(--sk-text-xl);
+    font-weight: var(--sk-weight-regular);
+    letter-spacing: var(--sk-tracking-tight);
+    line-height: var(--sk-leading-snug);
+  }
+
+  .l-break-home-card-lead {
+    max-inline-size: var(--sk-reading);
+    margin-block-start: var(--sk-space-xs);
+    color: hsl(var(--sk-color-ink-soft));
+    font-size: var(--sk-text-sm);
+    line-height: var(--sk-leading-normal);
+  }
+
+  .l-break-home-card-note {
+    margin-block-start: var(--sk-space-2xs);
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-xs);
+    line-height: var(--sk-leading-normal);
+  }
+
+  .l-break-home-card-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sk-space-sm);
+  }
+
+  .l-break-home-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sk-space-xs);
+    font-size: var(--sk-text-sm);
+    text-decoration: none;
+  }
+
+  .l-break-home-card-link:hover {
+    gap: var(--sk-space-sm);
+  }
+
+  @media (max-width: 1023px) {
+    .l-break-home-card {
+      grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .l-break-home-card-actions {
+      grid-column: 1 / -1;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .l-break-home-card {
+      grid-template-columns: 1fr;
+    }
+
+    .l-break-home-card-mark {
+      inline-size: var(--sk-space-2xl);
+      block-size: var(--sk-space-2xl);
+    }
+  }
+</style>

@@ -1,0 +1,221 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { localizedPath, type Locale } from '../../i18n/config';
+import { routes } from '../../site/routes';
+import { siteLinks } from '../../site/links';
+import { useBrandMessages } from '../i18n/ui';
+
+type LegalPage = 'privacy' | 'terms' | 'licenses' | 'security';
+
+interface Props {
+  locale: Locale;
+  page: LegalPage;
+}
+
+const { locale, page } = Astro.props;
+const t = useBrandMessages(locale);
+const content = t.legal[page];
+
+const meta = {
+  privacy: { title: t.meta.privacyTitle, description: t.meta.privacyDescription },
+  terms: { title: t.meta.termsTitle, description: t.meta.termsDescription },
+  licenses: { title: t.meta.licensesTitle, description: t.meta.licensesDescription },
+  security: { title: t.meta.securityTitle, description: t.meta.securityDescription },
+}[page];
+
+const legalPages: Array<{ page: LegalPage; label: string }> = [
+  { page: 'privacy', label: t.footer.privacy },
+  { page: 'terms', label: t.footer.terms },
+  { page: 'licenses', label: t.footer.licenses },
+  { page: 'security', label: t.footer.security },
+];
+
+const extraLinks: Partial<Record<LegalPage, Array<{ label: string; href: string }>>> = {
+  terms: [{ label: 'Apache-2.0', href: 'https://www.apache.org/licenses/LICENSE-2.0' }],
+  licenses: [
+    { label: 'Apache-2.0', href: 'https://www.apache.org/licenses/LICENSE-2.0' },
+    { label: 'NOTICE', href: `${siteLinks.github}/blob/main/NOTICE` },
+  ],
+  security: [
+    { label: 'GitHub Security Advisories', href: siteLinks.breakAdvisories },
+    { label: 'GitHub Issues', href: siteLinks.breakIssues },
+  ],
+  privacy: [{ label: 'GitHub Issues', href: siteLinks.siteIssues }],
+};
+---
+
+<BaseLayout
+  locale={locale}
+  path={routes[page]}
+  title={meta.title}
+  description={meta.description}
+>
+  <section class="l-legal">
+    <div class="sk-container l-legal-grid">
+      <aside class="l-legal-aside">
+        <p class="l-legal-aside-title">{t.legal.eyebrow}</p>
+        <nav aria-label={t.legal.eyebrow}>
+          <ul>
+            {
+              legalPages.map((item) => (
+                <li>
+                  <a
+                    href={localizedPath(locale, routes[item.page])}
+                    aria-current={item.page === page ? 'page' : undefined}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+        <p class="l-legal-updated">{t.legal.updated}</p>
+      </aside>
+
+      <article class="l-legal-content sk-prose">
+        <p class="sk-eyebrow">{t.legal.eyebrow}</p>
+        <h1 class="l-legal-title">{content.title}</h1>
+        <p class="l-legal-lead">{content.lead}</p>
+
+        {
+          content.sections.map((section) => (
+            <section>
+              <h2>{section.heading}</h2>
+              {section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+              {section.items.length > 0 && (
+                <ul>
+                  {section.items.map((item) => <li>{item}</li>)}
+                </ul>
+              )}
+            </section>
+          ))
+        }
+
+        {
+          extraLinks[page] && (
+            <ul class="l-legal-links">
+              {extraLinks[page]?.map((link) => (
+                <li>
+                  <a href={link.href} target="_blank" rel="noopener noreferrer">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .l-legal {
+    padding-block: var(--sk-space-2xl) var(--sk-space-4xl);
+  }
+
+  .l-legal-grid {
+    display: grid;
+    align-items: start;
+    gap: var(--sk-space-2xl);
+    grid-template-columns: minmax(0, 13rem) minmax(0, 1fr);
+  }
+
+  .l-legal-aside {
+    position: sticky;
+    inset-block-start: calc(var(--sk-header-height) + var(--sk-space-lg));
+  }
+
+  .l-legal-aside-title {
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-xs);
+    font-weight: var(--sk-weight-semibold);
+    letter-spacing: var(--sk-tracking-wide);
+    text-transform: uppercase;
+  }
+
+  .l-legal-aside ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sk-space-2xs);
+    margin-block-start: var(--sk-space-sm);
+  }
+
+  .l-legal-aside a {
+    display: block;
+    padding: var(--sk-space-2xs) var(--sk-space-sm);
+    border-radius: var(--sk-radius-sm);
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-sm);
+    text-decoration: none;
+  }
+
+  .l-legal-aside a:hover {
+    background: hsl(var(--sk-color-paper-sunk) / 0.7);
+    color: hsl(var(--sk-color-ink));
+  }
+
+  .l-legal-aside a[aria-current='page'] {
+    background: hsl(var(--sk-color-brand-soft));
+    color: hsl(var(--sk-color-brand-strong));
+    font-weight: var(--sk-weight-semibold);
+  }
+
+  .l-legal-updated {
+    margin-block-start: var(--sk-space-lg);
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-xs);
+    line-height: var(--sk-leading-snug);
+  }
+
+  .l-legal-title {
+    margin-block-start: var(--sk-space-md);
+    font-family: var(--sk-font-display);
+    font-size: var(--sk-text-section);
+    font-weight: var(--sk-weight-regular);
+    letter-spacing: var(--sk-tracking-tight);
+    line-height: var(--sk-leading-tight);
+  }
+
+  .l-legal-lead {
+    max-inline-size: var(--sk-reading);
+    margin-block-start: var(--sk-space-lg);
+    color: hsl(var(--sk-color-ink-soft));
+    font-size: var(--sk-text-lg);
+    line-height: var(--sk-leading-normal);
+  }
+
+  .l-legal-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sk-space-md);
+    margin-block-start: var(--sk-space-xl);
+    padding-block-start: var(--sk-space-lg);
+    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+  }
+
+  .l-legal-links a {
+    color: hsl(var(--sk-color-brand));
+    font-size: var(--sk-text-sm);
+  }
+
+  @media (max-width: 767px) {
+    .l-legal-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .l-legal-aside {
+      position: static;
+    }
+
+    .l-legal-aside ul {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .l-legal-aside a {
+      padding-inline: var(--sk-space-xs);
+    }
+  }
+</style>

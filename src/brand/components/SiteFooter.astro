@@ -1,0 +1,228 @@
+---
+import Icon from '../../ui/Icon.astro';
+import Wordmark from './Wordmark.astro';
+import { localizedPath, type Locale } from '../../i18n/config';
+import { routes } from '../../site/routes';
+import { siteLinks } from '../../site/links';
+import { apps } from '../../site/apps';
+import { useBrandMessages } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useBrandMessages(locale);
+const year = 2026;
+
+const appLinks = apps.map((app) => ({
+  label: app.name[locale],
+  href: localizedPath(locale, app.route),
+}));
+
+const columns = [
+  {
+    title: t.footer.apps,
+    links: appLinks,
+  },
+  {
+    title: t.footer.legal,
+    links: [
+      { label: t.footer.privacy, href: localizedPath(locale, routes.privacy) },
+      { label: t.footer.terms, href: localizedPath(locale, routes.terms) },
+      { label: t.footer.licenses, href: localizedPath(locale, routes.licenses) },
+      { label: t.footer.security, href: localizedPath(locale, routes.security) },
+    ],
+  },
+  {
+    title: t.footer.company,
+    links: [
+      { label: t.footer.about, href: localizedPath(locale, routes.about) },
+      { label: t.footer.contact, href: localizedPath(locale, routes.contact) },
+    ],
+  },
+];
+---
+
+<footer class="l-site-footer">
+  <div class="sk-container">
+    <div class="l-site-footer-top">
+      <div class="l-site-footer-brand">
+        <Wordmark locale={locale} />
+        <p class="l-site-footer-tagline">{t.footer.tagline}</p>
+        <a
+          class="l-site-footer-github"
+          href={siteLinks.org}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon name="github" size="sm" />
+          <span>{t.common.github}</span>
+          <span class="sk-visually-hidden">({t.common.opensInNewTab})</span>
+        </a>
+      </div>
+
+      <nav class="l-site-footer-nav" aria-label={t.footer.apps}>
+        {
+          columns.map((column) => (
+            <div>
+              <h2 class="l-site-footer-title">{column.title}</h2>
+              <ul class="l-site-footer-list">
+                {column.links.map((link) => (
+                  <li>
+                    <a href={link.href}>{link.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+        <div>
+          <h2 class="l-site-footer-title">{t.footer.elsewhere}</h2>
+          <ul class="l-site-footer-list">
+            <li>
+              <a href={siteLinks.org} target="_blank" rel="noopener noreferrer">
+                {t.common.github}
+              </a>
+            </li>
+            <li>
+              <a href={siteLinks.siteDiscussions} target="_blank" rel="noopener noreferrer">
+                {t.footer.discussions}
+              </a>
+            </li>
+            <li>
+              <a href={siteLinks.github} target="_blank" rel="noopener noreferrer">
+                {t.footer.siteSource}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="l-site-footer-bottom">
+      <p>{t.footer.copyright.replace('2026', String(year))}</p>
+      <p class="l-site-footer-license">
+        <a href={localizedPath(locale, routes.licenses)}>Apache-2.0</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .l-site-footer {
+    padding-block: var(--sk-space-3xl) var(--sk-space-xl);
+    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+    background: hsl(var(--sk-color-paper-sunk) / 0.45);
+  }
+
+  .l-site-footer-top {
+    display: grid;
+    gap: var(--sk-space-2xl);
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 2fr);
+  }
+
+  .l-site-footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sk-space-md);
+  }
+
+  .l-site-footer-tagline {
+    max-inline-size: 22ch;
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-sm);
+  }
+
+  .l-site-footer-github {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sk-space-xs);
+    color: hsl(var(--sk-color-ink-soft));
+    font-size: var(--sk-text-sm);
+    font-weight: var(--sk-weight-medium);
+    text-decoration: none;
+  }
+
+  .l-site-footer-github:hover {
+    color: hsl(var(--sk-color-brand));
+  }
+
+  .l-site-footer-nav {
+    display: grid;
+    gap: var(--sk-space-xl);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .l-site-footer-title {
+    margin: 0 0 var(--sk-space-sm);
+    color: hsl(var(--sk-color-ink));
+    font-size: var(--sk-text-xs);
+    font-weight: var(--sk-weight-semibold);
+    letter-spacing: var(--sk-tracking-wide);
+    text-transform: uppercase;
+  }
+
+  .l-site-footer-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sk-space-xs);
+  }
+
+  .l-site-footer-list a {
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-sm);
+    text-decoration: none;
+  }
+
+  .l-site-footer-list a:hover {
+    color: hsl(var(--sk-color-brand));
+    text-decoration: underline;
+  }
+
+  .l-site-footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sk-space-sm);
+    margin-block-start: var(--sk-space-2xl);
+    padding-block-start: var(--sk-space-lg);
+    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-xs);
+  }
+
+  .l-site-footer-license a {
+    text-decoration: none;
+  }
+
+  .l-site-footer-license a:hover {
+    color: hsl(var(--sk-color-brand));
+  }
+
+  @media (max-width: 1023px) {
+    .l-site-footer-top {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .l-site-footer-nav {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--sk-space-lg);
+    }
+  }
+
+  @media (max-width: 639px) {
+    .l-site-footer {
+      padding-block-start: var(--sk-space-2xl);
+    }
+
+    .l-site-footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

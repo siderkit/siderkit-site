@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { localizedPath, type Locale } from '../../i18n/config';
+import { routes } from '../../site/routes';
+import { useBrandMessages } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const tEn = useBrandMessages('en');
+const tZhCN = useBrandMessages('zh-cn');
+const tZhTW = useBrandMessages('zh-tw');
+const t = useBrandMessages(locale);
+---
+
+<BaseLayout
+  locale={locale}
+  path={routes.notFound}
+  title={tEn.meta.notFoundTitle}
+  description={tEn.meta.notFoundDescription}
+  noindex
+  hreflang={false}
+>
+  <section class="l-notfound">
+    <div class="sk-container l-notfound-grid">
+      <p class="l-notfound-code" aria-hidden="true">404</p>
+      <div class="l-notfound-copy">
+        <p class="sk-eyebrow">{tEn.meta.siteName}</p>
+        <h1 lang="en">{tEn.notFound.title}</h1>
+        <p lang="en">{tEn.notFound.body}</p>
+        <div class="l-notfound-actions">
+          <a class="sk-button sk-button--primary" href={localizedPath('en', routes.home)}>
+            {tEn.notFound.home}
+          </a>
+          <a class="sk-button sk-button--ghost" href={localizedPath('en', routes.docs)}>
+            {tEn.notFound.docs}
+          </a>
+        </div>
+
+        <div class="l-notfound-other" lang="zh-CN">
+          <h2>{tZhCN.notFound.title}</h2>
+          <p>{tZhCN.notFound.body}</p>
+          <a href={localizedPath('zh-cn', routes.home)}>{tZhCN.notFound.home}</a>
+        </div>
+
+        <div class="l-notfound-other" lang="zh-TW">
+          <h2>{tZhTW.notFound.title}</h2>
+          <p>{tZhTW.notFound.body}</p>
+          <a href={localizedPath('zh-tw', routes.home)}>{tZhTW.notFound.home}</a>
+        </div>
+
+        <p class="l-notfound-note">{t.notFound.note}</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .l-notfound {
+    padding-block: var(--sk-space-3xl) var(--sk-space-5xl);
+  }
+
+  .l-notfound-grid {
+    display: grid;
+    align-items: start;
+    gap: var(--sk-space-2xl);
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  }
+
+  .l-notfound-code {
+    color: hsl(var(--sk-color-brand-soft));
+    font-family: var(--sk-font-display);
+    font-size: clamp(8rem, 22vw, 18rem);
+    letter-spacing: var(--sk-tracking-tight);
+    line-height: 0.8;
+  }
+
+  .l-notfound-copy h1 {
+    margin-block-start: var(--sk-space-md);
+    font-family: var(--sk-font-display);
+    font-size: var(--sk-text-section);
+    font-weight: var(--sk-weight-regular);
+    letter-spacing: var(--sk-tracking-tight);
+    line-height: var(--sk-leading-tight);
+  }
+
+  .l-notfound-copy > p[lang='en'] {
+    max-inline-size: var(--sk-reading);
+    margin-block-start: var(--sk-space-md);
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-lg);
+  }
+
+  .l-notfound-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sk-space-sm);
+    margin-block-start: var(--sk-space-xl);
+  }
+
+  .l-notfound-other {
+    max-inline-size: var(--sk-reading);
+    margin-block-start: var(--sk-space-xl);
+    padding-block-start: var(--sk-space-lg);
+    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+  }
+
+  .l-notfound-other h2 {
+    font-family: var(--sk-font-display);
+    font-size: var(--sk-text-xl);
+    font-weight: var(--sk-weight-regular);
+    letter-spacing: var(--sk-tracking-tight);
+  }
+
+  .l-notfound-other p {
+    margin-block: var(--sk-space-xs) var(--sk-space-sm);
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-sm);
+  }
+
+  .l-notfound-other a {
+    color: hsl(var(--sk-color-brand));
+    font-size: var(--sk-text-sm);
+    font-weight: var(--sk-weight-medium);
+  }
+
+  .l-notfound-note {
+    margin-block-start: var(--sk-space-xl);
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-xs);
+  }
+
+  @media (max-width: 767px) {
+    .l-notfound-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .l-notfound-code {
+      font-size: clamp(6rem, 30vw, 10rem);
+    }
+  }
+</style>

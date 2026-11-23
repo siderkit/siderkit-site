@@ -1,0 +1,102 @@
+---
+import SiteFooter from '../brand/components/SiteFooter.astro';
+import SiteHeader from '../brand/components/SiteHeader.astro';
+import {
+  absoluteUrl,
+  localeAlternates,
+  localeInfo,
+  localizedPath,
+  type Locale,
+} from '../i18n/config';
+import { useBrandMessages } from '../brand/i18n/ui';
+import '../styles/tokens.css';
+import '../styles/global.css';
+
+interface Props {
+  locale: Locale;
+  path: string;
+  title: string;
+  description: string;
+  image?: string;
+  imageAlt?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+  hreflang?: boolean;
+  schema?: Record<string, unknown>;
+}
+
+const {
+  locale,
+  path,
+  title,
+  description,
+  image = '/og/siderkit.png',
+  imageAlt,
+  type = 'website',
+  noindex = false,
+  hreflang = true,
+  schema,
+} = Astro.props;
+
+const t = useBrandMessages(locale);
+const canonical = absoluteUrl(localizedPath(locale, path));
+const ogImage = image.startsWith('http') ? image : absoluteUrl(image);
+const alternates = localeAlternates(path);
+const ogAlt = imageAlt ?? t.meta.ogAlt;
+---
+
+<!doctype html>
+<html lang={localeInfo[locale].htmlLang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {!noindex && <link rel="canonical" href={canonical} />}
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+    <meta name="theme-color" content="#f7f4ef" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    {
+      hreflang &&
+        alternates.map((alternate) => (
+          <link rel="alternate" hreflang={alternate.htmlLang} href={alternate.href} />
+        ))
+    }
+    {hreflang && <link rel="alternate" hreflang="x-default" href={absoluteUrl(localizedPath('en', path))} />}
+
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={t.meta.siteName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={ogAlt} />
+    <meta property="og:locale" content={localeInfo[locale].ogLocale} />
+    {
+      alternates
+        .filter((alternate) => alternate.locale !== locale)
+        .map((alternate) => (
+          <meta property="og:locale:alternate" content={localeInfo[alternate.locale].ogLocale} />
+        ))
+    }
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ogAlt} />
+
+    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
+  </head>
+  <body>
+    <a class="sk-skip-link" href="#main">{t.common.skipToContent}</a>
+    <SiteHeader locale={locale} path={path} />
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <SiteFooter locale={locale} />
+  </body>
+</html>
