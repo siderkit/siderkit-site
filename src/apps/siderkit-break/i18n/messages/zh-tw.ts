@@ -15,7 +15,7 @@ export const zhTW = {
     getBreak: '取得 Siderkit Break',
     readDocs: '閱讀文件',
     releaseCandidate: '候選版本',
-    signedBuild: '已簽署建置',
+    signedBuild: '穩定版',
     windows: 'Windows',
     macos: 'macOS',
     linux: 'Linux',
@@ -53,7 +53,7 @@ export const zhTW = {
     downloadGithub: '查看 GitHub Releases',
     releaseCandidateNote:
       '候選版本。公開的 1.0 正在準備中；在簽署建置發布之前，以 GitHub Releases 頁面為準。',
-    publishedNote: '已簽署的 Windows 安裝檔。macOS 與 Linux 版本發布在 GitHub。',
+    publishedNote: 'Windows x64 安裝檔。macOS 與 Linux 建置尚未隨此版本發布。',
     publishedCandidateNote: 'Windows 候選版本，由 dl.siderkit.com 提供。macOS 與 Linux 建置尚未發佈。',
     versionLabel: '版本',
     releasedLabel: '發布',

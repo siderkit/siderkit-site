@@ -15,7 +15,7 @@ export const zhCN = {
     getBreak: '获取 Siderkit Break',
     readDocs: '阅读文档',
     releaseCandidate: '候选版本',
-    signedBuild: '已签名构建',
+    signedBuild: '稳定版',
     windows: 'Windows',
     macos: 'macOS',
     linux: 'Linux',
@@ -53,7 +53,7 @@ export const zhCN = {
     downloadGithub: '查看 GitHub Releases',
     releaseCandidateNote:
       '候选版本。公开的 1.0 正在准备中；在签名构建发布之前，以 GitHub Releases 页面为准。',
-    publishedNote: '已签名的 Windows 安装包。macOS 与 Linux 版本发布在 GitHub。',
+    publishedNote: 'Windows x64 安装包。macOS 与 Linux 构建尚未随此版本发布。',
     publishedCandidateNote: 'Windows 候选版本，由 dl.siderkit.com 提供。macOS 与 Linux 构建尚未发布。',
     versionLabel: '版本',
     releasedLabel: '发布',

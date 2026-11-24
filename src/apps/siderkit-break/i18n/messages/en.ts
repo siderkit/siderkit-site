@@ -14,7 +14,7 @@ export const en = {
     getBreak: 'Get Siderkit Break',
     readDocs: 'Read the docs',
     releaseCandidate: 'Release candidate',
-    signedBuild: 'Signed build',
+    signedBuild: 'Stable build',
     windows: 'Windows',
     macos: 'macOS',
     linux: 'Linux',
@@ -52,7 +52,8 @@ export const en = {
     downloadGithub: 'View GitHub Releases',
     releaseCandidateNote:
       'Release candidate. Public 1.0 is being prepared; the GitHub release page is the source of truth until the signed build is published.',
-    publishedNote: 'Signed Windows installer. macOS and Linux builds are published on GitHub.',
+    publishedNote:
+      'Windows x64 installer. macOS and Linux builds are not attached to this release yet.',
     publishedCandidateNote:
       'Windows release candidate, hosted on dl.siderkit.com. macOS and Linux builds are not published yet.',
     versionLabel: 'Version',

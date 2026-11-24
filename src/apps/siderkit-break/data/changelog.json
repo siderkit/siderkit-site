@@ -1,5 +1,106 @@
 [
   {
+    "version": "1.0.0",
+    "date": "2026-11-24",
+    "sections": [
+      {
+        "kind": "added",
+        "items": {
+          "en": [
+            "A two-level settings surface: root, General, Rhythm & timer, Appearance, Floating window, Reminders & sound, Data & privacy, and About, with current values on the root screen.",
+            "Insights for today, this week, this month, and this year, with a 53-week heatmap and a per-tag breakdown.",
+            "Session tags: add one when a focus round ends, edit it in history, and export it in the spreadsheet.",
+            "Sound options: three built-in timbres, a preview button, a volume slider, and an optional custom sound.",
+            "Twelve color styles, a floating window with S/M/L previews, an opacity slider, a locate hint, and reset position.",
+            "Ten more UI languages, for 40 in total, including right-to-left layouts.",
+            "Diagnostics with the last 50 warnings, log access, and anonymous ID reset."
+          ],
+          "zh-cn": [
+            "设置改为两级结构：根页、通用、节奏与计时、外观、悬浮窗、提醒与声音、数据与隐私、关于，根页直接显示当前值。",
+            "洞察支持今天、本周、本月和今年，包含 53 周热力图与按标签统计。",
+            "会话标签：专注结束时添加标签，可在历史中修改，并随表格导出。",
+            "声音选项：三种内置音色、试听按钮、音量滑杆，以及可选的自定义声音。",
+            "12 种配色，悬浮窗支持 S/M/L 预览、透明度滑杆、定位提示与位置重置。",
+            "新增 10 种界面语言，共 40 种，包含从右到左布局。",
+            "诊断页显示最近 50 条警告，可打开日志、清空日志和重置匿名 ID。"
+          ],
+          "zh-tw": [
+            "設定改為兩級結構：根頁、一般、節奏與計時、外觀、懸浮視窗、提醒與音效、資料與隱私、關於，根頁直接顯示目前值。",
+            "洞察支援今天、本週、本月和今年，包含 53 週熱力圖與依標籤統計。",
+            "工作階段標籤：專注結束時加入標籤，可在歷史中修改，並隨試算表匯出。",
+            "音效選項：三種內建音色、試聽按鈕、音量滑桿，以及選用的自訂音效。",
+            "12 種配色，懸浮視窗支援 S/M/L 預覽、透明度滑桿、定位提示與位置重設。",
+            "新增 10 種介面語言，共 40 種，包含由右至左版面。",
+            "診斷頁顯示最近 50 筆警告，可開啟記錄、清除記錄和重設匿名 ID。"
+          ]
+        }
+      },
+      {
+        "kind": "changed",
+        "items": {
+          "en": [
+            "Every drill-down page shares one header: back, title, and Done. Done returns exactly one level.",
+            "The finish card keeps its primary text left-aligned, moves the mark to the top right, and puts the primary action first.",
+            "Tags keep the 40-character cap in the input; storage keeps the full value."
+          ],
+          "zh-cn": [
+            "所有二级页面共用同一个头部：返回、标题、完成；完成只返回上一级。",
+            "完成卡主文字保持左对齐，标记移到右上角，主操作排在最前。",
+            "标签输入保持 40 字符上限，存储保留完整内容。"
+          ],
+          "zh-tw": [
+            "所有第二層頁面共用同一個標頭：返回、標題、完成；完成只返回上一層。",
+            "完成卡主文字保持靠左對齊，標記移到右上角，主要操作排在最前。",
+            "標籤輸入維持 40 字元上限，儲存保留完整內容。"
+          ]
+        }
+      },
+      {
+        "kind": "fixed",
+        "items": {
+          "en": [
+            "The 53-week heatmap shows a hover card with the full date, focused minutes, and rounds.",
+            "Recent-tag chips and history rows ellipsize long tags instead of overflowing.",
+            "The quick-action row gains vertical breathing room at the smallest window size."
+          ],
+          "zh-cn": [
+            "53 周热力图支持悬停查看完整日期、专注分钟与轮次。",
+            "最近标签与历史记录中的长标签改为省略显示，不再溢出。",
+            "最小窗口下，快捷操作行获得更充足的上下留白。"
+          ],
+          "zh-tw": [
+            "53 週熱力圖支援懸停查看完整日期、專注分鐘與輪次。",
+            "最近標籤與歷史記錄中的長標籤改為省略顯示，不再溢出。",
+            "最小視窗下，快捷操作列獲得較充足的上下留白。"
+          ]
+        }
+      },
+      {
+        "kind": "known",
+        "items": {
+          "en": [
+            "Windows builds are not Authenticode-signed yet, so SmartScreen may warn.",
+            "macOS builds remain unsigned until a Developer ID is configured.",
+            "Auto-update is Windows-only; macOS and Linux are manual downloads.",
+            "Wayland cannot position the top-level overlay reliably; use X11 for the full experience."
+          ],
+          "zh-cn": [
+            "Windows 构建尚未做 Authenticode 签名，SmartScreen 可能提示。",
+            "在配置 Developer ID 之前，macOS 构建仍未签名。",
+            "自动更新仅支持 Windows；macOS 与 Linux 需要手动下载。",
+            "Wayland 无法可靠地定位顶层悬浮窗；完整体验请使用 X11。"
+          ],
+          "zh-tw": [
+            "Windows 建置尚未做 Authenticode 簽署，SmartScreen 可能提示。",
+            "在設定 Developer ID 之前，macOS 建置仍未簽署。",
+            "自動更新僅支援 Windows；macOS 與 Linux 需要手動下載。",
+            "Wayland 無法可靠地定位頂層懸浮視窗；完整體驗請使用 X11。"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "version": "1.0.0-rc.1",
     "date": "2026-11-23",
     "sections": [

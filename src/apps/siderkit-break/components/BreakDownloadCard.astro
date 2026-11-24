@@ -80,14 +80,22 @@ const linuxUrl = release.linux?.url ?? release.github;
   </dl>
 
   <div class="l-break-download-alternatives">
-    <a href={macUrl} target="_blank" rel="noopener noreferrer">
-      <span>{t.product.downloadMac}</span>
-      <Icon name="external" size="sm" />
-    </a>
-    <a href={linuxUrl} target="_blank" rel="noopener noreferrer">
-      <span>{t.product.downloadLinux}</span>
-      <Icon name="external" size="sm" />
-    </a>
+    {
+      release.macos && (
+        <a href={macUrl} target="_blank" rel="noopener noreferrer">
+          <span>{t.product.downloadMac}</span>
+          <Icon name="external" size="sm" />
+        </a>
+      )
+    }
+    {
+      release.linux && (
+        <a href={linuxUrl} target="_blank" rel="noopener noreferrer">
+          <span>{t.product.downloadLinux}</span>
+          <Icon name="external" size="sm" />
+        </a>
+      )
+    }
     <a href={release.github} target="_blank" rel="noopener noreferrer">
       <span>{t.product.downloadGithub}</span>
       <Icon name="external" size="sm" />
