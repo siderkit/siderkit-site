@@ -84,10 +84,23 @@ const schema = {
             <Icon name="arrow-right" size="sm" />
           </a>
         </div>
-        <div class="l-break-product-hero-download">
-          <BreakDownloadCard locale={locale} />
+        <div class="l-break-product-hero-window">
+          <Image
+            src={mainFocus}
+            alt={t.product.screens[0].alt}
+            widths={[400, 560, 760]}
+            sizes="(max-width: 1023px) 92vw, 560px"
+            loading="eager"
+            quality={88}
+          />
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="l-break-product-download">
+    <div class="sk-container">
+      <BreakDownloadCard locale={locale} />
     </div>
   </section>
 
@@ -336,9 +349,32 @@ const schema = {
     line-height: var(--sk-leading-snug);
   }
 
-  .l-break-product-hero-download {
-    position: sticky;
-    inset-block-start: calc(var(--sk-header-height) + var(--sk-space-lg));
+  .l-break-product-hero-window {
+    padding: var(--sk-space-lg);
+    border: var(--sk-edge) solid hsl(var(--sk-color-line));
+    border-radius: var(--sk-radius-lg);
+    background: var(--sk-gradient-stage);
+    box-shadow: var(--sk-shadow-card);
+  }
+
+  .l-break-product-hero-window img {
+    inline-size: 100%;
+    block-size: auto;
+    border-radius: var(--sk-radius-sm);
+  }
+
+  .l-break-product-download {
+    padding-block: 0 var(--sk-space-4xl);
+  }
+
+  .l-break-product-download .sk-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .l-break-product-download :global(.l-download) {
+    inline-size: 100%;
+    max-inline-size: 40rem;
   }
 
   .l-break-product-gallery-section {
@@ -620,9 +656,8 @@ const schema = {
       grid-template-columns: 1fr;
     }
 
-    .l-break-product-hero-download {
-      position: static;
-      max-inline-size: 32rem;
+    .l-break-product-hero-window {
+      max-inline-size: 36rem;
     }
 
     .l-break-product-gallery {

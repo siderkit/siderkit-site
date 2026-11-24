@@ -42,12 +42,6 @@ export const zhCN = {
     primaryCta: '阅读文档',
     secondaryCta: '关于 Siderkit',
     meta: '独立 · 开源 · 无需账号',
-    trust: [
-      { value: '开源', label: '代码公开，可自行构建' },
-      { value: '独立', label: '没有投资人，按自己的节奏做事' },
-      { value: '隐私', label: '本站不设 Cookie、不做统计' },
-      { value: '无需账号', label: '不注册，不同步' },
-    ],
     principlesEyebrow: '我们的立场',
     principlesTitle: '不是人围着软件转，而是软件围着人转。',
     principlesLead: '工具的终点，是把时间、注意力和判断还给人。我们做的每一件事，都从这里出发。',

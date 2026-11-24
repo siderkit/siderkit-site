@@ -41,12 +41,6 @@ export const en = {
     primaryCta: 'Read the documentation',
     secondaryCta: 'About Siderkit',
     meta: 'Independent · Open source · No account',
-    trust: [
-      { value: 'Open source', label: 'Read it, build it yourself' },
-      { value: 'Independent', label: 'No investors, our own pace' },
-      { value: 'Privacy', label: 'No cookies, no analytics on this site' },
-      { value: 'No account', label: 'No sign-up, no sync' },
-    ],
     principlesEyebrow: 'Our stance',
     principlesTitle: 'Software should revolve around people — not the other way around.',
     principlesLead:

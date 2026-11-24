@@ -46,19 +46,6 @@ const aboutHref = localizedPath(locale, routes.about);
     </div>
   </section>
 
-  <section class="l-home-trust" aria-label={t.home.trust.map((item) => item.value).join(' · ')}>
-    <div class="sk-container l-home-trust-grid">
-      {
-        t.home.trust.map((item) => (
-          <div class="l-home-trust-item">
-            <p class="l-home-trust-value">{item.value}</p>
-            <p class="l-home-trust-label">{item.label}</p>
-          </div>
-        ))
-      }
-    </div>
-  </section>
-
   <section class="sk-section l-home-principles">
     <div class="sk-container">
       <div class="l-home-section-head">
@@ -221,42 +208,6 @@ const aboutHref = localizedPath(locale, routes.about);
   .l-home-brand-mark {
     position: relative;
     z-index: 1;
-  }
-
-  .l-home-trust {
-    border-block: var(--sk-edge) solid hsl(var(--sk-color-line));
-    background: hsl(var(--sk-color-paper-raised) / 0.35);
-  }
-
-  .l-home-trust-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .l-home-trust-item {
-    padding-block: var(--sk-space-lg);
-    padding-inline: var(--sk-space-lg);
-    border-inline-start: var(--sk-edge) solid hsl(var(--sk-color-line));
-  }
-
-  .l-home-trust-item:first-child {
-    border-inline-start: 0;
-    padding-inline-start: 0;
-  }
-
-  .l-home-trust-value {
-    color: hsl(var(--sk-color-brand));
-    font-family: var(--sk-font-display);
-    font-size: var(--sk-text-xl);
-    letter-spacing: var(--sk-tracking-tight);
-    line-height: var(--sk-leading-snug);
-  }
-
-  .l-home-trust-label {
-    margin-block-start: var(--sk-space-3xs);
-    color: hsl(var(--sk-color-muted));
-    font-size: var(--sk-text-xs);
-    line-height: var(--sk-leading-snug);
   }
 
   .l-home-principles {
@@ -437,19 +388,6 @@ const aboutHref = localizedPath(locale, routes.about);
 
     .l-home-brand-stage {
       min-block-size: 22rem;
-    }
-
-    .l-home-trust-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .l-home-trust-item:nth-child(3) {
-      border-inline-start: 0;
-      padding-inline-start: 0;
-    }
-
-    .l-home-trust-item:nth-child(n + 3) {
-      border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
     }
 
     .l-home-section-head,

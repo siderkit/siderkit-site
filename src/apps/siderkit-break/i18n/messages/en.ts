@@ -35,7 +35,7 @@ export const en = {
     eyebrow: 'Our first app',
     title: 'A little rest for the person behind the screen.',
     lead: 'Siderkit Break nudges you to rest, stand up, and look into the distance on long screen days. Your session history stays on your own machine.',
-    note: 'Free, open source. Your data stays on your machine.',
+    note: 'Free, open source (Apache-2.0).',
     primaryCta: 'Get Break',
     secondaryCta: 'Read the docs',
   },
@@ -95,7 +95,7 @@ export const en = {
         body: 'Export a styled .xlsx with summary, daily, and session sheets.',
       },
       {
-        title: '30 languages',
+        title: '40 languages',
         body: 'System-language detection, right-to-left layouts, light and dark themes.',
       },
     ],
@@ -103,20 +103,20 @@ export const en = {
     screensLead: 'Captured from the running app.',
     screens: [
       {
-        alt: 'Focus timer showing 18:42 remaining in round 2 of 4',
+        alt: 'Focus timer showing 18:30 remaining in round 2 of 4',
         caption: 'Focus session with today’s completed rounds.',
       },
       {
-        alt: 'Break reminder card with Hide this reminder, Postpone 5 minutes, and Skip this break',
+        alt: 'Break reminder card with Got it, Postpone 5 minutes, and Skip this break',
         caption: 'A break card that offers a choice instead of taking over.',
       },
       {
-        alt: 'Settings for focus length, short break, long break, and long-break interval',
+        alt: 'Settings home with quick focus-length presets and the page list',
         caption: 'Every phase length is editable; defaults are one click away.',
       },
       {
-        alt: 'Language picker with English, Simplified Chinese, and Traditional Chinese',
-        caption: 'Thirty languages, including right-to-left layouts.',
+        alt: 'Language picker with 40 languages, including English and Simplified Chinese',
+        caption: 'Forty languages, including right-to-left layouts.',
       },
     ],
     requirementsTitle: 'System requirements',

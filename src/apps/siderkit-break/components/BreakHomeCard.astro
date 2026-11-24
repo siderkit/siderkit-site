@@ -1,9 +1,10 @@
 ---
-import BreakMark from './BreakMark.astro';
+import { Image } from 'astro:assets';
 import Icon from '../../../ui/Icon.astro';
 import { localizedPath, type Locale } from '../../../i18n/config';
 import { breakApp } from '../manifest';
 import { useBreakMessages } from '../i18n/ui';
+import windowShot from '../assets/screens/main-focus.png';
 
 interface Props {
   locale: Locale;
@@ -17,8 +18,15 @@ const docsHref = localizedPath(locale, breakApp.docsRoute);
 ---
 
 <article class="l-break-home-card">
-  <div class="l-break-home-card-mark">
-    <BreakMark size="lg" />
+  <div class="l-break-home-card-shot">
+    <Image
+      src={windowShot}
+      alt={t.homeCard.title}
+      widths={[240, 360, 480]}
+      sizes="(max-width: 639px) 88vw, 13rem"
+      loading="lazy"
+      quality={82}
+    />
   </div>
 
   <div class="l-break-home-card-copy">
@@ -45,7 +53,7 @@ const docsHref = localizedPath(locale, breakApp.docsRoute);
     display: grid;
     align-items: center;
     gap: var(--sk-space-lg);
-    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 13rem) minmax(0, 1fr) auto;
     padding: clamp(var(--sk-space-lg), 3vw, var(--sk-space-xl));
     border: var(--sk-edge) solid hsl(var(--sk-color-line));
     border-radius: var(--sk-radius-xl);
@@ -53,13 +61,17 @@ const docsHref = localizedPath(locale, breakApp.docsRoute);
     box-shadow: var(--sk-shadow-card);
   }
 
-  .l-break-home-card-mark {
-    display: grid;
-    place-items: center;
-    inline-size: var(--sk-space-3xl);
-    block-size: var(--sk-space-3xl);
+  .l-break-home-card-shot {
+    padding: var(--sk-space-sm);
+    border: var(--sk-edge) solid hsl(var(--sk-color-line));
     border-radius: var(--sk-radius-lg);
     background: hsl(var(--sk-color-paper-sunk) / 0.55);
+  }
+
+  .l-break-home-card-shot img {
+    inline-size: 100%;
+    block-size: auto;
+    border-radius: var(--sk-radius-sm);
   }
 
   .l-break-home-card-eyebrow {
@@ -115,7 +127,7 @@ const docsHref = localizedPath(locale, breakApp.docsRoute);
 
   @media (max-width: 1023px) {
     .l-break-home-card {
-      grid-template-columns: auto minmax(0, 1fr);
+      grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
     }
 
     .l-break-home-card-actions {
@@ -131,9 +143,8 @@ const docsHref = localizedPath(locale, breakApp.docsRoute);
       grid-template-columns: 1fr;
     }
 
-    .l-break-home-card-mark {
-      inline-size: var(--sk-space-2xl);
-      block-size: var(--sk-space-2xl);
+    .l-break-home-card-shot {
+      max-inline-size: 16rem;
     }
   }
 </style>
