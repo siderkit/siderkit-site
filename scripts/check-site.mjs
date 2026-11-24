@@ -13,7 +13,8 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const sourceMode = process.argv.includes('--source');
 const problems = [];
-const locales = ['en', 'zh-cn', 'zh-tw'];
+const locales = ['en', 'zh-cn', 'zh-tw', 'es', 'pt', 'fr', 'ru', 'hi', 'bn', 'ar', 'ur'];
+const docLocales = ['en', 'zh-cn', 'zh-tw'];
 const modulePages = ['index', 'install', 'using-break', 'settings', 'data-and-privacy', 'updates', 'troubleshooting'];
 
 function fail(message) {
@@ -81,7 +82,7 @@ function checkSource() {
 
   if (exists('src/pages/api')) fail('src/pages/api must not exist; /api/* is reserved');
 
-  for (const locale of locales) {
+  for (const locale of docLocales) {
     const prefix = locale === 'en' ? '' : `${locale}/`;
     for (const page of modulePages) {
       const suffix = page === 'index' ? 'index.md' : `${page}.md`;
@@ -154,16 +155,20 @@ function requiredDistFiles() {
     files.push(`${prefix}index.html`);
     files.push(`${prefix}apps/siderkit-break/index.html`);
     files.push(`${prefix}apps/siderkit-break/changelog/index.html`);
-    files.push(`${prefix}docs/index.html`);
-    for (const page of modulePages) {
-      const suffix = page === 'index' ? 'index.html' : `${page}/index.html`;
-      files.push(`${prefix}docs/apps/siderkit-break/${suffix}`);
-    }
     for (const page of ['privacy', 'terms', 'licenses', 'security']) {
       files.push(`${prefix}legal/${page}/index.html`);
     }
     for (const page of ['about', 'contact']) {
       files.push(`${prefix}company/${page}/index.html`);
+    }
+  }
+
+  for (const locale of docLocales) {
+    const prefix = locale === 'en' ? '' : `${locale}/`;
+    files.push(`${prefix}docs/index.html`);
+    for (const page of modulePages) {
+      const suffix = page === 'index' ? 'index.html' : `${page}/index.html`;
+      files.push(`${prefix}docs/apps/siderkit-break/${suffix}`);
     }
   }
 

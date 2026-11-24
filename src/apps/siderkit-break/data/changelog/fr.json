@@ -1,0 +1,122 @@
+[
+  {
+    "version": "1.0.1",
+    "sections": [
+      {
+        "kind": "changed",
+        "items": [
+          "La demande de mise à jour devient une boîte de dialogue modale centrée, au lieu d’une bannière au-dessus de l’en-tête : une mise à jour disponible ne décale plus la page. Progression du téléchargement, prêt à redémarrer et états d’échec vivent dans la même boîte de dialogue, avec les actions Télécharger, Plus tard, Passer et Réessayer.",
+          "L’heure du dernier contrôle continue de se mettre à jour : un contrôle récent s’affiche « à l’instant », puis bascule tout seul en minutes, et l’étiquette reste visible pendant qu’un contrôle est en cours.",
+          "Les builds macOS et Linux sont joints à une version pour la première fois, aux côtés de l’installateur Windows signé."
+        ]
+      },
+      {
+        "kind": "fixed",
+        "items": [
+          "Le panneau d’aide ne colle plus son premier titre au haut de la page."
+        ]
+      },
+      {
+        "kind": "known",
+        "items": [
+          "Les installateurs Windows ne sont pas signés Authenticode ; SmartScreen peut donc afficher un avertissement.",
+          "Les builds macOS ne sont pas signés ; Gatekeeper demande une fois une autorisation manuelle.",
+          "La mise à jour automatique est réservée à Windows ; macOS et Linux passent par un téléchargement manuel."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "sections": [
+      {
+        "kind": "added",
+        "items": [
+          "Une interface de réglages à deux niveaux : racine, Général, Rythme et minuteur, Apparence, Fenêtre flottante, Rappels et son, Données et confidentialité, et À propos, avec les valeurs courantes sur l’écran racine.",
+          "Des analyses pour aujourd’hui, cette semaine, ce mois et cette année, avec une heatmap de 53 semaines et une répartition par étiquette.",
+          "Étiquettes de session : à ajouter quand un cycle de concentration se termine, modifiables dans l’historique, exportées dans le tableur.",
+          "Options sonores : trois timbres intégrés, un bouton d’aperçu, un curseur de volume et un son personnalisé en option.",
+          "Douze styles de couleurs, une fenêtre flottante avec aperçus S/M/L, un curseur d’opacité, une aide au repérage et la réinitialisation de la position.",
+          "Dix langues d’interface de plus, soit 40 au total, avec des mises en page de droite à gauche.",
+          "Des diagnostics avec les 50 derniers avertissements, l’accès aux journaux et la réinitialisation de l’identifiant anonyme."
+        ]
+      },
+      {
+        "kind": "changed",
+        "items": [
+          "Chaque page de détail partage le même en-tête : retour, titre et Terminé. Terminé remonte d’exactement un niveau.",
+          "La carte de fin garde son texte principal aligné à gauche, déplace la marque en haut à droite et place l’action principale en premier.",
+          "Les étiquettes gardent la limite de 40 caractères dans le champ ; le stockage conserve la valeur complète."
+        ]
+      },
+      {
+        "kind": "fixed",
+        "items": [
+          "La heatmap de 53 semaines affiche une carte au survol avec la date complète, les minutes de concentration et les cycles.",
+          "Les puces d’étiquettes récentes et les lignes d’historique tronquent les étiquettes longues avec des points de suspension au lieu de déborder.",
+          "La rangée d’actions rapides gagne de la respiration verticale à la plus petite taille de fenêtre."
+        ]
+      },
+      {
+        "kind": "known",
+        "items": [
+          "Les builds Windows ne sont pas encore signés Authenticode ; SmartScreen peut donc afficher un avertissement.",
+          "Les builds macOS restent non signés tant qu’un Developer ID n’est pas configuré.",
+          "La mise à jour automatique est réservée à Windows ; macOS et Linux passent par un téléchargement manuel.",
+          "Wayland ne peut pas positionner la fenêtre flottante de manière fiable ; utilisez X11 pour l’expérience complète."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0-rc.1",
+    "sections": [
+      {
+        "kind": "added",
+        "items": [
+          "Cycles de concentration, pause courte et pause longue, avec pause, reprise, saut, réinitialisation et durées modifiables.",
+          "Un compte à rebours flottant transparent, toujours au premier plan, qui laisse passer les clics tant qu’on ne le pointe pas.",
+          "Des cartes de rappel dans l’application à chaque changement de phase, avec report, saut, fermeture et une sonnerie intégrée.",
+          "Un historique de sessions local, exportable en tableur mis en forme (.xlsx).",
+          "Trente langues d’interface avec détection de la langue du système et des mises en page de droite à gauche.",
+          "Des mises à jour Windows signées, avec téléchargement manuel, installation au redémarrage, possibilité d’ignorer cette version et rappel différé de 24 heures.",
+          "Des comptages anonymes d’installations et de mises à jour en option, avec un interrupteur local et une réinitialisation."
+        ]
+      },
+      {
+        "kind": "changed",
+        "items": [
+          "Windows n’est plus livré qu’avec l’installateur NSIS par utilisateur ; le MSI tous utilisateurs a été retiré.",
+          "L’installateur NSIS embarque 23 langues, présélectionne la langue du système et masque le sélecteur pendant les exécutions silencieuses, passives et de mise à jour.",
+          "Les changements de phase utilisent désormais des cartes dans l’application, à la place des notifications du système d’exploitation.",
+          "Le menu contextuel est natif sur chaque fenêtre, à la place du menu du WebView.",
+          "Le projet est placé sous la seule licence Apache-2.0."
+        ]
+      },
+      {
+        "kind": "fixed",
+        "items": [
+          "Le minuteur garde son échéance dans le cœur Rust quand la fenêtre principale est masquée.",
+          "La fenêtre flottante ne vole plus le focus et ne capte plus les clics en dehors de ses limites.",
+          "Un changement de langue recharge chaque fenêtre ouverte, au lieu de laisser du texte périmé."
+        ]
+      },
+      {
+        "kind": "security",
+        "items": [
+          "Local-first par défaut : pas de compte, pas de synchronisation, aucun serveur pour les données de session.",
+          "Les mises à jour Windows sont vérifiées avec une signature minisign avant l’installation."
+        ]
+      },
+      {
+        "kind": "known",
+        "items": [
+          "Les builds macOS ne sont pas signés tant qu’un Developer ID n’est pas configuré.",
+          "Les installateurs Windows ne sont pas signés tant qu’un certificat de signature de code n’est pas configuré.",
+          "La mise à jour automatique est réservée à Windows ; macOS et Linux passent par un téléchargement manuel.",
+          "Wayland ne peut pas positionner la fenêtre flottante de manière fiable ; utilisez X11 pour l’expérience complète."
+        ]
+      }
+    ]
+  }
+]

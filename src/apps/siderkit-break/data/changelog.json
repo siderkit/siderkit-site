@@ -1,5 +1,59 @@
 [
   {
+    "version": "1.0.1",
+    "date": "2026-11-24",
+    "sections": [
+      {
+        "kind": "changed",
+        "items": {
+          "en": [
+            "The update prompt is a centered modal dialog instead of a banner above the header: an available update no longer shifts the page. Download progress, ready-to-restart, and failure states live in the same dialog with Download, Later, Skip, and Retry actions.",
+            "The last-checked time keeps ticking: a fresh check reads as 刚刚 / Just now and rolls over to minutes on its own, and the label stays visible while a check runs.",
+            "macOS and Linux builds are attached to a release for the first time, next to the signed Windows installer."
+          ],
+          "zh-cn": [
+            "更新提示改为居中的模态弹窗，不再是页头上的横幅：有更新时页面不再跳动。下载进度、重启安装与失败状态都在同一个弹窗里，提供下载、稍后、跳过和重试。",
+            "「上次检查」时间会自己走动：刚检查完显示「刚刚」，随后自动变成分钟数；检查过程中该行保持可见。",
+            "macOS 与 Linux 构建首次随版本发布，与签名的 Windows 安装包并列。"
+          ],
+          "zh-tw": [
+            "更新提示改為置中的強制回應對話框，不再是頁首上的橫幅：有更新時頁面不再跳動。下載進度、重新啟動安裝與失敗狀態都在同一個對話框裡，提供下載、稍後、跳過和重試。",
+            "「上次檢查」時間會自己走動：剛檢查完顯示「剛剛」，隨後自動變成分鐘數；檢查過程中該列保持可見。",
+            "macOS 與 Linux 建置首次隨版本發布，與簽署的 Windows 安裝檔並列。"
+          ]
+        }
+      },
+      {
+        "kind": "fixed",
+        "items": {
+          "en": ["The help panel no longer crowds its first heading against the top of the page."],
+          "zh-cn": ["帮助面板的第一个标题不再紧贴页面顶部。"],
+          "zh-tw": ["說明面板的第一個標題不再緊貼頁面頂部。"]
+        }
+      },
+      {
+        "kind": "known",
+        "items": {
+          "en": [
+            "Windows installers are not Authenticode-signed, so SmartScreen may warn.",
+            "macOS builds are unsigned; Gatekeeper needs one manual allow.",
+            "Auto-update is Windows-only; macOS and Linux are manual downloads."
+          ],
+          "zh-cn": [
+            "Windows 安装包未做 Authenticode 签名，SmartScreen 可能提示。",
+            "macOS 构建未签名，Gatekeeper 需要手动放行一次。",
+            "自动更新仅支持 Windows；macOS 与 Linux 需要手动下载。"
+          ],
+          "zh-tw": [
+            "Windows 安裝檔未做 Authenticode 簽署，SmartScreen 可能提示。",
+            "macOS 建置未簽署，Gatekeeper 需要手動允許一次。",
+            "自動更新僅支援 Windows；macOS 與 Linux 需要手動下載。"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "version": "1.0.0",
     "date": "2026-11-24",
     "sections": [

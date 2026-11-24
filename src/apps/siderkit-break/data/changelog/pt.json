@@ -1,0 +1,122 @@
+[
+  {
+    "version": "1.0.1",
+    "sections": [
+      {
+        "kind": "changed",
+        "items": [
+          "O aviso de atualização virou um diálogo modal centralizado, no lugar de uma faixa acima do cabeçalho: uma atualização disponível não desloca mais a página. Progresso do download, pronto para reiniciar e estados de falha ficam no mesmo diálogo, com as ações Baixar, Mais tarde, Pular e Tentar de novo.",
+          "O horário da última verificação continua andando: uma verificação recém-concluída aparece como “agora mesmo” e passa a mostrar minutos por conta própria, e o rótulo continua visível enquanto uma verificação roda.",
+          "As builds de macOS e Linux são anexadas a uma versão pela primeira vez, ao lado do instalador assinado do Windows."
+        ]
+      },
+      {
+        "kind": "fixed",
+        "items": [
+          "O painel de ajuda não deixa mais o primeiro título encostado no topo da página."
+        ]
+      },
+      {
+        "kind": "known",
+        "items": [
+          "Os instaladores do Windows não são assinados com Authenticode, então o SmartScreen pode avisar.",
+          "As builds de macOS não são assinadas; o Gatekeeper exige uma autorização manual.",
+          "A atualização automática é exclusiva do Windows; macOS e Linux exigem download manual."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "sections": [
+      {
+        "kind": "added",
+        "items": [
+          "Uma tela de configurações em dois níveis: raiz, Geral, Ritmo e temporizador, Aparência, Janela flutuante, Lembretes e som, Dados e privacidade e Sobre, com os valores atuais na tela raiz.",
+          "Insights para hoje, esta semana, este mês e este ano, com um mapa de calor de 53 semanas e um detalhamento por tag.",
+          "Tags de sessão: adicione uma quando uma rodada de foco terminar, edite-a no histórico e exporte-a na planilha.",
+          "Opções de som: três timbres embutidos, um botão de prévia, um controle de volume e um som personalizado opcional.",
+          "Doze estilos de cores, uma janela flutuante com prévias nos tamanhos S/M/L, um controle de opacidade, uma dica de localização e redefinição de posição.",
+          "Mais dez idiomas de interface, num total de 40, incluindo layouts da direita para a esquerda.",
+          "Diagnósticos com os últimos 50 avisos, acesso aos logs e redefinição do ID anônimo."
+        ]
+      },
+      {
+        "kind": "changed",
+        "items": [
+          "Toda página de detalhe compartilha o mesmo cabeçalho: voltar, título e Concluir. Concluir volta exatamente um nível.",
+          "O cartão de conclusão mantém o texto principal alinhado à esquerda, move a marca para o canto superior direito e coloca a ação principal em primeiro lugar.",
+          "As tags mantêm o limite de 40 caracteres no campo; o armazenamento guarda o valor completo."
+        ]
+      },
+      {
+        "kind": "fixed",
+        "items": [
+          "O mapa de calor de 53 semanas mostra um cartão ao passar o mouse, com a data completa, os minutos em foco e as rodadas.",
+          "Os chips de tags recentes e as linhas do histórico exibem tags longas com reticências, em vez de estourar o espaço.",
+          "A linha de ações rápidas ganha mais espaço vertical no menor tamanho de janela."
+        ]
+      },
+      {
+        "kind": "known",
+        "items": [
+          "As builds do Windows ainda não são assinadas com Authenticode, então o SmartScreen pode avisar.",
+          "As builds do macOS continuam sem assinatura até que um Developer ID seja configurado.",
+          "A atualização automática é exclusiva do Windows; macOS e Linux exigem download manual.",
+          "O Wayland não consegue posicionar a janela flutuante de nível superior de forma confiável; use o X11 para a experiência completa."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0-rc.1",
+    "sections": [
+      {
+        "kind": "added",
+        "items": [
+          "Ciclos de foco, pausa curta e pausa longa, com pausar, retomar, pular, redefinir e durações editáveis.",
+          "Uma contagem regressiva flutuante e transparente, sempre acima das outras janelas e atravessada pelo clique até você apontar para ela.",
+          "Cartões de lembrete no próprio aplicativo a cada troca de fase, com adiar, pular, fechar e um toque sonoro embutido.",
+          "Histórico de sessões local, com exportação para planilha (.xlsx) com formatação.",
+          "Trinta idiomas de interface, com detecção do idioma do sistema e layouts da direita para a esquerda.",
+          "Atualizações automáticas assinadas do Windows, com download manual, instalação ao reiniciar, pular esta versão e um adiamento de 24 horas.",
+          "Contagens anônimas e opcionais de instalação e atualização, com um interruptor local para desativar e redefinir."
+        ]
+      },
+      {
+        "kind": "changed",
+        "items": [
+          "O Windows é distribuído apenas com o instalador NSIS por usuário; o MSI para todos os usuários foi aposentado.",
+          "O instalador NSIS traz 23 idiomas, pré-seleciona o idioma do sistema e esconde o seletor nas execuções silenciosas, passivas e de atualização.",
+          "As trocas de fase agora usam cartões dentro do aplicativo, em vez de notificações do sistema operacional.",
+          "O menu de clique direito é nativo em cada janela, em vez do menu do WebView.",
+          "O projeto é licenciado apenas sob a Apache-2.0."
+        ]
+      },
+      {
+        "kind": "fixed",
+        "items": [
+          "O temporizador mantém o prazo no núcleo em Rust quando a janela principal está oculta.",
+          "A janela flutuante não rouba mais o foco nem captura cliques fora de seus limites.",
+          "Mudanças de idioma recarregam cada janela aberta, em vez de deixar textos antigos."
+        ]
+      },
+      {
+        "kind": "security",
+        "items": [
+          "Local por padrão: sem conta, sem sincronização e sem servidor para os dados de sessão.",
+          "As atualizações do Windows são verificadas com uma assinatura minisign antes da instalação."
+        ]
+      },
+      {
+        "kind": "known",
+        "items": [
+          "As builds do macOS não são assinadas até que um Developer ID seja configurado.",
+          "Os instaladores do Windows não são assinados até que um certificado de assinatura de código seja configurado.",
+          "A atualização automática é exclusiva do Windows; macOS e Linux exigem download manual.",
+          "O Wayland não consegue posicionar a janela flutuante de nível superior de forma confiável; use o X11 para a experiência completa."
+        ]
+      }
+    ]
+  }
+]

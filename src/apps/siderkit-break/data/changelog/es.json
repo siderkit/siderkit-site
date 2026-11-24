@@ -1,0 +1,122 @@
+[
+  {
+    "version": "1.0.1",
+    "sections": [
+      {
+        "kind": "changed",
+        "items": [
+          "El aviso de actualización es un cuadro de diálogo modal centrado, no un banner sobre el encabezado: una actualización disponible ya no desplaza la página. El progreso de descarga, el estado de listo para reiniciar y los errores viven en el mismo cuadro, con las acciones Descargar, Más tarde, Omitir y Reintentar.",
+          "La hora de la última comprobación sigue andando: una comprobación recién hecha se muestra como «recién» y pasa sola a minutos, y la etiqueta sigue visible mientras se ejecuta una comprobación.",
+          "Las builds de macOS y Linux se adjuntan a una versión por primera vez, junto al instalador firmado de Windows."
+        ]
+      },
+      {
+        "kind": "fixed",
+        "items": [
+          "El panel de ayuda ya no aprieta su primer encabezado contra el borde superior de la página."
+        ]
+      },
+      {
+        "kind": "known",
+        "items": [
+          "Los instaladores de Windows no llevan firma Authenticode, así que SmartScreen puede avisar.",
+          "Las builds de macOS están sin firmar; Gatekeeper requiere una autorización manual.",
+          "La actualización automática es solo de Windows; macOS y Linux son descargas manuales."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "sections": [
+      {
+        "kind": "added",
+        "items": [
+          "Una pantalla de ajustes de dos niveles: raíz, General, Ritmo y temporizador, Apariencia, Ventana flotante, Recordatorios y sonido, Datos y privacidad, y Acerca de, con los valores actuales en la pantalla raíz.",
+          "Resumen para hoy, esta semana, este mes y este año, con un mapa de calor de 53 semanas y un desglose por etiqueta.",
+          "Etiquetas de sesión: añade una cuando termina una ronda de concentración, edítala en el historial y expórtala en la hoja de cálculo.",
+          "Opciones de sonido: tres timbres integrados, un botón de vista previa, un control de volumen y un sonido personalizado opcional.",
+          "Doce estilos de color, una ventana flotante con vistas previas S/M/L, un control de opacidad, una pista para ubicarla y restablecer su posición.",
+          "Diez idiomas más de interfaz, 40 en total, incluidas las distribuciones de derecha a izquierda.",
+          "Diagnóstico con las últimas 50 advertencias, acceso a los registros y restablecimiento del ID anónimo."
+        ]
+      },
+      {
+        "kind": "changed",
+        "items": [
+          "Todas las páginas de detalle comparten un mismo encabezado: atrás, título y Hecho. Hecho retrocede exactamente un nivel.",
+          "La tarjeta de finalización mantiene su texto principal alineado a la izquierda, mueve la marca a la esquina superior derecha y pone la acción principal primero.",
+          "Las etiquetas mantienen el límite de 40 caracteres en el campo; el almacenamiento conserva el valor completo."
+        ]
+      },
+      {
+        "kind": "fixed",
+        "items": [
+          "El mapa de calor de 53 semanas muestra una tarjeta al pasar el cursor con la fecha completa, los minutos de concentración y las rondas.",
+          "Las chips de etiquetas recientes y las filas del historial acortan las etiquetas largas con puntos suspensivos, en lugar de desbordarse.",
+          "La fila de acciones rápidas gana espacio vertical en el tamaño de ventana más pequeño."
+        ]
+      },
+      {
+        "kind": "known",
+        "items": [
+          "Las builds de Windows todavía no llevan firma Authenticode, así que SmartScreen puede avisar.",
+          "Las builds de macOS siguen sin firmar hasta que se configure un Developer ID.",
+          "La actualización automática es solo de Windows; macOS y Linux son descargas manuales.",
+          "Wayland no puede situar la ventana flotante de primer nivel con fiabilidad; usa X11 para la experiencia completa."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0-rc.1",
+    "sections": [
+      {
+        "kind": "added",
+        "items": [
+          "Ciclos de concentración, descanso corto y descanso largo, con pausa, reanudación, omisión, reinicio y longitudes editables.",
+          "Una cuenta atrás flotante y transparente que se queda encima y deja pasar los clics hasta que la señalas.",
+          "Tarjetas de recordatorio dentro de la app en cada cambio de fase, con posponer, omitir, cerrar y un tono incluido.",
+          "Historial de sesiones en local, con exportación a hoja de cálculo (.xlsx) con formato.",
+          "Treinta idiomas de interfaz, con detección del idioma del sistema y distribuciones de derecha a izquierda.",
+          "Actualizaciones automáticas de Windows firmadas, con descarga manual, instalación al reiniciar, opción de omitir esta versión y un aplazamiento de 24 horas.",
+          "Recuentos anónimos opcionales de instalaciones y actualizaciones, con un interruptor local para desactivarlos y restablecerlos."
+        ]
+      },
+      {
+        "kind": "changed",
+        "items": [
+          "Windows distribuye solo el instalador NSIS por usuario; el MSI para todos los usuarios se retiró.",
+          "El instalador NSIS incluye 23 idiomas, preselecciona el idioma del sistema y oculta el selector en las ejecuciones silenciosas, pasivas y de actualización.",
+          "Los cambios de fase usan ahora tarjetas dentro de la app, en lugar de notificaciones del sistema operativo.",
+          "El menú contextual es nativo en cada ventana, en lugar del menú de WebView.",
+          "El proyecto se licencia únicamente bajo Apache-2.0."
+        ]
+      },
+      {
+        "kind": "fixed",
+        "items": [
+          "El temporizador mantiene su hora límite en el núcleo de Rust cuando la ventana principal está oculta.",
+          "La ventana flotante ya no roba el foco ni captura clics fuera de sus límites.",
+          "Los cambios de idioma recargan todas las ventanas abiertas, sin dejar textos desactualizados."
+        ]
+      },
+      {
+        "kind": "security",
+        "items": [
+          "Todo en local por defecto: sin cuenta, sin sincronización y sin servidor para los datos de las sesiones.",
+          "Las actualizaciones de Windows se verifican con una firma minisign antes de instalarse."
+        ]
+      },
+      {
+        "kind": "known",
+        "items": [
+          "Las builds de macOS están sin firmar hasta que se configure un Developer ID.",
+          "Los instaladores de Windows están sin firmar hasta que se configure un certificado de firma de código.",
+          "La actualización automática es solo de Windows; macOS y Linux son descargas manuales.",
+          "Wayland no puede situar la ventana flotante de primer nivel con fiabilidad; usa X11 para la experiencia completa."
+        ]
+      }
+    ]
+  }
+]

@@ -145,12 +145,12 @@ export const en = {
       releasedLabel: 'Released',
       sizeLabel: 'Size',
       checksumLabel: 'SHA-256',
-      note: 'macOS and Linux builds are not attached to 1.0.0 yet. The Windows installer is not code-signed, so SmartScreen may ask you to confirm.',
+      note: 'All three platform builds are attached to 1.0.1. The Windows installer is not code-signed, so SmartScreen may ask you to confirm.',
       checksumNote: 'Compare this SHA-256 with the file you downloaded.',
       requirementsSummary: 'System requirements and install notes',
       requirementsTitle: 'System requirements',
       requirementsLead:
-        'Windows is the current release. macOS and Linux are supported by the codebase; builds are not attached to 1.0.0 yet.',
+        'Windows, macOS, and Linux all ship with 1.0.1; the table lists what each platform needs.',
       tablePlatform: 'Platform',
       tableMinimum: 'Minimum',
       tableArtifacts: 'Artifacts',
@@ -166,19 +166,19 @@ export const en = {
           platform: 'macOS Intel',
           minimum: 'macOS 10.15.7 with Safari 15.4+',
           artifacts: 'Universal DMG',
-          status: 'Not published',
+          status: 'Published (unsigned)',
         },
         {
           platform: 'macOS Apple Silicon',
           minimum: 'macOS 11.0',
           artifacts: 'Universal DMG',
-          status: 'Not published',
+          status: 'Published (unsigned)',
         },
         {
           platform: 'Ubuntu 22.04+',
           minimum: 'webkit2gtk 4.1, X11',
           artifacts: 'deb, rpm, AppImage',
-          status: 'Not published',
+          status: 'Published',
         },
       ],
       requirementsNote:
@@ -193,7 +193,7 @@ export const en = {
     closing: {
       changelogEyebrow: 'Changelog',
       changelogTitle: 'Recent changes',
-      changelogLead: 'The first stable release. Small surface, complete rhythm.',
+      changelogLead: 'Small surface, complete rhythm, steady fixes.',
       changelogCta: 'Full changelog',
       sourceTitle: 'Source and license',
       sourceBody:

@@ -1,7 +1,7 @@
 ---
 import LanguagePicker from './LanguagePicker.astro';
 import Wordmark from './Wordmark.astro';
-import { localizedPath, type Locale } from '../../i18n/config';
+import { docsPath, localizedPath, type Locale } from '../../i18n/config';
 import { routes } from '../../site/routes';
 import { siteLinks } from '../../site/links';
 import { useBrandMessages } from '../i18n/ui';
@@ -23,7 +23,7 @@ const languagePath = path.startsWith(routes.notFound) ? routes.home : path;
     <Wordmark locale={locale} />
 
     <nav class="l-site-nav" aria-label={t.common.brand}>
-      <a href={localizedPath(locale, routes.docs)} class="l-site-nav-link" aria-current={onDocs ? 'page' : undefined}>
+      <a href={docsPath(locale)} class="l-site-nav-link" aria-current={onDocs ? 'page' : undefined}>
         {t.nav.docs}
       </a>
       <a href={localizedPath(locale, routes.about)} class="l-site-nav-link" aria-current={onAbout ? 'page' : undefined}>

@@ -51,7 +51,7 @@ const t = useBreakMessages(locale);
                   <section data-kind={section.kind}>
                     <h3>{t.changelog.sections[section.kind]}</h3>
                     <ul>
-                      {section.items[locale].map((item) => (
+                      {(section.items[locale] ?? section.items.en).map((item) => (
                         <li>{item}</li>
                       ))}
                     </ul>
