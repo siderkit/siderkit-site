@@ -1,8 +1,10 @@
 ---
 import HomeView from '../brand/views/HomeView.astro';
 import BreakHomeCard from '../apps/siderkit-break/components/BreakHomeCard.astro';
+import { breakApp } from '../apps/siderkit-break/manifest';
+import { localizedPath } from '../i18n/config';
 ---
 
-<HomeView locale="en">
+<HomeView locale="en" featuredHref={localizedPath('en', breakApp.route)}>
   <BreakHomeCard slot="apps" locale="en" />
 </HomeView>

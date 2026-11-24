@@ -1,7 +1,8 @@
 /* ════════════════════════════════════════════════════════════════
    Siderkit site design tokens — the only file with raw values.
    Brand follows ADR-0024: one near-black brand, one semantic accent.
-   Break's forest green belongs to the app, not to this site shell.
+   Break's forest green is scoped to the app's product views; the site
+   shell and the Siderkit brand pages stay near-black and warm paper.
    Components use var(--sk-*); media-query breakpoints stay in the
    component files (639 / 767 / 1023 / 1279).
    ════════════════════════════════════════════════════════════════ */
@@ -35,6 +36,23 @@
   --sk-color-brand-pale-dark: 0 0% 78%;
   --sk-color-brand-soft-dark: 0 0% 18%;
 
+  /* ── Break product surface — the app's default Forest palette ─ */
+  /* Green is scoped to Siderkit Break product views; the brand
+     shell stays near-black and warm paper. */
+  --sk-color-break-forest: 150 60% 30%;
+  --sk-color-break-forest-strong: 150 64% 23%;
+  --sk-color-break-forest-soft: 150 55% 90%;
+  --sk-color-break-mist: 120 18% 92%;
+  --sk-color-break-sage: 138 24% 83%;
+  --sk-color-break-deep: 154 42% 11%;
+  --sk-color-break-deeper: 156 36% 7%;
+  --sk-color-break-mid: 151 40% 16%;
+  --sk-color-break-glow: 150 62% 62%;
+  --sk-color-break-on-deep: 140 40% 97%;
+  --sk-color-break-on-deep-soft: 140 18% 76%;
+  --sk-color-break-line-deep: 150 22% 24%;
+  --sk-color-break-cream: 42 44% 94%;
+
   --sk-gradient-page:
     radial-gradient(ellipse at 12% -8%, hsl(var(--sk-color-brand-soft) / 0.7), transparent 42%),
     radial-gradient(ellipse at 92% 4%, hsl(var(--sk-color-accent-soft) / 0.32), transparent 34%),
@@ -43,7 +61,20 @@
     radial-gradient(circle at 48% 38%, hsl(var(--sk-color-brand-soft) / 0.85), transparent 62%),
     linear-gradient(155deg, hsl(var(--sk-color-paper-raised)), hsl(var(--sk-color-paper-sunk)));
   --sk-gradient-ink: linear-gradient(135deg, hsl(var(--sk-color-brand-strong)), hsl(var(--sk-color-brand)));
+  --sk-gradient-showcase: linear-gradient(135deg, hsl(0 0% 14%), hsl(0 0% 6%));
   --sk-gradient-fade: linear-gradient(to bottom, transparent, hsl(var(--sk-color-paper)));
+  --sk-gradient-break-hero:
+    radial-gradient(ellipse 62% 54% at 82% 10%, hsl(var(--sk-color-break-glow) / 0.26), transparent 64%),
+    radial-gradient(ellipse 58% 52% at 4% 96%, hsl(var(--sk-color-break-forest) / 0.52), transparent 62%),
+    linear-gradient(158deg, hsl(var(--sk-color-break-mid)), hsl(var(--sk-color-break-deeper)) 74%);
+  --sk-gradient-break-band: linear-gradient(
+    180deg,
+    hsl(var(--sk-color-break-deep)),
+    hsl(var(--sk-color-break-deeper))
+  );
+  --sk-gradient-break-canvas:
+    radial-gradient(circle at 50% 34%, hsl(var(--sk-color-break-sage) / 0.8), transparent 68%),
+    linear-gradient(160deg, hsl(var(--sk-color-break-mist)), hsl(var(--sk-color-paper-sunk)));
 
   /* ── Type ───────────────────────────────────────────────────── */
   --sk-font-body:
@@ -62,6 +93,7 @@
   --sk-text-3xl: 2.25rem;
   --sk-text-4xl: 3rem;
   --sk-text-display: clamp(3rem, 7.4vw, 5.75rem);
+  --sk-text-hero: clamp(2.75rem, 5.4vw, 4.5rem);
   --sk-text-section: clamp(2.25rem, 4.4vw, 3.5rem);
   --sk-leading-none: 1;
   --sk-leading-tight: 1.06;
@@ -153,6 +185,20 @@
     --sk-color-line-dark: 0 0% 24%;
     --sk-color-brand-pale-dark: 0 0% 78%;
     --sk-color-brand-soft-dark: 0 0% 18%;
+
+    --sk-color-break-forest: 150 44% 54%;
+    --sk-color-break-forest-strong: 150 50% 68%;
+    --sk-color-break-forest-soft: 150 24% 18%;
+    --sk-color-break-mist: 152 20% 9%;
+    --sk-color-break-sage: 150 22% 14%;
+    --sk-color-break-deep: 154 36% 8%;
+    --sk-color-break-deeper: 156 32% 5%;
+    --sk-color-break-mid: 151 34% 13%;
+    --sk-color-break-glow: 150 54% 58%;
+    --sk-color-break-on-deep: 140 30% 95%;
+    --sk-color-break-on-deep-soft: 140 14% 72%;
+    --sk-color-break-line-deep: 150 16% 22%;
+    --sk-color-break-cream: 42 32% 90%;
 
     --sk-gradient-page:
       radial-gradient(ellipse at 12% -8%, hsl(var(--sk-color-brand-soft) / 0.55), transparent 42%),

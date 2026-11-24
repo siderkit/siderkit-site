@@ -3,7 +3,7 @@ export const en = {
     siteName: 'Siderkit',
     homeTitle: 'Siderkit — Work, as it should be.',
     homeDescription:
-      'Siderkit is an independent, open-source project. We believe good software leaves room for life.',
+      'An independent, open-source project building quiet, local-first tools that leave room for the person using them.',
     privacyTitle: 'Privacy — Siderkit',
     privacyDescription: 'How the Siderkit website and Siderkit apps handle data.',
     termsTitle: 'Terms — Siderkit',
@@ -35,42 +35,11 @@ export const en = {
     backHome: 'Back to home',
   },
   home: {
-    eyebrow: 'Siderkit',
-    title: 'Work, as it should be.',
-    lead: 'Siderkit is an independent, open-source project. We believe good software leaves room for life.',
-    primaryCta: 'Read the documentation',
-    secondaryCta: 'About Siderkit',
-    meta: 'Independent · Open source · No account',
-    principlesEyebrow: 'Our stance',
-    principlesTitle: 'Software should revolve around people — not the other way around.',
-    principlesLead:
-      'The point of a tool is to give time, attention, and judgment back to the person using it. Everything we make starts there.',
-    principles: [
-      {
-        title: 'Technology leaves room for people',
-        body: 'Attention is not a resource to be mined. Tools should show up when needed, then step aside.',
-      },
-      {
-        title: 'Judgment stays human',
-        body: 'Software can organize the facts. The choices, and the responsibility for them, stay with people.',
-      },
-      {
-        title: 'Work should be verifiable',
-        body: 'Work becomes trustworthy when you can see what was done, and how far it went.',
-      },
-      {
-        title: 'Openness keeps it going',
-        body: 'Code, decisions, and discussions in the open — that is how trust takes root.',
-      },
-    ],
-    appsEyebrow: 'Apps',
-    appsTitle: 'Starting with the first app.',
-    appsLead: 'Free, open source, growing at its own pace.',
-    openEyebrow: 'Just getting started',
-    openTitle: 'This is just the beginning.',
-    openLead: "We'll turn these beliefs into real software, one piece at a time, at our own pace.",
-    openSourceCta: 'View the source',
-    openDocsCta: 'Read the documentation',
+    eyebrow: 'Independent, open source',
+    title: 'Work, as it\nshould be.',
+    lead: 'Quiet software, made slowly. One app is out; more are on the way.',
+    primaryCta: 'Meet the first app',
+    closingLine: 'Independent · Open source · Apache-2.0 · No investors',
   },
   legal: {
     eyebrow: 'Legal',

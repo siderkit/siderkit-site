@@ -5,11 +5,11 @@ import BreakDownloadCard from '../components/BreakDownloadCard.astro';
 import BreakMark from '../components/BreakMark.astro';
 import Icon from '../../../ui/Icon.astro';
 import breakRunning from '../assets/screens/break-running.png';
-import languages from '../assets/screens/languages.png';
+import breakDone from '../assets/screens/break-done.png';
+import insightsShot from '../assets/screens/insights.png';
 import mainFocus from '../assets/screens/main-focus.png';
-import settings from '../assets/screens/settings.png';
 import { changelog } from '../data/changelog';
-import { formatDate, primaryDownloadUrl, release } from '../data/releases';
+import { formatDate, formatSize, primaryDownloadUrl, release } from '../data/releases';
 import { absoluteUrl, localizedPath, type Locale } from '../../../i18n/config';
 import { breakApp } from '../manifest';
 import { breakLinks } from '../links';
@@ -22,15 +22,10 @@ interface Props {
 const { locale } = Astro.props;
 const t = useBreakMessages(locale);
 const changelogHref = localizedPath(locale, breakApp.changelogRoute);
-const docsHref = localizedPath(locale, breakApp.docsRoute);
 const latest = changelog[0];
 
-const screens = [
-  { image: mainFocus, ...t.product.screens[0], class: 'is-tall' },
-  { image: breakRunning, ...t.product.screens[1], class: 'is-wide' },
-  { image: settings, ...t.product.screens[2], class: 'is-tall' },
-  { image: languages, ...t.product.screens[3], class: 'is-tall' },
-];
+const dayImages = [mainFocus, breakRunning, breakDone];
+const featureIcons = ['timer', 'window', 'bell', 'archive', 'chart', 'refresh'] as const;
 
 const schema = {
   '@context': 'https://schema.org',
@@ -72,88 +67,166 @@ const schema = {
         <div class="l-break-product-hero-copy">
           <div class="l-break-product-brand">
             <BreakMark size="md" />
-            <p class="sk-eyebrow">{t.product.eyebrow}</p>
+            <p class="l-break-product-kicker">{t.product.hero.kicker}</p>
           </div>
-          <h1 class="l-break-product-title">{t.product.title}</h1>
-          <p class="sk-lead">{t.product.lead}</p>
-          <ul class="l-break-product-tags" aria-label={t.product.tags.join(' · ')}>
-            {t.product.tags.map((tag) => <li>{tag}</li>)}
+
+          <h1 class="l-break-product-title">{t.product.hero.title}</h1>
+          <p class="l-break-product-hero-lead">{t.product.hero.lead}</p>
+
+          <div class="l-break-product-actions">
+            <a class="sk-button l-break-product-cta" href={primaryDownloadUrl}>
+              <Icon name="download" size="sm" />
+              {t.product.hero.primaryCta}
+            </a>
+            <a class="sk-button l-break-product-cta-ghost" href="#day">
+              {t.product.hero.secondaryCta}
+              <Icon name="chevron-down" size="sm" />
+            </a>
+          </div>
+
+          <ul class="l-break-product-facts">
+            <li>
+              <span>{t.labels.version}</span>
+              {release.version}
+            </li>
+            <li>
+              <span>{t.product.hero.platformLabel}</span>
+              {t.product.hero.platform}
+            </li>
+            <li>
+              <span>{t.labels.size}</span>
+              {release.windows ? formatSize(release.windows.size, locale) : '—'}
+            </li>
+            <li>
+              <span>{t.labels.license}</span>
+              Apache-2.0
+            </li>
           </ul>
-          <a class="sk-text-link l-break-product-inline-link" href={docsHref}>
-            {t.labels.readDocs}
-            <Icon name="arrow-right" size="sm" />
-          </a>
         </div>
-        <div class="l-break-product-hero-window">
-          <Image
-            src={mainFocus}
-            alt={t.product.screens[0].alt}
-            widths={[400, 560, 760]}
-            sizes="(max-width: 1023px) 92vw, 560px"
-            loading="eager"
-            quality={88}
-          />
+
+        <div class="l-break-product-hero-stage">
+          <span class="l-break-product-hero-ring" aria-hidden="true"></span>
+          <div class="l-break-product-hero-window">
+            <Image
+              src={mainFocus}
+              alt={t.product.hero.windowAlt}
+              widths={[480, 720, 960]}
+              sizes="(max-width: 1023px) 92vw, 620px"
+              loading="eager"
+              quality={90}
+            />
+          </div>
+          <div class="l-break-product-hero-card">
+            <Image
+              src={breakRunning}
+              alt={t.product.hero.cardAlt}
+              widths={[180, 260, 360]}
+              sizes="(max-width: 639px) 56vw, 260px"
+              loading="eager"
+              quality={90}
+            />
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="l-break-product-download">
+  <section class="sk-section l-break-product-day" id="day" aria-labelledby="day-title">
     <div class="sk-container">
-      <BreakDownloadCard locale={locale} />
-    </div>
-  </section>
-
-  <section class="l-break-product-gallery-section" aria-labelledby="gallery-title">
-    <div class="sk-container">
-      <div class="l-break-product-section-head">
+      <div class="l-break-product-head">
         <div>
-          <p class="sk-eyebrow">{t.product.eyebrow}</p>
-          <h2 class="sk-title" id="gallery-title">{t.product.screensTitle}</h2>
+          <p class="sk-eyebrow">{t.product.day.eyebrow}</p>
+          <h2 class="sk-title" id="day-title">{t.product.day.title}</h2>
         </div>
-        <p class="sk-lead">{t.product.screensLead}</p>
+        <p class="sk-lead">{t.product.day.lead}</p>
       </div>
 
-      <ul class="l-break-product-gallery">
+      <ol class="l-break-product-day-list">
         {
-          screens.map((screen) => (
-            <li class:list={['l-break-product-screen', screen.class]}>
-              <figure>
-                <div class="l-break-product-screen-frame">
-                  <Image
-                    src={screen.image}
-                    alt={screen.alt}
-                    widths={[260, 400, 560]}
-                    sizes="(max-width: 639px) 88vw, (max-width: 1023px) 44vw, 16rem"
-                    loading="lazy"
-                    quality={82}
-                  />
-                </div>
-                <figcaption>{screen.caption}</figcaption>
+          t.product.day.steps.map((step, index) => (
+            <li class="l-break-product-day-step">
+              <div class="l-break-product-day-marker">
+                <time>{step.time}</time>
+                <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+              </div>
+              <div class="l-break-product-day-copy">
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
+              </div>
+              <figure class:list={['l-break-product-day-visual', index === 0 ? 'is-window' : 'is-card']}>
+                <Image
+                  src={dayImages[index]}
+                  alt={step.alt}
+                  widths={index === 0 ? [480, 720, 960] : [220, 320, 440]}
+                  sizes={
+                    index === 0
+                      ? '(max-width: 1023px) 92vw, 640px'
+                      : '(max-width: 1023px) 64vw, 380px'
+                  }
+                  loading="lazy"
+                  quality={88}
+                />
+                <figcaption>{step.caption}</figcaption>
               </figure>
             </li>
           ))
         }
-      </ul>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sk-section l-break-product-insights" aria-labelledby="insights-title">
+    <div class="sk-container l-break-product-insights-grid">
+      <div class="l-break-product-insights-copy">
+        <p class="sk-eyebrow">{t.product.insights.eyebrow}</p>
+        <h2 class="sk-title" id="insights-title">{t.product.insights.title}</h2>
+        <p class="sk-lead">{t.product.insights.lead}</p>
+
+        <ul class="l-break-product-insights-points">
+          {
+            t.product.insights.points.map((point) => (
+              <li>
+                <Icon name="check" size="sm" />
+                <div>
+                  <h3>{point.title}</h3>
+                  <p>{point.body}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <figure class="l-break-product-insights-figure">
+        <Image
+          src={insightsShot}
+          alt={t.product.insights.alt}
+          widths={[480, 720, 960]}
+          sizes="(max-width: 1023px) 92vw, 660px"
+          loading="lazy"
+          quality={88}
+        />
+        <figcaption>{t.product.insights.caption}</figcaption>
+      </figure>
     </div>
   </section>
 
   <section class="sk-section l-break-product-features" aria-labelledby="features-title">
     <div class="sk-container">
-      <div class="l-break-product-section-head">
+      <div class="l-break-product-head l-break-product-head-dark">
         <div>
-          <p class="sk-eyebrow">{t.product.eyebrow}</p>
-          <h2 class="sk-title" id="features-title">{t.product.featuresTitle}</h2>
+          <p class="sk-eyebrow">{t.product.features.eyebrow}</p>
+          <h2 class="sk-title" id="features-title">{t.product.features.title}</h2>
         </div>
-        <p class="sk-lead">{t.product.featuresLead}</p>
+        <p class="sk-lead">{t.product.features.lead}</p>
       </div>
 
       <ul class="l-break-product-feature-grid">
         {
-          t.product.features.map((feature, index) => (
+          t.product.features.items.map((feature, index) => (
             <li>
-              <span class="l-break-product-feature-index" aria-hidden="true">
-                {String(index + 1).padStart(2, '0')}
+              <span class="l-break-product-feature-icon" aria-hidden="true">
+                <Icon name={featureIcons[index]} size="md" />
               </span>
               <h3>{feature.title}</h3>
               <p>{feature.body}</p>
@@ -164,135 +237,136 @@ const schema = {
     </div>
   </section>
 
-  <section class="l-break-product-details">
-    <div class="sk-container">
-      <div class="l-break-product-detail-grid">
-        <article class="l-break-product-detail">
-          <h2>{t.product.installTitle}</h2>
-          <p>{t.product.installBody}</p>
-        </article>
-        <article class="l-break-product-detail">
-          <h2>{t.product.updateTitle}</h2>
-          <p>{t.product.updateBody}</p>
-        </article>
-        <article class="l-break-product-detail">
-          <h2>{t.product.privacyTitle}</h2>
-          <p>{t.product.privacyBody}</p>
-        </article>
-      </div>
-    </div>
-  </section>
+  <BreakDownloadCard locale={locale} />
 
-  <section class="sk-section l-break-product-requirements" aria-labelledby="requirements-title">
+  <section class="l-break-product-fineprint" aria-labelledby="fineprint-title">
     <div class="sk-container">
-      <div class="l-break-product-section-head">
-        <div>
-          <p class="sk-eyebrow">{t.product.eyebrow}</p>
-          <h2 class="sk-title" id="requirements-title">{t.product.requirementsTitle}</h2>
-        </div>
-        <p class="sk-lead">{t.product.requirementsLead}</p>
-      </div>
+      <details class="l-break-product-details">
+        <summary>
+          <span id="fineprint-title">{t.product.download.requirementsSummary}</span>
+          <Icon name="chevron-down" size="sm" />
+        </summary>
 
-      <div class="l-break-product-table-wrap">
-        <table class="l-break-product-table">
-          <caption class="sk-visually-hidden">{t.product.requirementsTitle}</caption>
-          <thead>
-            <tr>
-              <th scope="col">{t.product.tablePlatform}</th>
-              <th scope="col">{t.product.tableMinimum}</th>
-              <th scope="col">{t.product.tableArtifacts}</th>
-              <th scope="col">{t.product.tableStatus}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              t.product.requirements.map((row) => (
+        <div class="l-break-product-details-body">
+          <p class="l-break-product-details-lead">{t.product.download.requirementsLead}</p>
+
+          <div class="l-break-product-table-wrap">
+            <table class="l-break-product-table">
+              <caption class="sk-visually-hidden">{t.product.download.requirementsTitle}</caption>
+              <thead>
                 <tr>
-                  <th scope="row">{row.platform}</th>
-                  <td>{row.minimum}</td>
-                  <td>{row.artifacts}</td>
-                  <td>{row.status}</td>
+                  <th scope="col">{t.product.download.tablePlatform}</th>
+                  <th scope="col">{t.product.download.tableMinimum}</th>
+                  <th scope="col">{t.product.download.tableArtifacts}</th>
+                  <th scope="col">{t.product.download.tableStatus}</th>
                 </tr>
-              ))
-            }
-          </tbody>
-        </table>
-      </div>
-      <p class="l-break-product-table-note">{t.product.requirementsNote}</p>
+              </thead>
+              <tbody>
+                {
+                  t.product.download.requirements.map((row) => (
+                    <tr>
+                      <th scope="row">{row.platform}</th>
+                      <td>{row.minimum}</td>
+                      <td>{row.artifacts}</td>
+                      <td>{row.status}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+          <p class="l-break-product-table-note">{t.product.download.requirementsNote}</p>
+
+          <div class="l-break-product-details-grid">
+            <div>
+              <h3>{t.product.download.installTitle}</h3>
+              <p>{t.product.download.installBody}</p>
+            </div>
+            <div>
+              <h3>{t.product.download.updateTitle}</h3>
+              <p>{t.product.download.updateBody}</p>
+            </div>
+            <div>
+              <h3>{t.product.download.privacyTitle}</h3>
+              <p>{t.product.download.privacyBody}</p>
+            </div>
+          </div>
+        </div>
+      </details>
     </div>
   </section>
 
-  <section class="l-break-product-changelog">
-    <div class="sk-container l-break-product-changelog-grid">
-      <div>
-        <p class="sk-eyebrow">{t.product.eyebrow}</p>
-        <h2 class="sk-title">{t.product.changelogTitle}</h2>
-        <p class="sk-lead">{t.product.changelogLead}</p>
+  <section class="sk-section--tight l-break-product-closing">
+    <div class="sk-container">
+      <div class="l-break-product-changelog">
+        <div class="l-break-product-changelog-copy">
+          <p class="sk-eyebrow">{t.product.closing.changelogEyebrow}</p>
+          <h2 class="sk-title">{t.product.closing.changelogTitle}</h2>
+          <p class="sk-lead">{t.product.closing.changelogLead}</p>
+          {
+            latest && (
+              <p class="l-break-product-release-line">
+                <span>{latest.version}</span>
+                <span aria-hidden="true">·</span>
+                <time datetime={latest.date}>{formatDate(latest.date, locale)}</time>
+              </p>
+            )
+          }
+          <a class="sk-text-link l-break-product-inline-link" href={changelogHref}>
+            {t.product.closing.changelogCta}
+            <Icon name="arrow-right" size="sm" />
+          </a>
+        </div>
+
         {
           latest && (
-            <p class="l-break-product-release-line">
-              <span>{latest.version}</span>
-              <span aria-hidden="true">·</span>
-              <time datetime={latest.date}>{formatDate(latest.date, locale)}</time>
-            </p>
+            <div class="l-break-product-release-notes">
+              {latest.sections
+                .filter((section) => section.kind === 'added' || section.kind === 'changed')
+                .map((section) => (
+                  <div>
+                    <h3>{t.changelog.sections[section.kind]}</h3>
+                    <ul>
+                      {section.items[locale].slice(0, 3).map((item) => (
+                        <li>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+            </div>
           )
         }
-        <a class="sk-text-link l-break-product-inline-link" href={changelogHref}>
-          {t.product.changelogCta}
-          <Icon name="arrow-right" size="sm" />
+      </div>
+
+      <div class="l-break-product-source">
+        <div>
+          <h2>{t.product.closing.sourceTitle}</h2>
+          <p>{t.product.closing.sourceBody}</p>
+        </div>
+        <a class="sk-button sk-button--ghost" href={breakLinks.repo} target="_blank" rel="noopener noreferrer">
+          <Icon name="github" size="sm" />
+          {t.product.closing.sourceCta}
         </a>
       </div>
-
-      {
-        latest && (
-          <div class="l-break-product-release-notes">
-            {latest.sections
-              .filter((section) => section.kind === 'added' || section.kind === 'changed')
-              .map((section) => (
-                <div>
-                  <h3>{t.changelog.sections[section.kind]}</h3>
-                  <ul>
-                    {section.items[locale].slice(0, 3).map((item) => (
-                      <li>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-          </div>
-        )
-      }
-    </div>
-  </section>
-
-  <section class="sk-section l-break-product-source">
-    <div class="sk-container l-break-product-source-inner">
-      <div>
-        <h2 class="sk-title">{t.product.sourceTitle}</h2>
-        <p class="sk-lead">{t.product.sourceBody}</p>
-      </div>
-      <a
-        class="sk-button sk-button--primary"
-        href={breakLinks.repo}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Icon name="github" size="sm" />
-        {t.product.sourceCta}
-      </a>
     </div>
   </section>
 </BaseLayout>
 
 <style>
+  /* ── Hero ───────────────────────────────────────────────────── */
   .l-break-product-hero {
-    padding-block: var(--sk-space-xl) var(--sk-space-4xl);
+    position: relative;
+    padding-block: var(--sk-space-lg) var(--sk-space-4xl);
+    overflow: clip;
+    background: var(--sk-gradient-break-hero);
+    color: hsl(var(--sk-color-break-on-deep));
   }
 
   .l-break-product-breadcrumb {
     display: flex;
     align-items: center;
     gap: var(--sk-space-xs);
-    color: hsl(var(--sk-color-muted));
+    color: hsl(var(--sk-color-break-on-deep-soft));
     font-size: var(--sk-text-xs);
   }
 
@@ -301,7 +375,15 @@ const schema = {
   }
 
   .l-break-product-breadcrumb a:hover {
-    color: hsl(var(--sk-color-brand));
+    color: hsl(var(--sk-color-break-on-deep));
+  }
+
+  .l-break-product-hero-grid {
+    display: grid;
+    align-items: center;
+    gap: var(--sk-space-3xl);
+    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+    margin-block-start: var(--sk-space-2xl);
   }
 
   .l-break-product-brand {
@@ -310,212 +392,429 @@ const schema = {
     gap: var(--sk-space-sm);
   }
 
-  .l-break-product-brand .sk-eyebrow {
-    margin: 0;
-  }
-
-  .l-break-product-hero-grid {
-    display: grid;
-    align-items: start;
-    gap: var(--sk-space-2xl);
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-    margin-block-start: var(--sk-space-xl);
+  .l-break-product-kicker {
+    color: hsl(var(--sk-color-break-on-deep-soft));
+    font-size: var(--sk-text-xs);
+    font-weight: var(--sk-weight-semibold);
+    letter-spacing: var(--sk-tracking-wide);
+    line-height: var(--sk-leading-snug);
+    text-transform: uppercase;
   }
 
   .l-break-product-title {
-    max-inline-size: 14ch;
-    margin-block-start: var(--sk-space-md);
+    max-inline-size: 13ch;
+    margin-block-start: var(--sk-space-lg);
     font-family: var(--sk-font-display);
-    font-size: var(--sk-text-section);
+    font-size: var(--sk-text-hero);
     font-weight: var(--sk-weight-regular);
     letter-spacing: var(--sk-tracking-tight);
     line-height: var(--sk-leading-tight);
     text-wrap: balance;
   }
 
-  .l-break-product-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--sk-space-xs);
+  .l-break-product-hero-lead {
+    max-inline-size: var(--sk-reading);
     margin-block-start: var(--sk-space-lg);
+    color: hsl(var(--sk-color-break-on-deep-soft));
+    font-size: var(--sk-text-lg);
+    line-height: var(--sk-leading-normal);
+    text-wrap: pretty;
   }
 
-  .l-break-product-tags li {
-    padding: var(--sk-space-2xs) var(--sk-space-sm);
-    border: var(--sk-edge) solid hsl(var(--sk-color-line));
-    border-radius: var(--sk-radius-full);
-    color: hsl(var(--sk-color-muted));
+  .l-break-product-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--sk-space-sm);
+    margin-block-start: var(--sk-space-xl);
+  }
+
+  .l-break-product-cta {
+    background: hsl(var(--sk-color-break-cream));
+    color: hsl(var(--sk-color-break-deep));
+    box-shadow: var(--sk-shadow-card);
+  }
+
+  .l-break-product-cta:hover {
+    background: hsl(var(--sk-color-break-on-deep));
+  }
+
+  .l-break-product-cta-ghost {
+    border-color: hsl(var(--sk-color-break-line-deep));
+    color: hsl(var(--sk-color-break-on-deep));
+  }
+
+  .l-break-product-cta-ghost:hover {
+    border-color: hsl(var(--sk-color-break-glow) / 0.6);
+    background: hsl(var(--sk-color-break-glow) / 0.1);
+  }
+
+  .l-break-product-facts {
+    display: grid;
+    gap: var(--sk-space-sm) var(--sk-space-xl);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-block-start: var(--sk-space-2xl);
+    padding-block-start: var(--sk-space-md);
+    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
+    color: hsl(var(--sk-color-break-on-deep));
+    font-family: var(--sk-font-mono);
     font-size: var(--sk-text-xs);
-    line-height: var(--sk-leading-snug);
+  }
+
+  .l-break-product-facts li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--sk-space-xs);
+  }
+
+  .l-break-product-facts li span {
+    color: hsl(var(--sk-color-break-on-deep-soft));
+    font-family: var(--sk-font-body);
+    font-size: var(--sk-text-xs);
+    letter-spacing: var(--sk-tracking-wide);
+    text-transform: uppercase;
+  }
+
+  .l-break-product-hero-stage {
+    position: relative;
+    display: grid;
+    place-items: center;
+    padding-block: var(--sk-space-xl);
+    isolation: isolate;
+  }
+
+  .l-break-product-hero-ring {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    inline-size: 96%;
+    aspect-ratio: 1;
+    border: var(--sk-edge) solid hsl(var(--sk-color-break-glow) / 0.16);
+    border-radius: var(--sk-radius-full);
+    transform: translate(-50%, -50%);
+  }
+
+  .l-break-product-hero-ring::after {
+    content: '';
+    position: absolute;
+    inset: 11%;
+    border: var(--sk-edge) solid hsl(var(--sk-color-break-glow) / 0.1);
+    border-radius: var(--sk-radius-full);
   }
 
   .l-break-product-hero-window {
-    padding: var(--sk-space-lg);
-    border: var(--sk-edge) solid hsl(var(--sk-color-line));
-    border-radius: var(--sk-radius-lg);
-    background: var(--sk-gradient-stage);
-    box-shadow: var(--sk-shadow-card);
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 var(--sk-space-lg) var(--sk-space-2xl) hsl(var(--sk-color-break-deeper) / 0.45));
   }
 
   .l-break-product-hero-window img {
     inline-size: 100%;
     block-size: auto;
-    border-radius: var(--sk-radius-sm);
+    border-radius: var(--sk-radius-md);
   }
 
-  .l-break-product-download {
-    padding-block: 0 var(--sk-space-4xl);
+  .l-break-product-hero-card {
+    position: absolute;
+    z-index: 2;
+    inset-block-end: calc(var(--sk-space-3xl) * -1);
+    inset-inline-start: calc(var(--sk-space-xl) * -1);
+    inline-size: 46%;
+    filter: drop-shadow(0 var(--sk-space-md) var(--sk-space-lg) hsl(var(--sk-color-break-deeper) / 0.5));
   }
 
-  .l-break-product-download .sk-container {
-    display: flex;
-    justify-content: center;
-  }
-
-  .l-break-product-download :global(.l-download) {
+  .l-break-product-hero-card img {
     inline-size: 100%;
-    max-inline-size: 40rem;
+    block-size: auto;
   }
 
-  .l-break-product-gallery-section {
-    padding-block: var(--sk-space-4xl);
-    border-block: var(--sk-edge) solid hsl(var(--sk-color-line));
-    background: hsl(var(--sk-color-paper-sunk) / 0.35);
-  }
-
-  .l-break-product-section-head {
+  /* ── Section heads ──────────────────────────────────────────── */
+  .l-break-product-head {
     display: grid;
     align-items: end;
     gap: var(--sk-space-xl);
     grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
   }
 
-  .l-break-product-section-head .sk-lead {
+  .l-break-product-head .sk-lead {
     margin-block-start: 0;
   }
 
-  .l-break-product-gallery {
-    display: grid;
-    gap: var(--sk-space-md);
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  .l-break-product-day .sk-eyebrow,
+  .l-break-product-insights .sk-eyebrow,
+  .l-break-product-closing .sk-eyebrow {
+    color: hsl(var(--sk-color-break-forest-strong));
+  }
+
+  /* ── A day with Break ───────────────────────────────────────── */
+  .l-break-product-day-list {
     margin-block-start: var(--sk-space-2xl);
   }
 
-  .l-break-product-screen figure {
+  .l-break-product-day-step {
+    display: grid;
+    align-items: center;
+    gap: var(--sk-space-xl);
+    grid-template-columns: minmax(0, 0.3fr) minmax(0, 0.8fr) minmax(0, 1.15fr);
+    padding-block: var(--sk-space-xl);
+    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+  }
+
+  .l-break-product-day-step:last-child {
+    border-block-end: var(--sk-edge) solid hsl(var(--sk-color-line));
+  }
+
+  .l-break-product-day-marker {
     display: flex;
     flex-direction: column;
-    gap: var(--sk-space-sm);
-    block-size: 100%;
+    gap: var(--sk-space-xs);
   }
 
-  .l-break-product-screen-frame {
-    display: grid;
-    place-items: center;
-    block-size: 24rem;
-    padding: var(--sk-space-sm);
-    overflow: hidden;
-    border: var(--sk-edge) solid hsl(var(--sk-color-line));
-    border-radius: var(--sk-radius-md);
-    background: var(--sk-gradient-stage);
+  .l-break-product-day-marker time {
+    color: hsl(var(--sk-color-break-forest-strong));
+    font-family: var(--sk-font-mono);
+    font-size: var(--sk-text-xl);
+    letter-spacing: var(--sk-tracking-tight);
   }
 
-  .l-break-product-screen-frame img {
-    max-block-size: 100%;
-    inline-size: auto;
-    max-inline-size: 100%;
-    border-radius: var(--sk-radius-sm);
-    box-shadow: var(--sk-shadow-soft);
-  }
-
-  .l-break-product-screen.is-wide .l-break-product-screen-frame img {
-    inline-size: 100%;
-  }
-
-  .l-break-product-screen figcaption {
+  .l-break-product-day-marker span {
     color: hsl(var(--sk-color-muted));
+    font-family: var(--sk-font-mono);
     font-size: var(--sk-text-xs);
+    letter-spacing: var(--sk-tracking-wide);
+  }
+
+  .l-break-product-day-copy h3 {
+    font-family: var(--sk-font-display);
+    font-size: var(--sk-text-2xl);
+    font-weight: var(--sk-weight-regular);
+    letter-spacing: var(--sk-tracking-tight);
+    line-height: var(--sk-leading-snug);
+  }
+
+  .l-break-product-day-copy p {
+    max-inline-size: var(--sk-reading);
+    margin-block-start: var(--sk-space-sm);
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-base);
     line-height: var(--sk-leading-normal);
   }
 
+  .l-break-product-day-visual {
+    display: grid;
+    place-items: center;
+    padding: clamp(var(--sk-space-lg), 3vw, var(--sk-space-2xl));
+    border: var(--sk-edge) solid hsl(var(--sk-color-line-soft));
+    border-radius: var(--sk-radius-lg);
+    background: var(--sk-gradient-break-canvas);
+  }
+
+  .l-break-product-day-visual img {
+    inline-size: 100%;
+    block-size: auto;
+    border-radius: var(--sk-radius-sm);
+  }
+
+  .l-break-product-day-visual.is-window img {
+    box-shadow: var(--sk-shadow-card);
+  }
+
+  .l-break-product-day-visual.is-card img {
+    inline-size: 76%;
+    filter: drop-shadow(0 var(--sk-space-md) var(--sk-space-lg) hsl(var(--sk-color-break-deep) / 0.28));
+  }
+
+  .l-break-product-day-visual figcaption {
+    margin-block-start: var(--sk-space-md);
+    color: hsl(var(--sk-color-break-forest-strong));
+    font-family: var(--sk-font-mono);
+    font-size: var(--sk-text-xs);
+  }
+
+  /* ── Insights ───────────────────────────────────────────────── */
+  .l-break-product-insights {
+    border-block: var(--sk-edge) solid hsl(var(--sk-color-line));
+    background: hsl(var(--sk-color-break-mist));
+  }
+
+  .l-break-product-insights-grid {
+    display: grid;
+    align-items: center;
+    gap: var(--sk-space-2xl);
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+
+  .l-break-product-insights-copy .sk-lead {
+    max-inline-size: var(--sk-reading);
+  }
+
+  .l-break-product-insights-points {
+    display: flex;
+    flex-direction: column;
+    margin-block-start: var(--sk-space-xl);
+  }
+
+  .l-break-product-insights-points li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--sk-space-sm);
+    padding-block: var(--sk-space-md);
+    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+  }
+
+  .l-break-product-insights-points li:last-child {
+    border-block-end: var(--sk-edge) solid hsl(var(--sk-color-line));
+  }
+
+  .l-break-product-insights-points svg {
+    flex: none;
+    margin-block-start: var(--sk-space-xs);
+    color: hsl(var(--sk-color-break-forest));
+  }
+
+  .l-break-product-insights-points h3 {
+    font-size: var(--sk-text-base);
+    font-weight: var(--sk-weight-semibold);
+    line-height: var(--sk-leading-snug);
+  }
+
+  .l-break-product-insights-points p {
+    margin-block-start: var(--sk-space-3xs);
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-sm);
+    line-height: var(--sk-leading-normal);
+  }
+
+  .l-break-product-insights-figure {
+    padding: clamp(var(--sk-space-md), 2.5vw, var(--sk-space-xl));
+    border: var(--sk-edge) solid hsl(var(--sk-color-line));
+    border-radius: var(--sk-radius-lg);
+    background: hsl(var(--sk-color-paper-raised) / 0.7);
+    box-shadow: var(--sk-shadow-card);
+  }
+
+  .l-break-product-insights-figure img {
+    inline-size: 100%;
+    block-size: auto;
+    border-radius: var(--sk-radius-sm);
+  }
+
+  .l-break-product-insights-figure figcaption {
+    margin-block-start: var(--sk-space-sm);
+    color: hsl(var(--sk-color-muted));
+    font-family: var(--sk-font-mono);
+    font-size: var(--sk-text-xs);
+  }
+
+  /* ── Features ───────────────────────────────────────────────── */
   .l-break-product-features {
-    padding-block-start: var(--sk-space-4xl);
+    background: var(--sk-gradient-break-band);
+    color: hsl(var(--sk-color-break-on-deep));
+  }
+
+  .l-break-product-head-dark .sk-eyebrow {
+    color: hsl(var(--sk-color-break-glow));
+  }
+
+  .l-break-product-head-dark .sk-lead {
+    color: hsl(var(--sk-color-break-on-deep-soft));
   }
 
   .l-break-product-feature-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     margin-block-start: var(--sk-space-2xl);
-    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
   }
 
   .l-break-product-feature-grid li {
-    padding: var(--sk-space-lg);
-    border-block-end: var(--sk-edge) solid hsl(var(--sk-color-line));
-    border-inline-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+    padding: var(--sk-space-xl);
+    border-block-end: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
+    border-inline-start: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
   }
 
   .l-break-product-feature-grid li:nth-child(3n + 1) {
-    border-inline-start: 0;
     padding-inline-start: 0;
+    border-inline-start: 0;
   }
 
-  .l-break-product-feature-index {
-    color: hsl(var(--sk-color-accent));
-    font-family: var(--sk-font-mono);
-    font-size: var(--sk-text-xs);
-    letter-spacing: var(--sk-tracking-wide);
+  .l-break-product-feature-icon {
+    display: grid;
+    place-items: center;
+    inline-size: var(--sk-control-height);
+    block-size: var(--sk-control-height);
+    border: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
+    border-radius: var(--sk-radius-sm);
+    background: hsl(var(--sk-color-break-glow) / 0.1);
+    color: hsl(var(--sk-color-break-glow));
   }
 
   .l-break-product-feature-grid h3 {
-    margin-block-start: var(--sk-space-sm);
+    margin-block-start: var(--sk-space-md);
     font-size: var(--sk-text-lg);
     font-weight: var(--sk-weight-semibold);
     line-height: var(--sk-leading-snug);
   }
 
   .l-break-product-feature-grid p {
+    max-inline-size: 32ch;
     margin-block-start: var(--sk-space-xs);
-    color: hsl(var(--sk-color-muted));
+    color: hsl(var(--sk-color-break-on-deep-soft));
     font-size: var(--sk-text-sm);
     line-height: var(--sk-leading-normal);
   }
 
+  /* ── Fine print ─────────────────────────────────────────────── */
+  .l-break-product-fineprint {
+    padding-block: var(--sk-space-xl);
+    border-block-end: var(--sk-edge) solid hsl(var(--sk-color-line));
+  }
+
   .l-break-product-details {
-    padding-block: var(--sk-space-4xl);
-    border-block: var(--sk-edge) solid hsl(var(--sk-color-line));
-    background: hsl(var(--sk-color-paper-sunk) / 0.35);
+    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
   }
 
-  .l-break-product-detail-grid {
-    display: grid;
-    gap: var(--sk-space-xl);
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .l-break-product-details summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sk-space-md);
+    padding-block: var(--sk-space-md);
+    color: hsl(var(--sk-color-ink-soft));
+    font-size: var(--sk-text-sm);
+    font-weight: var(--sk-weight-medium);
+    cursor: pointer;
+    list-style: none;
   }
 
-  .l-break-product-detail {
-    padding: var(--sk-space-lg);
-    border: var(--sk-edge) solid hsl(var(--sk-color-line));
-    border-radius: var(--sk-radius-lg);
-    background: hsl(var(--sk-color-paper-raised) / 0.6);
+  .l-break-product-details summary::-webkit-details-marker {
+    display: none;
   }
 
-  .l-break-product-detail h2 {
-    font-family: var(--sk-font-display);
-    font-size: var(--sk-text-xl);
-    font-weight: var(--sk-weight-regular);
-    letter-spacing: var(--sk-tracking-tight);
-    line-height: var(--sk-leading-snug);
+  .l-break-product-details summary svg {
+    flex: none;
+    color: hsl(var(--sk-color-break-forest));
+    transition: transform var(--sk-duration-base) var(--sk-ease);
   }
 
-  .l-break-product-detail p {
-    margin-block-start: var(--sk-space-sm);
+  .l-break-product-details[open] summary svg {
+    transform: rotate(180deg);
+  }
+
+  .l-break-product-details-body {
+    padding-block-end: var(--sk-space-xl);
+  }
+
+  .l-break-product-details-lead {
+    max-inline-size: var(--sk-reading);
+    margin-block-end: var(--sk-space-lg);
     color: hsl(var(--sk-color-muted));
     font-size: var(--sk-text-sm);
     line-height: var(--sk-leading-normal);
   }
 
   .l-break-product-table-wrap {
-    margin-block-start: var(--sk-space-2xl);
     overflow-x: auto;
     border: var(--sk-edge) solid hsl(var(--sk-color-line));
     border-radius: var(--sk-radius-md);
@@ -566,16 +865,37 @@ const schema = {
     line-height: var(--sk-leading-normal);
   }
 
-  .l-break-product-changelog {
-    padding-block: var(--sk-space-4xl);
-    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+  .l-break-product-details-grid {
+    display: grid;
+    gap: var(--sk-space-xl);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-block-start: var(--sk-space-xl);
   }
 
-  .l-break-product-changelog-grid {
+  .l-break-product-details-grid h3 {
+    font-size: var(--sk-text-sm);
+    font-weight: var(--sk-weight-semibold);
+    letter-spacing: var(--sk-tracking-wide);
+    text-transform: uppercase;
+  }
+
+  .l-break-product-details-grid p {
+    margin-block-start: var(--sk-space-xs);
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-sm);
+    line-height: var(--sk-leading-normal);
+  }
+
+  /* ── Closing ────────────────────────────────────────────────── */
+  .l-break-product-closing {
+    padding-block: var(--sk-space-4xl);
+  }
+
+  .l-break-product-changelog {
     display: grid;
     align-items: start;
     gap: var(--sk-space-2xl);
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
   }
 
   .l-break-product-release-line {
@@ -607,7 +927,7 @@ const schema = {
   }
 
   .l-break-product-release-notes h3 {
-    color: hsl(var(--sk-color-accent-strong));
+    color: hsl(var(--sk-color-break-forest-strong));
     font-size: var(--sk-text-xs);
     font-weight: var(--sk-weight-semibold);
     letter-spacing: var(--sk-tracking-wide);
@@ -637,31 +957,78 @@ const schema = {
     inline-size: var(--sk-space-2xs);
     block-size: var(--sk-space-2xs);
     border-radius: var(--sk-radius-full);
-    background: hsl(var(--sk-color-accent));
+    background: hsl(var(--sk-color-break-forest));
   }
 
-  .l-break-product-source-inner {
+  .l-break-product-source {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: var(--sk-space-2xl);
+    margin-block-start: var(--sk-space-2xl);
+    padding-block-start: var(--sk-space-xl);
+    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
   }
 
-  .l-break-product-source .sk-title {
-    max-inline-size: 16ch;
+  .l-break-product-source h2 {
+    font-family: var(--sk-font-display);
+    font-size: var(--sk-text-xl);
+    font-weight: var(--sk-weight-regular);
+    letter-spacing: var(--sk-tracking-tight);
+    line-height: var(--sk-leading-snug);
   }
 
+  .l-break-product-source p {
+    max-inline-size: var(--sk-reading);
+    margin-block-start: var(--sk-space-xs);
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-sm);
+    line-height: var(--sk-leading-normal);
+  }
+
+  /* ── Responsive ─────────────────────────────────────────────── */
   @media (max-width: 1023px) {
     .l-break-product-hero-grid {
       grid-template-columns: 1fr;
     }
 
-    .l-break-product-hero-window {
-      max-inline-size: 36rem;
+    .l-break-product-hero-stage {
+      max-inline-size: var(--sk-container);
+      inline-size: 100%;
+      margin-inline: auto;
     }
 
-    .l-break-product-gallery {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    .l-break-product-hero-card {
+      inset-inline-start: var(--sk-space-lg);
+    }
+
+    .l-break-product-day-step {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    }
+
+    .l-break-product-day-marker {
+      grid-column: 1 / -1;
+      flex-direction: row;
+      align-items: baseline;
+      gap: var(--sk-space-sm);
+    }
+
+    .l-break-product-day-visual {
+      grid-column: 2;
+      grid-row: 2;
+    }
+
+    .l-break-product-day-copy {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    .l-break-product-insights-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .l-break-product-insights-figure {
+      max-inline-size: var(--sk-container);
     }
 
     .l-break-product-feature-grid {
@@ -669,42 +1036,54 @@ const schema = {
     }
 
     .l-break-product-feature-grid li:nth-child(3n + 1) {
-      border-inline-start: var(--sk-edge) solid hsl(var(--sk-color-line));
-      padding-inline-start: var(--sk-space-lg);
+      padding-inline-start: var(--sk-space-xl);
+      border-inline-start: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
     }
 
     .l-break-product-feature-grid li:nth-child(2n + 1) {
-      border-inline-start: 0;
       padding-inline-start: 0;
+      border-inline-start: 0;
     }
 
-    .l-break-product-detail-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .l-break-product-changelog-grid {
+    .l-break-product-changelog {
       grid-template-columns: 1fr;
     }
   }
 
   @media (max-width: 767px) {
-    .l-break-product-section-head {
+    .l-break-product-head {
       grid-template-columns: 1fr;
     }
 
-    .l-break-product-source-inner {
+    .l-break-product-day-step {
+      grid-template-columns: 1fr;
+    }
+
+    .l-break-product-day-marker {
+      grid-column: auto;
+    }
+
+    .l-break-product-day-copy,
+    .l-break-product-day-visual {
+      grid-column: auto;
+      grid-row: auto;
+    }
+
+    .l-break-product-details-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .l-break-product-source {
       flex-direction: column;
       align-items: flex-start;
     }
   }
 
   @media (max-width: 639px) {
-    .l-break-product-gallery {
-      grid-template-columns: 1fr;
-    }
-
-    .l-break-product-screen-frame {
-      block-size: 28rem;
+    .l-break-product-hero-card {
+      inset-block-end: calc(var(--sk-space-md) * -1);
+      inset-inline-start: var(--sk-space-xs);
+      inline-size: 58%;
     }
 
     .l-break-product-feature-grid {
@@ -714,7 +1093,7 @@ const schema = {
     .l-break-product-feature-grid li,
     .l-break-product-feature-grid li:nth-child(3n + 1),
     .l-break-product-feature-grid li:nth-child(2n + 1) {
-      padding-inline-start: 0;
+      padding-inline: 0;
       border-inline-start: 0;
     }
   }

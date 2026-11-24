@@ -1,10 +1,12 @@
 ---
 import { Image } from 'astro:assets';
 import Icon from '../../../ui/Icon.astro';
+import BreakMark from './BreakMark.astro';
+import mainFocus from '../assets/screens/main-focus.png';
+import { release } from '../data/releases';
 import { localizedPath, type Locale } from '../../../i18n/config';
 import { breakApp } from '../manifest';
 import { useBreakMessages } from '../i18n/ui';
-import windowShot from '../assets/screens/main-focus.png';
 
 interface Props {
   locale: Locale;
@@ -13,77 +15,93 @@ interface Props {
 const { locale } = Astro.props;
 const t = useBreakMessages(locale);
 const productHref = localizedPath(locale, breakApp.route);
-const downloadHref = `${productHref}#download`;
-const docsHref = localizedPath(locale, breakApp.docsRoute);
 ---
 
 <article class="l-break-home-card">
   <div class="l-break-home-card-shot">
     <Image
-      src={windowShot}
-      alt={t.homeCard.title}
+      src={mainFocus}
+      alt={t.homeCard.windowAlt}
       widths={[240, 360, 480]}
-      sizes="(max-width: 639px) 88vw, 13rem"
+      sizes="(max-width: 639px) 14rem, 12rem"
       loading="lazy"
-      quality={82}
+      quality={86}
     />
   </div>
 
-  <div class="l-break-home-card-copy">
-    <p class="l-break-home-card-eyebrow">{t.homeCard.eyebrow}</p>
+  <div class="l-break-home-card-main">
+    <div class="l-break-home-card-brand">
+      <BreakMark size="sm" />
+      <span class="l-break-home-card-name">{t.product.eyebrow}</span>
+      <span class="l-break-home-card-badge">{t.homeCard.eyebrow}</span>
+    </div>
+
     <h3>{t.homeCard.title}</h3>
     <p class="l-break-home-card-lead">{t.homeCard.lead}</p>
-    <p class="l-break-home-card-note">{t.homeCard.note}</p>
-  </div>
 
-  <div class="l-break-home-card-actions">
-    <a class="sk-button sk-button--primary sk-button--small" href={downloadHref}>
-      <Icon name="download" size="sm" />
-      {t.homeCard.primaryCta}
-    </a>
-    <a class="sk-text-link l-break-home-card-link" href={docsHref}>
-      {t.homeCard.secondaryCta}
-      <Icon name="arrow-right" size="sm" />
-    </a>
+    <div class="l-break-home-card-foot">
+      <p>v{release.version} · {t.product.hero.platform} · {t.homeCard.note}</p>
+      <a href={productHref}>
+        {t.homeCard.primaryCta}
+        <Icon name="arrow-right" size="sm" />
+      </a>
+    </div>
   </div>
 </article>
 
 <style>
   .l-break-home-card {
     display: grid;
-    align-items: center;
+    align-items: start;
     gap: var(--sk-space-lg);
-    grid-template-columns: minmax(0, 13rem) minmax(0, 1fr) auto;
-    padding: clamp(var(--sk-space-lg), 3vw, var(--sk-space-xl));
+    grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
+    padding: clamp(var(--sk-space-lg), 2.5vw, var(--sk-space-xl));
     border: var(--sk-edge) solid hsl(var(--sk-color-line));
-    border-radius: var(--sk-radius-xl);
+    border-radius: var(--sk-radius-lg);
     background: hsl(var(--sk-color-paper-raised) / 0.72);
     box-shadow: var(--sk-shadow-card);
   }
 
   .l-break-home-card-shot {
-    padding: var(--sk-space-sm);
-    border: var(--sk-edge) solid hsl(var(--sk-color-line));
-    border-radius: var(--sk-radius-lg);
-    background: hsl(var(--sk-color-paper-sunk) / 0.55);
+    padding: var(--sk-space-xs);
+    border: var(--sk-edge) solid hsl(var(--sk-color-line-soft));
+    border-radius: var(--sk-radius-md);
+    background: var(--sk-gradient-stage);
   }
 
   .l-break-home-card-shot img {
     inline-size: 100%;
     block-size: auto;
-    border-radius: var(--sk-radius-sm);
+    border-radius: var(--sk-radius-xs);
   }
 
-  .l-break-home-card-eyebrow {
-    color: hsl(var(--sk-color-accent-strong));
+  .l-break-home-card-brand {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--sk-space-xs);
+  }
+
+  .l-break-home-card-name {
+    font-size: var(--sk-text-sm);
+    font-weight: var(--sk-weight-semibold);
+    line-height: var(--sk-leading-snug);
+  }
+
+  .l-break-home-card-badge {
+    padding: var(--sk-space-xs) var(--sk-space-xs);
+    border-radius: var(--sk-radius-full);
+    background: hsl(var(--sk-color-break-forest-soft));
+    color: hsl(var(--sk-color-break-forest-strong));
     font-size: var(--sk-text-xs);
     font-weight: var(--sk-weight-semibold);
     letter-spacing: var(--sk-tracking-wide);
+    line-height: var(--sk-leading-none);
     text-transform: uppercase;
   }
 
   .l-break-home-card h3 {
-    margin-block-start: var(--sk-space-xs);
+    margin-block-start: var(--sk-space-sm);
     font-family: var(--sk-font-display);
     font-size: var(--sk-text-xl);
     font-weight: var(--sk-weight-regular);
@@ -92,50 +110,43 @@ const docsHref = localizedPath(locale, breakApp.docsRoute);
   }
 
   .l-break-home-card-lead {
-    max-inline-size: var(--sk-reading);
     margin-block-start: var(--sk-space-xs);
-    color: hsl(var(--sk-color-ink-soft));
+    color: hsl(var(--sk-color-muted));
     font-size: var(--sk-text-sm);
     line-height: var(--sk-leading-normal);
   }
 
-  .l-break-home-card-note {
-    margin-block-start: var(--sk-space-2xs);
+  .l-break-home-card-foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sk-space-sm);
+    margin-block-start: var(--sk-space-md);
+    padding-block-start: var(--sk-space-sm);
+    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line-soft));
+  }
+
+  .l-break-home-card-foot p {
     color: hsl(var(--sk-color-muted));
+    font-family: var(--sk-font-mono);
     font-size: var(--sk-text-xs);
     line-height: var(--sk-leading-normal);
   }
 
-  .l-break-home-card-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--sk-space-sm);
-  }
-
-  .l-break-home-card-link {
+  .l-break-home-card-foot a {
     display: inline-flex;
     align-items: center;
     gap: var(--sk-space-xs);
+    color: hsl(var(--sk-color-break-forest-strong));
     font-size: var(--sk-text-sm);
+    font-weight: var(--sk-weight-medium);
     text-decoration: none;
+    white-space: nowrap;
   }
 
-  .l-break-home-card-link:hover {
+  .l-break-home-card-foot a:hover {
     gap: var(--sk-space-sm);
-  }
-
-  @media (max-width: 1023px) {
-    .l-break-home-card {
-      grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
-    }
-
-    .l-break-home-card-actions {
-      grid-column: 1 / -1;
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items: center;
-    }
   }
 
   @media (max-width: 639px) {
@@ -144,7 +155,7 @@ const docsHref = localizedPath(locale, breakApp.docsRoute);
     }
 
     .l-break-home-card-shot {
-      max-inline-size: 16rem;
+      max-inline-size: 14rem;
     }
   }
 </style>

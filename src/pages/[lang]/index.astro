@@ -1,7 +1,8 @@
 ---
 import HomeView from '../../brand/views/HomeView.astro';
 import BreakHomeCard from '../../apps/siderkit-break/components/BreakHomeCard.astro';
-import { locales, type Locale } from '../../i18n/config';
+import { breakApp } from '../../apps/siderkit-break/manifest';
+import { localizedPath, locales, type Locale } from '../../i18n/config';
 
 export function getStaticPaths() {
   return locales
@@ -12,6 +13,6 @@ export function getStaticPaths() {
 const locale = Astro.params.lang as Locale;
 ---
 
-<HomeView locale={locale}>
+<HomeView locale={locale} featuredHref={localizedPath(locale, breakApp.route)}>
   <BreakHomeCard slot="apps" locale={locale} />
 </HomeView>

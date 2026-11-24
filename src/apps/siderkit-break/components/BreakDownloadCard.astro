@@ -10,122 +10,115 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = useBreakMessages(locale);
-const isPublished = release.published && release.windows !== null;
 const isPrerelease = release.version.includes('-');
-const badgeLabel = isPrerelease
-  ? t.labels.releaseCandidate
-  : isPublished
-    ? t.labels.signedBuild
-    : t.labels.releaseCandidate;
-const note = isPublished
-  ? isPrerelease
-    ? t.product.publishedCandidateNote
-    : t.product.publishedNote
-  : t.product.releaseCandidateNote;
-const windowsUrl = isPublished && release.windows ? release.windows.url : release.github;
-const windowsLabel = isPublished ? t.product.downloadWindows : t.product.downloadGithub;
-const macUrl = release.macos?.url ?? release.github;
-const linuxUrl = release.linux?.url ?? release.github;
+const badgeLabel = isPrerelease ? t.labels.releaseCandidate : t.labels.signedBuild;
+const windowsUrl = release.published && release.windows ? release.windows.url : release.github;
+const windowsLabel = release.published && release.windows
+  ? t.product.download.downloadWindows
+  : t.product.download.downloadGithub;
 ---
 
-<section class="l-download" id="download" aria-labelledby="download-title">
-  <div class="l-break-download-head">
-    <div>
-      <p class="l-break-download-eyebrow">{t.product.eyebrow}</p>
-      <h2 class="l-break-download-title" id="download-title">{t.product.downloadTitle}</h2>
-    </div>
-    <span class:list={['l-break-download-status', isPublished ? 'is-published' : 'is-candidate']}>
-      {badgeLabel}
-    </span>
-  </div>
+<section class="l-break-download" id="download" aria-labelledby="download-title">
+  <div class="sk-container">
+    <div class="l-break-download-panel">
+      <div class="l-break-download-copy">
+        <p class="l-break-download-eyebrow">{t.product.download.eyebrow}</p>
+        <h2 class="l-break-download-title" id="download-title">{t.product.download.title}</h2>
+        <p class="l-break-download-lead">{t.product.download.lead}</p>
+        <p class="l-break-download-note">{t.product.download.note}</p>
+        <p class="l-break-download-checksum-note">{t.product.download.checksumNote}</p>
+      </div>
 
-  <a
-    class="sk-button sk-button--primary l-break-download-primary"
-    href={windowsUrl}
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <Icon name={isPublished ? 'download' : 'github'} size="sm" />
-    {windowsLabel}
-    <span class="sk-visually-hidden">({t.labels.opensInNewTab})</span>
-  </a>
+      <div class="l-break-download-action">
+        <span class="l-break-download-badge">{badgeLabel}</span>
+        <p class="l-break-download-platform">{t.product.hero.platform}</p>
 
-  <p class="l-break-download-meta">{t.product.windowsMeta}</p>
+        <a
+          class="sk-button l-break-download-primary"
+          href={windowsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon name={release.published && release.windows ? 'download' : 'github'} size="sm" />
+          {windowsLabel}
+          <span class="sk-visually-hidden">({t.labels.opensInNewTab})</span>
+        </a>
 
-  <dl class="l-break-download-facts">
-    <div>
-      <dt>{t.product.versionLabel}</dt>
-      <dd>{release.version}</dd>
-    </div>
-    <div>
-      <dt>{t.product.releasedLabel}</dt>
-      <dd>{formatDate(release.pubDate, locale)}</dd>
-    </div>
-    {
-      release.windows && (
-        <>
-          <div>
-            <dt>{t.product.sizeLabel}</dt>
-            <dd>{formatSize(release.windows.size, locale)}</dd>
-          </div>
-          <div class="l-break-download-hash">
-            <dt>{t.product.checksumLabel}</dt>
-            <dd>
-              <code>{release.windows.sha256}</code>
-            </dd>
-          </div>
-        </>
-      )
-    }
-  </dl>
-
-  <div class="l-break-download-alternatives">
-    {
-      release.macos && (
-        <a href={macUrl} target="_blank" rel="noopener noreferrer">
-          <span>{t.product.downloadMac}</span>
+        <a
+          class="sk-button l-break-download-secondary"
+          href={release.github}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {t.product.download.downloadGithub}
           <Icon name="external" size="sm" />
         </a>
-      )
-    }
-    {
-      release.linux && (
-        <a href={linuxUrl} target="_blank" rel="noopener noreferrer">
-          <span>{t.product.downloadLinux}</span>
-          <Icon name="external" size="sm" />
-        </a>
-      )
-    }
-    <a href={release.github} target="_blank" rel="noopener noreferrer">
-      <span>{t.product.downloadGithub}</span>
-      <Icon name="external" size="sm" />
-    </a>
-  </div>
 
-  <p class="l-break-download-note">
-    {note}
-  </p>
-  <p class="l-break-download-checksum">{t.product.checksumNote}</p>
+        <p class="l-break-download-meta">{t.product.download.windowsMeta}</p>
+
+        {
+          (release.macos || release.linux) && (
+            <div class="l-break-download-alternatives">
+              {release.macos && (
+                <a href={release.macos.url} target="_blank" rel="noopener noreferrer">
+                  <span>{t.product.download.downloadMac}</span>
+                  <Icon name="external" size="sm" />
+                </a>
+              )}
+              {release.linux && (
+                <a href={release.linux.url} target="_blank" rel="noopener noreferrer">
+                  <span>{t.product.download.downloadLinux}</span>
+                  <Icon name="external" size="sm" />
+                </a>
+              )}
+            </div>
+          )
+        }
+      </div>
+
+      <dl class="l-break-download-facts">
+        <div>
+          <dt>{t.product.download.versionLabel}</dt>
+          <dd>{release.version}</dd>
+        </div>
+        <div>
+          <dt>{t.product.download.releasedLabel}</dt>
+          <dd>{formatDate(release.pubDate, locale)}</dd>
+        </div>
+        <div>
+          <dt>{t.product.download.sizeLabel}</dt>
+          <dd>{release.windows ? formatSize(release.windows.size, locale) : '—'}</dd>
+        </div>
+        <div class="l-break-download-hash">
+          <dt>{t.product.download.checksumLabel}</dt>
+          <dd>
+            <code>{release.windows ? release.windows.sha256 : '—'}</code>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
 </section>
 
 <style>
-  .l-download {
-    padding: clamp(var(--sk-space-lg), 4vw, var(--sk-space-2xl));
-    border: var(--sk-edge) solid hsl(var(--sk-color-line));
-    border-radius: var(--sk-radius-lg);
-    background: hsl(var(--sk-color-paper-raised) / 0.82);
-    box-shadow: var(--sk-shadow-card);
+  .l-break-download {
+    padding-block: var(--sk-space-4xl);
   }
 
-  .l-break-download-head {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: var(--sk-space-md);
+  .l-break-download-panel {
+    display: grid;
+    gap: var(--sk-space-2xl);
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    padding: clamp(var(--sk-space-xl), 4.5vw, var(--sk-space-3xl));
+    border: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
+    border-radius: var(--sk-radius-xl);
+    background: var(--sk-gradient-break-band);
+    color: hsl(var(--sk-color-break-on-deep));
+    box-shadow: var(--sk-shadow-stage);
   }
 
   .l-break-download-eyebrow {
-    color: hsl(var(--sk-color-accent-strong));
+    color: hsl(var(--sk-color-break-glow));
     font-size: var(--sk-text-xs);
     font-weight: var(--sk-weight-semibold);
     letter-spacing: var(--sk-tracking-wide);
@@ -133,18 +126,53 @@ const linuxUrl = release.linux?.url ?? release.github;
   }
 
   .l-break-download-title {
-    margin-block-start: var(--sk-space-xs);
+    max-inline-size: 18ch;
+    margin-block-start: var(--sk-space-sm);
     font-family: var(--sk-font-display);
-    font-size: var(--sk-text-2xl);
+    font-size: var(--sk-text-section);
     font-weight: var(--sk-weight-regular);
     letter-spacing: var(--sk-tracking-tight);
-    line-height: var(--sk-leading-snug);
+    line-height: var(--sk-leading-tight);
+    text-wrap: balance;
   }
 
-  .l-break-download-status {
-    flex: none;
+  .l-break-download-lead {
+    max-inline-size: var(--sk-reading);
+    margin-block-start: var(--sk-space-md);
+    color: hsl(var(--sk-color-break-on-deep-soft));
+    font-size: var(--sk-text-lg);
+    line-height: var(--sk-leading-normal);
+  }
+
+  .l-break-download-note {
+    max-inline-size: var(--sk-reading);
+    margin-block-start: var(--sk-space-xl);
+    padding-block-start: var(--sk-space-md);
+    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
+    color: hsl(var(--sk-color-break-on-deep-soft));
+    font-size: var(--sk-text-sm);
+    line-height: var(--sk-leading-normal);
+  }
+
+  .l-break-download-checksum-note {
+    margin-block-start: var(--sk-space-sm);
+    color: hsl(var(--sk-color-break-on-deep-soft));
+    font-size: var(--sk-text-xs);
+    line-height: var(--sk-leading-normal);
+  }
+
+  .l-break-download-action {
+    align-self: center;
+    padding-inline-start: var(--sk-space-2xl);
+    border-inline-start: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
+  }
+
+  .l-break-download-badge {
+    display: inline-flex;
     padding: var(--sk-space-2xs) var(--sk-space-sm);
     border-radius: var(--sk-radius-full);
+    background: hsl(var(--sk-color-break-glow) / 0.14);
+    color: hsl(var(--sk-color-break-glow));
     font-size: var(--sk-text-xs);
     font-weight: var(--sk-weight-semibold);
     letter-spacing: var(--sk-tracking-wide);
@@ -152,72 +180,50 @@ const linuxUrl = release.linux?.url ?? release.github;
     text-transform: uppercase;
   }
 
-  .l-break-download-status.is-candidate {
-    background: hsl(var(--sk-color-accent-soft));
-    color: hsl(var(--sk-color-accent-strong));
-  }
-
-  .l-break-download-status.is-published {
-    background: hsl(var(--sk-color-brand-soft));
-    color: hsl(var(--sk-color-brand-strong));
-  }
-
-  .l-break-download-primary {
-    inline-size: 100%;
-    margin-block-start: var(--sk-space-lg);
-  }
-
-  .l-break-download-meta {
+  .l-break-download-platform {
     margin-block-start: var(--sk-space-sm);
-    color: hsl(var(--sk-color-muted));
-    font-size: var(--sk-text-xs);
-    text-align: center;
-  }
-
-  .l-break-download-facts {
-    display: grid;
-    gap: var(--sk-space-md);
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin-block-start: var(--sk-space-lg);
-    padding-block: var(--sk-space-md);
-    border-block: var(--sk-edge) solid hsl(var(--sk-color-line));
-  }
-
-  .l-break-download-facts dt {
-    color: hsl(var(--sk-color-muted));
-    font-size: var(--sk-text-xs);
-    letter-spacing: var(--sk-tracking-wide);
-    text-transform: uppercase;
-  }
-
-  .l-break-download-facts dd {
-    margin: var(--sk-space-3xs) 0 0;
-    color: hsl(var(--sk-color-ink-soft));
-    font-size: var(--sk-text-sm);
-    font-weight: var(--sk-weight-medium);
-  }
-
-  .l-break-download-facts code {
+    color: hsl(var(--sk-color-break-on-deep-soft));
     font-family: var(--sk-font-mono);
     font-size: var(--sk-text-xs);
   }
 
-  .l-break-download-hash {
-    grid-column: 1 / -1;
+  .l-break-download-primary {
+    inline-size: 100%;
+    margin-block-start: var(--sk-space-md);
+    background: hsl(var(--sk-color-break-cream));
+    color: hsl(var(--sk-color-break-deep));
+    box-shadow: var(--sk-shadow-card);
   }
 
-  .l-break-download-hash code {
-    display: block;
+  .l-break-download-primary:hover {
+    background: hsl(var(--sk-color-break-on-deep));
+  }
+
+  .l-break-download-secondary {
+    inline-size: 100%;
+    margin-block-start: var(--sk-space-xs);
+    border-color: hsl(var(--sk-color-break-line-deep));
+    color: hsl(var(--sk-color-break-on-deep));
+  }
+
+  .l-break-download-secondary:hover {
+    border-color: hsl(var(--sk-color-break-glow) / 0.6);
+    background: hsl(var(--sk-color-break-glow) / 0.1);
+  }
+
+  .l-break-download-meta {
+    margin-block-start: var(--sk-space-md);
+    color: hsl(var(--sk-color-break-on-deep-soft));
+    font-size: var(--sk-text-xs);
     line-height: var(--sk-leading-normal);
-    overflow-wrap: anywhere;
-    user-select: all;
+    text-align: center;
   }
 
   .l-break-download-alternatives {
     display: flex;
     flex-direction: column;
     gap: var(--sk-space-xs);
-    margin-block-start: var(--sk-space-md);
+    margin-block-start: var(--sk-space-sm);
   }
 
   .l-break-download-alternatives a {
@@ -225,37 +231,70 @@ const linuxUrl = release.linux?.url ?? release.github;
     align-items: center;
     justify-content: space-between;
     gap: var(--sk-space-sm);
-    padding: var(--sk-space-xs) 0;
-    color: hsl(var(--sk-color-ink-soft));
+    color: hsl(var(--sk-color-break-on-deep-soft));
     font-size: var(--sk-text-sm);
     text-decoration: none;
   }
 
   .l-break-download-alternatives a:hover {
-    color: hsl(var(--sk-color-brand));
+    color: hsl(var(--sk-color-break-on-deep));
   }
 
-  .l-break-download-note {
-    margin-block-start: var(--sk-space-md);
-    padding: var(--sk-space-sm);
-    border-radius: var(--sk-radius-sm);
-    background: hsl(var(--sk-color-paper-sunk) / 0.65);
-    color: hsl(var(--sk-color-muted));
+  .l-break-download-facts {
+    display: grid;
+    gap: var(--sk-space-lg);
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding-block-start: var(--sk-space-lg);
+    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
+  }
+
+  .l-break-download-hash {
+    grid-column: 1 / -1;
+    padding-block-start: var(--sk-space-sm);
+    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
+  }
+
+  .l-break-download-facts dt {
+    color: hsl(var(--sk-color-break-on-deep-soft));
+    font-size: var(--sk-text-xs);
+    letter-spacing: var(--sk-tracking-wide);
+    text-transform: uppercase;
+  }
+
+  .l-break-download-facts dd {
+    margin: var(--sk-space-3xs) 0 0;
+    color: hsl(var(--sk-color-break-on-deep));
+    font-size: var(--sk-text-sm);
+    font-weight: var(--sk-weight-medium);
+  }
+
+  .l-break-download-facts code {
+    font-family: var(--sk-font-mono);
     font-size: var(--sk-text-xs);
     line-height: var(--sk-leading-normal);
+    overflow-wrap: anywhere;
+    user-select: all;
   }
 
-  .l-break-download-checksum {
-    margin-block-start: var(--sk-space-sm);
-    color: hsl(var(--sk-color-muted));
-    font-size: var(--sk-text-xs);
+  @media (max-width: 1023px) {
+    .l-break-download-panel {
+      grid-template-columns: 1fr;
+    }
+
+    .l-break-download-action {
+      padding-block-start: var(--sk-space-xl);
+      padding-inline-start: 0;
+      border-block-start: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
+      border-inline-start: 0;
+    }
+
+    .l-break-download-facts {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 
   @media (max-width: 639px) {
-    .l-break-download-head {
-      flex-direction: column;
-    }
-
     .l-break-download-facts {
       grid-template-columns: 1fr;
     }
