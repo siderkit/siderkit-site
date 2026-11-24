@@ -46,7 +46,7 @@ const ogAlt = imageAlt ?? t.meta.ogAlt;
 ---
 
 <!doctype html>
-<html lang={localeInfo[locale].htmlLang}>
+<html lang={localeInfo[locale].htmlLang} dir={localeInfo[locale].dir}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -73,6 +73,9 @@ const ogAlt = imageAlt ?? t.meta.ogAlt;
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={ogAlt} />
     <meta property="og:locale" content={localeInfo[locale].ogLocale} />
     {

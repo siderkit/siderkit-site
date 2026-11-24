@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Icon from '../../ui/Icon.astro';
-import { type Locale } from '../../i18n/config';
+import { localeInfo, siteUrl, type Locale } from '../../i18n/config';
 import { routes } from '../../site/routes';
 import { siteLinks } from '../../site/links';
 import { useBrandMessages } from '../i18n/ui';
@@ -13,6 +13,13 @@ interface Props {
 
 const { locale, featuredHref } = Astro.props;
 const t = useBrandMessages(locale);
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Siderkit',
+  url: siteUrl,
+  inLanguage: localeInfo[locale].htmlLang,
+};
 ---
 
 <BaseLayout
@@ -20,6 +27,7 @@ const t = useBrandMessages(locale);
   path={routes.home}
   title={t.meta.homeTitle}
   description={t.meta.homeDescription}
+  schema={schema}
 >
   <section class="l-home-hero">
     <div class="sk-container l-home-hero-grid">
