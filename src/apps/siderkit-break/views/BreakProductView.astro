@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import BreakDownloadCard from '../components/BreakDownloadCard.astro';
+import BreakDownloadConsole from '../components/BreakDownloadConsole.astro';
 import BreakMark from '../components/BreakMark.astro';
 import Icon from '../../../ui/Icon.astro';
 import breakRunning from '../assets/screens/break-running.png';
@@ -9,7 +9,7 @@ import breakDone from '../assets/screens/break-done.png';
 import insightsShot from '../assets/screens/insights.png';
 import mainFocus from '../assets/screens/main-focus.png';
 import { changelog } from '../data/changelog';
-import { formatDate, formatSize, primaryDownloadUrl, release } from '../data/releases';
+import { formatDate, primaryDownloadUrl, release } from '../data/releases';
 import { absoluteUrl, localizedPath, type Locale } from '../../../i18n/config';
 import { breakApp } from '../manifest';
 import { breakLinks } from '../links';
@@ -73,35 +73,12 @@ const schema = {
           <h1 class="l-break-product-title">{t.product.hero.title}</h1>
           <p class="l-break-product-hero-lead">{t.product.hero.lead}</p>
 
-          <div class="l-break-product-actions">
-            <a class="sk-button l-break-product-cta" href={primaryDownloadUrl}>
-              <Icon name="download" size="sm" />
-              {t.product.hero.primaryCta}
-            </a>
-            <a class="sk-button l-break-product-cta-ghost" href="#day">
-              {t.product.hero.secondaryCta}
-              <Icon name="chevron-down" size="sm" />
-            </a>
-          </div>
+          <BreakDownloadConsole locale={locale} />
 
-          <ul class="l-break-product-facts">
-            <li>
-              <span>{t.labels.version}</span>
-              {release.version}
-            </li>
-            <li>
-              <span>{t.product.hero.platformLabel}</span>
-              {t.product.hero.platform}
-            </li>
-            <li>
-              <span>{t.labels.size}</span>
-              {release.windows ? formatSize(release.windows.size, locale) : '—'}
-            </li>
-            <li>
-              <span>{t.labels.license}</span>
-              Apache-2.0
-            </li>
-          </ul>
+          <a class="l-break-product-hero-link" href="#day">
+            {t.product.hero.secondaryCta}
+            <Icon name="chevron-down" size="sm" />
+          </a>
         </div>
 
         <div class="l-break-product-hero-stage">
@@ -236,8 +213,6 @@ const schema = {
       </ul>
     </div>
   </section>
-
-  <BreakDownloadCard locale={locale} />
 
   <section class="l-break-product-fineprint" aria-labelledby="fineprint-title">
     <div class="sk-container">
@@ -421,59 +396,20 @@ const schema = {
     text-wrap: pretty;
   }
 
-  .l-break-product-actions {
-    display: flex;
-    flex-wrap: wrap;
+  .l-break-product-hero-link {
+    display: inline-flex;
     align-items: center;
-    gap: var(--sk-space-sm);
-    margin-block-start: var(--sk-space-xl);
-  }
-
-  .l-break-product-cta {
-    background: hsl(var(--sk-color-break-cream));
-    color: hsl(var(--sk-color-break-deep));
-    box-shadow: var(--sk-shadow-card);
-  }
-
-  .l-break-product-cta:hover {
-    background: hsl(var(--sk-color-break-on-deep));
-  }
-
-  .l-break-product-cta-ghost {
-    border-color: hsl(var(--sk-color-break-line-deep));
-    color: hsl(var(--sk-color-break-on-deep));
-  }
-
-  .l-break-product-cta-ghost:hover {
-    border-color: hsl(var(--sk-color-break-glow) / 0.6);
-    background: hsl(var(--sk-color-break-glow) / 0.1);
-  }
-
-  .l-break-product-facts {
-    display: grid;
-    gap: var(--sk-space-sm) var(--sk-space-xl);
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin-block-start: var(--sk-space-2xl);
-    padding-block-start: var(--sk-space-md);
-    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
-    color: hsl(var(--sk-color-break-on-deep));
-    font-family: var(--sk-font-mono);
-    font-size: var(--sk-text-xs);
-  }
-
-  .l-break-product-facts li {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
     gap: var(--sk-space-xs);
+    margin-block-start: var(--sk-space-md);
+    color: hsl(var(--sk-color-break-on-deep-soft));
+    font-size: var(--sk-text-sm);
+    font-weight: var(--sk-weight-medium);
+    text-decoration: none;
   }
 
-  .l-break-product-facts li span {
-    color: hsl(var(--sk-color-break-on-deep-soft));
-    font-family: var(--sk-font-body);
-    font-size: var(--sk-text-xs);
-    letter-spacing: var(--sk-tracking-wide);
-    text-transform: uppercase;
+  .l-break-product-hero-link:hover {
+    color: hsl(var(--sk-color-break-on-deep));
+    text-decoration: underline;
   }
 
   .l-break-product-hero-stage {

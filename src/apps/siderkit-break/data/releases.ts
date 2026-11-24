@@ -6,6 +6,7 @@ export type ReleaseAsset = {
   sha256: string;
   size: number;
   format: string;
+  arch: string;
 };
 
 export type Release = {

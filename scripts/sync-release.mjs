@@ -119,6 +119,13 @@ function formatFromUrl(url) {
   return extension.replace('.', '') || 'unknown';
 }
 
+function archFromPlatformKey(key) {
+  if (/x86_64|x64/.test(key)) return 'x64';
+  if (/aarch64|arm64/.test(key)) return 'arm64';
+  if (/i686|x86/.test(key)) return 'x86';
+  return key.replace(/^windows-/, '') || 'unknown';
+}
+
 async function main() {
   parseArgs(process.argv.slice(2));
   const manifest = await loadManifest(options.manifest);
@@ -161,6 +168,7 @@ async function main() {
       sha256: sha256 ?? '',
       size: size ?? 0,
       format: formatFromUrl(platform.url),
+      arch: archFromPlatformKey(platform.key),
     },
     macos: current.macos ?? null,
     linux: current.linux ?? null,

@@ -8,18 +8,21 @@
     "url": "https://dl.siderkit.com/siderkit-break/releases/1.0.1/Siderkit-Break_1.0.1_windows_x64-setup.exe",
     "sha256": "12a886e75432d7a32553bdc2ed4f2e4b262570178c0fe1d1a44b275bcb64f85a",
     "size": 7144661,
-    "format": "NSIS"
+    "format": "NSIS",
+    "arch": "x64"
   },
   "macos": {
     "url": "https://dl.siderkit.com/siderkit-break/releases/1.0.1/Siderkit-Break_1.0.1_macos_universal.dmg",
     "sha256": "c64e176dbc94a8b336370923413f3e95b6bced6c0b02100c585c3712533d6171",
     "size": 15200843,
-    "format": "DMG"
+    "format": "DMG",
+    "arch": "universal"
   },
   "linux": {
     "url": "https://dl.siderkit.com/siderkit-break/releases/1.0.1/Siderkit-Break_1.0.1_linux_amd64.deb",
     "sha256": "d67d3b6698a1c6a499d7bc5b2b53a99add13b3af7524914c421fac3dbf7d27d6",
     "size": 9061316,
-    "format": "deb"
+    "format": "deb",
+    "arch": "amd64"
   }
 }

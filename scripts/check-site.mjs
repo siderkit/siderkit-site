@@ -69,9 +69,10 @@ function checkReleaseData() {
   for (const field of ['channel', 'version', 'pubDate', 'published', 'github']) {
     if (!(field in release)) fail(`${file} is missing ${field}`);
   }
-  if (release.windows) {
-    for (const field of ['url', 'sha256', 'size', 'format']) {
-      if (!(field in release.windows)) fail(`${file} windows is missing ${field}`);
+  for (const platform of ['windows', 'macos', 'linux']) {
+    if (!release[platform]) continue;
+    for (const field of ['url', 'sha256', 'size', 'format', 'arch']) {
+      if (!(field in release[platform])) fail(`${file} ${platform} is missing ${field}`);
     }
   }
 }

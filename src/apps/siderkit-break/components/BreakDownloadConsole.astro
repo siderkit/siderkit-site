@@ -1,0 +1,438 @@
+---
+import Icon from '../../../ui/Icon.astro';
+import { formatDate, formatSize, release } from '../data/releases';
+import { useBreakMessages } from '../i18n/ui';
+import type { Locale } from '../../../i18n/config';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useBreakMessages(locale);
+const isPrerelease = release.version.includes('-');
+const badgeLabel = isPrerelease ? t.labels.releaseCandidate : t.labels.signedBuild;
+const releasedLabel = `${t.product.download.releasedLabel} ${formatDate(release.pubDate, locale)}`;
+
+const platforms = [
+  {
+    id: 'windows',
+    label: t.labels.windows,
+    downloadLabel: t.product.download.downloadWindows,
+    asset: release.windows,
+  },
+  {
+    id: 'macos',
+    label: t.labels.macos,
+    downloadLabel: t.product.download.downloadMac,
+    asset: release.macos,
+  },
+  {
+    id: 'linux',
+    label: t.labels.linux,
+    downloadLabel: t.product.download.downloadLinux,
+    asset: release.linux,
+  },
+].map((platform) => ({
+  ...platform,
+  asset: release.published ? platform.asset : null,
+}));
+---
+
+<section class="l-break-download-console" aria-labelledby="download-title" data-download-console>
+  <h2 class="sk-visually-hidden" id="download-title">{t.product.download.title}</h2>
+
+  <div class="l-break-download-head">
+    <p class="l-break-download-eyebrow">{t.product.download.eyebrow}</p>
+    <span class="l-break-download-badge">{badgeLabel}</span>
+  </div>
+  <p class="l-break-download-lead">{t.product.download.lead}</p>
+
+  <div
+    class="l-break-download-tabs"
+    role="tablist"
+    aria-label={t.product.hero.platformLabel}
+  >
+    {
+      platforms.map((platform, index) => (
+        <button
+          class="l-break-download-tab"
+          type="button"
+          role="tab"
+          id={`download-tab-${platform.id}`}
+          aria-selected={index === 0 ? 'true' : 'false'}
+          aria-controls={`download-panel-${platform.id}`}
+          tabindex={index === 0 ? 0 : -1}
+          data-download-tab
+          data-platform={platform.id}
+        >
+          {platform.label}
+          <span class="l-break-download-detected" data-download-detected hidden>
+            <span class="sk-visually-hidden">{t.product.download.detected}</span>
+          </span>
+        </button>
+      ))
+    }
+  </div>
+
+  {
+    platforms.map((platform, index) => {
+      const asset = platform.asset;
+      const href = asset ? asset.url : release.github;
+      const label = asset ? platform.downloadLabel : t.product.download.downloadGithub;
+      return (
+        <div
+          class="l-break-download-panel"
+          id={`download-panel-${platform.id}`}
+          role="tabpanel"
+          aria-labelledby={`download-tab-${platform.id}`}
+          tabindex="0"
+          data-download-panel
+          data-platform={platform.id}
+          hidden={index !== 0}
+        >
+          <p class="l-break-download-panel-meta">
+            <span>{t.labels.version} {release.version}</span>
+            <span aria-hidden="true">·</span>
+            <span>{releasedLabel}</span>
+          </p>
+
+          <a
+            class="sk-button l-break-download-primary"
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon name={asset ? 'download' : 'github'} size="sm" />
+            {label}
+            <span class="sk-visually-hidden">({t.labels.opensInNewTab})</span>
+          </a>
+
+          {asset && (
+            <p class="l-break-download-artifact">
+              <span>{asset.format}</span>
+              <span aria-hidden="true">·</span>
+              <span>{asset.arch}</span>
+              <span aria-hidden="true">·</span>
+              <span>{formatSize(asset.size, locale)}</span>
+            </p>
+          )}
+
+          <div class="l-break-download-links">
+            {asset && (
+              <a
+                class="l-break-download-github"
+                href={release.github}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t.product.download.downloadGithub}
+                <Icon name="external" size="sm" />
+              </a>
+            )}
+
+            {asset && (
+              <details class="l-break-download-checksum">
+                <summary>{t.labels.checksum}</summary>
+                <code>{asset.sha256}</code>
+                <p>{t.product.download.checksumNote}</p>
+              </details>
+            )}
+          </div>
+        </div>
+      );
+    })
+  }
+
+  <p class="l-break-download-note">{t.product.download.note}</p>
+
+  <noscript>
+    <style>
+      .l-break-download-tabs {
+        display: none;
+      }
+
+      .l-break-download-panel[hidden] {
+        display: block;
+      }
+    </style>
+  </noscript>
+</section>
+
+<script>
+  type PlatformId = 'windows' | 'macos' | 'linux';
+
+  const consoles = document.querySelectorAll<HTMLElement>('[data-download-console]');
+
+  function detectPlatform(): PlatformId | null {
+    if (/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)) return 'windows';
+
+    const navigatorWithData = navigator as Navigator & { userAgentData?: { platform?: string } };
+    const platform = (navigatorWithData.userAgentData?.platform || navigator.platform || '').toLowerCase();
+
+    if (platform.includes('win')) return 'windows';
+    if (platform.includes('mac')) return 'macos';
+    if (platform.includes('linux') || platform.includes('x11')) return 'linux';
+    return null;
+  }
+
+  for (const consoleElement of consoles) {
+    const tabs = Array.from(consoleElement.querySelectorAll<HTMLButtonElement>('[data-download-tab]'));
+    const panels = Array.from(consoleElement.querySelectorAll<HTMLElement>('[data-download-panel]'));
+    if (tabs.length === 0 || panels.length === 0) continue;
+
+    const isRtl = document.documentElement.dir === 'rtl';
+
+    const activate = (platform: string, moveFocus = false) => {
+      for (const tab of tabs) {
+        const selected = tab.dataset.platform === platform;
+        tab.setAttribute('aria-selected', String(selected));
+        tab.tabIndex = selected ? 0 : -1;
+        if (selected && moveFocus) tab.focus();
+      }
+
+      for (const panel of panels) {
+        panel.hidden = panel.dataset.platform !== platform;
+      }
+    };
+
+    for (const tab of tabs) {
+      tab.addEventListener('click', () => activate(tab.dataset.platform ?? 'windows'));
+      tab.addEventListener('keydown', (event) => {
+        const index = tabs.indexOf(tab);
+        const step = isRtl ? -1 : 1;
+        let nextIndex = index;
+
+        if (event.key === 'ArrowRight') nextIndex = (index + step + tabs.length) % tabs.length;
+        else if (event.key === 'ArrowLeft') nextIndex = (index - step + tabs.length) % tabs.length;
+        else if (event.key === 'Home') nextIndex = 0;
+        else if (event.key === 'End') nextIndex = tabs.length - 1;
+        else return;
+
+        event.preventDefault();
+        const nextTab = tabs[nextIndex];
+        activate(nextTab.dataset.platform ?? 'windows', true);
+      });
+    }
+
+    const detected = detectPlatform();
+    const detectedTab = detected
+      ? tabs.find((tab) => tab.dataset.platform === detected)
+      : undefined;
+
+    if (detectedTab) {
+      const marker = detectedTab.querySelector<HTMLElement>('[data-download-detected]');
+      if (marker) marker.hidden = false;
+      activate(detectedTab.dataset.platform ?? 'windows');
+    }
+  }
+</script>
+
+<style>
+  .l-break-download-console {
+    max-inline-size: 34rem;
+    margin-block-start: var(--sk-space-xl);
+  }
+
+  .l-break-download-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--sk-space-sm);
+  }
+
+  .l-break-download-eyebrow {
+    color: hsl(var(--sk-color-break-glow));
+    font-size: var(--sk-text-xs);
+    font-weight: var(--sk-weight-semibold);
+    letter-spacing: var(--sk-tracking-wide);
+    text-transform: uppercase;
+  }
+
+  .l-break-download-badge {
+    padding-inline: var(--sk-space-xs);
+    border: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
+    border-radius: var(--sk-radius-full);
+    color: hsl(var(--sk-color-break-on-deep-soft));
+    font-size: var(--sk-text-xs);
+    line-height: var(--sk-leading-snug);
+  }
+
+  .l-break-download-lead {
+    max-inline-size: var(--sk-reading);
+    margin-block-start: var(--sk-space-xs);
+    color: hsl(var(--sk-color-break-on-deep-soft));
+    font-size: var(--sk-text-sm);
+    line-height: var(--sk-leading-normal);
+  }
+
+  .l-break-download-tabs {
+    display: flex;
+    gap: var(--sk-space-xs);
+    margin-block-start: var(--sk-space-md);
+    padding: var(--sk-space-xs);
+    border: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
+    border-radius: var(--sk-radius-full);
+    background: hsl(var(--sk-color-break-deeper) / 0.4);
+  }
+
+  .l-break-download-tab {
+    display: inline-flex;
+    flex: 1 1 0;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sk-space-xs);
+    min-block-size: var(--sk-control-height-sm);
+    padding-inline: var(--sk-space-sm);
+    border: 0;
+    border-radius: var(--sk-radius-full);
+    background: transparent;
+    color: hsl(var(--sk-color-break-on-deep-soft));
+    font-family: inherit;
+    font-size: var(--sk-text-sm);
+    font-weight: var(--sk-weight-semibold);
+    cursor: pointer;
+    transition:
+      background-color var(--sk-duration-fast) var(--sk-ease),
+      color var(--sk-duration-fast) var(--sk-ease);
+  }
+
+  .l-break-download-tab:hover {
+    color: hsl(var(--sk-color-break-on-deep));
+  }
+
+  .l-break-download-tab[aria-selected='true'] {
+    background: hsl(var(--sk-color-break-cream));
+    color: hsl(var(--sk-color-break-deep));
+  }
+
+  .l-break-download-detected {
+    display: inline-block;
+    inline-size: var(--sk-space-xs);
+    block-size: var(--sk-space-xs);
+    border-radius: var(--sk-radius-full);
+    background: currentColor;
+  }
+
+  .l-break-download-detected[hidden] {
+    display: none;
+  }
+
+  .l-break-download-panel {
+    margin-block-start: var(--sk-space-md);
+    padding: var(--sk-space-lg);
+    border: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
+    border-radius: var(--sk-radius-lg);
+    background: hsl(var(--sk-color-break-deep) / 0.55);
+    box-shadow: var(--sk-shadow-card);
+  }
+
+  .l-break-download-panel-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sk-space-xs);
+    color: hsl(var(--sk-color-break-on-deep-soft));
+    font-family: var(--sk-font-mono);
+    font-size: var(--sk-text-xs);
+  }
+
+  .l-break-download-primary {
+    inline-size: 100%;
+    margin-block-start: var(--sk-space-md);
+    background: hsl(var(--sk-color-break-cream));
+    color: hsl(var(--sk-color-break-deep));
+    box-shadow: var(--sk-shadow-card);
+  }
+
+  .l-break-download-primary:hover {
+    background: hsl(var(--sk-color-break-on-deep));
+  }
+
+  .l-break-download-artifact {
+    margin-block-start: var(--sk-space-sm);
+    color: hsl(var(--sk-color-break-on-deep-soft));
+    font-family: var(--sk-font-mono);
+    font-size: var(--sk-text-xs);
+    text-align: center;
+  }
+
+  .l-break-download-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sk-space-sm);
+    margin-block-start: var(--sk-space-md);
+  }
+
+  .l-break-download-github {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sk-space-xs);
+    color: hsl(var(--sk-color-break-on-deep-soft));
+    font-size: var(--sk-text-sm);
+    text-decoration: none;
+  }
+
+  .l-break-download-github:hover {
+    color: hsl(var(--sk-color-break-on-deep));
+    text-decoration: underline;
+  }
+
+  .l-break-download-checksum {
+    color: hsl(var(--sk-color-break-on-deep-soft));
+    font-size: var(--sk-text-xs);
+  }
+
+  .l-break-download-checksum summary {
+    cursor: pointer;
+  }
+
+  .l-break-download-checksum[open] {
+    flex-basis: 100%;
+  }
+
+  .l-break-download-checksum code {
+    display: block;
+    margin-block-start: var(--sk-space-xs);
+    padding: var(--sk-space-xs) var(--sk-space-sm);
+    border: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
+    border-radius: var(--sk-radius-sm);
+    background: hsl(var(--sk-color-break-deeper) / 0.6);
+    color: hsl(var(--sk-color-break-on-deep));
+    font-family: var(--sk-font-mono);
+    font-size: var(--sk-text-xs);
+    line-height: var(--sk-leading-normal);
+    overflow-wrap: anywhere;
+    user-select: all;
+  }
+
+  .l-break-download-checksum p {
+    margin-block-start: var(--sk-space-xs);
+    color: hsl(var(--sk-color-break-on-deep-soft));
+    font-size: var(--sk-text-xs);
+    line-height: var(--sk-leading-normal);
+  }
+
+  .l-break-download-note {
+    margin-block-start: var(--sk-space-md);
+    color: hsl(var(--sk-color-break-on-deep-soft));
+    font-size: var(--sk-text-xs);
+    line-height: var(--sk-leading-normal);
+  }
+
+  @media (max-width: 639px) {
+    .l-break-download-tabs {
+      gap: var(--sk-space-xs);
+    }
+
+    .l-break-download-tab {
+      padding-inline: var(--sk-space-xs);
+      font-size: var(--sk-text-xs);
+    }
+
+    .l-break-download-panel {
+      padding: var(--sk-space-md);
+    }
+  }
+</style>
