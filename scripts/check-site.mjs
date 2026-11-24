@@ -13,7 +13,7 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const sourceMode = process.argv.includes('--source');
 const problems = [];
-const locales = ['en', 'zh-cn', 'zh-tw', 'es', 'pt', 'fr', 'ru', 'hi', 'bn', 'ar', 'ur'];
+const locales = ['en', 'zh-cn', 'zh-tw', 'es', 'pt', 'fr', 'ru', 'hi', 'bn', 'ar', 'ur', 'ja', 'vi'];
 const docLocales = ['en', 'zh-cn', 'zh-tw'];
 const modulePages = ['index', 'install', 'using-break', 'settings', 'data-and-privacy', 'updates', 'troubleshooting'];
 

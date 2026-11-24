@@ -10,6 +10,8 @@ export const locales = [
   'bn',
   'ar',
   'ur',
+  'ja',
+  'vi',
 ] as const;
 
 export type Locale = (typeof locales)[number];
@@ -39,6 +41,8 @@ export const localeInfo: Record<Locale, LocaleInfo> = {
   bn: { label: 'বাংলা', shortLabel: 'BN', htmlLang: 'bn', ogLocale: 'bn_BD', dir: 'ltr' },
   ar: { label: 'العربية', shortLabel: 'AR', htmlLang: 'ar', ogLocale: 'ar_AR', dir: 'rtl' },
   ur: { label: 'اردو', shortLabel: 'UR', htmlLang: 'ur', ogLocale: 'ur_PK', dir: 'rtl' },
+  ja: { label: '日本語', shortLabel: 'JA', htmlLang: 'ja', ogLocale: 'ja_JP', dir: 'ltr' },
+  vi: { label: 'Tiếng Việt', shortLabel: 'VI', htmlLang: 'vi', ogLocale: 'vi_VN', dir: 'ltr' },
 };
 
 export const siteUrl = 'https://siderkit.com';

@@ -4,9 +4,11 @@ import bnOverlay from './changelog/bn.json';
 import esOverlay from './changelog/es.json';
 import frOverlay from './changelog/fr.json';
 import hiOverlay from './changelog/hi.json';
+import jaOverlay from './changelog/ja.json';
 import ptOverlay from './changelog/pt.json';
 import ruOverlay from './changelog/ru.json';
 import urOverlay from './changelog/ur.json';
+import viOverlay from './changelog/vi.json';
 import type { Locale } from '../../../i18n/config';
 
 export type ChangelogKind = 'added' | 'changed' | 'fixed' | 'security' | 'known';
@@ -50,12 +52,14 @@ const overlays: Partial<Record<Exclude<Locale, 'en'>, OverlayEntry[]>> = {
   es: esOverlay as OverlayEntry[],
   fr: frOverlay as OverlayEntry[],
   hi: hiOverlay as OverlayEntry[],
+  ja: jaOverlay as OverlayEntry[],
   pt: ptOverlay as OverlayEntry[],
   ru: ruOverlay as OverlayEntry[],
   ur: urOverlay as OverlayEntry[],
+  vi: viOverlay as OverlayEntry[],
 };
 
-const nonEnLocales = ['zh-cn', 'zh-tw', 'es', 'pt', 'fr', 'ru', 'hi', 'bn', 'ar', 'ur'] as const;
+const nonEnLocales = ['zh-cn', 'zh-tw', 'es', 'pt', 'fr', 'ru', 'hi', 'bn', 'ar', 'ur', 'ja', 'vi'] as const;
 
 function overlayFor(
   locale: Exclude<Locale, 'en'>,

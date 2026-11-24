@@ -1,0 +1,122 @@
+[
+  {
+    "version": "1.0.1",
+    "sections": [
+      {
+        "kind": "changed",
+        "items": [
+          "Lời nhắc cập nhật là một hộp thoại đặt ở giữa, thay cho biểu ngữ phía trên phần đầu trang: bản cập nhật sẵn có không còn làm dịch chuyển trang. Trạng thái tải xuống, sẵn sàng khởi động lại, và thất bại đều nằm trong cùng hộp thoại đó, với các nút Tải xuống, Để sau, Bỏ qua, và Thử lại.",
+          "Thời điểm kiểm tra cuối cứ thế tự chạy: một lần kiểm tra vừa xong hiển thị “vừa xong” rồi tự chuyển sang số phút, và nhãn vẫn hiển thị trong lúc một lần kiểm tra đang chạy.",
+          "Các bản dựng macOS và Linux lần đầu được đính kèm với một bản phát hành, cạnh bộ cài Windows đã ký."
+        ]
+      },
+      {
+        "kind": "fixed",
+        "items": [
+          "Bảng trợ giúp không còn ép tiêu đề đầu tiên sát lên đầu trang."
+        ]
+      },
+      {
+        "kind": "known",
+        "items": [
+          "Bộ cài Windows chưa ký Authenticode, nên SmartScreen có thể cảnh báo.",
+          "Các bản dựng macOS chưa ký; Gatekeeper cần một lần cho phép thủ công.",
+          "Tự động cập nhật chỉ có trên Windows; macOS và Linux cần tải thủ công."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "sections": [
+      {
+        "kind": "added",
+        "items": [
+          "Màn hình cài đặt hai cấp: gốc, Chung, Nhịp & hẹn giờ, Giao diện, Cửa sổ nổi, Nhắc nhở & âm thanh, Dữ liệu & quyền riêng tư, và Giới thiệu, với giá trị hiện tại ngay trên màn hình gốc.",
+          "Thống kê cho hôm nay, tuần này, tháng này, và năm nay, với bản đồ nhiệt 53 tuần và phần tách theo từng thẻ.",
+          "Thẻ phiên: thêm một thẻ khi lượt tập trung kết thúc, sửa trong lịch sử, và xuất kèm bảng tính.",
+          "Tùy chọn âm thanh: ba âm sắc có sẵn, nút nghe thử, thanh âm lượng, và tùy chọn âm thanh tự chọn.",
+          "Mười hai kiểu màu, cửa sổ nổi với bản xem trước cỡ S/M/L, thanh độ mờ, gợi ý định vị, và đặt lại vị trí.",
+          "Thêm mười ngôn ngữ giao diện, tổng cộng 40, bao gồm bố cục từ phải sang trái.",
+          "Trang chẩn đoán với 50 cảnh báo gần nhất, truy cập nhật ký, và đặt lại ID ẩn danh."
+        ]
+      },
+      {
+        "kind": "changed",
+        "items": [
+          "Mọi trang con dùng chung một phần đầu: quay lại, tiêu đề, và Xong. Xong trả về đúng một cấp.",
+          "Thẻ hoàn thành giữ văn bản chính căn trái, chuyển dấu tích lên góc trên bên phải, và đặt hành động chính lên trước.",
+          "Thẻ giữ giới hạn 40 ký tự trong ô nhập; phần lưu trữ giữ nguyên toàn bộ giá trị."
+        ]
+      },
+      {
+        "kind": "fixed",
+        "items": [
+          "Bản đồ nhiệt 53 tuần hiển thị thẻ khi rê chuột với đầy đủ ngày, số phút tập trung, và số lượt.",
+          "Các chip thẻ gần đây và hàng lịch sử rút gọn thẻ dài bằng dấu ba chấm thay vì tràn ra.",
+          "Hàng thao tác nhanh có thêm khoảng đệm dọc ở cỡ cửa sổ nhỏ nhất."
+        ]
+      },
+      {
+        "kind": "known",
+        "items": [
+          "Các bản dựng Windows chưa ký Authenticode, nên SmartScreen có thể cảnh báo.",
+          "Các bản dựng macOS vẫn chưa ký cho đến khi cấu hình Developer ID xong.",
+          "Tự động cập nhật chỉ có trên Windows; macOS và Linux cần tải thủ công.",
+          "Wayland không thể định vị cửa sổ nổi ở đỉnh một cách đáng tin; hãy dùng X11 để có trọn vẹn trải nghiệm."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0-rc.1",
+    "sections": [
+      {
+        "kind": "added",
+        "items": [
+          "Vòng tập trung, nghỉ ngắn, và nghỉ dài với tạm dừng, tiếp tục, bỏ qua, đặt lại, và độ dài có thể sửa.",
+          "Một đếm ngược nổi trong suốt, luôn trên cùng và cho bấm xuyên qua cho đến khi bạn trỏ vào.",
+          "Thẻ nhắc trong ứng dụng tại mỗi ranh giới pha, với trễ, bỏ qua, đóng, và một chuông kèm sẵn.",
+          "Lịch sử phiên tại máy, xuất được thành bảng tính có định dạng (.xlsx).",
+          "Ba mươi ngôn ngữ giao diện, tự nhận ngôn ngữ hệ thống, và hỗ trợ bố cục từ phải sang trái.",
+          "Tự động cập nhật Windows đã ký, với tải thủ công, cài khi khởi động lại, bỏ qua phiên bản này, và tạm dừng 24 giờ.",
+          "Bộ đếm cài đặt và cập nhật ẩn danh tùy chọn, với công tắc tắt tại máy và đặt lại."
+        ]
+      },
+      {
+        "kind": "changed",
+        "items": [
+          "Windows chỉ phát hành bộ cài NSIS theo người dùng; bản MSI cho mọi người dùng đã ngừng dùng.",
+          "Bộ cài NSIS mang 23 ngôn ngữ, chọn trước ngôn ngữ hệ điều hành, và ẩn bộ chọn trong các lần chạy im lặng, bán tự động, và cập nhật.",
+          "Ranh giới pha nay dùng thẻ trong ứng dụng thay cho thông báo của hệ điều hành.",
+          "Menu bấm phải là menu gốc của hệ thống trên mọi cửa sổ, thay cho menu của WebView.",
+          "Dự án được cấp phép theo riêng Apache-2.0."
+        ]
+      },
+      {
+        "kind": "fixed",
+        "items": [
+          "Khi cửa sổ chính bị ẩn, thời hạn của bộ hẹn giờ vẫn được giữ trong phần lõi Rust.",
+          "Cửa sổ nổi không còn đoạt tiêu điểm, cũng không bắt các cú bấm ngoài phạm vi của nó.",
+          "Đổi ngôn ngữ sẽ tải lại mọi cửa sổ đang mở, thay vì để lại văn bản cũ."
+        ]
+      },
+      {
+        "kind": "security",
+        "items": [
+          "Mặc định dữ liệu nằm ngay tại máy: không có tài khoản, không đồng bộ, và không có máy chủ nào cho dữ liệu phiên.",
+          "Cập nhật Windows được xác minh bằng chữ ký minisign trước khi cài."
+        ]
+      },
+      {
+        "kind": "known",
+        "items": [
+          "Các bản dựng macOS chưa ký cho đến khi cấu hình Developer ID xong.",
+          "Bộ cài Windows chưa ký cho đến khi cấu hình chứng chỉ ký số xong.",
+          "Tự động cập nhật chỉ có trên Windows; macOS và Linux cần tải thủ công.",
+          "Wayland không thể định vị cửa sổ nổi ở đỉnh một cách đáng tin; hãy dùng X11 để có trọn vẹn trải nghiệm."
+        ]
+      }
+    ]
+  }
+]

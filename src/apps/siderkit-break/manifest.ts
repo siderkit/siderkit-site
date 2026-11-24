@@ -22,6 +22,8 @@ export const breakApp: AppManifest = {
     bn: 'Siderkit Break',
     ar: 'Siderkit Break',
     ur: 'Siderkit Break',
+    ja: 'Siderkit Break',
+    vi: 'Siderkit Break',
   },
   route: '/apps/siderkit-break/',
   changelogRoute: '/apps/siderkit-break/changelog/',
