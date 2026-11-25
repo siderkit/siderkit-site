@@ -1,27 +1,27 @@
 {
   "channel": "stable",
-  "version": "1.0.1",
-  "pubDate": "2026-11-24",
+  "version": "1.0.2",
+  "pubDate": "2026-11-25",
   "published": true,
   "github": "https://github.com/siderkit/siderkit-break/releases",
   "windows": {
-    "url": "https://dl.siderkit.com/siderkit-break/releases/1.0.1/Siderkit-Break_1.0.1_windows_x64-setup.exe",
-    "sha256": "12a886e75432d7a32553bdc2ed4f2e4b262570178c0fe1d1a44b275bcb64f85a",
-    "size": 7144661,
+    "url": "https://dl.siderkit.com/siderkit-break/releases/1.0.2/Siderkit-Break_1.0.2_windows_x64-setup.exe",
+    "sha256": "86cb61aafbd2d6655a5d3e13beae8fa55d0782b432afdc2c2ce8d8e5dc65de12",
+    "size": 7143893,
     "format": "NSIS",
     "arch": "x64"
   },
   "macos": {
-    "url": "https://dl.siderkit.com/siderkit-break/releases/1.0.1/Siderkit-Break_1.0.1_macos_universal.dmg",
-    "sha256": "c64e176dbc94a8b336370923413f3e95b6bced6c0b02100c585c3712533d6171",
-    "size": 15200843,
+    "url": "https://dl.siderkit.com/siderkit-break/releases/1.0.2/Siderkit-Break_1.0.2_macos_universal.dmg",
+    "sha256": "cfea9f652e5b2081102ef1a4a0d352e72d62e08479ec5aec258a56b824dac914",
+    "size": 15202439,
     "format": "DMG",
     "arch": "universal"
   },
   "linux": {
-    "url": "https://dl.siderkit.com/siderkit-break/releases/1.0.1/Siderkit-Break_1.0.1_linux_amd64.deb",
-    "sha256": "d67d3b6698a1c6a499d7bc5b2b53a99add13b3af7524914c421fac3dbf7d27d6",
-    "size": 9061316,
+    "url": "https://dl.siderkit.com/siderkit-break/releases/1.0.2/Siderkit-Break_1.0.2_linux_amd64.deb",
+    "sha256": "9badac884b7f234591036350d1bd76e28d1bbaa049a67f439f9d75dfd0efa323",
+    "size": 9062480,
     "format": "deb",
     "arch": "amd64"
   }
