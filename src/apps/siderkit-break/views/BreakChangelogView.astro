@@ -69,11 +69,12 @@ const t = useBreakMessages(locale);
 
 <style>
   .l-break-changelog-hero {
-    padding-block: var(--sk-space-2xl) var(--sk-space-xl);
+    padding-top: var(--sk-space-2xl);
+    padding-bottom: var(--sk-space-xl);
   }
 
   .l-break-changelog-title {
-    margin-block-start: var(--sk-space-md);
+    margin-top: var(--sk-space-md);
     font-family: var(--sk-font-display);
     font-size: var(--sk-text-section);
     font-weight: var(--sk-weight-regular);
@@ -92,20 +93,22 @@ const t = useBreakMessages(locale);
   }
 
   .l-break-changelog-list {
-    padding-block: var(--sk-space-xl) var(--sk-space-4xl);
+    padding-top: var(--sk-space-xl);
+    padding-bottom: var(--sk-space-4xl);
   }
 
   .l-break-changelog-entry {
     display: grid;
     gap: var(--sk-space-2xl);
     grid-template-columns: minmax(0, 0.6fr) minmax(0, 1.4fr);
-    padding-block: var(--sk-space-2xl);
-    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+    padding-top: var(--sk-space-2xl);
+    padding-bottom: var(--sk-space-2xl);
+    border-top: var(--sk-edge) solid hsl(var(--sk-color-line));
   }
 
   .l-break-changelog-entry-head {
     position: sticky;
-    inset-block-start: calc(var(--sk-header-height) + var(--sk-space-lg));
+    top: calc(var(--sk-header-height) + var(--sk-space-lg));
     align-self: start;
   }
 
@@ -119,7 +122,7 @@ const t = useBreakMessages(locale);
 
   .l-break-changelog-entry-head time {
     display: block;
-    margin-block-start: var(--sk-space-xs);
+    margin-top: var(--sk-space-xs);
     color: hsl(var(--sk-color-muted));
     font-family: var(--sk-font-mono);
     font-size: var(--sk-text-xs);
@@ -146,26 +149,38 @@ const t = useBreakMessages(locale);
     display: flex;
     flex-direction: column;
     gap: var(--sk-space-xs);
-    margin-block-start: var(--sk-space-sm);
+    margin-top: var(--sk-space-sm);
   }
 
   .l-break-changelog-sections li {
     position: relative;
-    padding-inline-start: var(--sk-space-md);
+    /* Physical indent with an RTL mirror: legacy kernels drop
+       padding-inline-start, which would remove the bullet indent entirely. */
+    padding-left: var(--sk-space-md);
     color: hsl(var(--sk-color-ink-soft));
     font-size: var(--sk-text-sm);
     line-height: var(--sk-leading-normal);
   }
 
+  :global([dir='rtl']) .l-break-changelog-sections li {
+    padding-left: 0;
+    padding-right: var(--sk-space-md);
+  }
+
   .l-break-changelog-sections li::before {
     content: '';
     position: absolute;
-    inset-block-start: 0.72em;
-    inset-inline-start: 0;
-    inline-size: var(--sk-space-2xs);
-    block-size: var(--sk-space-2xs);
+    top: 0.72em;
+    left: 0;
+    width: var(--sk-space-2xs);
+    height: var(--sk-space-2xs);
     border-radius: var(--sk-radius-full);
     background: hsl(var(--sk-color-accent));
+  }
+
+  :global([dir='rtl']) .l-break-changelog-sections li::before {
+    left: auto;
+    right: 0;
   }
 
   .l-break-changelog-sections section[data-kind='known'] li::before {
@@ -177,9 +192,9 @@ const t = useBreakMessages(locale);
   }
 
   .l-break-changelog-note {
-    margin-block-start: var(--sk-space-2xl);
-    padding-block-start: var(--sk-space-lg);
-    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+    margin-top: var(--sk-space-2xl);
+    padding-top: var(--sk-space-lg);
+    border-top: var(--sk-edge) solid hsl(var(--sk-color-line));
     color: hsl(var(--sk-color-muted));
     font-size: var(--sk-text-xs);
   }

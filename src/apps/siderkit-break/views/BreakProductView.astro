@@ -331,7 +331,8 @@ const schema = {
   /* ── Hero ───────────────────────────────────────────────────── */
   .l-break-product-hero {
     position: relative;
-    padding-block: var(--sk-space-lg) var(--sk-space-4xl);
+    padding-top: var(--sk-space-lg);
+    padding-bottom: var(--sk-space-4xl);
     overflow: clip;
     background: var(--sk-gradient-break-hero);
     color: hsl(var(--sk-color-break-on-deep));
@@ -358,7 +359,7 @@ const schema = {
     align-items: center;
     gap: var(--sk-space-3xl);
     grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
-    margin-block-start: var(--sk-space-2xl);
+    margin-top: var(--sk-space-2xl);
   }
 
   .l-break-product-brand {
@@ -377,8 +378,8 @@ const schema = {
   }
 
   .l-break-product-title {
-    max-inline-size: 13ch;
-    margin-block-start: var(--sk-space-lg);
+    max-width: 13ch;
+    margin-top: var(--sk-space-lg);
     font-family: var(--sk-font-display);
     font-size: var(--sk-text-hero);
     font-weight: var(--sk-weight-regular);
@@ -388,8 +389,8 @@ const schema = {
   }
 
   .l-break-product-hero-lead {
-    max-inline-size: var(--sk-reading);
-    margin-block-start: var(--sk-space-lg);
+    max-width: var(--sk-reading);
+    margin-top: var(--sk-space-lg);
     color: hsl(var(--sk-color-break-on-deep-soft));
     font-size: var(--sk-text-lg);
     line-height: var(--sk-leading-normal);
@@ -400,7 +401,7 @@ const schema = {
     display: inline-flex;
     align-items: center;
     gap: var(--sk-space-xs);
-    margin-block-start: var(--sk-space-md);
+    margin-top: var(--sk-space-md);
     color: hsl(var(--sk-color-break-on-deep-soft));
     font-size: var(--sk-text-sm);
     font-weight: var(--sk-weight-medium);
@@ -416,15 +417,16 @@ const schema = {
     position: relative;
     display: grid;
     place-items: center;
-    padding-block: var(--sk-space-xl);
+    padding-top: var(--sk-space-xl);
+    padding-bottom: var(--sk-space-xl);
     isolation: isolate;
   }
 
   .l-break-product-hero-ring {
     position: absolute;
-    inset-block-start: 50%;
-    inset-inline-start: 50%;
-    inline-size: 96%;
+    top: 50%;
+    left: 50%;
+    width: 96%;
     aspect-ratio: 1;
     border: var(--sk-edge) solid hsl(var(--sk-color-break-glow) / 0.16);
     border-radius: var(--sk-radius-full);
@@ -446,23 +448,23 @@ const schema = {
   }
 
   .l-break-product-hero-window img {
-    inline-size: 100%;
-    block-size: auto;
+    width: 100%;
+    height: auto;
     border-radius: var(--sk-radius-md);
   }
 
   .l-break-product-hero-card {
     position: absolute;
     z-index: 2;
-    inset-block-end: calc(var(--sk-space-3xl) * -1);
-    inset-inline-start: calc(var(--sk-space-xl) * -1);
-    inline-size: 46%;
+    bottom: calc(var(--sk-space-3xl) * -1);
+    left: calc(var(--sk-space-xl) * -1);
+    width: 46%;
     filter: drop-shadow(0 var(--sk-space-md) var(--sk-space-lg) hsl(var(--sk-color-break-deeper) / 0.5));
   }
 
   .l-break-product-hero-card img {
-    inline-size: 100%;
-    block-size: auto;
+    width: 100%;
+    height: auto;
   }
 
   /* ── Section heads ──────────────────────────────────────────── */
@@ -474,7 +476,7 @@ const schema = {
   }
 
   .l-break-product-head .sk-lead {
-    margin-block-start: 0;
+    margin-top: 0;
   }
 
   .l-break-product-day .sk-eyebrow,
@@ -485,7 +487,7 @@ const schema = {
 
   /* ── A day with Break ───────────────────────────────────────── */
   .l-break-product-day-list {
-    margin-block-start: var(--sk-space-2xl);
+    margin-top: var(--sk-space-2xl);
   }
 
   .l-break-product-day-step {
@@ -493,12 +495,13 @@ const schema = {
     align-items: center;
     gap: var(--sk-space-xl);
     grid-template-columns: minmax(0, 0.3fr) minmax(0, 0.8fr) minmax(0, 1.15fr);
-    padding-block: var(--sk-space-xl);
-    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+    padding-top: var(--sk-space-xl);
+    padding-bottom: var(--sk-space-xl);
+    border-top: var(--sk-edge) solid hsl(var(--sk-color-line));
   }
 
   .l-break-product-day-step:last-child {
-    border-block-end: var(--sk-edge) solid hsl(var(--sk-color-line));
+    border-bottom: var(--sk-edge) solid hsl(var(--sk-color-line));
   }
 
   .l-break-product-day-marker {
@@ -530,8 +533,8 @@ const schema = {
   }
 
   .l-break-product-day-copy p {
-    max-inline-size: var(--sk-reading);
-    margin-block-start: var(--sk-space-sm);
+    max-width: var(--sk-reading);
+    margin-top: var(--sk-space-sm);
     color: hsl(var(--sk-color-muted));
     font-size: var(--sk-text-base);
     line-height: var(--sk-leading-normal);
@@ -540,6 +543,7 @@ const schema = {
   .l-break-product-day-visual {
     display: grid;
     place-items: center;
+    padding: var(--sk-space-lg);
     padding: clamp(var(--sk-space-lg), 3vw, var(--sk-space-2xl));
     border: var(--sk-edge) solid hsl(var(--sk-color-line-soft));
     border-radius: var(--sk-radius-lg);
@@ -547,8 +551,8 @@ const schema = {
   }
 
   .l-break-product-day-visual img {
-    inline-size: 100%;
-    block-size: auto;
+    width: 100%;
+    height: auto;
     border-radius: var(--sk-radius-sm);
   }
 
@@ -557,12 +561,12 @@ const schema = {
   }
 
   .l-break-product-day-visual.is-card img {
-    inline-size: 76%;
+    width: 76%;
     filter: drop-shadow(0 var(--sk-space-md) var(--sk-space-lg) hsl(var(--sk-color-break-deep) / 0.28));
   }
 
   .l-break-product-day-visual figcaption {
-    margin-block-start: var(--sk-space-md);
+    margin-top: var(--sk-space-md);
     color: hsl(var(--sk-color-break-forest-strong));
     font-family: var(--sk-font-mono);
     font-size: var(--sk-text-xs);
@@ -570,7 +574,8 @@ const schema = {
 
   /* ── Insights ───────────────────────────────────────────────── */
   .l-break-product-insights {
-    border-block: var(--sk-edge) solid hsl(var(--sk-color-line));
+    border-top: var(--sk-edge) solid hsl(var(--sk-color-line));
+    border-bottom: var(--sk-edge) solid hsl(var(--sk-color-line));
     background: hsl(var(--sk-color-break-mist));
   }
 
@@ -582,30 +587,31 @@ const schema = {
   }
 
   .l-break-product-insights-copy .sk-lead {
-    max-inline-size: var(--sk-reading);
+    max-width: var(--sk-reading);
   }
 
   .l-break-product-insights-points {
     display: flex;
     flex-direction: column;
-    margin-block-start: var(--sk-space-xl);
+    margin-top: var(--sk-space-xl);
   }
 
   .l-break-product-insights-points li {
     display: flex;
     align-items: flex-start;
     gap: var(--sk-space-sm);
-    padding-block: var(--sk-space-md);
-    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+    padding-top: var(--sk-space-md);
+    padding-bottom: var(--sk-space-md);
+    border-top: var(--sk-edge) solid hsl(var(--sk-color-line));
   }
 
   .l-break-product-insights-points li:last-child {
-    border-block-end: var(--sk-edge) solid hsl(var(--sk-color-line));
+    border-bottom: var(--sk-edge) solid hsl(var(--sk-color-line));
   }
 
   .l-break-product-insights-points svg {
     flex: none;
-    margin-block-start: var(--sk-space-xs);
+    margin-top: var(--sk-space-xs);
     color: hsl(var(--sk-color-break-forest));
   }
 
@@ -616,13 +622,14 @@ const schema = {
   }
 
   .l-break-product-insights-points p {
-    margin-block-start: var(--sk-space-3xs);
+    margin-top: var(--sk-space-3xs);
     color: hsl(var(--sk-color-muted));
     font-size: var(--sk-text-sm);
     line-height: var(--sk-leading-normal);
   }
 
   .l-break-product-insights-figure {
+    padding: var(--sk-space-md);
     padding: clamp(var(--sk-space-md), 2.5vw, var(--sk-space-xl));
     border: var(--sk-edge) solid hsl(var(--sk-color-line));
     border-radius: var(--sk-radius-lg);
@@ -631,13 +638,13 @@ const schema = {
   }
 
   .l-break-product-insights-figure img {
-    inline-size: 100%;
-    block-size: auto;
+    width: 100%;
+    height: auto;
     border-radius: var(--sk-radius-sm);
   }
 
   .l-break-product-insights-figure figcaption {
-    margin-block-start: var(--sk-space-sm);
+    margin-top: var(--sk-space-sm);
     color: hsl(var(--sk-color-muted));
     font-family: var(--sk-font-mono);
     font-size: var(--sk-text-xs);
@@ -660,26 +667,26 @@ const schema = {
   .l-break-product-feature-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    margin-block-start: var(--sk-space-2xl);
-    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
+    margin-top: var(--sk-space-2xl);
+    border-top: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
   }
 
   .l-break-product-feature-grid li {
     padding: var(--sk-space-xl);
-    border-block-end: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
-    border-inline-start: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
+    border-bottom: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
+    border-left: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
   }
 
   .l-break-product-feature-grid li:nth-child(3n + 1) {
-    padding-inline-start: 0;
-    border-inline-start: 0;
+    padding-left: 0;
+    border-left: 0;
   }
 
   .l-break-product-feature-icon {
     display: grid;
     place-items: center;
-    inline-size: var(--sk-control-height);
-    block-size: var(--sk-control-height);
+    width: var(--sk-control-height);
+    height: var(--sk-control-height);
     border: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
     border-radius: var(--sk-radius-sm);
     background: hsl(var(--sk-color-break-glow) / 0.1);
@@ -687,15 +694,15 @@ const schema = {
   }
 
   .l-break-product-feature-grid h3 {
-    margin-block-start: var(--sk-space-md);
+    margin-top: var(--sk-space-md);
     font-size: var(--sk-text-lg);
     font-weight: var(--sk-weight-semibold);
     line-height: var(--sk-leading-snug);
   }
 
   .l-break-product-feature-grid p {
-    max-inline-size: 32ch;
-    margin-block-start: var(--sk-space-xs);
+    max-width: 32ch;
+    margin-top: var(--sk-space-xs);
     color: hsl(var(--sk-color-break-on-deep-soft));
     font-size: var(--sk-text-sm);
     line-height: var(--sk-leading-normal);
@@ -703,12 +710,13 @@ const schema = {
 
   /* ── Fine print ─────────────────────────────────────────────── */
   .l-break-product-fineprint {
-    padding-block: var(--sk-space-xl);
-    border-block-end: var(--sk-edge) solid hsl(var(--sk-color-line));
+    padding-top: var(--sk-space-xl);
+    padding-bottom: var(--sk-space-xl);
+    border-bottom: var(--sk-edge) solid hsl(var(--sk-color-line));
   }
 
   .l-break-product-details {
-    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+    border-top: var(--sk-edge) solid hsl(var(--sk-color-line));
   }
 
   .l-break-product-details summary {
@@ -716,7 +724,8 @@ const schema = {
     align-items: center;
     justify-content: space-between;
     gap: var(--sk-space-md);
-    padding-block: var(--sk-space-md);
+    padding-top: var(--sk-space-md);
+    padding-bottom: var(--sk-space-md);
     color: hsl(var(--sk-color-ink-soft));
     font-size: var(--sk-text-sm);
     font-weight: var(--sk-weight-medium);
@@ -739,12 +748,12 @@ const schema = {
   }
 
   .l-break-product-details-body {
-    padding-block-end: var(--sk-space-xl);
+    padding-bottom: var(--sk-space-xl);
   }
 
   .l-break-product-details-lead {
-    max-inline-size: var(--sk-reading);
-    margin-block-end: var(--sk-space-lg);
+    max-width: var(--sk-reading);
+    margin-bottom: var(--sk-space-lg);
     color: hsl(var(--sk-color-muted));
     font-size: var(--sk-text-sm);
     line-height: var(--sk-leading-normal);
@@ -757,8 +766,8 @@ const schema = {
   }
 
   .l-break-product-table {
-    inline-size: 100%;
-    min-inline-size: 44rem;
+    width: 100%;
+    min-width: 44rem;
     border-collapse: collapse;
     font-size: var(--sk-text-sm);
     text-align: start;
@@ -767,7 +776,7 @@ const schema = {
   .l-break-product-table th,
   .l-break-product-table td {
     padding: var(--sk-space-sm) var(--sk-space-md);
-    border-block-end: var(--sk-edge) solid hsl(var(--sk-color-line));
+    border-bottom: var(--sk-edge) solid hsl(var(--sk-color-line));
     text-align: start;
     vertical-align: top;
   }
@@ -791,11 +800,11 @@ const schema = {
 
   .l-break-product-table tbody tr:last-child th,
   .l-break-product-table tbody tr:last-child td {
-    border-block-end: 0;
+    border-bottom: 0;
   }
 
   .l-break-product-table-note {
-    margin-block-start: var(--sk-space-md);
+    margin-top: var(--sk-space-md);
     color: hsl(var(--sk-color-muted));
     font-size: var(--sk-text-xs);
     line-height: var(--sk-leading-normal);
@@ -805,7 +814,7 @@ const schema = {
     display: grid;
     gap: var(--sk-space-xl);
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    margin-block-start: var(--sk-space-xl);
+    margin-top: var(--sk-space-xl);
   }
 
   .l-break-product-details-grid h3 {
@@ -816,7 +825,7 @@ const schema = {
   }
 
   .l-break-product-details-grid p {
-    margin-block-start: var(--sk-space-xs);
+    margin-top: var(--sk-space-xs);
     color: hsl(var(--sk-color-muted));
     font-size: var(--sk-text-sm);
     line-height: var(--sk-leading-normal);
@@ -824,7 +833,8 @@ const schema = {
 
   /* ── Closing ────────────────────────────────────────────────── */
   .l-break-product-closing {
-    padding-block: var(--sk-space-4xl);
+    padding-top: var(--sk-space-4xl);
+    padding-bottom: var(--sk-space-4xl);
   }
 
   .l-break-product-changelog {
@@ -838,7 +848,7 @@ const schema = {
     display: flex;
     flex-wrap: wrap;
     gap: var(--sk-space-xs);
-    margin-block-start: var(--sk-space-md);
+    margin-top: var(--sk-space-md);
     color: hsl(var(--sk-color-muted));
     font-family: var(--sk-font-mono);
     font-size: var(--sk-text-xs);
@@ -848,7 +858,7 @@ const schema = {
     display: inline-flex;
     align-items: center;
     gap: var(--sk-space-xs);
-    margin-block-start: var(--sk-space-lg);
+    margin-top: var(--sk-space-lg);
     font-size: var(--sk-text-sm);
     text-decoration: none;
   }
@@ -874,26 +884,38 @@ const schema = {
     display: flex;
     flex-direction: column;
     gap: var(--sk-space-xs);
-    margin-block-start: var(--sk-space-sm);
+    margin-top: var(--sk-space-sm);
   }
 
   .l-break-product-release-notes li {
     position: relative;
-    padding-inline-start: var(--sk-space-md);
+    /* Physical indent with an RTL mirror below: legacy kernels drop
+       padding-inline-start, which would remove the bullet indent. */
+    padding-left: var(--sk-space-md);
     color: hsl(var(--sk-color-ink-soft));
     font-size: var(--sk-text-sm);
     line-height: var(--sk-leading-normal);
   }
 
+  :global([dir='rtl']) .l-break-product-release-notes li {
+    padding-left: 0;
+    padding-right: var(--sk-space-md);
+  }
+
   .l-break-product-release-notes li::before {
     content: '';
     position: absolute;
-    inset-block-start: 0.7em;
-    inset-inline-start: 0;
-    inline-size: var(--sk-space-2xs);
-    block-size: var(--sk-space-2xs);
+    top: 0.7em;
+    left: 0;
+    width: var(--sk-space-2xs);
+    height: var(--sk-space-2xs);
     border-radius: var(--sk-radius-full);
     background: hsl(var(--sk-color-break-forest));
+  }
+
+  :global([dir='rtl']) .l-break-product-release-notes li::before {
+    left: auto;
+    right: 0;
   }
 
   .l-break-product-source {
@@ -901,9 +923,9 @@ const schema = {
     align-items: center;
     justify-content: space-between;
     gap: var(--sk-space-2xl);
-    margin-block-start: var(--sk-space-2xl);
-    padding-block-start: var(--sk-space-xl);
-    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+    margin-top: var(--sk-space-2xl);
+    padding-top: var(--sk-space-xl);
+    border-top: var(--sk-edge) solid hsl(var(--sk-color-line));
   }
 
   .l-break-product-source h2 {
@@ -915,8 +937,8 @@ const schema = {
   }
 
   .l-break-product-source p {
-    max-inline-size: var(--sk-reading);
-    margin-block-start: var(--sk-space-xs);
+    max-width: var(--sk-reading);
+    margin-top: var(--sk-space-xs);
     color: hsl(var(--sk-color-muted));
     font-size: var(--sk-text-sm);
     line-height: var(--sk-leading-normal);
@@ -929,13 +951,14 @@ const schema = {
     }
 
     .l-break-product-hero-stage {
-      max-inline-size: var(--sk-container);
-      inline-size: 100%;
-      margin-inline: auto;
+      max-width: var(--sk-container);
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .l-break-product-hero-card {
-      inset-inline-start: var(--sk-space-lg);
+      left: var(--sk-space-lg);
     }
 
     .l-break-product-day-step {
@@ -964,7 +987,7 @@ const schema = {
     }
 
     .l-break-product-insights-figure {
-      max-inline-size: var(--sk-container);
+      max-width: var(--sk-container);
     }
 
     .l-break-product-feature-grid {
@@ -972,13 +995,13 @@ const schema = {
     }
 
     .l-break-product-feature-grid li:nth-child(3n + 1) {
-      padding-inline-start: var(--sk-space-xl);
-      border-inline-start: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
+      padding-left: var(--sk-space-xl);
+      border-left: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
     }
 
     .l-break-product-feature-grid li:nth-child(2n + 1) {
-      padding-inline-start: 0;
-      border-inline-start: 0;
+      padding-left: 0;
+      border-left: 0;
     }
 
     .l-break-product-changelog {
@@ -1017,9 +1040,9 @@ const schema = {
 
   @media (max-width: 639px) {
     .l-break-product-hero-card {
-      inset-block-end: calc(var(--sk-space-md) * -1);
-      inset-inline-start: var(--sk-space-xs);
-      inline-size: 58%;
+      bottom: calc(var(--sk-space-md) * -1);
+      left: var(--sk-space-xs);
+      width: 58%;
     }
 
     .l-break-product-feature-grid {
@@ -1029,8 +1052,9 @@ const schema = {
     .l-break-product-feature-grid li,
     .l-break-product-feature-grid li:nth-child(3n + 1),
     .l-break-product-feature-grid li:nth-child(2n + 1) {
-      padding-inline: 0;
-      border-inline-start: 0;
+      padding-left: 0;
+      padding-right: 0;
+      border-left: 0;
     }
   }
 </style>

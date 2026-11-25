@@ -28,17 +28,19 @@ const { size = 'md', class: className } = Astro.props;
   .l-break-mark {
     /* The icon canvas carries transparent padding; 1.2 keeps the droplet
        visually the same size as the previous 64-unit mark. */
-    inline-size: calc(var(--sk-space-xl) * 1.2);
-    block-size: auto;
+    /* Physical properties: legacy kernels (WeChat) drop inline-size and would
+       fall back to the PNG's intrinsic size. */
+    width: calc(var(--sk-space-xl) * 1.2);
+    height: auto;
     flex: none;
     filter: drop-shadow(0 var(--sk-space-3xs) var(--sk-space-2xs) hsl(150 60% 24% / 0.28));
   }
 
   .l-break-mark.is-sm {
-    inline-size: calc(var(--sk-icon-md) * 1.2);
+    width: calc(var(--sk-icon-md) * 1.2);
   }
 
   .l-break-mark.is-lg {
-    inline-size: calc(var(--sk-space-2xl) * 1.2);
+    width: calc(var(--sk-space-2xl) * 1.2);
   }
 </style>

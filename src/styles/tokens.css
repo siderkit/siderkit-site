@@ -92,8 +92,12 @@
   --sk-text-2xl: 1.75rem;
   --sk-text-3xl: 2.25rem;
   --sk-text-4xl: 3rem;
+  /* static fallbacks for kernels without clamp() (Chromium < 79) */
+  --sk-text-display: 3rem;
   --sk-text-display: clamp(3rem, 7.4vw, 5.75rem);
+  --sk-text-hero: 2.75rem;
   --sk-text-hero: clamp(2.75rem, 5.4vw, 4.5rem);
+  --sk-text-section: 2.25rem;
   --sk-text-section: clamp(2.25rem, 4.4vw, 3.5rem);
   --sk-leading-none: 1;
   --sk-leading-tight: 1.06;
@@ -119,6 +123,7 @@
   --sk-space-3xl: 4rem;
   --sk-space-4xl: 6rem;
   --sk-space-5xl: 8rem;
+  --sk-section-pad: 4.5rem;
   --sk-section-pad: clamp(4.5rem, 9vw, 8rem);
   --sk-container: 72rem;
   --sk-reading: 44rem;

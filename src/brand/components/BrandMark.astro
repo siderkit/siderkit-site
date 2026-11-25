@@ -19,8 +19,9 @@ const { size = 'sm', class: className } = Astro.props;
   .l-logo-mark {
     display: grid;
     place-items: center;
-    inline-size: var(--sk-mark-size);
-    block-size: var(--sk-mark-size);
+    /* Physical properties: legacy kernels (WeChat) drop inline-size. */
+    width: var(--sk-mark-size);
+    height: var(--sk-mark-size);
     flex: none;
     border-radius: calc(var(--sk-mark-size) * 0.3);
     background: hsl(var(--sk-color-brand));
@@ -32,6 +33,8 @@ const { size = 'sm', class: className } = Astro.props;
   }
 
   .l-logo-mark.is-xl {
+    /* static fallback for kernels without min() (Chromium < 79) */
+    --sk-mark-size: 9rem;
     --sk-mark-size: min(9rem, 38vw);
   }
 </style>

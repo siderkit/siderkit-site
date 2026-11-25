@@ -21,13 +21,24 @@ interface Props {
 }
 
 const { name, size = 'md', class: className } = Astro.props;
-const sizeVar = `var(--sk-icon-${size})`;
+
+/*
+ * WeChat's built-in browser (and other legacy kernels) ignores var() inside
+ * the width/height presentation attributes; the SVG then falls back to its
+ * default 100% width and blows up the layout. The attributes therefore carry
+ * the px fallback (1rem = 16px) while the style attribute re-applies the
+ * token, so the icon still scales with the user's font size.
+ */
+const SIZE_PX = { sm: 16, md: 20, lg: 24 } as const;
+const sizePx = SIZE_PX[size];
+const sizeStyle = `width: var(--sk-icon-${size}); height: var(--sk-icon-${size});`;
 ---
 
 <svg
   class={className}
-  width={sizeVar}
-  height={sizeVar}
+  width={sizePx}
+  height={sizePx}
+  style={sizeStyle}
   viewBox="0 0 24 24"
   fill="none"
   stroke="currentColor"

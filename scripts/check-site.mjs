@@ -77,9 +77,36 @@ function checkReleaseData() {
   }
 }
 
+function checkLegacyCss() {
+  // WeChat's built-in browser (Chromium 57-86) silently drops declarations it
+  // cannot parse; these are the patterns whose loss breaks the layout there.
+  // SVG sizing: var() inside width/height presentation attributes is ignored,
+  // so the SVG falls back to a 100% width — use numeric attributes plus a
+  // style="width: var(...)" fallback. Sizing/spacing: logical properties
+  // (Chromium 87+) vanish below that, so ship physical properties instead.
+  const attributePattern = /(?:^|\s)(width|height)=\{?`?"?[^\n>]*var\(/;
+  const logicalPattern =
+    /^[\t ]*(?:margin|padding|border|inset|scroll-margin|scroll-padding)-(?:inline|block)(?:-(?:start|end))?[\t ]*:|^(?:[\t ]*)(?:min-|max-)?(?:inline|block)-size[\t ]*:/;
+  for (const file of walk(path.join(root, 'src'))) {
+    if (!file.endsWith('.astro') && !file.endsWith('.css')) continue;
+    const text = fs.readFileSync(file, 'utf8');
+    if (attributePattern.test(text)) {
+      fail(
+        `${path.relative(root, file)} binds width/height to var(); use a numeric attribute plus style="width: var(...)"`,
+      );
+    }
+    if (logicalPattern.test(text)) {
+      fail(
+        `${path.relative(root, file)} uses CSS logical properties; use physical ones (legacy kernels drop logical properties)`,
+      );
+    }
+  }
+}
+
 function checkSource() {
   checkPublicAssets();
   checkReleaseData();
+  checkLegacyCss();
 
   if (exists('src/pages/api')) fail('src/pages/api must not exist; /api/* is reserved');
 

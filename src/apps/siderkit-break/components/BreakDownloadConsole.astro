@@ -230,8 +230,8 @@ const platforms = [
 
 <style>
   .l-break-download-console {
-    max-inline-size: 34rem;
-    margin-block-start: var(--sk-space-xl);
+    max-width: 34rem;
+    margin-top: var(--sk-space-xl);
   }
 
   .l-break-download-head {
@@ -250,7 +250,8 @@ const platforms = [
   }
 
   .l-break-download-badge {
-    padding-inline: var(--sk-space-xs);
+    padding-left: var(--sk-space-xs);
+    padding-right: var(--sk-space-xs);
     border: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
     border-radius: var(--sk-radius-full);
     color: hsl(var(--sk-color-break-on-deep-soft));
@@ -259,8 +260,8 @@ const platforms = [
   }
 
   .l-break-download-lead {
-    max-inline-size: var(--sk-reading);
-    margin-block-start: var(--sk-space-xs);
+    max-width: var(--sk-reading);
+    margin-top: var(--sk-space-xs);
     color: hsl(var(--sk-color-break-on-deep-soft));
     font-size: var(--sk-text-sm);
     line-height: var(--sk-leading-normal);
@@ -269,7 +270,7 @@ const platforms = [
   .l-break-download-tabs {
     display: flex;
     gap: var(--sk-space-xs);
-    margin-block-start: var(--sk-space-md);
+    margin-top: var(--sk-space-md);
     padding: var(--sk-space-xs);
     border: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
     border-radius: var(--sk-radius-full);
@@ -282,8 +283,9 @@ const platforms = [
     align-items: center;
     justify-content: center;
     gap: var(--sk-space-xs);
-    min-block-size: var(--sk-control-height-sm);
-    padding-inline: var(--sk-space-sm);
+    min-height: var(--sk-control-height-sm);
+    padding-left: var(--sk-space-sm);
+    padding-right: var(--sk-space-sm);
     border: 0;
     border-radius: var(--sk-radius-full);
     background: transparent;
@@ -308,8 +310,8 @@ const platforms = [
 
   .l-break-download-detected {
     display: inline-block;
-    inline-size: var(--sk-space-xs);
-    block-size: var(--sk-space-xs);
+    width: var(--sk-space-xs);
+    height: var(--sk-space-xs);
     border-radius: var(--sk-radius-full);
     background: currentColor;
   }
@@ -319,7 +321,7 @@ const platforms = [
   }
 
   .l-break-download-panel {
-    margin-block-start: var(--sk-space-md);
+    margin-top: var(--sk-space-md);
     padding: var(--sk-space-lg);
     border: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
     border-radius: var(--sk-radius-lg);
@@ -337,8 +339,8 @@ const platforms = [
   }
 
   .l-break-download-primary {
-    inline-size: 100%;
-    margin-block-start: var(--sk-space-md);
+    width: 100%;
+    margin-top: var(--sk-space-md);
     background: hsl(var(--sk-color-break-cream));
     color: hsl(var(--sk-color-break-deep));
     box-shadow: var(--sk-shadow-card);
@@ -349,7 +351,7 @@ const platforms = [
   }
 
   .l-break-download-artifact {
-    margin-block-start: var(--sk-space-sm);
+    margin-top: var(--sk-space-sm);
     color: hsl(var(--sk-color-break-on-deep-soft));
     font-family: var(--sk-font-mono);
     font-size: var(--sk-text-xs);
@@ -362,7 +364,7 @@ const platforms = [
     align-items: center;
     justify-content: space-between;
     gap: var(--sk-space-sm);
-    margin-block-start: var(--sk-space-md);
+    margin-top: var(--sk-space-md);
   }
 
   .l-break-download-github {
@@ -394,7 +396,7 @@ const platforms = [
 
   .l-break-download-checksum code {
     display: block;
-    margin-block-start: var(--sk-space-xs);
+    margin-top: var(--sk-space-xs);
     padding: var(--sk-space-xs) var(--sk-space-sm);
     border: var(--sk-edge) solid hsl(var(--sk-color-break-line-deep));
     border-radius: var(--sk-radius-sm);
@@ -408,14 +410,14 @@ const platforms = [
   }
 
   .l-break-download-checksum p {
-    margin-block-start: var(--sk-space-xs);
+    margin-top: var(--sk-space-xs);
     color: hsl(var(--sk-color-break-on-deep-soft));
     font-size: var(--sk-text-xs);
     line-height: var(--sk-leading-normal);
   }
 
   .l-break-download-note {
-    margin-block-start: var(--sk-space-md);
+    margin-top: var(--sk-space-md);
     color: hsl(var(--sk-color-break-on-deep-soft));
     font-size: var(--sk-text-xs);
     line-height: var(--sk-leading-normal);
@@ -427,7 +429,8 @@ const platforms = [
     }
 
     .l-break-download-tab {
-      padding-inline: var(--sk-space-xs);
+      padding-left: var(--sk-space-xs);
+      padding-right: var(--sk-space-xs);
       font-size: var(--sk-text-xs);
     }
 

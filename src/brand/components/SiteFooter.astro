@@ -111,8 +111,9 @@ const columns = [
 
 <style>
   .l-site-footer {
-    padding-block: var(--sk-space-3xl) var(--sk-space-xl);
-    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+    padding-top: var(--sk-space-3xl);
+    padding-bottom: var(--sk-space-xl);
+    border-top: var(--sk-edge) solid hsl(var(--sk-color-line));
     background: hsl(var(--sk-color-paper-sunk) / 0.45);
   }
 
@@ -130,7 +131,7 @@ const columns = [
   }
 
   .l-site-footer-tagline {
-    max-inline-size: 22ch;
+    max-width: 22ch;
     color: hsl(var(--sk-color-muted));
     font-size: var(--sk-text-sm);
   }
@@ -187,9 +188,9 @@ const columns = [
     align-items: center;
     justify-content: space-between;
     gap: var(--sk-space-sm);
-    margin-block-start: var(--sk-space-2xl);
-    padding-block-start: var(--sk-space-lg);
-    border-block-start: var(--sk-edge) solid hsl(var(--sk-color-line));
+    margin-top: var(--sk-space-2xl);
+    padding-top: var(--sk-space-lg);
+    border-top: var(--sk-edge) solid hsl(var(--sk-color-line));
     color: hsl(var(--sk-color-muted));
     font-size: var(--sk-text-xs);
   }
@@ -217,7 +218,7 @@ const columns = [
 
   @media (max-width: 639px) {
     .l-site-footer {
-      padding-block-start: var(--sk-space-2xl);
+      padding-top: var(--sk-space-2xl);
     }
 
     .l-site-footer-bottom {

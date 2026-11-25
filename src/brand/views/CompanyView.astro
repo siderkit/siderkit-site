@@ -98,7 +98,8 @@ const channelLinks: Record<string, string> = {
 
 <style>
   .l-company-hero {
-    padding-block: var(--sk-space-2xl) var(--sk-space-4xl);
+    padding-top: var(--sk-space-2xl);
+    padding-bottom: var(--sk-space-4xl);
   }
 
   .l-company-grid {
@@ -109,8 +110,8 @@ const channelLinks: Record<string, string> = {
   }
 
   .l-company-title {
-    max-inline-size: 14ch;
-    margin-block-start: var(--sk-space-md);
+    max-width: 14ch;
+    margin-top: var(--sk-space-md);
     font-family: var(--sk-font-display);
     font-size: var(--sk-text-section);
     font-weight: var(--sk-weight-regular);
@@ -123,8 +124,9 @@ const channelLinks: Record<string, string> = {
     display: flex;
     flex-direction: column;
     gap: var(--sk-space-md);
-    max-inline-size: var(--sk-reading);
-    margin-block: var(--sk-space-lg) var(--sk-space-xl);
+    max-width: var(--sk-reading);
+    margin-top: var(--sk-space-lg);
+    margin-bottom: var(--sk-space-xl);
     color: hsl(var(--sk-color-muted));
     font-size: var(--sk-text-base);
     line-height: var(--sk-leading-normal);
@@ -134,7 +136,7 @@ const channelLinks: Record<string, string> = {
     position: relative;
     display: grid;
     place-items: center;
-    min-block-size: 28rem;
+    min-height: 28rem;
     overflow: hidden;
     border-radius: var(--sk-radius-xl);
     background: var(--sk-gradient-ink);
@@ -144,8 +146,8 @@ const channelLinks: Record<string, string> = {
 
   .l-company-mark-orbit {
     position: absolute;
-    inline-size: 22rem;
-    block-size: 22rem;
+    width: 22rem;
+    height: 22rem;
     border: var(--sk-edge) solid hsl(var(--sk-color-brand-soft) / 0.35);
     border-radius: var(--sk-radius-full);
   }
@@ -165,8 +167,9 @@ const channelLinks: Record<string, string> = {
 
   .l-company-mark p {
     position: absolute;
-    inset-block-end: var(--sk-space-xl);
-    inset-inline: var(--sk-space-xl);
+    bottom: var(--sk-space-xl);
+    left: var(--sk-space-xl);
+    right: var(--sk-space-xl);
     color: hsl(var(--sk-color-brand-soft));
     font-family: var(--sk-font-display);
     font-size: var(--sk-text-xl);
@@ -178,7 +181,7 @@ const channelLinks: Record<string, string> = {
     display: grid;
     gap: var(--sk-space-md);
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin-block-start: var(--sk-space-2xl);
+    margin-top: var(--sk-space-2xl);
   }
 
   .l-company-channel {
@@ -201,7 +204,8 @@ const channelLinks: Record<string, string> = {
 
   .l-company-channel p {
     flex: 1;
-    margin-block: var(--sk-space-sm) var(--sk-space-lg);
+    margin-top: var(--sk-space-sm);
+    margin-bottom: var(--sk-space-lg);
     color: hsl(var(--sk-color-muted));
     font-size: var(--sk-text-sm);
     line-height: var(--sk-leading-normal);
@@ -222,7 +226,7 @@ const channelLinks: Record<string, string> = {
   }
 
   .l-company-back {
-    margin-block-start: var(--sk-space-xl);
+    margin-top: var(--sk-space-xl);
     color: hsl(var(--sk-color-muted));
     font-size: var(--sk-text-sm);
   }
@@ -233,7 +237,7 @@ const channelLinks: Record<string, string> = {
     }
 
     .l-company-mark {
-      min-block-size: 22rem;
+      min-height: 22rem;
     }
   }
 

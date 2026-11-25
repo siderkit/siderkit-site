@@ -49,9 +49,9 @@ const languagePath = path.startsWith(routes.notFound) ? routes.home : path;
 <style>
   .l-site-header {
     position: sticky;
-    inset-block-start: 0;
+    top: 0;
     z-index: var(--sk-z-header);
-    border-block-end: var(--sk-edge) solid hsl(var(--sk-color-line) / 0.75);
+    border-bottom: var(--sk-edge) solid hsl(var(--sk-color-line) / 0.75);
     background: hsl(var(--sk-color-paper) / 0.82);
     backdrop-filter: blur(var(--sk-space-sm));
   }
@@ -60,14 +60,20 @@ const languagePath = path.startsWith(routes.notFound) ? routes.home : path;
     display: flex;
     align-items: center;
     gap: var(--sk-space-lg);
-    min-block-size: var(--sk-header-height);
+    min-height: var(--sk-header-height);
   }
 
   .l-site-nav {
     display: flex;
     align-items: center;
     gap: var(--sk-space-lg);
-    margin-inline-start: auto;
+    /* Physical margin: legacy kernels drop margin-inline-start. */
+    margin-left: auto;
+  }
+
+  :global([dir='rtl']) .l-site-nav {
+    margin-left: 0;
+    margin-right: auto;
   }
 
   .l-site-nav-link {

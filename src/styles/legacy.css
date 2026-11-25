@@ -1,0 +1,184 @@
+/*
+ * Legacy-kernel fallbacks for flex `gap` (Chromium < 84, e.g. WeChat's
+ * built-in browser). Modern browsers resolve `@supports not (gap: 1rem)` to
+ * false and skip every block; kernels without flex gap apply physical
+ * margins so flex children keep their spacing. Grid `gap` is not covered
+ * here because it has worked since Chromium 66.
+ *
+ * `> * + *` mirrors `gap` by spacing every child except the first. The
+ * margins are physical, so in RTL pages some spacing lands on the far side
+ * — a cosmetic quirk accepted for legacy support.
+ */
+@supports not (gap: 1rem) {
+  /* Site shell */
+  .l-site-header-inner > * + * {
+    margin-left: var(--sk-space-lg);
+  }
+
+  .l-site-nav > * + * {
+    margin-left: var(--sk-space-lg);
+  }
+
+  .l-site-header-actions > * + * {
+    margin-left: var(--sk-space-xs);
+  }
+
+  .l-site-lang summary > * + * {
+    margin-left: var(--sk-space-2xs);
+  }
+
+  .l-site-lang-menu a > * + * {
+    margin-left: var(--sk-space-sm);
+  }
+
+  .l-site-wordmark > * + * {
+    margin-left: var(--sk-space-sm);
+  }
+
+  .l-site-footer-brand > * + * {
+    margin-top: var(--sk-space-md);
+  }
+
+  .l-site-footer-list > * + * {
+    margin-top: var(--sk-space-xs);
+  }
+
+  .l-site-footer-bottom > * + * {
+    margin-left: var(--sk-space-sm);
+  }
+
+  .l-site-footer-github > * + * {
+    margin-left: var(--sk-space-xs);
+  }
+
+  /* Global primitives */
+  .sk-button > * + * {
+    margin-left: var(--sk-space-xs);
+  }
+
+  .sk-eyebrow > * + * {
+    margin-left: var(--sk-space-xs);
+  }
+
+  /* Home */
+  .l-home-hero-actions > * + * {
+    margin-left: var(--sk-space-sm);
+  }
+
+  .l-home-closing-inner > * + * {
+    margin-left: var(--sk-space-md);
+  }
+
+  .l-home-closing-github > * + * {
+    margin-left: var(--sk-space-xs);
+  }
+
+  /* Company / legal / not-found */
+  .l-company-copy > * + * {
+    margin-top: var(--sk-space-md);
+  }
+
+  .l-company-channel a > * + * {
+    margin-left: var(--sk-space-xs);
+  }
+
+  .l-legal-aside ul > * + * {
+    margin-top: var(--sk-space-2xs);
+  }
+
+  .l-legal-links > * + * {
+    margin-left: var(--sk-space-md);
+  }
+
+  .l-notfound-actions > * + * {
+    margin-left: var(--sk-space-sm);
+  }
+
+  /* Break: home card */
+  .l-break-home-card-brand > * + * {
+    margin-left: var(--sk-space-xs);
+  }
+
+  .l-break-home-card-foot > * + * {
+    margin-left: var(--sk-space-sm);
+  }
+
+  .l-break-home-card-foot a > * + * {
+    margin-left: var(--sk-space-xs);
+  }
+
+  /* Break: product page */
+  .l-break-product-breadcrumb > * + * {
+    margin-left: var(--sk-space-xs);
+  }
+
+  .l-break-product-brand > * + * {
+    margin-left: var(--sk-space-sm);
+  }
+
+  .l-break-product-hero-link > * + * {
+    margin-left: var(--sk-space-xs);
+  }
+
+  .l-break-product-day-marker > * + * {
+    margin-top: var(--sk-space-xs);
+  }
+
+  .l-break-product-insights-points li > * + * {
+    margin-left: var(--sk-space-sm);
+  }
+
+  .l-break-product-details summary > * + * {
+    margin-left: var(--sk-space-md);
+  }
+
+  .l-break-product-inline-link > * + * {
+    margin-left: var(--sk-space-xs);
+  }
+
+  .l-break-product-release-line > * + * {
+    margin-left: var(--sk-space-xs);
+  }
+
+  .l-break-product-release-notes ul > * + * {
+    margin-top: var(--sk-space-xs);
+  }
+
+  .l-break-product-source > * + * {
+    margin-left: var(--sk-space-2xl);
+  }
+
+  /* Break: changelog */
+  .l-break-changelog-brand > * + * {
+    margin-left: var(--sk-space-sm);
+  }
+
+  .l-break-changelog-sections ul > * + * {
+    margin-top: var(--sk-space-xs);
+  }
+
+  /* Break: download console */
+  .l-break-download-head > * + * {
+    margin-left: var(--sk-space-sm);
+  }
+
+  .l-break-download-tabs > * + * {
+    margin-left: var(--sk-space-xs);
+  }
+
+  .l-break-download-tab > * + * {
+    margin-left: var(--sk-space-xs);
+  }
+
+  .l-break-download-panel-meta > * + * {
+    margin-left: var(--sk-space-xs);
+  }
+
+  .l-break-download-links > * + * {
+    margin-left: var(--sk-space-sm);
+  }
+
+  .l-break-download-github > * + * {
+    margin-left: var(--sk-space-xs);
+  }
+}
