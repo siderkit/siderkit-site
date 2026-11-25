@@ -2,9 +2,9 @@ import type { BreakMessages } from './types';
 
 export const fr = {
   meta: {
-    productTitle: 'Siderkit Break — un minuteur de concentration calme',
+    productTitle: 'Siderkit Break — un minuteur Pomodoro calme',
     productDescription:
-      'Un minuteur de concentration qui vit en local, avec un compte à rebours flottant, des rappels de pause en douceur et un historique qui reste sur votre machine.',
+      'Un minuteur Pomodoro qui vit en local, avec un compte à rebours flottant, des rappels en douceur pour reposer les yeux et se redresser, et un historique qui reste sur votre machine.',
     changelogTitle: 'Changelog de Siderkit Break',
     changelogDescription: 'Les notes de version publiques de Siderkit Break.',
     ogAlt: 'Marque Siderkit Break',
@@ -35,7 +35,7 @@ export const fr = {
   homeCard: {
     eyebrow: 'Disponible',
     title: 'Une petite pause pour la personne derrière l’écran.',
-    lead: 'Un minuteur de concentration qui découpe une longue journée d’écran en cycles que l’on peut finir — et en pauses que l’on prend vraiment.',
+    lead: 'Un minuteur Pomodoro qui découpe une longue journée d’écran en cycles que l’on peut finir — et en pauses que l’on prend vraiment.',
     note: 'Gratuit et open source (Apache-2.0).',
     primaryCta: 'Découvrir Siderkit Break',
     windowAlt: 'Fenêtre de concentration de Siderkit Break affichant 18:30 restants dans le cycle 2 sur 4',
@@ -43,9 +43,9 @@ export const fr = {
   product: {
     eyebrow: 'Siderkit Break',
     hero: {
-      kicker: 'Un minuteur de concentration local',
+      kicker: 'Un minuteur Pomodoro qui vit en local',
       title: 'Vingt-cinq minutes données. Cinq minutes rendues.',
-      lead: 'Siderkit Break garde la forme d’une journée de travail : un cycle de concentration honnête, une vraie pause, et un discret rappel pour se lever et regarder au loin. Pas de compte, pas de synchronisation, pas de série à entretenir.',
+      lead: 'Siderkit Break garde l’esprit de la technique Pomodoro : un cycle de concentration honnête, une vraie pause, et un discret rappel pour reposer les yeux et bouger. Le rythme classique 25/5 pour un travail régulier et efficace — pas de compte, pas de synchronisation, pas de série à entretenir.',
       secondaryCta: 'Voir une journée type',
       platformLabel: 'Plateforme',
       platform: 'Windows · macOS · Linux',
@@ -107,24 +107,24 @@ export const fr = {
       lead: 'Six choses, bien faites. Rien qui réclame un compte, un abonnement ou une seconde boîte mail.',
       items: [
         {
-          title: 'Un rythme qui s’ajuste',
-          body: 'Concentration, pause courte, pause longue. Chaque durée et l’intervalle des pauses longues sont modifiables.',
+          title: 'Le rythme Pomodoro, ajustable',
+          body: 'Vingt-cinq minutes données, cinq minutes rendues par défaut ; chaque durée et l’intervalle des pauses longues sont modifiables.',
         },
         {
           title: 'Un compte à rebours qui flotte',
           body: 'Toujours au premier plan, transparent aux clics tant que vous ne le pointez pas, étiqueté selon la phase.',
         },
         {
-          title: 'Une pause à options',
-          body: 'Reporter de cinq minutes, passer la pause, ou la prendre. À vous de décider, chaque fois.',
+          title: 'Une pause utile au corps',
+          body: 'Un rappel pour détourner le regard de l’écran et s’étirer. Reporter de cinq minutes, passer, ou la prendre — à vous de décider, chaque fois.',
         },
         {
           title: 'Un historique qui reste chez vous',
           body: 'Cycles terminés, passés ou interrompus, stockés en local. Pas de compte, pas de synchronisation.',
         },
         {
-          title: 'Des analyses, sans notation',
-          body: 'Temps de concentration, cycles et séries par jour, semaine, mois et année, plus une heatmap.',
+          title: 'Un effort visible',
+          body: 'Temps de concentration, cycles et séries par jour, semaine, mois et année, plus une heatmap qui montre un travail régulier sans le transformer en score.',
         },
         {
           title: 'Des mises à jour sur demande',

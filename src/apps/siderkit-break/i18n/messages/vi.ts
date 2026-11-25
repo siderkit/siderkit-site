@@ -2,9 +2,9 @@ import type { BreakMessages } from './types';
 
 export const vi = {
   meta: {
-    productTitle: 'Siderkit Break — bộ hẹn giờ tập trung êm ái',
+    productTitle: 'Siderkit Break — bộ hẹn giờ Pomodoro êm ái',
     productDescription:
-      'Bộ hẹn giờ tập trung ưu tiên dữ liệu tại máy, với đếm ngược nổi, lời nhắc nghỉ nhẹ nhàng, và lịch sử nằm ngay trên máy của bạn.',
+      'Bộ hẹn giờ Pomodoro ưu tiên dữ liệu tại máy, với đếm ngược nổi, lời nhắc nhẹ nhàng để nghỉ mắt và chỉnh tư thế, và lịch sử nằm ngay trên máy của bạn.',
     changelogTitle: 'Changelog của Siderkit Break',
     changelogDescription: 'Ghi chú phát hành công khai của Siderkit Break.',
     ogAlt: 'Biểu tượng Siderkit Break',
@@ -35,7 +35,7 @@ export const vi = {
   homeCard: {
     eyebrow: 'Đã có mặt',
     title: 'Một quãng nghỉ nhỏ cho người ngồi sau màn hình.',
-    lead: 'Một bộ hẹn giờ tập trung biến một ngày dài trước màn hình thành những lượt bạn hoàn thành được — và những quãng nghỉ bạn thực sự có thể nghỉ.',
+    lead: 'Một bộ hẹn giờ Pomodoro biến một ngày dài trước màn hình thành những lượt bạn hoàn thành được — và những quãng nghỉ bạn thực sự có thể nghỉ.',
     note: 'Miễn phí, mã nguồn mở (Apache-2.0).',
     primaryCta: 'Xem Siderkit Break',
     windowAlt: 'Cửa sổ tập trung của Siderkit Break hiển thị còn 18:30 ở lượt 2 trên 4',
@@ -43,9 +43,9 @@ export const vi = {
   product: {
     eyebrow: 'Siderkit Break',
     hero: {
-      kicker: 'Bộ hẹn giờ tập trung cục bộ',
+      kicker: 'Bộ hẹn giờ Pomodoro chạy ngay trên máy của bạn',
       title: 'Hai mươi lăm phút vào việc. Năm phút lấy lại.',
-      lead: 'Siderkit Break giữ nguyên dáng một ngày làm việc: một lượt tập trung thật, một quãng nghỉ thật, và một lời nhắc khẽ để đứng dậy, nhìn xa. Không tài khoản, không đồng bộ, không chuỗi ngày phải gìn giữ.',
+      lead: 'Siderkit Break giữ nguyên dáng phương pháp Pomodoro: một lượt tập trung thật, một quãng nghỉ thật, và một lời nhắc khẽ để nghỉ mắt và vận động. Nhịp 25/5 kinh điển cho công việc đều đặn, hiệu quả — không tài khoản, không đồng bộ, không chuỗi ngày phải gìn giữ.',
       secondaryCta: 'Xem một ngày diễn ra thế nào',
       platformLabel: 'Nền tảng',
       platform: 'Windows · macOS · Linux',
@@ -107,24 +107,24 @@ export const vi = {
       lead: 'Sáu điều, làm cho chuẩn. Chẳng có gì đòi hỏi tài khoản, thuê bao, hay thêm một hòm thư nữa.',
       items: [
         {
-          title: 'Một nhịp điệu uốn dẻo',
-          body: 'Tập trung, nghỉ ngắn, nghỉ dài. Mọi độ dài và cả khoảng nghỉ dài đều có thể đổi.',
+          title: 'Nhịp Pomodoro, điều chỉnh được',
+          body: 'Mặc định là hai mươi lăm phút vào việc, năm phút nghỉ; mọi độ dài và cả chu kỳ nghỉ dài đều có thể đổi.',
         },
         {
           title: 'Một đếm ngược nổi',
           body: 'Luôn trên cùng, cho bấm xuyên qua cho đến khi bạn trỏ vào, được gắn nhãn theo pha.',
         },
         {
-          title: 'Một quãng nghỉ có lựa chọn',
-          body: 'Trễ thêm năm phút, bỏ qua lần nghỉ, hoặc nghỉ luôn. Quyết định là của bạn, mọi lần.',
+          title: 'Một quãng nghỉ cho cơ thể bạn',
+          body: 'Một lời nhắc rời mắt khỏi màn hình và giãn cơ. Trễ thêm năm phút, bỏ qua, hoặc nghỉ luôn — quyết định là của bạn, mọi lần.',
         },
         {
           title: 'Lịch sử ở ngay nhà',
           body: 'Các lượt đã hoàn thành, đã bỏ qua, và đã gián đoạn, lưu tại máy. Không tài khoản, không đồng bộ.',
         },
         {
-          title: 'Thống kê không chấm điểm',
-          body: 'Thời gian tập trung, các lượt, và chuỗi ngày theo ngày, tuần, tháng, năm, kèm một bản đồ nhiệt.',
+          title: 'Nỗ lực bạn có thể thấy',
+          body: 'Thời gian tập trung, các lượt, và chuỗi ngày theo ngày, tuần, tháng, năm, kèm một bản đồ nhiệt cho thấy công việc đều đặn mà không biến nó thành điểm số.',
         },
         {
           title: 'Cập nhật khi bạn muốn',

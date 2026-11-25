@@ -1,9 +1,9 @@
 
 export const en = {
   meta: {
-    productTitle: 'Siderkit Break — a calm focus timer',
+    productTitle: 'Siderkit Break — a calm Pomodoro timer',
     productDescription:
-      'A local-first focus timer with a floating countdown, gentle break reminders, and a history that stays on your machine.',
+      'A local-first Pomodoro timer with a floating countdown, gentle reminders to rest your eyes and posture, and a history that stays on your machine.',
     changelogTitle: 'Siderkit Break changelog',
     changelogDescription: 'Public release notes for Siderkit Break.',
     ogAlt: 'Siderkit Break mark',
@@ -34,7 +34,7 @@ export const en = {
   homeCard: {
     eyebrow: 'Now shipping',
     title: 'A little rest for the person behind the screen.',
-    lead: 'A focus timer that turns a long screen day into rounds you can finish — and pauses you can actually take.',
+    lead: 'A Pomodoro timer that turns a long screen day into rounds you can finish — and pauses you can actually take.',
     note: 'Free, open source (Apache-2.0).',
     primaryCta: 'Visit Siderkit Break',
     windowAlt: 'Siderkit Break focus window showing 18:30 remaining in round 2 of 4',
@@ -42,9 +42,9 @@ export const en = {
   product: {
     eyebrow: 'Siderkit Break',
     hero: {
-      kicker: 'A local-first focus timer',
+      kicker: 'A local-first Pomodoro timer',
       title: 'Twenty-five minutes in. Five minutes back.',
-      lead: 'Siderkit Break keeps the shape of a working day: one honest focus round, one real pause, and a quiet nudge to stand up and look away. No account, no sync, no streak to protect.',
+      lead: 'Siderkit Break keeps the shape of the Pomodoro technique: one honest focus round, one real pause, and a quiet nudge to rest your eyes and move. The classic 25/5 rhythm for steady, efficient work — no account, no sync, no streak to protect.',
       secondaryCta: 'See how a day works',
       platformLabel: 'Platform',
       platform: 'Windows · macOS · Linux',
@@ -106,24 +106,24 @@ export const en = {
       lead: 'Six things, done properly. Nothing that asks for an account, a subscription, or a second inbox.',
       items: [
         {
-          title: 'A rhythm that bends',
-          body: 'Focus, short break, long break. Every length and the long-break interval can be changed.',
+          title: 'The Pomodoro rhythm, adjustable',
+          body: 'Twenty-five minutes in, five minutes back by default; every length and the long-break interval can be changed.',
         },
         {
           title: 'A countdown that floats',
           body: 'Always on top, click-through until you point at it, labeled by phase.',
         },
         {
-          title: 'A pause with options',
-          body: 'Postpone for five minutes, skip the break, or take it. Your call, every time.',
+          title: 'A pause your body can use',
+          body: 'A prompt to look away from the screen and stretch. Postpone for five minutes, skip, or take it — your call, every time.',
         },
         {
           title: 'History that stays home',
           body: 'Completed, skipped, and interrupted rounds, stored locally. No account, no sync.',
         },
         {
-          title: 'Insight without scoring',
-          body: 'Focus time, rounds, and streaks by day, week, month, and year, plus a heatmap.',
+          title: 'Effort you can see',
+          body: 'Focus time, rounds, and streaks by day, week, month, and year, plus a heatmap that shows steady work without turning it into a score.',
         },
         {
           title: 'Updates when you ask',

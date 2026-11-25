@@ -2,9 +2,9 @@ import type { BreakMessages } from './types';
 
 export const zhTW = {
   meta: {
-    productTitle: 'Siderkit Break — 安靜的專注計時器',
+    productTitle: 'Siderkit Break — 安靜的番茄鐘',
     productDescription:
-      '本地優先的專注計時器，帶懸浮倒數、溫和的休息提醒，以及只留在本機的專注紀錄。',
+      '本機優先的番茄工作法計時器，帶懸浮倒數、讓你休息眼睛與起身活動的溫和提醒，以及只留在本機的專注紀錄。',
     changelogTitle: 'Siderkit Break 版本紀錄',
     changelogDescription: 'Siderkit Break 的公開版本紀錄。',
     ogAlt: 'Siderkit Break 標誌',
@@ -35,7 +35,7 @@ export const zhTW = {
   homeCard: {
     eyebrow: '現已發布',
     title: '給螢幕後面的人，一點休息。',
-    lead: '一款專注計時器：把漫長的螢幕日分成能完成的輪次，和真正能休的停頓。',
+    lead: '一款番茄鐘：把漫長的螢幕日分成能完成的輪次，和真正能休的停頓。',
     note: '免費、開源（Apache-2.0）。',
     primaryCta: '查看 Siderkit Break',
     windowAlt: '專注視窗顯示第 2/4 輪剩餘 18:30',
@@ -43,9 +43,9 @@ export const zhTW = {
   product: {
     eyebrow: 'Siderkit Break',
     hero: {
-      kicker: '本機優先的專注計時器',
+      kicker: '本機優先的番茄工作法計時器',
       title: '二十五分鐘給工作，五分鐘給自己。',
-      lead: 'Siderkit Break 替一天守住形狀：一輪紮實的專注、一次真正的停頓，還有一句輕聲提醒，讓你起身看看遠方。沒有帳號、沒有同步，也沒有需要維護的連續打卡。',
+      lead: 'Siderkit Break 替番茄工作法守住形狀：一輪紮實的專注、一次真正的停頓，還有一句輕聲提醒，讓眼睛歇一歇、起身動一動。經典的 25/5 節奏，用來踏實而高效地工作——沒有帳號、沒有同步，也沒有需要維護的連續打卡。',
       secondaryCta: '看看一天怎麼過',
       platformLabel: '平台',
       platform: 'Windows · macOS · Linux',
@@ -107,24 +107,24 @@ export const zhTW = {
       lead: '六件事，認真做好。沒有帳號，沒有訂閱，也沒有第二個收件匣。',
       items: [
         {
-          title: '會彎的節奏',
-          body: '專注、短休、長休。每個時長和長休間隔都能改。',
+          title: '番茄鐘的節奏，隨你調',
+          body: '預設二十五分鐘專注、五分鐘休息；每個時長和長休間隔都能改。',
         },
         {
           title: '浮在桌上的倒數',
           body: '始終置頂，滑鼠不靠近時點擊穿透，按階段顯示標籤。',
         },
         {
-          title: '有選擇的停頓',
-          body: '延後五分鐘、跳過休息，或者現在就休息。每次都你說了算。',
+          title: '身體用得上的停頓',
+          body: '提醒你離開螢幕、伸展一下。可以延後五分鐘、跳過，或者現在就休息——每次都你說了算。',
         },
         {
           title: '留在本機的歷史',
           body: '完成、跳過、中斷的輪次都存在本機。沒有帳號，沒有同步。',
         },
         {
-          title: '只給洞察，不打分',
-          body: '按天、週、月、年查看專注時長、輪次與連續天數，還有一張熱力圖。',
+          title: '看得見的努力',
+          body: '按天、週、月、年查看專注時長、輪次與連續天數，熱力圖呈現的是踏實的累積，不是分數。',
         },
         {
           title: '你說了才更新',

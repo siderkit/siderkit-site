@@ -2,9 +2,9 @@ import type { BreakMessages } from './types';
 
 export const zhCN = {
   meta: {
-    productTitle: 'Siderkit Break — 安静的专注计时器',
+    productTitle: 'Siderkit Break — 安静的番茄钟',
     productDescription:
-      '本地优先的专注计时器，带悬浮倒计时、温和的休息提醒，以及只留在本机的专注记录。',
+      '本地优先的番茄工作法计时器，带悬浮倒计时、让你休息眼睛和起身活动的温和提醒，以及只留在本机的专注记录。',
     changelogTitle: 'Siderkit Break 版本记录',
     changelogDescription: 'Siderkit Break 的公开版本记录。',
     ogAlt: 'Siderkit Break 标志',
@@ -35,7 +35,7 @@ export const zhCN = {
   homeCard: {
     eyebrow: '现已发布',
     title: '给屏幕后面的人，一点休息。',
-    lead: '一款专注计时器：把漫长的屏幕日分成能完成的轮次，和真正能休的停顿。',
+    lead: '一款番茄钟：把漫长的屏幕日分成能完成的轮次，和真正能休的停顿。',
     note: '免费、开源（Apache-2.0）。',
     primaryCta: '查看 Siderkit Break',
     windowAlt: '专注窗口显示第 2/4 轮剩余 18:30',
@@ -43,9 +43,9 @@ export const zhCN = {
   product: {
     eyebrow: 'Siderkit Break',
     hero: {
-      kicker: '本地优先的专注计时器',
+      kicker: '本地优先的番茄工作法计时器',
       title: '二十五分钟给工作，五分钟给自己。',
-      lead: 'Siderkit Break 替一天守住形状：一轮扎实的专注，一次真正的停顿，还有一句轻声提醒，让你起身看看远处。没有账号，没有同步，也没有需要维护的连续打卡。',
+      lead: 'Siderkit Break 替番茄工作法守住形状：一轮扎实的专注，一次真正的停顿，还有一句轻声提醒，让你让眼睛歇一歇、起身动一动。经典的 25/5 节奏，用来踏实而高效地工作——没有账号，没有同步，也没有需要维护的连续打卡。',
       secondaryCta: '看看一天怎么过',
       platformLabel: '平台',
       platform: 'Windows · macOS · Linux',
@@ -107,24 +107,24 @@ export const zhCN = {
       lead: '六件事，认真做好。没有账号，没有订阅，也没有第二个收件箱。',
       items: [
         {
-          title: '会弯的节奏',
-          body: '专注、短休、长休。每个时长和长休间隔都能改。',
+          title: '番茄钟的节奏，随你调',
+          body: '默认二十五分钟专注、五分钟休息；每个时长和长休间隔都能改。',
         },
         {
           title: '浮在桌上的倒计时',
           body: '始终置顶，鼠标不靠近时点击穿透，按阶段显示标签。',
         },
         {
-          title: '有选择的停顿',
-          body: '推迟五分钟、跳过休息，或者现在就休息。每次都你说了算。',
+          title: '身体用得上的停顿',
+          body: '提醒你离开屏幕、伸展一下。可以推迟五分钟、跳过，或者现在就休息——每次都你说了算。',
         },
         {
           title: '留在本机的历史',
           body: '完成、跳过、中断的轮次都存在本地。没有账号，没有同步。',
         },
         {
-          title: '只给洞察，不打分',
-          body: '按天、周、月、年查看专注时长、轮次与连续天数，还有一张热力图。',
+          title: '看得见的努力',
+          body: '按天、周、月、年查看专注时长、轮次与连续天数，热力图呈现的是踏实的积累，不是分数。',
         },
         {
           title: '你说了才更新',

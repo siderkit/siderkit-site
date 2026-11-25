@@ -2,9 +2,9 @@ import type { BreakMessages } from './types';
 
 export const es = {
   meta: {
-    productTitle: 'Siderkit Break — un temporizador de concentración sereno',
+    productTitle: 'Siderkit Break — un temporizador Pomodoro sereno',
     productDescription:
-      'Un temporizador de concentración que vive en local, con una cuenta atrás flotante, recordatorios de descanso suaves y un historial que se queda en tu máquina.',
+      'Un temporizador Pomodoro que vive en local, con una cuenta atrás flotante, recordatorios suaves para descansar la vista y estirarte, y un historial que se queda en tu máquina.',
     changelogTitle: 'Registro de cambios de Siderkit Break',
     changelogDescription: 'Notas de versión públicas de Siderkit Break.',
     ogAlt: 'Marca de Siderkit Break',
@@ -35,7 +35,7 @@ export const es = {
   homeCard: {
     eyebrow: 'Ya disponible',
     title: 'Un pequeño descanso para quien está detrás de la pantalla.',
-    lead: 'Un temporizador de concentración que convierte un largo día de pantalla en rondas que puedes terminar, y en pausas que de verdad puedes tomarte.',
+    lead: 'Un temporizador Pomodoro que convierte un largo día de pantalla en rondas que puedes terminar — y en pausas que de verdad puedes tomarte.',
     note: 'Gratis y de código abierto (Apache-2.0).',
     primaryCta: 'Visitar Siderkit Break',
     windowAlt: 'Ventana de concentración de Siderkit Break con 18:30 restantes en la ronda 2 de 4',
@@ -43,9 +43,9 @@ export const es = {
   product: {
     eyebrow: 'Siderkit Break',
     hero: {
-      kicker: 'Un temporizador de concentración local',
+      kicker: 'Un temporizador Pomodoro local',
       title: 'Veinticinco minutos de trabajo. Cinco minutos para ti.',
-      lead: 'Siderkit Break mantiene la forma de una jornada de trabajo: una ronda de concentración honesta, una pausa de verdad y un empujón discreto para levantarte y mirar lejos. Sin cuenta, sin sincronización, sin racha que proteger.',
+      lead: 'Siderkit Break mantiene la forma de la técnica Pomodoro: una ronda de concentración honesta, una pausa de verdad y un empujón discreto para descansar la vista y moverte. El ritmo clásico 25/5 para un trabajo constante y eficiente — sin cuenta, sin sincronización, sin racha que proteger.',
       secondaryCta: 'Ver cómo es un día',
       platformLabel: 'Plataforma',
       platform: 'Windows · macOS · Linux',
@@ -107,24 +107,24 @@ export const es = {
       lead: 'Seis cosas, bien hechas. Nada que pida una cuenta, una suscripción o un segundo buzón.',
       items: [
         {
-          title: 'Un ritmo que se amolda',
-          body: 'Concentración, descanso corto, descanso largo. Cada longitud y el intervalo del descanso largo se pueden cambiar.',
+          title: 'El ritmo Pomodoro, ajustable',
+          body: 'Veinticinco minutos de trabajo y cinco para ti por defecto; cada longitud y el intervalo del descanso largo se pueden cambiar.',
         },
         {
           title: 'Una cuenta atrás que flota',
           body: 'Siempre encima, deja pasar los clics hasta que la señalas y muestra una etiqueta según la fase.',
         },
         {
-          title: 'Una pausa con opciones',
-          body: 'Posponer cinco minutos, omitir el descanso o tomarlo. Lo decides tú, cada vez.',
+          title: 'Una pausa que tu cuerpo agradece',
+          body: 'Un aviso para apartar la vista de la pantalla y estirarte. Posponer cinco minutos, omitir el descanso o tomarlo — lo decides tú, cada vez.',
         },
         {
           title: 'Un historial que se queda en casa',
           body: 'Rondas completadas, omitidas e interrumpidas, guardadas en local. Sin cuenta, sin sincronización.',
         },
         {
-          title: 'Un resumen que no puntúa',
-          body: 'Tiempo de concentración, rondas y rachas por día, semana, mes y año, más un mapa de calor.',
+          title: 'Un esfuerzo que puedes ver',
+          body: 'Tiempo de concentración, rondas y rachas por día, semana, mes y año, más un mapa de calor que muestra el trabajo constante sin convertirlo en una puntuación.',
         },
         {
           title: 'Actualizaciones cuando las pides',

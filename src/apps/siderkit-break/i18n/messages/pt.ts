@@ -2,9 +2,9 @@ import type { BreakMessages } from './types';
 
 export const pt = {
   meta: {
-    productTitle: 'Siderkit Break — um temporizador de foco tranquilo',
+    productTitle: 'Siderkit Break — um temporizador Pomodoro tranquilo',
     productDescription:
-      'Um temporizador de foco com contagem regressiva flutuante, lembretes gentis de pausa e um histórico que fica no seu computador.',
+      'Um temporizador Pomodoro local, com contagem regressiva flutuante, lembretes gentis para descansar os olhos e cuidar da postura, e um histórico que fica no seu computador.',
     changelogTitle: 'Notas de versão do Siderkit Break',
     changelogDescription: 'Notas de versão públicas do Siderkit Break.',
     ogAlt: 'Marca do Siderkit Break',
@@ -35,7 +35,7 @@ export const pt = {
   homeCard: {
     eyebrow: 'Disponível agora',
     title: 'Uma pequena pausa para quem está atrás da tela.',
-    lead: 'Um temporizador de foco que transforma um longo dia diante da tela em rodadas que você consegue terminar — e pausas que você consegue, de fato, fazer.',
+    lead: 'Um temporizador Pomodoro que transforma um longo dia diante da tela em rodadas que você consegue terminar — e pausas que você consegue, de fato, fazer.',
     note: 'Gratuito, código aberto (Apache-2.0).',
     primaryCta: 'Visitar o Siderkit Break',
     windowAlt: 'Janela de foco do Siderkit Break mostrando 18:30 restantes na rodada 2 de 4',
@@ -43,9 +43,9 @@ export const pt = {
   product: {
     eyebrow: 'Siderkit Break',
     hero: {
-      kicker: 'Um temporizador de foco local',
+      kicker: 'Um temporizador Pomodoro local',
       title: 'Vinte e cinco minutos de foco. Cinco minutos de volta.',
-      lead: 'O Siderkit Break mantém a forma de um dia de trabalho: uma rodada de foco honesta, uma pausa de verdade e um lembrete discreto para levantar-se e olhar para longe. Sem conta, sem sincronização, sem sequência de dias para proteger.',
+      lead: 'O Siderkit Break mantém a forma da técnica Pomodoro: uma rodada de foco honesta, uma pausa de verdade e um empurrãozinho discreto para descansar os olhos e se movimentar. O ritmo clássico 25/5 para um trabalho constante e eficiente — sem conta, sem sincronização, sem sequência de dias para proteger.',
       secondaryCta: 'Veja como funciona um dia',
       platformLabel: 'Plataforma',
       platform: 'Windows · macOS · Linux',
@@ -107,24 +107,24 @@ export const pt = {
       lead: 'Seis coisas, bem-feitas. Nada que peça uma conta, uma assinatura ou uma segunda caixa de entrada.',
       items: [
         {
-          title: 'Um ritmo que se molda',
-          body: 'Foco, pausa curta, pausa longa. Todas as durações e o intervalo da pausa longa podem ser alterados.',
+          title: 'O ritmo Pomodoro, ajustável',
+          body: 'Vinte e cinco minutos de foco, cinco minutos de volta por padrão; todas as durações e o intervalo da pausa longa podem ser alterados.',
         },
         {
           title: 'Uma contagem regressiva que flutua',
           body: 'Sempre acima de tudo, deixa os cliques passarem até você apontar para ela, com a fase indicada.',
         },
         {
-          title: 'Uma pausa com opções',
-          body: 'Adiar por cinco minutos, pular a pausa ou fazê-la. A decisão é sua, todas as vezes.',
+          title: 'Uma pausa que o seu corpo aproveita',
+          body: 'Um lembrete para desviar o olhar da tela e se alongar. Adiar por cinco minutos, pular ou fazer a pausa — a decisão é sua, todas as vezes.',
         },
         {
           title: 'Histórico que fica em casa',
           body: 'Rodadas concluídas, puladas e interrompidas, guardadas localmente. Sem conta, sem sincronização.',
         },
         {
-          title: 'Insight sem pontuação',
-          body: 'Tempo de foco, rodadas e sequências por dia, semana, mês e ano, além de um mapa de calor.',
+          title: 'Esforço que você pode ver',
+          body: 'Tempo de foco, rodadas e sequências por dia, semana, mês e ano, além de um mapa de calor que mostra trabalho constante sem transformá-lo em pontuação.',
         },
         {
           title: 'Atualizações quando você pedir',
