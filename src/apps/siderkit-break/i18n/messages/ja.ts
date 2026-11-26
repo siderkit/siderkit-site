@@ -36,7 +36,7 @@ export const ja = {
     eyebrow: '公開中',
     title: '画面の向こうのあなたに、少しの休憩を。',
     lead: '長い画面に向かう一日を、終えられるラウンドと、ちゃんと取れる休憩に変えるポモドーロタイマー。',
-    note: '無料・オープンソース（Apache-2.0）。',
+    note: '無料・オープンソース。',
     primaryCta: 'Siderkit Break を見る',
     windowAlt: 'ラウンド2/4で残り18:30を示す Siderkit Break の集中ウィンドウ',
   },
@@ -217,7 +217,7 @@ export const ja = {
       changelogCta: '更新履歴をすべて見る',
       sourceTitle: 'ソースとライセンス',
       sourceBody:
-        'Apache-2.0。ソース、インストーラー、サードパーティの通知は公開されています。解析 SDK も、同梱フォントもありません。',
+        'GPL-3.0-only は 1.0.4 以降。1.0.3 以前は Apache-2.0 のままです。ソース、インストーラー、サードパーティの通知は公開されています。解析 SDK も、同梱フォントもありません。',
       sourceCta: 'ソースを見る',
     },
   },

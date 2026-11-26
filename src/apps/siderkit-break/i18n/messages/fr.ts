@@ -36,7 +36,7 @@ export const fr = {
     eyebrow: 'Disponible',
     title: 'Une petite pause pour la personne derrière l’écran.',
     lead: 'Un minuteur Pomodoro qui découpe une longue journée d’écran en cycles que l’on peut finir — et en pauses que l’on prend vraiment.',
-    note: 'Gratuit et open source (Apache-2.0).',
+    note: 'Gratuit et open source.',
     primaryCta: 'Découvrir Siderkit Break',
     windowAlt: 'Fenêtre de concentration de Siderkit Break affichant 18:30 restants dans le cycle 2 sur 4',
   },
@@ -217,7 +217,7 @@ export const fr = {
       changelogCta: 'Changelog complet',
       sourceTitle: 'Source et licence',
       sourceBody:
-        'Apache-2.0. Le code source, les installateurs et les mentions tierces sont publics. Aucun SDK de mesure d’audience, aucune police embarquée.',
+        'GPL-3.0-only à partir de 1.0.4 ; les versions jusqu’à 1.0.3 restent sous Apache-2.0. Le code source, les installateurs et les mentions tierces sont publics. Aucun SDK de mesure d’audience, aucune police embarquée.',
       sourceCta: 'Voir le code source',
     },
   },

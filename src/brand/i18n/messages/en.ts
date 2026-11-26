@@ -39,7 +39,7 @@ export const en = {
     title: 'Work, as it\nshould be.',
     lead: 'Quiet software, made slowly. One app is out; more are on the way.',
     primaryCta: 'Meet the first app',
-    closingLine: 'Independent · Open source · Apache-2.0 · No investors',
+    closingLine: 'Independent · Open source · GPL-3.0-only · No investors',
   },
   legal: {
     eyebrow: 'Legal',
@@ -111,7 +111,7 @@ export const en = {
           heading: 'What these terms cover',
           paragraphs: [
             'They apply to this website and its content, and to your use of Siderkit apps as a visitor and user.',
-            'The apps are open-source software. The Apache-2.0 license — not these terms — grants your rights to the code. Where the license speaks, it wins.',
+            'The apps are open-source software. The license in each app\'s repository — not these terms — grants your rights to the code. Licenses are per app and per release: an older release keeps the license it shipped with.',
           ],
           items: [],
         },
@@ -128,7 +128,7 @@ export const en = {
         {
           heading: 'Names and marks',
           paragraphs: [
-            'The Siderkit name, the S monogram, and the names and marks of Siderkit apps are project marks. They are not licensed under Apache-2.0, which grants copyright and patent rights — not trademark rights.',
+            'The Siderkit name, the S monogram, and the names and marks of Siderkit apps are project marks. They are not licensed under the app licenses, which grant copyright and patent rights — not trademark rights.',
             'This matters most if you fork, rebuild, or redistribute the code.',
           ],
           items: [
@@ -141,7 +141,7 @@ export const en = {
         {
           heading: 'Modified builds',
           paragraphs: [
-            'If you modify and distribute the code, Apache-2.0 requires you to state that you changed it. Your build is your responsibility: its name, its updates, and its behavior are yours, not the project’s.',
+            'If you modify and distribute the code, its license requires you to keep notices and state changes. Copyleft licenses such as GPL-3.0-only also require you to license the modified work under the same terms and provide the corresponding source.',
           ],
           items: [],
         },
@@ -163,7 +163,7 @@ export const en = {
         {
           heading: 'Contributions',
           paragraphs: [
-            'Contributions are welcome and are licensed under Apache-2.0 without extra terms. By contributing, you confirm you have the right to license what you submit.',
+            'Contributions are welcome and are licensed under the repository\'s license. By contributing, you confirm you have the right to license what you submit.',
           ],
           items: [],
         },
@@ -178,12 +178,12 @@ export const en = {
     },
     licenses: {
       title: 'Licenses',
-      lead: 'Siderkit apps are open source under Apache-2.0. This page explains what that means in plain language; the license text itself is authoritative.',
+      lead: 'Siderkit apps are open source under the license stated in each app\'s repository. This website\'s source is Apache-2.0. Licenses are per app and per release; the license text itself is authoritative.',
       sections: [
         {
           heading: 'The short version',
           paragraphs: [
-            'Siderkit apps are licensed under the Apache License 2.0. The full text ships with the source and installers; the NOTICE file lists attribution.',
+            'Each app and each release carries its license in the repository and with the installers. Licenses can change between releases, and the license that shipped with your copy governs that copy. This website\'s source is Apache-2.0; the NOTICE file lists attribution.',
             'Bundled third-party dependencies — Rust crates and web dependencies — keep their own licenses, recorded in the repository lockfiles and third-party notices.',
           ],
           items: [],
@@ -192,10 +192,10 @@ export const en = {
           heading: 'What you may do',
           paragraphs: [],
           items: [
-            'Use the apps commercially, privately, or inside your own products.',
+            'Use the apps for any purpose, including commercial use.',
             'Study and modify the source.',
             'Redistribute copies, original or modified.',
-            'Rely on the patent grant that Apache-2.0 provides.',
+            'Rely on the patent grant that GPL-3.0 provides.',
           ],
         },
         {
@@ -204,8 +204,8 @@ export const en = {
           items: [
             'Keep the license and copyright notices with the code.',
             'Include the license text with distributions.',
-            'State significant changes you made to the code.',
-            'Carry the NOTICE file forward when it exists.',
+            'State significant changes, keep notices, and — for copyleft licenses such as GPL-3.0-only — license modified versions under the same terms and provide the corresponding source.',
+            'Keep third-party notices and attribution.',
           ],
         },
         {
@@ -220,7 +220,7 @@ export const en = {
         {
           heading: 'Names and marks',
           paragraphs: [
-            'The Siderkit name, the S monogram, and the names and marks of Siderkit apps are not licensed by Apache-2.0. If you fork or redistribute, rename your build or mark it clearly as unofficial — see the terms page for details.',
+            'The Siderkit name, the S monogram, and the names and marks of Siderkit apps are not licensed under the app licenses, including GPL-3.0-only. If you fork or redistribute, rename your build or mark it clearly as unofficial — see the terms page for details.',
           ],
           items: [],
         },
@@ -372,7 +372,7 @@ export const en = {
     contact: 'Contact',
     discussions: 'Discussions',
     siteSource: 'Site source',
-    copyright: '© 2026 Siderkit contributors. Apache-2.0.',
+    copyright: '© 2026 Siderkit contributors.',
     language: 'Language',
   },
 };

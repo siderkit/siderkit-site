@@ -40,7 +40,7 @@ export const zhCN = {
     title: '工作，\n本该如此。',
     lead: '慢慢做，做安静的软件。第一款已经发布，后面的在路上。',
     primaryCta: '看看第一个应用',
-    closingLine: '独立 · 开源 · Apache-2.0 · 没有投资人',
+    closingLine: '独立 · 开源 · GPL-3.0-only · 没有投资人',
   },
   legal: {
     eyebrow: '法律',
@@ -112,7 +112,7 @@ export const zhCN = {
           heading: '条款管什么',
           paragraphs: [
             '本条款约束本站与其内容，以及你作为访客和用户对 Siderkit 应用的使用。',
-            '应用是开源软件。授予你代码权利的是 Apache-2.0 许可证，而不是本条款；许可证说了算的地方，以许可证为准。',
+            '应用是开源软件。授予你对代码权利的，是各应用仓库中的许可证，而不是这些条款。许可证按应用、按版本各自确定：旧版本继续沿用发布时的许可证。',
           ],
           items: [],
         },
@@ -129,7 +129,7 @@ export const zhCN = {
         {
           heading: '名称与标志',
           paragraphs: [
-            'Siderkit 名称、S 字标，以及各应用的名称与标志是项目标志。Apache-2.0 不授予它们——该许可证授予的是著作权与专利权，不含商标权。',
+            'Siderkit 名称、S 字母标志，以及 Siderkit 各应用的名称和标志，都是项目商标。它们不在应用许可证的授权范围内——许可证授予的是版权和专利权，不是商标权。',
             '如果你 fork、重构或再分发代码，这一点尤其重要。',
           ],
           items: [
@@ -142,7 +142,7 @@ export const zhCN = {
         {
           heading: '修改版构建',
           paragraphs: [
-            '如果你修改并分发代码，Apache-2.0 要求你声明所作更改。你的构建由你负责：它的名字、更新和行为都归属你，与项目无关。',
+            '如果你修改并分发代码，其许可证要求你保留声明并注明修改。像 GPL-3.0-only 这样的 copyleft 许可证还要求你将修改后的作品以相同条款授权，并提供对应源码。',
           ],
           items: [],
         },
@@ -164,7 +164,7 @@ export const zhCN = {
         {
           heading: '贡献',
           paragraphs: [
-            '欢迎贡献，贡献内容按 Apache-2.0 授权，不带附加条款。提交贡献即表示你确认有权许可你提交的内容。',
+            '欢迎贡献，贡献按所在仓库的许可证授权。提交贡献即表示你确认自己有权授权所提交的内容。',
           ],
           items: [],
         },
@@ -179,12 +179,12 @@ export const zhCN = {
     },
     licenses: {
       title: '许可证',
-      lead: 'Siderkit 应用以 Apache-2.0 开源。本页用平实的语言解释它意味着什么；许可证文本本身是权威依据。',
+      lead: 'Siderkit 各应用按其仓库中声明的许可证开源。本站源码为 Apache-2.0。许可证按应用、按版本各自确定；以许可证原文为准。',
       sections: [
         {
           heading: '先说结论',
           paragraphs: [
-            'Siderkit 应用使用 Apache License 2.0。完整文本随源码与安装包提供；NOTICE 文件列出署名信息。',
+            '每个应用、每个版本都会在仓库和安装包中附带其许可证。许可证可能随版本变化，你手上这份副本以其随附的许可证为准。本站源码为 Apache-2.0；NOTICE 文件列出归属信息。',
             '捆绑的第三方依赖——Rust crate 与 Web 依赖——保留各自许可证，记录在仓库的 lockfile 与第三方声明中。',
           ],
           items: [],
@@ -193,10 +193,10 @@ export const zhCN = {
           heading: '你可以',
           paragraphs: [],
           items: [
-            '将应用用于商业、个人场景或你自己的产品中。',
+            '将应用用于任何目的，包括商业用途。',
             '研究并修改源码。',
             '再分发副本，无论是否修改。',
-            '依赖 Apache-2.0 提供的专利授权。',
+            '依据 GPL-3.0 提供的专利授权使用。',
           ],
         },
         {
@@ -205,8 +205,8 @@ export const zhCN = {
           items: [
             '在代码中保留许可证与版权声明。',
             '分发时附带许可证文本。',
-            '对代码所作的重要修改作出声明。',
-            '若存在 NOTICE 文件，随分发保留。',
+            '注明重大修改、保留声明，并在使用 GPL-3.0-only 这类 copyleft 许可证时，将修改版以相同条款授权并提供对应源码。',
+            '保留第三方声明和归属信息。',
           ],
         },
         {
@@ -221,7 +221,7 @@ export const zhCN = {
         {
           heading: '名称与标志',
           paragraphs: [
-            'Siderkit 名称、S 字标，以及各应用的名称与标志不在 Apache-2.0 的授权范围内。fork 或再分发时，请给你的构建改名，或明确标注为非官方——详见条款页。',
+            'Siderkit 名称、S 字母标志，以及 Siderkit 各应用的名称和标志，不在应用许可证（包括 GPL-3.0-only）的授权范围内。如果你 fork 或再分发，请重命名你的构建，或明确标注其为非官方版本——详见条款页。',
           ],
           items: [],
         },
@@ -373,7 +373,7 @@ export const zhCN = {
     contact: '联系',
     discussions: '讨论',
     siteSource: '本站源码',
-    copyright: '© 2026 Siderkit contributors。Apache-2.0。',
+    copyright: '© 2026 Siderkit contributors。。',
     language: '语言',
   },
 } satisfies Messages;

@@ -31,8 +31,12 @@ const legalPages: Array<{ page: LegalPage; label: string }> = [
 ];
 
 const extraLinks: Partial<Record<LegalPage, Array<{ label: string; href: string }>>> = {
-  terms: [{ label: 'Apache-2.0', href: 'https://www.apache.org/licenses/LICENSE-2.0' }],
+  terms: [
+    { label: 'GPL-3.0-only', href: 'https://www.gnu.org/licenses/gpl-3.0.txt' },
+    { label: 'Apache-2.0', href: 'https://www.apache.org/licenses/LICENSE-2.0' },
+  ],
   licenses: [
+    { label: 'GPL-3.0-only', href: 'https://www.gnu.org/licenses/gpl-3.0.txt' },
     { label: 'Apache-2.0', href: 'https://www.apache.org/licenses/LICENSE-2.0' },
     { label: 'NOTICE', href: `${siteLinks.github}/blob/main/NOTICE` },
   ],

@@ -41,7 +41,7 @@ export const fr = {
     title: 'Le travail,\ncomme il se doit.',
     lead: 'Un logiciel calme, construit lentement. Une première application est disponible ; d’autres arrivent.',
     primaryCta: 'Découvrir la première application',
-    closingLine: 'Indépendant · Open source · Apache-2.0 · Sans investisseurs',
+    closingLine: 'Indépendant · Open source · GPL-3.0-only · Sans investisseurs',
   },
   legal: {
     eyebrow: 'Légal',
@@ -113,7 +113,7 @@ export const fr = {
           heading: 'Ce que ces conditions couvrent',
           paragraphs: [
             'Elles s’appliquent à ce site et à son contenu, ainsi qu’à votre utilisation des applications Siderkit en tant que visiteur et utilisateur.',
-            'Les applications sont des logiciels open source. C’est la licence Apache-2.0 — et non ces conditions — qui vous donne des droits sur le code. Là où la licence parle, c’est elle qui décide.',
+            'Les applications sont des logiciels open source. C’est la licence du dépôt de chaque application — et non ces conditions — qui vous donne des droits sur le code. Les licences sont propres à chaque application et à chaque version : une version antérieure conserve la licence sous laquelle elle a été publiée.',
           ],
           items: [],
         },
@@ -130,7 +130,7 @@ export const fr = {
         {
           heading: 'Noms et marques',
           paragraphs: [
-            'Le nom Siderkit, le monogramme S et les noms et marques des applications Siderkit sont des marques du projet. Ils ne sont pas placés sous Apache-2.0, qui accorde des droits d’auteur et de brevets — pas de droits de marque.',
+            'Le nom Siderkit, le monogramme S et les noms et marques des applications Siderkit sont des marques du projet. Ils ne sont pas placés sous les licences des applications, qui accordent des droits d’auteur et de brevets — pas de droits de marque.',
             'Cela compte surtout si vous forkez, reconstruisez ou redistribuez le code.',
           ],
           items: [
@@ -143,7 +143,7 @@ export const fr = {
         {
           heading: 'Versions modifiées',
           paragraphs: [
-            'Si vous modifiez et distribuez le code, Apache-2.0 exige que vous déclariez vos changements. Votre version est sous votre responsabilité : son nom, ses mises à jour et son comportement vous appartiennent, pas au projet.',
+            'Si vous modifiez et distribuez le code, sa licence exige de conserver les mentions et de déclarer vos changements. Les licences copyleft comme GPL-3.0-only exigent en outre de placer l’œuvre modifiée sous les mêmes conditions et de fournir le code source correspondant.',
           ],
           items: [],
         },
@@ -165,7 +165,7 @@ export const fr = {
         {
           heading: 'Contributions',
           paragraphs: [
-            'Les contributions sont bienvenues ; elles sont placées sous Apache-2.0, sans conditions supplémentaires. En contribuant, vous confirmez avoir le droit d’accorder une licence sur ce que vous soumettez.',
+            'Les contributions sont bienvenues et sont placées sous la licence du dépôt. En contribuant, vous confirmez avoir le droit de licencier ce que vous soumettez.',
           ],
           items: [],
         },
@@ -180,12 +180,12 @@ export const fr = {
     },
     licenses: {
       title: 'Licences',
-      lead: 'Les applications Siderkit sont open source sous Apache-2.0. Cette page explique ce que cela veut dire en langage simple ; c’est le texte de la licence qui fait foi.',
+      lead: 'Les applications Siderkit sont open source sous la licence indiquée dans le dépôt de chacune. Le code de ce site est sous Apache-2.0. Les licences sont propres à chaque application et à chaque version ; le texte de la licence fait foi.',
       sections: [
         {
           heading: 'En bref',
           paragraphs: [
-            'Les applications Siderkit sont placées sous Apache License 2.0. Le texte intégral accompagne le code source et les installateurs ; le fichier NOTICE recense les mentions de paternité.',
+            'Chaque application et chaque version porte sa licence dans le dépôt et avec les installateurs. Les licences peuvent changer d’une version à l’autre, et la licence fournie avec votre copie régit cette copie. Le code de ce site est sous Apache-2.0 ; le fichier NOTICE recense les attributions.',
             'Les dépendances tierces embarquées — crates Rust et dépendances web — gardent leurs propres licences, consignées dans les lockfiles du dépôt et dans les mentions aux tiers.',
           ],
           items: [],
@@ -194,10 +194,10 @@ export const fr = {
           heading: 'Ce que vous pouvez faire',
           paragraphs: [],
           items: [
-            'Utiliser les applications dans un cadre commercial ou privé, ou au sein de vos propres produits.',
+            'Utiliser les applications à quelque fin que ce soit, y compris commerciale.',
             'Étudier et modifier le code source.',
             'Redistribuer des copies, originales ou modifiées.',
-            'Vous appuyer sur la concession de brevets qu’offre Apache-2.0.',
+            'Vous appuyer sur la concession de brevets offerte par GPL-3.0.',
           ],
         },
         {
@@ -206,8 +206,8 @@ export const fr = {
           items: [
             'Garder la licence et les mentions de copyright avec le code.',
             'Joindre le texte de la licence aux distributions.',
-            'Déclarer les changements significatifs apportés au code.',
-            'Reprendre le fichier NOTICE, lorsqu’il existe.',
+            'Déclarer les changements importants, conserver les mentions et, pour les licences copyleft comme GPL-3.0-only, placer les versions modifiées sous les mêmes conditions et fournir le code source correspondant.',
+            'Conserver les mentions et attributions des tiers.',
           ],
         },
         {
@@ -222,7 +222,7 @@ export const fr = {
         {
           heading: 'Noms et marques',
           paragraphs: [
-            'Le nom Siderkit, le monogramme S et les noms et marques des applications Siderkit ne sont pas couverts par Apache-2.0. Si vous forkez ou redistribuez, renommez votre version ou marquez-la clairement comme non officielle — la page des conditions détaille ce point.',
+            'Le nom Siderkit, le monogramme S et les noms et marques des applications Siderkit ne sont pas licenciés par les licences des applications, y compris GPL-3.0-only. Si vous bifurquez ou redistribuez, renommez votre version ou indiquez clairement qu’elle n’est pas officielle ; voir la page des conditions.',
           ],
           items: [],
         },
@@ -374,7 +374,7 @@ export const fr = {
     contact: 'Contact',
     discussions: 'Discussions',
     siteSource: 'Source du site',
-    copyright: '© 2026 Siderkit contributors. Apache-2.0.',
+    copyright: '© 2026 Siderkit contributors.',
     language: 'Langue',
   },
 } satisfies Messages;

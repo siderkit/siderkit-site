@@ -41,7 +41,7 @@ export const pt = {
     title: 'Trabalho,\ncomo deveria ser.',
     lead: 'Software discreto, feito sem pressa. Um aplicativo já está disponível; mais estão a caminho.',
     primaryCta: 'Conheça o primeiro aplicativo',
-    closingLine: 'Independente · Código aberto · Apache-2.0 · Sem investidores',
+    closingLine: 'Independente · Código aberto · GPL-3.0-only · Sem investidores',
   },
   legal: {
     eyebrow: 'Jurídico',
@@ -113,7 +113,7 @@ export const pt = {
           heading: 'O que estes termos abrangem',
           paragraphs: [
             'Eles valem para este site e seu conteúdo, e para o seu uso dos aplicativos da Siderkit como visitante e usuário.',
-            'Os aplicativos são software de código aberto. A licença Apache-2.0 — não estes termos — concede seus direitos sobre o código. Onde a licença fala, ela prevalece.',
+            'Os apps são software de código aberto. A licença no repositório de cada app — e não estes termos — é o que concede seus direitos sobre o código. As licenças são por app e por versão: uma versão anterior mantém a licença com que foi publicada.',
           ],
           items: [],
         },
@@ -130,7 +130,7 @@ export const pt = {
         {
           heading: 'Nomes e marcas',
           paragraphs: [
-            'O nome Siderkit, o monograma S e os nomes e marcas dos aplicativos da Siderkit são marcas do projeto. Eles não são licenciados sob a Apache-2.0, que concede direitos de autoria e de patente — não direitos de marca.',
+            'O nome Siderkit, o monograma S e os nomes e marcas dos apps Siderkit são marcas do projeto. Eles não são licenciados pelas licenças dos apps, que concedem direitos autorais e de patente — não direitos de marca.',
             'Isso importa principalmente se você fizer fork, reconstruir ou redistribuir o código.',
           ],
           items: [
@@ -143,7 +143,7 @@ export const pt = {
         {
           heading: 'Builds modificadas',
           paragraphs: [
-            'Se você modificar e distribuir o código, a Apache-2.0 exige que você declare as mudanças feitas. Sua build é sua responsabilidade: o nome, as atualizações e o comportamento dela são seus, não do projeto.',
+            'Se você modificar e distribuir o código, a licença exige manter os avisos e declarar as alterações. Licenças copyleft como a GPL-3.0-only também exigem licenciar a obra modificada nos mesmos termos e fornecer o código-fonte correspondente.',
           ],
           items: [],
         },
@@ -165,7 +165,7 @@ export const pt = {
         {
           heading: 'Contribuições',
           paragraphs: [
-            'Contribuições são bem-vindas e são licenciadas sob a Apache-2.0, sem termos extras. Ao contribuir, você confirma ter o direito de licenciar o que enviar.',
+            'Contribuições são bem-vindas e são licenciadas sob a licença do repositório. Ao contribuir, você confirma que tem o direito de licenciar o que envia.',
           ],
           items: [],
         },
@@ -180,12 +180,12 @@ export const pt = {
     },
     licenses: {
       title: 'Licenças',
-      lead: 'Os aplicativos da Siderkit são de código aberto sob a Apache-2.0. Esta página explica o que isso significa em linguagem simples; o texto da licença é o que vale.',
+      lead: 'Os apps Siderkit são de código aberto sob a licença indicada no repositório de cada app. O código deste site é Apache-2.0. As licenças são por app e por versão; o texto da licença é a referência autorizada.',
       sections: [
         {
           heading: 'A versão curta',
           paragraphs: [
-            'Os aplicativos da Siderkit são licenciados sob a Apache License 2.0. O texto completo acompanha o código-fonte e os instaladores; o arquivo NOTICE lista as atribuições.',
+            'Cada app e cada versão traz sua licença no repositório e com os instaladores. As licenças podem mudar entre versões, e a licença que acompanhou sua cópia rege essa cópia. O código deste site é Apache-2.0; o arquivo NOTICE lista os créditos.',
             'Dependências de terceiros incluídas — crates de Rust e dependências web — mantêm as próprias licenças, registradas nos arquivos de lock do repositório e nos avisos de terceiros.',
           ],
           items: [],
@@ -194,10 +194,10 @@ export const pt = {
           heading: 'O que você pode fazer',
           paragraphs: [],
           items: [
-            'Use os aplicativos no trabalho, na vida pessoal ou dentro dos seus próprios produtos.',
+            'Usar os apps para qualquer finalidade, inclusive comercial.',
             'Estude e modifique o código-fonte.',
             'Redistribua cópias, originais ou modificadas.',
-            'Conte com a concessão de patentes que a Apache-2.0 oferece.',
+            'Contar com a concessão de patentes oferecida pela GPL-3.0.',
           ],
         },
         {
@@ -206,8 +206,8 @@ export const pt = {
           items: [
             'Mantenha os avisos de licença e de direitos autorais junto ao código.',
             'Inclua o texto da licença nas distribuições.',
-            'Declare as mudanças significativas que fez no código.',
-            'Mantenha o arquivo NOTICE nas distribuições, quando ele existir.',
+            'Declarar alterações relevantes, manter os avisos e, em licenças copyleft como a GPL-3.0-only, licenciar versões modificadas nos mesmos termos e fornecer o código-fonte correspondente.',
+            'Manter avisos e créditos de terceiros.',
           ],
         },
         {
@@ -222,7 +222,7 @@ export const pt = {
         {
           heading: 'Nomes e marcas',
           paragraphs: [
-            'O nome Siderkit, o monograma S e os nomes e marcas dos aplicativos da Siderkit não são licenciados pela Apache-2.0. Se você fizer fork ou redistribuir, dê outro nome à sua build ou marque-a claramente como não oficial — veja a página de termos para detalhes.',
+            'O nome Siderkit, o monograma S e os nomes e marcas dos apps Siderkit não são licenciados pelas licenças dos apps, incluindo a GPL-3.0-only. Se você fizer fork ou redistribuir, renomeie sua build ou indique claramente que é não oficial — veja a página de termos.',
           ],
           items: [],
         },
@@ -374,7 +374,7 @@ export const pt = {
     contact: 'Contato',
     discussions: 'Discussões',
     siteSource: 'Código-fonte do site',
-    copyright: '© 2026 Siderkit contributors. Apache-2.0.',
+    copyright: '© 2026 Siderkit contributors.',
     language: 'Idioma',
   },
 } satisfies Messages;

@@ -35,7 +35,7 @@ export const en = {
     eyebrow: 'Now shipping',
     title: 'A little rest for the person behind the screen.',
     lead: 'A Pomodoro timer that turns a long screen day into rounds you can finish — and pauses you can actually take.',
-    note: 'Free, open source (Apache-2.0).',
+    note: 'Free and open source.',
     primaryCta: 'Visit Siderkit Break',
     windowAlt: 'Siderkit Break focus window showing 18:30 remaining in round 2 of 4',
   },
@@ -216,7 +216,7 @@ export const en = {
       changelogCta: 'Full changelog',
       sourceTitle: 'Source and license',
       sourceBody:
-        'Apache-2.0. Source, installers, and third-party notices are public. No analytics SDK, no bundled fonts.',
+        'GPL-3.0-only from 1.0.4; releases up to 1.0.3 stay Apache-2.0. Source, installers, and third-party notices are public. No analytics SDK, no bundled fonts.',
       sourceCta: 'View source',
     },
   },

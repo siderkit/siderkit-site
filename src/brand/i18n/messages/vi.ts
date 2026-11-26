@@ -41,7 +41,7 @@ export const vi = {
     title: 'Làm việc,\nnhư lẽ ra phải vậy.',
     lead: 'Phần mềm tĩnh lặng, làm chậm rãi. Một ứng dụng đã ra mắt; những ứng dụng khác đang trên đường đến.',
     primaryCta: 'Gặp ứng dụng đầu tiên',
-    closingLine: 'Độc lập · Mã nguồn mở · Apache-2.0 · Không có nhà đầu tư',
+    closingLine: 'Độc lập · Mã nguồn mở · GPL-3.0-only · Không có nhà đầu tư',
   },
   legal: {
     eyebrow: 'Pháp lý',
@@ -113,7 +113,7 @@ export const vi = {
           heading: 'Điều khoản này bao phủ những gì',
           paragraphs: [
             'Chúng áp dụng cho trang web này và nội dung của nó, và cho việc bạn sử dụng các ứng dụng Siderkit với tư cách khách truy cập và người dùng.',
-            'Các ứng dụng là phần mềm mã nguồn mở. Giấy phép Apache-2.0 — chứ không phải những điều khoản này — trao cho bạn quyền với mã nguồn. Ở nơi giấy phép quy định, giấy phép có giá trị cao hơn.',
+            'Các ứng dụng là phần mềm mã nguồn mở. Giấy phép trong kho của từng ứng dụng — không phải các điều khoản này — mới là thứ cấp quyền cho bạn đối với mã. Giấy phép được xác định theo từng ứng dụng và từng bản phát hành: bản cũ giữ nguyên giấy phép khi phát hành.',
           ],
           items: [],
         },
@@ -130,7 +130,7 @@ export const vi = {
         {
           heading: 'Tên và dấu hiệu',
           paragraphs: [
-            'Tên Siderkit, chữ S monogram, và tên cùng dấu hiệu của các ứng dụng Siderkit là dấu hiệu của dự án. Chúng không được cấp phép theo Apache-2.0 — giấy phép đó cấp quyền tác giả và quyền sáng chế, chứ không cấp quyền thương hiệu.',
+            'Tên Siderkit, chữ S cách điệu, cùng tên và nhãn hiệu của các ứng dụng Siderkit là nhãn hiệu của dự án. Chúng không thuộc phạm vi giấy phép của ứng dụng; giấy phép cấp quyền tác giả và quyền sáng chế, không cấp quyền nhãn hiệu.',
             'Điều này quan trọng nhất khi bạn fork, dựng lại, hoặc phân phát lại mã nguồn.',
           ],
           items: [
@@ -143,7 +143,7 @@ export const vi = {
         {
           heading: 'Bản dựng đã sửa đổi',
           paragraphs: [
-            'Nếu bạn sửa đổi và phân phát mã nguồn, Apache-2.0 yêu cầu bạn tuyên bố rằng bạn đã thay đổi nó. Bản dựng của bạn là trách nhiệm của bạn: tên gọi, cập nhật, và hành vi của nó thuộc về bạn, không thuộc về dự án.',
+            'Nếu bạn sửa và phân phối mã, giấy phép yêu cầu giữ các thông báo và nêu rõ thay đổi. Giấy phép copyleft như GPL-3.0-only còn yêu cầu cấp phép cho tác phẩm đã sửa theo cùng điều kiện và cung cấp mã nguồn tương ứng.',
           ],
           items: [],
         },
@@ -165,7 +165,7 @@ export const vi = {
         {
           heading: 'Đóng góp',
           paragraphs: [
-            'Mọi đóng góp đều được hoan nghênh và được cấp phép theo Apache-2.0, không kèm điều khoản bổ sung. Khi đóng góp, bạn xác nhận bạn có quyền cấp phép những gì bạn gửi.',
+            'Chúng tôi hoan nghênh đóng góp; đóng góp được cấp phép theo giấy phép của kho tương ứng. Khi đóng góp, bạn xác nhận mình có quyền cấp phép cho nội dung gửi đi.',
           ],
           items: [],
         },
@@ -180,12 +180,12 @@ export const vi = {
     },
     licenses: {
       title: 'Giấy phép',
-      lead: 'Các ứng dụng Siderkit là mã nguồn mở theo Apache-2.0. Trang này giải thích điều đó nghĩa là gì bằng ngôn ngữ đời thường; văn bản giấy phép mới là căn cứ chính thức.',
+      lead: 'Các ứng dụng Siderkit là mã nguồn mở theo giấy phép ghi trong kho của từng ứng dụng. Mã nguồn của trang này là Apache-2.0. Giấy phép được xác định theo từng ứng dụng và từng bản phát hành; văn bản giấy phép là căn cứ cuối cùng.',
       sections: [
         {
           heading: 'Nói ngắn gọn',
           paragraphs: [
-            'Các ứng dụng Siderkit được cấp phép theo Apache License 2.0. Toàn văn đi kèm mã nguồn và bộ cài đặt; tệp NOTICE ghi phần ghi nhận tác giả.',
+            'Mỗi ứng dụng và mỗi bản phát hành mang giấy phép của mình trong kho và trong bộ cài. Giấy phép có thể thay đổi giữa các bản, và bản sao của bạn chịu sự điều chỉnh của giấy phép đi kèm nó. Mã nguồn của trang này là Apache-2.0; tệp NOTICE liệt kê ghi công.',
             'Các phụ thuộc bên thứ ba đi kèm — crate Rust và phụ thuộc web — giữ giấy phép riêng của chúng, được ghi trong lockfile của kho và các thông báo bên thứ ba.',
           ],
           items: [],
@@ -194,10 +194,10 @@ export const vi = {
           heading: 'Bạn được làm gì',
           paragraphs: [],
           items: [
-            'Dùng ứng dụng cho mục đích thương mại, cá nhân, hay bên trong sản phẩm của riêng bạn.',
+            'Dùng ứng dụng cho bất kỳ mục đích nào, kể cả thương mại.',
             'Nghiên cứu và sửa mã nguồn.',
             'Phân phát lại các bản sao, nguyên bản hoặc đã sửa đổi.',
-            'Dựa vào quyền sáng chế mà Apache-2.0 trao cho.',
+            'Dựa vào cam kết sáng chế mà GPL-3.0 cung cấp.',
           ],
         },
         {
@@ -206,8 +206,8 @@ export const vi = {
           items: [
             'Giữ giấy phép và thông báo bản quyền cùng với mã nguồn.',
             'Kèm toàn văn giấy phép khi phân phát.',
-            'Tuyên bố những thay đổi đáng kể bạn đã làm với mã nguồn.',
-            'Giữ lại tệp NOTICE khi nó tồn tại.',
+            'Nêu rõ thay đổi quan trọng, giữ thông báo, và với giấy phép copyleft như GPL-3.0-only, cấp phép bản sửa theo cùng điều kiện và cung cấp mã nguồn tương ứng.',
+            'Giữ thông báo và ghi công của bên thứ ba.',
           ],
         },
         {
@@ -222,7 +222,7 @@ export const vi = {
         {
           heading: 'Tên và dấu hiệu',
           paragraphs: [
-            'Tên Siderkit, chữ S monogram, và tên cùng dấu hiệu của các ứng dụng Siderkit không nằm trong phạm vi cấp phép của Apache-2.0. Nếu bạn fork hoặc phân phát lại, hãy đổi tên bản dựng của bạn hoặc ghi rõ đó là bản không chính thức — chi tiết xem trên trang điều khoản.',
+            'Tên Siderkit, chữ S cách điệu, cùng tên và nhãn hiệu của các ứng dụng Siderkit không thuộc giấy phép của ứng dụng, kể cả GPL-3.0-only. Nếu bạn fork hoặc phân phối lại, hãy đổi tên bản dựng hoặc ghi rõ là không chính thức — xem trang điều khoản.',
           ],
           items: [],
         },
@@ -374,7 +374,7 @@ export const vi = {
     contact: 'Liên hệ',
     discussions: 'Thảo luận',
     siteSource: 'Mã nguồn trang web',
-    copyright: '© 2026 Siderkit contributors. Apache-2.0.',
+    copyright: '© 2026 Siderkit contributors.',
     language: 'Ngôn ngữ',
   },
 } satisfies Messages;

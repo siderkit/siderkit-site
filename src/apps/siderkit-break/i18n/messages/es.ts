@@ -36,7 +36,7 @@ export const es = {
     eyebrow: 'Ya disponible',
     title: 'Un pequeño descanso para quien está detrás de la pantalla.',
     lead: 'Un temporizador Pomodoro que convierte un largo día de pantalla en rondas que puedes terminar — y en pausas que de verdad puedes tomarte.',
-    note: 'Gratis y de código abierto (Apache-2.0).',
+    note: 'Gratis y de código abierto.',
     primaryCta: 'Visitar Siderkit Break',
     windowAlt: 'Ventana de concentración de Siderkit Break con 18:30 restantes en la ronda 2 de 4',
   },
@@ -217,7 +217,7 @@ export const es = {
       changelogCta: 'Registro de cambios completo',
       sourceTitle: 'Código y licencia',
       sourceBody:
-        'Apache-2.0. El código, los instaladores y los avisos de terceros son públicos. Sin SDK de analítica y sin fuentes incluidas.',
+        'GPL-3.0-only desde 1.0.4; las versiones hasta 1.0.3 siguen siendo Apache-2.0. El código, los instaladores y los avisos de terceros son públicos. Sin SDK de analítica y sin fuentes incluidas.',
       sourceCta: 'Ver el código',
     },
   },

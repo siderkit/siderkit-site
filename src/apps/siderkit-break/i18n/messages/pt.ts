@@ -36,7 +36,7 @@ export const pt = {
     eyebrow: 'Disponível agora',
     title: 'Uma pequena pausa para quem está atrás da tela.',
     lead: 'Um temporizador Pomodoro que transforma um longo dia diante da tela em rodadas que você consegue terminar — e pausas que você consegue, de fato, fazer.',
-    note: 'Gratuito, código aberto (Apache-2.0).',
+    note: 'Grátis e de código aberto.',
     primaryCta: 'Visitar o Siderkit Break',
     windowAlt: 'Janela de foco do Siderkit Break mostrando 18:30 restantes na rodada 2 de 4',
   },
@@ -217,7 +217,7 @@ export const pt = {
       changelogCta: 'Notas de versão completas',
       sourceTitle: 'Código-fonte e licença',
       sourceBody:
-        'Apache-2.0. Código-fonte, instaladores e avisos de terceiros são públicos. Sem SDK de análise, sem fontes embutidas.',
+        'GPL-3.0-only a partir de 1.0.4; as versões até 1.0.3 continuam Apache-2.0. O código, os instaladores e os avisos de terceiros são públicos. Sem SDK de analítica e sem fontes incluídas.',
       sourceCta: 'Ver código-fonte',
     },
   },

@@ -36,7 +36,7 @@ export const vi = {
     eyebrow: 'Đã có mặt',
     title: 'Một quãng nghỉ nhỏ cho người ngồi sau màn hình.',
     lead: 'Một bộ hẹn giờ Pomodoro biến một ngày dài trước màn hình thành những lượt bạn hoàn thành được — và những quãng nghỉ bạn thực sự có thể nghỉ.',
-    note: 'Miễn phí, mã nguồn mở (Apache-2.0).',
+    note: 'Miễn phí và mã nguồn mở.',
     primaryCta: 'Xem Siderkit Break',
     windowAlt: 'Cửa sổ tập trung của Siderkit Break hiển thị còn 18:30 ở lượt 2 trên 4',
   },
@@ -217,7 +217,7 @@ export const vi = {
       changelogCta: 'Toàn bộ changelog',
       sourceTitle: 'Mã nguồn và giấy phép',
       sourceBody:
-        'Apache-2.0. Mã nguồn, bộ cài, và thông báo bên thứ ba đều công khai. Không SDK thống kê, không phông chữ kèm theo.',
+        'GPL-3.0-only từ 1.0.4; các bản đến 1.0.3 vẫn là Apache-2.0. Mã nguồn, bộ cài và thông báo bên thứ ba đều công khai. Không SDK phân tích, không phông chữ đóng gói.',
       sourceCta: 'Xem mã nguồn',
     },
   },

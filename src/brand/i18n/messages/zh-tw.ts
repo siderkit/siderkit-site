@@ -40,7 +40,7 @@ export const zhTW = {
     title: '工作，\n本該如此。',
     lead: '慢慢做，做安靜的軟體。第一款已經發布，後面的在路上。',
     primaryCta: '看看第一個應用',
-    closingLine: '獨立 · 開源 · Apache-2.0 · 沒有投資人',
+    closingLine: '獨立 · 開源 · GPL-3.0-only · 沒有投資人',
   },
   legal: {
     eyebrow: '法律',
@@ -112,7 +112,7 @@ export const zhTW = {
           heading: '條款管什麼',
           paragraphs: [
             '本條款約束本站與其內容，以及你作為訪客和使用者對 Siderkit 應用程式的使用。',
-            '應用程式是開源軟體。授予你程式碼權利的是 Apache-2.0 授權，而不是本條款；授權說了算的地方，以授權為準。',
+            '應用程式是開源軟體。授予你對程式碼權利的，是各應用程式倉庫中的授權條款，而不是這些條款。授權條款依應用程式、依版本各自決定：舊版本繼續沿用發布時的授權條款。',
           ],
           items: [],
         },
@@ -129,7 +129,7 @@ export const zhTW = {
         {
           heading: '名稱與標誌',
           paragraphs: [
-            'Siderkit 名稱、S 字標，以及各應用程式的名稱與標誌是專案標誌。Apache-2.0 不授予它們——該授權授予的是著作權與專利權，不含商標權。',
+            'Siderkit 名稱、S 字母標誌，以及 Siderkit 各應用程式的名稱與標誌，都是專案商標。它們不在應用程式授權條款的範圍內——授權條款授予的是著作權與專利權，不是商標權。',
             '如果你 fork、重建或再散布程式碼，這一點尤其重要。',
           ],
           items: [
@@ -142,7 +142,7 @@ export const zhTW = {
         {
           heading: '修改版建置',
           paragraphs: [
-            '如果你修改並散布程式碼，Apache-2.0 要求你聲明所作更改。你的建置由你負責：它的名字、更新和行為都歸屬你，與專案無關。',
+            '如果你修改並散布程式碼，其授權條款要求你保留聲明並註明修改。像 GPL-3.0-only 這類 copyleft 授權條款還要求你將修改後的作品以相同條款授權，並提供對應原始碼。',
           ],
           items: [],
         },
@@ -164,7 +164,7 @@ export const zhTW = {
         {
           heading: '貢獻',
           paragraphs: [
-            '歡迎貢獻，貢獻內容按 Apache-2.0 授權，不帶附加條款。提交貢獻即表示你確認有權利授權你提交的內容。',
+            '歡迎貢獻，貢獻依所在倉庫的授權條款授權。提交貢獻即表示你確認自己有權授權所提交的內容。',
           ],
           items: [],
         },
@@ -179,12 +179,12 @@ export const zhTW = {
     },
     licenses: {
       title: '授權',
-      lead: 'Siderkit 應用程式以 Apache-2.0 開源。本頁用平實的語言解釋它代表什麼；授權文字本身是權威依據。',
+      lead: 'Siderkit 各應用程式依其倉庫中聲明的授權條款開源。本站原始碼為 Apache-2.0。授權條款依應用程式、依版本各自決定；以授權條款原文為準。',
       sections: [
         {
           heading: '先說結論',
           paragraphs: [
-            'Siderkit 應用程式使用 Apache License 2.0。完整文字隨原始碼與安裝檔提供；NOTICE 檔案列出署名資訊。',
+            '每個應用程式、每個版本都會在倉庫與安裝程式中附上其授權條款。授權條款可能隨版本變化，你手上這份副本以其隨附的授權條款為準。本站原始碼為 Apache-2.0；NOTICE 檔案列出歸屬資訊。',
             '捆綁的第三方相依套件——Rust crate 與 Web 相依套件——保留各自授權，記錄在儲存庫的 lockfile 與第三方聲明中。',
           ],
           items: [],
@@ -193,10 +193,10 @@ export const zhTW = {
           heading: '你可以',
           paragraphs: [],
           items: [
-            '將應用程式用於商業、個人場景或你自己的產品中。',
+            '將應用程式用於任何目的，包括商業用途。',
             '研究並修改原始碼。',
             '再散布副本，無論是否修改。',
-            '依賴 Apache-2.0 提供的專利授權。',
+            '依 GPL-3.0 提供的專利授權使用。',
           ],
         },
         {
@@ -205,8 +205,8 @@ export const zhTW = {
           items: [
             '在程式碼中保留授權與版權聲明。',
             '散布時附帶授權文字。',
-            '對程式碼所作的重要修改作出聲明。',
-            '若存在 NOTICE 檔案，隨散布保留。',
+            '註明重大修改、保留聲明，並在使用 GPL-3.0-only 這類 copyleft 授權條款時，將修改版以相同條款授權並提供對應原始碼。',
+            '保留第三方聲明與歸屬資訊。',
           ],
         },
         {
@@ -221,7 +221,7 @@ export const zhTW = {
         {
           heading: '名稱與標誌',
           paragraphs: [
-            'Siderkit 名稱、S 字標，以及各應用程式的名稱與標誌不在 Apache-2.0 的授權範圍內。fork 或再散布時，請為你的建置改名，或明確標示為非官方——詳見條款頁。',
+            'Siderkit 名稱、S 字母標誌，以及 Siderkit 各應用程式的名稱與標誌，不在應用程式授權條款（包括 GPL-3.0-only）的範圍內。如果你 fork 或再散布，請重新命名你的建置，或明確標註其為非官方版本——詳見條款頁。',
           ],
           items: [],
         },
@@ -373,7 +373,7 @@ export const zhTW = {
     contact: '聯絡',
     discussions: '討論',
     siteSource: '本站原始碼',
-    copyright: '© 2026 Siderkit contributors。Apache-2.0。',
+    copyright: '© 2026 Siderkit contributors。。',
     language: '語言',
   },
 } satisfies Messages;
