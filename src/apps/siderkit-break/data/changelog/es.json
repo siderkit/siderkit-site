@@ -1,5 +1,52 @@
 [
   {
+    "version": "1.0.4",
+    "sections": [
+      {
+        "kind": "changed",
+        "items": [
+          "Break pasa a la licencia GPL-3.0-only. Las versiones hasta 1.0.3 siguen siendo Apache-2.0; no hay otros cambios."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.3",
+    "sections": [
+      {
+        "kind": "changed",
+        "items": [
+          "El inicio al encender el equipo viene activado por defecto en instalaciones nuevas. Las actualizaciones conservan tu elección.",
+          "El panel de ayuda abre con la tarjeta de versión y la comprobación de actualizaciones."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.2",
+    "sections": [
+      {
+        "kind": "fixed",
+        "items": [
+          "Todos los relojes se actualizan en tiempo real, también al cambiar el día.",
+          "Una bandeja limitada por el sistema ya no puede mostrar una hora futura."
+        ]
+      },
+      {
+        "kind": "changed",
+        "items": [
+          "Las claves de día, la detección de cambio de día y el formato de tiempo relativo viven ahora en una única utilidad de tiempo."
+        ]
+      },
+      {
+        "kind": "added",
+        "items": [
+          "La suite unitaria pasa a vitest con umbrales de cobertura: 191 pruebas en 28 archivos."
+        ]
+      }
+    ]
+  },
+  {
     "version": "1.0.1",
     "sections": [
       {

@@ -1,5 +1,99 @@
 [
   {
+    "version": "1.0.4",
+    "date": "2026-11-26",
+    "sections": [
+      {
+        "kind": "changed",
+        "items": {
+          "en": [
+            "Break is now licensed under GPL-3.0-only. Releases up to 1.0.3 stay Apache-2.0; nothing else changed."
+          ],
+          "zh-cn": [
+            "Break 改用 GPL-3.0-only 许可证。1.0.3 及更早的版本仍为 Apache-2.0；除此之外没有功能变化。"
+          ],
+          "zh-tw": [
+            "Break 改用 GPL-3.0-only 授權條款。1.0.3 及更早的版本仍為 Apache-2.0；除此之外沒有功能變化。"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "version": "1.0.3",
+    "date": "2026-11-26",
+    "sections": [
+      {
+        "kind": "changed",
+        "items": {
+          "en": [
+            "Launch at login is on by default for new installs. Upgrades keep your stored choice.",
+            "The Help panel opens with the version card and the update check."
+          ],
+          "zh-cn": [
+            "新安装默认开机启动。升级安装保留你原来的选择。",
+            "帮助面板把版本卡片和更新检查放到最前面。"
+          ],
+          "zh-tw": [
+            "新安裝預設開機啟動。升級安裝保留你原本的選擇。",
+            "說明面板把版本卡片與更新檢查放到最前面。"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "version": "1.0.2",
+    "date": "2026-11-25",
+    "sections": [
+      {
+        "kind": "fixed",
+        "items": {
+          "en": [
+            "Every clock updates in real time, including the midnight rollover.",
+            "A throttled tray can no longer show a time in the future."
+          ],
+          "zh-cn": [
+            "所有时间显示都实时更新，跨过午夜也会自动翻篇。",
+            "托盘被系统限流时，不会再显示未来的时间。"
+          ],
+          "zh-tw": [
+            "所有時間顯示都即時更新，跨過午夜也會自動翻頁。",
+            "系統匣被系統限流時，不會再顯示未來的時間。"
+          ]
+        }
+      },
+      {
+        "kind": "changed",
+        "items": {
+          "en": [
+            "Day keys, rollover detection, and relative-time formatting now live in one shared time utility."
+          ],
+          "zh-cn": [
+            "日期键、跨日检测和相对时间格式化收敛到同一个时间工具里。"
+          ],
+          "zh-tw": [
+            "日期鍵、跨日偵測與相對時間格式化收斂到同一個時間工具裡。"
+          ]
+        }
+      },
+      {
+        "kind": "added",
+        "items": {
+          "en": [
+            "The unit suite runs on vitest with coverage gates: 191 tests across 28 files."
+          ],
+          "zh-cn": [
+            "单元测试迁到 vitest，并加上覆盖率门槛：28 个文件、191 个测试。"
+          ],
+          "zh-tw": [
+            "單元測試遷到 vitest，並加上覆蓋率門檻：28 個檔案、191 個測試。"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "version": "1.0.1",
     "date": "2026-11-24",
     "sections": [
@@ -26,9 +120,15 @@
       {
         "kind": "fixed",
         "items": {
-          "en": ["The help panel no longer crowds its first heading against the top of the page."],
-          "zh-cn": ["帮助面板的第一个标题不再紧贴页面顶部。"],
-          "zh-tw": ["說明面板的第一個標題不再緊貼頁面頂部。"]
+          "en": [
+            "The help panel no longer crowds its first heading against the top of the page."
+          ],
+          "zh-cn": [
+            "帮助面板的第一个标题不再紧贴页面顶部。"
+          ],
+          "zh-tw": [
+            "說明面板的第一個標題不再緊貼頁面頂部。"
+          ]
         }
       },
       {

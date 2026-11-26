@@ -1,5 +1,52 @@
 [
   {
+    "version": "1.0.4",
+    "sections": [
+      {
+        "kind": "changed",
+        "items": [
+          "Break chuyển sang giấy phép GPL-3.0-only. Các bản đến 1.0.3 vẫn là Apache-2.0; không có thay đổi nào khác."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.3",
+    "sections": [
+      {
+        "kind": "changed",
+        "items": [
+          "Khởi chạy khi đăng nhập được bật mặc định cho bản cài mới. Bản nâng cấp giữ nguyên lựa chọn của bạn.",
+          "Bảng trợ giúp mở đầu bằng thẻ phiên bản và mục kiểm tra cập nhật."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.2",
+    "sections": [
+      {
+        "kind": "fixed",
+        "items": [
+          "Mọi đồng hồ cập nhật theo thời gian thực, kể cả khi sang ngày mới.",
+          "Khay hệ thống khi bị giới hạn sẽ không còn hiển thị thời gian trong tương lai."
+        ]
+      },
+      {
+        "kind": "changed",
+        "items": [
+          "Khóa ngày, phát hiện sang ngày và định dạng thời gian tương đối nay nằm trong một tiện ích thời gian chung."
+        ]
+      },
+      {
+        "kind": "added",
+        "items": [
+          "Bộ kiểm thử đơn vị chuyển sang vitest kèm ngưỡng độ phủ: 191 bài kiểm thử trong 28 tệp."
+        ]
+      }
+    ]
+  },
+  {
     "version": "1.0.1",
     "sections": [
       {

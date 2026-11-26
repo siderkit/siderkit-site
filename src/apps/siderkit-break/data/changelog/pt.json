@@ -1,5 +1,52 @@
 [
   {
+    "version": "1.0.4",
+    "sections": [
+      {
+        "kind": "changed",
+        "items": [
+          "O Break passa a usar a licença GPL-3.0-only. As versões até 1.0.3 continuam Apache-2.0; nada mais mudou."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.3",
+    "sections": [
+      {
+        "kind": "changed",
+        "items": [
+          "A inicialização com o sistema vem ativada por padrão em instalações novas. As atualizações mantêm a sua escolha.",
+          "O painel de ajuda abre com o cartão de versão e a verificação de atualizações."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.2",
+    "sections": [
+      {
+        "kind": "fixed",
+        "items": [
+          "Todos os relógios são atualizados em tempo real, inclusive na virada do dia.",
+          "Uma bandeja limitada pelo sistema não mostra mais um horário no futuro."
+        ]
+      },
+      {
+        "kind": "changed",
+        "items": [
+          "As chaves de dia, a detecção de virada de dia e a formatação de tempo relativo agora ficam em um único utilitário de tempo."
+        ]
+      },
+      {
+        "kind": "added",
+        "items": [
+          "A suíte unitária passa a usar vitest com limites de cobertura: 191 testes em 28 arquivos."
+        ]
+      }
+    ]
+  },
+  {
     "version": "1.0.1",
     "sections": [
       {

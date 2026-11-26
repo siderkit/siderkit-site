@@ -1,5 +1,52 @@
 [
   {
+    "version": "1.0.4",
+    "sections": [
+      {
+        "kind": "changed",
+        "items": [
+          "Break passe sous licence GPL-3.0-only. Les versions jusqu’à 1.0.3 restent sous Apache-2.0 ; aucun autre changement."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.3",
+    "sections": [
+      {
+        "kind": "changed",
+        "items": [
+          "Le lancement à l’ouverture de session est activé par défaut pour les nouvelles installations. Les mises à jour conservent votre choix.",
+          "Le panneau d’aide s’ouvre sur la carte de version et la recherche de mises à jour."
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.2",
+    "sections": [
+      {
+        "kind": "fixed",
+        "items": [
+          "Toutes les horloges se mettent à jour en temps réel, y compris au passage de minuit.",
+          "Une zone de notification ralentie par le système ne peut plus afficher une heure future."
+        ]
+      },
+      {
+        "kind": "changed",
+        "items": [
+          "Les clés de jour, la détection du changement de jour et le formatage du temps relatif sont réunis dans un seul utilitaire de temps."
+        ]
+      },
+      {
+        "kind": "added",
+        "items": [
+          "La suite unitaire passe à vitest avec des seuils de couverture : 191 tests répartis sur 28 fichiers."
+        ]
+      }
+    ]
+  },
+  {
     "version": "1.0.1",
     "sections": [
       {
