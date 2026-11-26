@@ -271,6 +271,26 @@ const schema = {
     </div>
   </section>
 
+  <section class="sk-section--tight l-break-product-faq" aria-labelledby="faq-title">
+    <div class="sk-container">
+      <p class="sk-eyebrow">{t.product.faq.eyebrow}</p>
+      <h2 class="sk-title" id="faq-title">{t.product.faq.title}</h2>
+      <div class="l-break-product-faq-list">
+        {
+          t.product.faq.items.map((item) => (
+            <details class="l-break-product-faq-item">
+              <summary>
+                <span>{item.question}</span>
+                <Icon name="chevron-down" size="sm" />
+              </summary>
+              <p>{item.answer}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
   <section class="sk-section--tight l-break-product-closing">
     <div class="sk-container">
       <div class="l-break-product-changelog">
@@ -713,6 +733,54 @@ const schema = {
     padding-top: var(--sk-space-xl);
     padding-bottom: var(--sk-space-xl);
     border-bottom: var(--sk-edge) solid hsl(var(--sk-color-line));
+  }
+
+  .l-break-product-faq-list {
+    display: grid;
+    gap: var(--sk-space-sm);
+    max-width: var(--sk-content-w);
+    margin-top: var(--sk-space-lg);
+  }
+
+  .l-break-product-faq-item {
+    border: var(--sk-edge) solid hsl(var(--sk-color-line));
+    border-radius: var(--sk-radius-md);
+    background: hsl(var(--sk-color-bg-surface));
+  }
+
+  .l-break-product-faq-item summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sk-space-md);
+    padding: var(--sk-space-md);
+    color: hsl(var(--sk-color-ink-soft));
+    font-size: var(--sk-text-sm);
+    font-weight: var(--sk-weight-medium);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .l-break-product-faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .l-break-product-faq-item summary svg {
+    flex: none;
+    color: hsl(var(--sk-color-break-forest));
+    transition: transform var(--sk-duration-base) var(--sk-ease);
+  }
+
+  .l-break-product-faq-item[open] summary svg {
+    transform: rotate(180deg);
+  }
+
+  .l-break-product-faq-item p {
+    margin: 0;
+    padding: 0 var(--sk-space-md) var(--sk-space-md);
+    color: hsl(var(--sk-color-muted));
+    font-size: var(--sk-text-sm);
+    line-height: var(--sk-leading-normal);
   }
 
   .l-break-product-details {

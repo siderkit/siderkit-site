@@ -142,12 +142,13 @@ export const ur = {
       downloadGithub: 'GitHub ریلیز دیکھیں',
       detected: 'شناخت ہوا',
       releasedLabel: 'ریلیز شدہ',
-      note: 'Windows اور macOS انسٹالرز کوڈ سائن شدہ نہیں، اس لیے SmartScreen یا Gatekeeper تصدیق مانگ سکتے ہیں۔',
+      note: 'Break ابھی کوڈ سائن نہیں، اس لیے ہر نئے ورژن پر ایک دستی قدم درکار ہے:',
+      unsignedWindows: 'More info → Run anyway۔',
+      unsignedMac: 'ایپ پر دائیں کلک → Open، یا System Settings → Privacy & Security → Open Anyway۔',
       checksumNote: 'یہ SHA-256 اپنی ڈاؤن لوڈ کی ہوئی فائل سے موازنہ کریں۔',
       requirementsSummary: 'سسٹم کی ضروریات اور انسٹالیشن کے نوٹس',
       requirementsTitle: 'سسٹم کی ضروریات',
-      requirementsLead:
-        'Windows، macOS اور Linux سب 1.0.1 کے ساتھ جاری ہوتے ہیں؛ جدول میں ہر پلیٹ فارم کی ضرورت درج ہے۔',
+      requirementsLead: 'Windows، macOS اور Linux سب موجودہ ریلیز کے ساتھ جاری ہوتے ہیں؛ جدول میں ہر پلیٹ فارم کی ضرورت درج ہے۔',
       tablePlatform: 'پلیٹ فارم',
       tableMinimum: 'کم از کم',
       tableArtifacts: 'فائلیں',
@@ -186,6 +187,28 @@ export const ur = {
       updateBody: 'چیکس بنیادی طور پر دستی ہوتے ہیں۔ سائن شدہ پیکجز ری اسٹارٹ پر انسٹال ہوتے ہیں۔',
       privacyTitle: 'پرائیویسی',
       privacyBody: 'سیشنز مقامی SQLite فائل میں رہتے ہیں۔ کوئی اکاؤنٹ نہیں، کوئی سنک نہیں۔',
+    },
+    faq: {
+      eyebrow: 'FAQ',
+      title: 'انسٹالیشن سے متعلق سوالات کے جوابات۔',
+      items: [
+        {
+          question: 'macOS کہتا ہے کہ ڈویلپر کی تصدیق نہیں ہو سکتی۔ کیا کریں؟',
+          answer: 'DMG کھولیں، Break کو Applications میں لے جائیں، پھر ایپ پر دائیں کلک (یا Control کے ساتھ کلک) کر کے Open منتخب کریں اور ایک بار پھر Open کی تصدیق کریں۔ اگر macOS پھر بھی روکے تو System Settings → Privacy & Security میں جا کر Open Anyway منتخب کریں۔ ایپ ابھی notarized نہیں، اس لیے ہر نئے ورژن پر یہ قدم ایک بار دہرانا ہوگا۔',
+        },
+        {
+          question: 'Windows SmartScreen نے انسٹالر روک دیا۔ کیا یہ معمول ہے؟',
+          answer: 'جی ہاں۔ انسٹالر ابھی کوڈ سائن نہیں: More info → Run anyway پر کلک کریں۔ کوڈ سائننگ آنے تک ہر نئے ورژن پر یہی انتباہ آئے گا۔',
+        },
+        {
+          question: 'Linux پر فلومنگ کاؤنٹ ڈاؤن اوپر نہیں رہتا۔',
+          answer: 'Wayland ایپ کو ونڈو رکھنے یا کلک تھرو برقرار رکھنے کی اجازت نہیں دیتا، اس لیے اوورلے صرف X11 سیشن میں کام کرتا ہے۔ یاد دہانیاں، تاریخ اور ٹرے Wayland پر بھی کام کرتے ہیں۔ اوورلے کے لیے X11 سیشن (مثلاً "Ubuntu on Xorg") میں لاگ ان کریں۔',
+        },
+        {
+          question: 'میرا ڈیٹا کہاں ہے، بیک اپ یا دوسرے کمپیوٹر پر کیسے لے جاؤں؟',
+          answer: 'سیٹنگز، تاریخ، ٹیگز اور گمنام انسٹال ID سب ایک ہی فولڈر میں ہیں: Windows پر %APPDATA%\\com.siderkit.break، macOS پر ~/Library/Application Support/com.siderkit.break، Linux پر ~/.local/share/com.siderkit.break۔ Break بند کریں، فولڈر کاپی کریں، اور نئی مشین پر چلانے سے پہلے واپس رکھیں۔ اَن انسٹال پر فولڈر محفوظ رہتا ہے، جب تک "Delete app data" منتخب نہ کریں۔',
+        },
+      ],
     },
     closing: {
       changelogEyebrow: 'تبدیلیوں کی فہرست',

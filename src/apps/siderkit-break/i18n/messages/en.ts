@@ -141,12 +141,13 @@ export const en = {
       downloadGithub: 'View GitHub release',
       detected: 'Detected',
       releasedLabel: 'Released',
-      note: 'The Windows and macOS installers are not code-signed, so SmartScreen or Gatekeeper may ask you to confirm.',
+      note: 'Break is not code-signed yet, so each new version takes one manual step:',
+      unsignedWindows: 'More info → Run anyway.',
+      unsignedMac: 'Right-click the app → Open, or System Settings → Privacy & Security → Open Anyway.',
       checksumNote: 'Compare this SHA-256 with the file you downloaded.',
       requirementsSummary: 'System requirements and install notes',
       requirementsTitle: 'System requirements',
-      requirementsLead:
-        'Windows, macOS, and Linux all ship with 1.0.1; the table lists what each platform needs.',
+      requirementsLead: 'Windows, macOS, and Linux all ship with the current release; the table lists what each platform needs.',
       tablePlatform: 'Platform',
       tableMinimum: 'Minimum',
       tableArtifacts: 'Artifacts',
@@ -185,6 +186,28 @@ export const en = {
       updateBody: 'Checks are manual by default. Signed packages install on restart.',
       privacyTitle: 'Privacy',
       privacyBody: 'Sessions stay in a local SQLite file. No account, no sync.',
+    },
+    faq: {
+      eyebrow: 'FAQ',
+      title: 'Install questions, answered.',
+      items: [
+        {
+          question: 'macOS says it cannot verify the developer — what do I do?',
+          answer: 'Open the DMG, drag Break into Applications, then right-click (or Control-click) the app and choose Open, and confirm Open once more. If macOS still blocks it, go to System Settings → Privacy & Security and choose Open Anyway. The app is not notarized yet, so this one-time detour repeats with each new version.',
+        },
+        {
+          question: 'Windows SmartScreen blocked the installer. Is that expected?',
+          answer: 'Yes. The installer is not code-signed yet, so click More info, then Run anyway. Windows shows the same warning for every new version until code signing ships.',
+        },
+        {
+          question: 'The floating countdown does not stay on top on Linux.',
+          answer: 'Wayland does not let an app position windows or keep them click-through, so the overlay only works in an X11 session. Reminders, history, and the tray work on Wayland. Log in with an X11 session (for example "Ubuntu on Xorg") to use the overlay.',
+        },
+        {
+          question: 'Where is my data, and how do I back it up or move it?',
+          answer: 'Settings, history, tags, and the anonymous install ID live in one folder: %APPDATA%\\com.siderkit.break on Windows, ~/Library/Application Support/com.siderkit.break on macOS, ~/.local/share/com.siderkit.break on Linux. Quit Break, copy that folder to back it up or move to another machine, and put it back before launching. Uninstalling keeps the folder unless you tick "Delete app data".',
+        },
+      ],
     },
     closing: {
       changelogEyebrow: 'Changelog',

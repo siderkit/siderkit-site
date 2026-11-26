@@ -142,11 +142,13 @@ export const es = {
       downloadGithub: 'Ver la release de GitHub',
       detected: 'Detectado',
       releasedLabel: 'Publicada',
-      note: 'Los instaladores de Windows y macOS no están firmados, así que SmartScreen o Gatekeeper pueden pedirte confirmación.',
+      note: 'Break aún no tiene firma de código, así que cada versión nueva requiere un paso manual:',
+      unsignedWindows: 'Más información → Ejecutar de todos modos.',
+      unsignedMac: 'Clic derecho en la app → Abrir, o Ajustes del Sistema → Privacidad y seguridad → Abrir de todos modos.',
       checksumNote: 'Compara este SHA-256 con el archivo que descargaste.',
       requirementsSummary: 'Requisitos del sistema y notas de instalación',
       requirementsTitle: 'Requisitos del sistema',
-      requirementsLead: 'Windows, macOS y Linux se publican con la 1.0.1; la tabla indica lo que necesita cada plataforma.',
+      requirementsLead: 'Windows, macOS y Linux se publican con la versión actual; la tabla indica lo que necesita cada plataforma.',
       tablePlatform: 'Plataforma',
       tableMinimum: 'Mínimo',
       tableArtifacts: 'Archivos',
@@ -185,6 +187,28 @@ export const es = {
       updateBody: 'Las comprobaciones son manuales por defecto. Los paquetes firmados se instalan al reiniciar.',
       privacyTitle: 'Privacidad',
       privacyBody: 'Las sesiones se quedan en un archivo SQLite local. Sin cuenta, sin sincronización.',
+    },
+    faq: {
+      eyebrow: 'FAQ',
+      title: 'Preguntas de instalación, respondidas.',
+      items: [
+        {
+          question: 'macOS dice que no puede verificar al desarrollador. ¿Qué hago?',
+          answer: 'Abre el DMG, arrastra Break a Aplicaciones, haz clic derecho (o Control-clic) en la app y elige Abrir; confirma Abrir una vez más. Si macOS sigue bloqueándola, ve a Ajustes del Sistema → Privacidad y seguridad y elige Abrir de todos modos. La app aún no está notarizada, así que este paso se repite con cada versión nueva.',
+        },
+        {
+          question: 'SmartScreen de Windows bloqueó el instalador. ¿Es normal?',
+          answer: 'Sí. El instalador aún no tiene firma de código: pulsa Más información y luego Ejecutar de todos modos. Windows mostrará el mismo aviso en cada versión nueva hasta que llegue la firma.',
+        },
+        {
+          question: 'El contador flotante no se mantiene encima en Linux.',
+          answer: 'Wayland no permite que una app coloque ventanas ni mantenga el clic a través, así que la superposición solo funciona en una sesión X11. Los recordatorios, el historial y la bandeja funcionan en Wayland. Inicia sesión con X11 (por ejemplo, «Ubuntu on Xorg») para usarla.',
+        },
+        {
+          question: '¿Dónde están mis datos y cómo los respaldo o los muevo?',
+          answer: 'Ajustes, historial, etiquetas y el ID anónimo viven en una sola carpeta: %APPDATA%\\com.siderkit.break en Windows, ~/Library/Application Support/com.siderkit.break en macOS, ~/.local/share/com.siderkit.break en Linux. Cierra Break, copia esa carpeta para respaldarla o migrarla y vuelve a colocarla antes de abrir la app. Desinstalar conserva la carpeta salvo que marques «Eliminar datos de la app».',
+        },
+      ],
     },
     closing: {
       changelogEyebrow: 'Registro de cambios',

@@ -142,12 +142,13 @@ export const ja = {
       downloadGithub: 'GitHub リリースを見る',
       detected: '検出済み',
       releasedLabel: 'リリース日',
-      note: 'Windows と macOS のインストーラーはコード署名されていないため、SmartScreen や Gatekeeper が確認を求めることがあります。',
+      note: 'Break はまだコード署名されていないため、新しいバージョンごとに手動で一度許可が必要です：',
+      unsignedWindows: '「詳細情報」→「実行」。',
+      unsignedMac: 'アプリを右クリック →「開く」、または「システム設定 → プライバシーとセキュリティ → このまま開く」。',
       checksumNote: 'この SHA-256 を、ダウンロードしたファイルと照合してください。',
       requirementsSummary: 'システム要件とインストールの注意',
       requirementsTitle: 'システム要件',
-      requirementsLead:
-        'Windows、macOS、Linux はいずれも 1.0.1 で配布されます。表は各プラットフォームの要件です。',
+      requirementsLead: 'Windows、macOS、Linux はいずれも現在のリリースで配布されます。表は各プラットフォームの要件です。',
       tablePlatform: 'プラットフォーム',
       tableMinimum: '最小構成',
       tableArtifacts: '配布物',
@@ -186,6 +187,28 @@ export const ja = {
       updateBody: '確認は既定で手動です。署名済みパッケージは再起動時にインストールされます。',
       privacyTitle: 'プライバシー',
       privacyBody: 'セッションはローカルの SQLite ファイルに残ります。アカウントなし、同期なし。',
+    },
+    faq: {
+      eyebrow: 'FAQ',
+      title: 'インストール前によくある質問。',
+      items: [
+        {
+          question: 'macOS で「開発元を確認できません」と表示されたら？',
+          answer: 'DMG を開いて Break を「アプリケーション」へドラッグし、アプリを右クリック（または Control キーを押しながらクリック）して「開く」を選び、ダイアログでもう一度「開く」を押します。それでもブロックされる場合は「システム設定 → プライバシーとセキュリティ」で「このまま開く」を選んでください。公証署名がまだないため、新しいバージョンごとに一度だけ必要です。',
+        },
+        {
+          question: 'Windows の SmartScreen でインストーラーがブロックされました。',
+          answer: '想定どおりです。インストーラーはまだコード署名されていないため、「詳細情報」→「実行」をクリックしてください。コード署名に対応するまで、新しいバージョンごとに同じ警告が出ます。',
+        },
+        {
+          question: 'Linux でフローティングカウントダウンが最前面に来ません。',
+          answer: 'Wayland ではアプリがウィンドウを配置したりクリック透過を維持したりできないため、オーバーレイは X11 セッションでのみ動作します。リマインダー・履歴・トレイは Wayland でも動作します。ログイン時に X11 セッション（例：「Ubuntu on Xorg」）を選んでください。',
+        },
+        {
+          question: 'データはどこに保存されますか？バックアップや移行は？',
+          answer: '設定・履歴・タグ・匿名インストール ID はすべて 1 つのフォルダーにあります：Windows は %APPDATA%\\com.siderkit.break、macOS は ~/Library/Application Support/com.siderkit.break、Linux は ~/.local/share/com.siderkit.break。Break を終了してフォルダーをコピーすればバックアップや移行ができます。アンインストール時は「アプリデータを削除」を選ばない限りフォルダーは残ります。',
+        },
+      ],
     },
     closing: {
       changelogEyebrow: '更新履歴',

@@ -142,12 +142,13 @@ export const vi = {
       downloadGithub: 'Xem bản phát hành trên GitHub',
       detected: 'Đã nhận diện',
       releasedLabel: 'Phát hành',
-      note: 'Bộ cài Windows và macOS chưa được ký số, nên SmartScreen hoặc Gatekeeper có thể yêu cầu xác nhận.',
+      note: 'Break chưa được ký mã, nên mỗi bản mới cần một bước thủ công:',
+      unsignedWindows: 'More info → Run anyway.',
+      unsignedMac: 'Chuột phải vào ứng dụng → Open, hoặc System Settings → Privacy & Security → Open Anyway.',
       checksumNote: 'So sánh SHA-256 này với tệp bạn đã tải.',
       requirementsSummary: 'Yêu cầu hệ thống và ghi chú cài đặt',
       requirementsTitle: 'Yêu cầu hệ thống',
-      requirementsLead:
-        'Windows, macOS, và Linux đều phát hành cùng 1.0.1; bảng liệt kê những gì mỗi nền tảng cần.',
+      requirementsLead: 'Windows, macOS, và Linux đều phát hành cùng bản hiện tại; bảng liệt kê những gì mỗi nền tảng cần.',
       tablePlatform: 'Nền tảng',
       tableMinimum: 'Tối thiểu',
       tableArtifacts: 'Tệp phát hành',
@@ -186,6 +187,28 @@ export const vi = {
       updateBody: 'Kiểm tra mặc định là thủ công. Gói đã ký cài khi khởi động lại.',
       privacyTitle: 'Quyền riêng tư',
       privacyBody: 'Các phiên nằm trong một tệp SQLite tại máy. Không tài khoản, không đồng bộ.',
+    },
+    faq: {
+      eyebrow: 'FAQ',
+      title: 'Câu hỏi cài đặt, đã có đáp án.',
+      items: [
+        {
+          question: 'macOS báo không thể xác minh nhà phát triển. Tôi phải làm gì?',
+          answer: 'Mở DMG, kéo Break vào Applications, sau đó nhấp chuột phải (hoặc Control-click) vào ứng dụng và chọn Open, xác nhận Open thêm một lần. Nếu macOS vẫn chặn, vào System Settings → Privacy & Security và chọn Open Anyway. Ứng dụng chưa được notarize nên bước này lặp lại với mỗi bản mới.',
+        },
+        {
+          question: 'SmartScreen trên Windows chặn bộ cài. Điều này có bình thường không?',
+          answer: 'Có. Bộ cài chưa được ký mã: nhấn More info rồi Run anyway. Windows sẽ hiện cảnh báo này với mọi bản mới cho đến khi có chữ ký mã.',
+        },
+        {
+          question: 'Đồng hồ đếm ngược nổi không luôn ở trên cùng trên Linux.',
+          answer: 'Wayland không cho ứng dụng đặt cửa sổ hay giữ chế độ click-through, nên lớp phủ chỉ hoạt động trong phiên X11. Nhắc nhở, lịch sử và khay hệ thống vẫn chạy trên Wayland. Đăng nhập bằng phiên X11 (ví dụ "Ubuntu on Xorg") để dùng lớp phủ.',
+        },
+        {
+          question: 'Dữ liệu của tôi ở đâu, sao lưu hay chuyển máy thế nào?',
+          answer: 'Cài đặt, lịch sử, thẻ và ID cài đặt ẩn danh nằm trong một thư mục: %APPDATA%\\com.siderkit.break trên Windows, ~/Library/Application Support/com.siderkit.break trên macOS, ~/.local/share/com.siderkit.break trên Linux. Thoát Break, sao chép thư mục để sao lưu hoặc chuyển máy, rồi đặt lại trước khi mở. Gỡ cài đặt vẫn giữ thư mục trừ khi bạn chọn "Delete app data".',
+        },
+      ],
     },
     closing: {
       changelogEyebrow: 'Changelog',

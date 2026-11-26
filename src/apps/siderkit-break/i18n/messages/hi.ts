@@ -142,12 +142,13 @@ export const hi = {
       downloadGithub: 'GitHub रिलीज़ देखें',
       detected: 'पहचाना गया',
       releasedLabel: 'रिलीज़',
-      note: 'Windows और macOS इंस्टॉलर कोड-साइन्ड नहीं हैं, इसलिए SmartScreen या Gatekeeper पुष्टि मांग सकते हैं।',
+      note: 'Break अभी कोड-साइन नहीं है, इसलिए हर नए संस्करण पर एक मैन्युअल कदम चाहिए:',
+      unsignedWindows: 'More info → Run anyway।',
+      unsignedMac: 'ऐप पर राइट-क्लिक → Open, या System Settings → Privacy & Security → Open Anyway।',
       checksumNote: 'यह SHA-256 अपनी डाउनलोड की हुई फ़ाइल से मिलाएं।',
       requirementsSummary: 'सिस्टम आवश्यकताएं और इंस्टॉल नोट्स',
       requirementsTitle: 'सिस्टम आवश्यकताएं',
-      requirementsLead:
-        'Windows, macOS और Linux तीनों 1.0.1 के साथ आते हैं; टेबल में हर प्लेटफ़ॉर्म की ज़रूरत दी है।',
+      requirementsLead: 'Windows, macOS और Linux तीनों वर्तमान संस्करण के साथ आते हैं; टेबल में हर प्लेटफ़ॉर्म की ज़रूरत दी है।',
       tablePlatform: 'प्लेटफ़ॉर्म',
       tableMinimum: 'न्यूनतम',
       tableArtifacts: 'पैकेज',
@@ -186,6 +187,28 @@ export const hi = {
       updateBody: 'जाँच डिफ़ॉल्ट में मैनुअल है। साइन किए पैकेज रीस्टार्ट पर इंस्टॉल होते हैं।',
       privacyTitle: 'गोपनीयता',
       privacyBody: 'सेशन एक लोकल SQLite फ़ाइल में रहते हैं। कोई अकाउंट नहीं, कोई सिंक नहीं।',
+    },
+    faq: {
+      eyebrow: 'FAQ',
+      title: 'इंस्टॉलेशन से जुड़े सवालों के जवाब।',
+      items: [
+        {
+          question: 'macOS कहता है कि डेवलपर सत्यापित नहीं हो सकता। क्या करें?',
+          answer: 'DMG खोलें, Break को Applications में खींचें, फिर ऐप पर राइट-क्लिक (या Control-क्लिक) करके Open चुनें और एक बार फिर Open की पुष्टि करें। अगर macOS फिर भी रोके, तो System Settings → Privacy & Security में जाकर Open Anyway चुनें। ऐप अभी नोटराइज़्ड नहीं है, इसलिए हर नए संस्करण पर यह कदम एक बार दोहराना होगा।',
+        },
+        {
+          question: 'Windows SmartScreen ने इंस्टॉलर रोक दिया। क्या यह सामान्य है?',
+          answer: 'हाँ। इंस्टॉलर अभी कोड-साइन नहीं है: More info → Run anyway पर क्लिक करें। कोड साइनिंग आने तक हर नए संस्करण पर यही चेतावनी दिखेगी।',
+        },
+        {
+          question: 'Linux पर फ़्लोटिंग काउंटडाउन ऊपर नहीं रहता।',
+          answer: 'Wayland ऐप को विंडो रखने या क्लिक-थ्रू बनाए रखने नहीं देता, इसलिए ओवरले केवल X11 सेशन में काम करता है। रिमाइंडर, इतिहास और ट्रे Wayland पर भी काम करते हैं। ओवरले के लिए X11 सेशन (जैसे "Ubuntu on Xorg") में लॉगिन करें।',
+        },
+        {
+          question: 'मेरा डेटा कहाँ है, बैकअप या दूसरे कंप्यूटर पर कैसे ले जाऊँ?',
+          answer: 'सेटिंग्स, इतिहास, टैग और अनाम इंस्टॉल ID एक ही फ़ोल्डर में हैं: Windows पर %APPDATA%\\com.siderkit.break, macOS पर ~/Library/Application Support/com.siderkit.break, Linux पर ~/.local/share/com.siderkit.break। Break बंद करें, फ़ोल्डर कॉपी करें, और नई मशीन पर चलाने से पहले वापस रखें। अनइंस्टॉल पर फ़ोल्डर बना रहता है, जब तक "Delete app data" न चुनें।',
+        },
+      ],
     },
     closing: {
       changelogEyebrow: 'चेंजलॉग',

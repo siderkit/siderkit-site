@@ -142,12 +142,13 @@ export const bn = {
       downloadGithub: 'GitHub রিলিজ দেখুন',
       detected: 'শনাক্ত হয়েছে',
       releasedLabel: 'রিলিজ',
-      note: 'Windows ও macOS ইনস্টলার কোড-সাইনড নয়, তাই SmartScreen বা Gatekeeper নিশ্চিতকরণ চাইতে পারে।',
+      note: 'Break এখনও কোড-সাইন করা নয়, তাই প্রতিটি নতুন সংস্করণে একটি ম্যানুয়াল ধাপ লাগে:',
+      unsignedWindows: 'More info → Run anyway।',
+      unsignedMac: 'অ্যাপে রাইট-ক্লিক → Open, অথবা System Settings → Privacy & Security → Open Anyway।',
       checksumNote: 'এই SHA-256 আপনার ডাউনলোড করা ফাইলের সঙ্গে মিলিয়ে দেখুন।',
       requirementsSummary: 'সিস্টেম রিকোয়ারমেন্ট ও ইনস্টল নোট',
       requirementsTitle: 'সিস্টেম রিকোয়ারমেন্ট',
-      requirementsLead:
-        'Windows, macOS ও Linux সবগুলোই 1.0.1-এর সঙ্গে এসেছে; টেবিলে প্রতিটি প্ল্যাটফর্মের যা লাগে তা লেখা।',
+      requirementsLead: 'Windows, macOS ও Linux সবগুলোই বর্তমান সংস্করণের সঙ্গে আসে; টেবিলে প্রতিটি প্ল্যাটফর্মের যা লাগে তা লেখা।',
       tablePlatform: 'প্ল্যাটফর্ম',
       tableMinimum: 'সর্বনিম্ন',
       tableArtifacts: 'আর্টিফ্যাক্ট',
@@ -186,6 +187,28 @@ export const bn = {
       updateBody: 'ডিফল্টে চেক হাতে করতে হয়। সাইন করা প্যাকেজ রিস্টার্টে ইনস্টল হয়।',
       privacyTitle: 'গোপনীয়তা',
       privacyBody: 'সেশন থাকে লোকাল SQLite ফাইলে। অ্যাকাউন্ট নেই, সিঙ্ক নেই।',
+    },
+    faq: {
+      eyebrow: 'FAQ',
+      title: 'ইনস্টলেশন নিয়ে সাধারণ প্রশ্নের উত্তর।',
+      items: [
+        {
+          question: 'macOS বলছে ডেভেলপার যাচাই করা যাচ্ছে না। কী করব?',
+          answer: 'DMG খুলে Break-কে Applications ফোল্ডারে টেনে আনুন, তারপর অ্যাপে রাইট-ক্লিক (বা Control-ক্লিক) করে Open বেছে নিন এবং আবার Open নিশ্চিত করুন। macOS এখনও আটকালে System Settings → Privacy & Security-তে গিয়ে Open Anyway চাপুন। অ্যাপটি এখনও নোটারাইজড নয়, তাই প্রতিটি নতুন সংস্করণে এই ধাপটি একবার করতে হবে।',
+        },
+        {
+          question: 'Windows SmartScreen ইনস্টলার আটকে দিয়েছে। এটা কি স্বাভাবিক?',
+          answer: 'হ্যাঁ। ইনস্টলারটি এখনও কোড-সাইন করা নয়: More info → Run anyway চাপুন। কোড সাইনিং আসার আগে প্রতিটি নতুন সংস্করণে একই সতর্কতা দেখাবে।',
+        },
+        {
+          question: 'Linux-এ ফ্লোটিং কাউন্টডাউন উপরে থাকে না।',
+          answer: 'Wayland অ্যাপকে উইন্ডো বসাতে বা ক্লিক-থ্রু রাখতে দেয় না, তাই ওভারলে শুধু X11 সেশনে কাজ করে। রিমাইন্ডার, হিস্টোরি ও ট্রে Wayland-এও কাজ করে। ওভারলে ব্যবহার করতে X11 সেশনে (যেমন "Ubuntu on Xorg") লগইন করুন।',
+        },
+        {
+          question: 'আমার ডেটা কোথায় থাকে, ব্যাকআপ বা অন্য কম্পিউটারে নেব কীভাবে?',
+          answer: 'সেটিংস, হিস্টোরি, ট্যাগ ও অ্যানোনিমাস ইনস্টল আইডি একটি ফোল্ডারেই থাকে: Windows-এ %APPDATA%\\com.siderkit.break, macOS-এ ~/Library/Application Support/com.siderkit.break, Linux-এ ~/.local/share/com.siderkit.break। Break বন্ধ করে ফোল্ডারটি কপি করুন; নতুন মেশিনে চালু করার আগে ফিরিয়ে রাখুন। আনইনস্টল করলে ফোল্ডারটি থেকে যায়, যদি "Delete app data" টিক না দেন।',
+        },
+      ],
     },
     closing: {
       changelogEyebrow: 'চেঞ্জলগ',

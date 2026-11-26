@@ -142,11 +142,13 @@ export const zhTW = {
       downloadGithub: '查看 GitHub 發布頁',
       detected: '已識別',
       releasedLabel: '發布',
-      note: 'Windows 與 macOS 安裝檔沒有程式碼簽章，SmartScreen 或 Gatekeeper 可能會要求你確認。',
+      note: 'Break 尚未程式碼簽章，每個新版本需要手動放行一次：',
+      unsignedWindows: '「更多資訊」→「仍要執行」。',
+      unsignedMac: '右鍵 App →「打開」，或「系統設定 → 隱私權與安全性 → 仍要打開」。',
       checksumNote: '請將 SHA-256 與下載的檔案核對一致。',
       requirementsSummary: '系統需求與安裝說明',
       requirementsTitle: '系統需求',
-      requirementsLead: 'Windows、macOS 與 Linux 都隨 1.0.1 發布；各平台的需求見下表。',
+      requirementsLead: 'Windows、macOS 與 Linux 都隨目前版本發布；各平台的需求見下表。',
       tablePlatform: '平台',
       tableMinimum: '最低需求',
       tableArtifacts: '安裝檔',
@@ -185,6 +187,28 @@ export const zhTW = {
       updateBody: '預設手動檢查。簽章安裝包會在重新啟動時安裝。',
       privacyTitle: '隱私',
       privacyBody: '專注紀錄只存在本機 SQLite 檔案裡。沒有帳號，沒有同步。',
+    },
+    faq: {
+      eyebrow: 'FAQ',
+      title: '安裝前，先看這裡。',
+      items: [
+        {
+          question: 'macOS 顯示「無法驗證開發者」怎麼辦？',
+          answer: '打開 DMG，把 Break 拖進「應用程式」，然後在 App 上按右鍵（或按住 Control 點按）選「打開」，在對話框裡再按一次「打開」。如果系統仍然阻擋，到「系統設定 → 隱私權與安全性」選擇「仍要打開」。應用程式還沒有公證簽章，所以每個新版本都需要重複一次。',
+        },
+        {
+          question: 'Windows 的 SmartScreen 攔截了安裝程式，正常嗎？',
+          answer: '正常。安裝程式還沒有程式碼簽章，點「更多資訊」→「仍要執行」即可。在接上簽章之前，每個新版本都會出現相同警告。',
+        },
+        {
+          question: 'Linux 上懸浮倒數不會置頂？',
+          answer: 'Wayland 不允許應用程式擺放視窗或保持點擊穿透，懸浮窗只能在 X11 工作階段使用。提醒、歷史、系統匣等功能在 Wayland 上仍可運作。登入時選擇 X11 工作階段（例如「Ubuntu on Xorg」）即可使用懸浮窗。',
+        },
+        {
+          question: '我的資料存在哪裡？如何備份或換機？',
+          answer: '設定、歷史、標籤和匿名安裝 ID 都在同一個資料夾：Windows 是 %APPDATA%\\com.siderkit.break，macOS 是 ~/Library/Application Support/com.siderkit.break，Linux 是 ~/.local/share/com.siderkit.break。結束 Break 後複製這個資料夾即可備份或遷移。解除安裝預設保留資料，除非勾選「刪除應用程式資料」。',
+        },
+      ],
     },
     closing: {
       changelogEyebrow: '版本紀錄',
